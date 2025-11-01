@@ -39,7 +39,7 @@ class Program
 					return;
 				}
 				if (spelling.StartsWith("g_ir_")) spelling.RemoveFromStart(5);
-				else if (spelling.StartsWith("g_i")) spelling.RemoveFromStart(3);
+				else if (spelling.StartsWith("g_irepository")) spelling.RemoveFromStart(3);
 				else if (spelling.StartsWith("g_")) spelling.RemoveFromStart(2);
 				bool upper = true;
 				strBuffer = new .(spelling.Length);

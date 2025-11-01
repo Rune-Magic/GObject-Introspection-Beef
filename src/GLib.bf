@@ -266,8 +266,8 @@ extension GLib
 	[LinkName("g_quark_from_static_string")] public static extern GQuark QuarkFromStaticString(gchar* string);
 	[LinkName("g_quark_from_string")] public static extern GQuark QuarkFromString(gchar* string);
 	[LinkName("g_quark_to_string")] public static extern gchar* QuarkToString(GQuark quark);
-	[LinkName("g_intern_string")] public static extern gchar* NternString(gchar* string);
-	[LinkName("g_intern_static_string")] public static extern gchar* NternStaticString(gchar* string);
+	[LinkName("g_intern_string")] public static extern gchar* InternString(gchar* string);
+	[LinkName("g_intern_static_string")] public static extern gchar* InternStaticString(gchar* string);
 }
 
 
@@ -941,9 +941,9 @@ class GIConv { private this() {} }
 
 extension GLib
 {
-	[LinkName("g_iconv_open")] public static extern GIConv ConvOpen(gchar* to_codeset, gchar* from_codeset);
-	[LinkName("g_iconv")] public static extern gsize Conv(GIConv converter, gchar** inbuf, gsize* inbytes_left, gchar** outbuf, gsize* outbytes_left);
-	[LinkName("g_iconv_close")] public static extern gint ConvClose(GIConv converter);
+	[LinkName("g_iconv_open")] public static extern GIConv IconvOpen(gchar* to_codeset, gchar* from_codeset);
+	[LinkName("g_iconv")] public static extern gsize Iconv(GIConv converter, gchar** inbuf, gsize* inbytes_left, gchar** outbuf, gsize* outbytes_left);
+	[LinkName("g_iconv_close")] public static extern gint IconvClose(GIConv converter);
 	[LinkName("g_convert")] public static extern gchar* Convert(gchar* str, gssize len, gchar* to_codeset, gchar* from_codeset, gsize* bytes_read, gsize* bytes_written, GError** error);
 	[LinkName("g_convert_with_iconv")] public static extern gchar* ConvertWithIconv(gchar* str, gssize len, GIConv converter, gsize* bytes_read, gsize* bytes_written, GError** error);
 	[LinkName("g_convert_with_fallback")] public static extern gchar* ConvertWithFallback(gchar* str, gssize len, gchar* to_codeset, gchar* from_codeset, gchar* fallback, gsize* bytes_read, gsize* bytes_written, GError** error);
@@ -1436,10 +1436,10 @@ extension GLib
 	[LinkName("g_hash_table_unref")] public static extern void HashTableUnref(GHashTable* hash_table);
 	[LinkName("g_str_equal")] public static extern gboolean StrEqual(gconstpointer v1, gconstpointer v2);
 	[LinkName("g_str_hash")] public static extern guint StrHash(gconstpointer v);
-	[LinkName("g_int_equal")] public static extern gboolean NtEqual(gconstpointer v1, gconstpointer v2);
-	[LinkName("g_int_hash")] public static extern guint NtHash(gconstpointer v);
-	[LinkName("g_int64_equal")] public static extern gboolean Nt64Equal(gconstpointer v1, gconstpointer v2);
-	[LinkName("g_int64_hash")] public static extern guint Nt64Hash(gconstpointer v);
+	[LinkName("g_int_equal")] public static extern gboolean IntEqual(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_int_hash")] public static extern guint IntHash(gconstpointer v);
+	[LinkName("g_int64_equal")] public static extern gboolean Int64Equal(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_int64_hash")] public static extern guint Int64Hash(gconstpointer v);
 	[LinkName("g_double_equal")] public static extern gboolean DoubleEqual(gconstpointer v1, gconstpointer v2);
 	[LinkName("g_double_hash")] public static extern guint DoubleHash(gconstpointer v);
 	[LinkName("g_direct_hash")] public static extern guint DirectHash(gconstpointer v);
@@ -1925,7 +1925,7 @@ extension GLib
 	[LinkName("g_source_remove_child_source")] public static extern void SourceRemoveChildSource(GSource* source, GSource* child_source);
 	[LinkName("g_source_get_current_time")] public static extern void SourceGetCurrentTime(GSource* source, GTimeVal* timeval);
 	[LinkName("g_source_get_time")] public static extern gint64 SourceGetTime(GSource* source);
-	[LinkName("g_idle_source_new")] public static extern GSource* DleSourceNew();
+	[LinkName("g_idle_source_new")] public static extern GSource* IdleSourceNew();
 	[LinkName("g_child_watch_source_new")] public static extern GSource* ChildWatchSourceNew(GPid pid);
 	[LinkName("g_timeout_source_new")] public static extern GSource* TimeoutSourceNew(guint interval);
 	[LinkName("g_timeout_source_new_seconds")] public static extern GSource* TimeoutSourceNewSeconds(guint interval);
@@ -1960,10 +1960,10 @@ extension GLib
 	[LinkName("g_timeout_add_seconds_once")] public static extern guint TimeoutAddSecondsOnce(guint interval, GSourceOnceFunc @function, gpointer data);
 	[LinkName("g_child_watch_add_full")] public static extern guint ChildWatchAddFull(gint priority, GPid pid, GChildWatchFunc @function, gpointer data, GDestroyNotify notify);
 	[LinkName("g_child_watch_add")] public static extern guint ChildWatchAdd(GPid pid, GChildWatchFunc @function, gpointer data);
-	[LinkName("g_idle_add")] public static extern guint DleAdd(GSourceFunc @function, gpointer data);
-	[LinkName("g_idle_add_full")] public static extern guint DleAddFull(gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
-	[LinkName("g_idle_add_once")] public static extern guint DleAddOnce(GSourceOnceFunc @function, gpointer data);
-	[LinkName("g_idle_remove_by_data")] public static extern gboolean DleRemoveByData(gpointer data);
+	[LinkName("g_idle_add")] public static extern guint IdleAdd(GSourceFunc @function, gpointer data);
+	[LinkName("g_idle_add_full")] public static extern guint IdleAddFull(gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
+	[LinkName("g_idle_add_once")] public static extern guint IdleAddOnce(GSourceOnceFunc @function, gpointer data);
+	[LinkName("g_idle_remove_by_data")] public static extern gboolean IdleRemoveByData(gpointer data);
 	[LinkName("g_main_context_invoke_full")] public static extern void MainContextInvokeFull(GMainContext* context, gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
 	[LinkName("g_main_context_invoke")] public static extern void MainContextInvoke(GMainContext* context, GSourceFunc @function, gpointer data);
 }
@@ -2942,44 +2942,44 @@ function gboolean GIOFunc(GIOChannel* source, GIOCondition condition, gpointer d
 
 extension GLib
 {
-	[LinkName("g_io_channel_init")] public static extern void OChannelInit(GIOChannel* channel);
-	[LinkName("g_io_channel_ref")] public static extern GIOChannel* OChannelRef(GIOChannel* channel);
-	[LinkName("g_io_channel_unref")] public static extern void OChannelUnref(GIOChannel* channel);
-	[LinkName("g_io_channel_read")] public static extern GIOError OChannelRead(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read);
-	[LinkName("g_io_channel_write")] public static extern GIOError OChannelWrite(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_written);
-	[LinkName("g_io_channel_seek")] public static extern GIOError OChannelSeek(GIOChannel* channel, gint64 offset, GSeekType type);
-	[LinkName("g_io_channel_close")] public static extern void OChannelClose(GIOChannel* channel);
-	[LinkName("g_io_channel_shutdown")] public static extern GIOStatus OChannelShutdown(GIOChannel* channel, gboolean flush, GError** err);
-	[LinkName("g_io_add_watch_full")] public static extern guint OAddWatchFull(GIOChannel* channel, gint priority, GIOCondition condition, GIOFunc func, gpointer user_data, GDestroyNotify notify);
-	[LinkName("g_io_create_watch")] public static extern GSource* OCreateWatch(GIOChannel* channel, GIOCondition condition);
-	[LinkName("g_io_add_watch")] public static extern guint OAddWatch(GIOChannel* channel, GIOCondition condition, GIOFunc func, gpointer user_data);
-	[LinkName("g_io_channel_set_buffer_size")] public static extern void OChannelSetBufferSize(GIOChannel* channel, gsize size);
-	[LinkName("g_io_channel_get_buffer_size")] public static extern gsize OChannelGetBufferSize(GIOChannel* channel);
-	[LinkName("g_io_channel_get_buffer_condition")] public static extern GIOCondition OChannelGetBufferCondition(GIOChannel* channel);
-	[LinkName("g_io_channel_set_flags")] public static extern GIOStatus OChannelSetFlags(GIOChannel* channel, GIOFlags flags, GError** error);
-	[LinkName("g_io_channel_get_flags")] public static extern GIOFlags OChannelGetFlags(GIOChannel* channel);
-	[LinkName("g_io_channel_set_line_term")] public static extern void OChannelSetLineTerm(GIOChannel* channel, gchar* line_term, gint length);
-	[LinkName("g_io_channel_get_line_term")] public static extern gchar* OChannelGetLineTerm(GIOChannel* channel, gint* length);
-	[LinkName("g_io_channel_set_buffered")] public static extern void OChannelSetBuffered(GIOChannel* channel, gboolean buffered);
-	[LinkName("g_io_channel_get_buffered")] public static extern gboolean OChannelGetBuffered(GIOChannel* channel);
-	[LinkName("g_io_channel_set_encoding")] public static extern GIOStatus OChannelSetEncoding(GIOChannel* channel, gchar* encoding, GError** error);
-	[LinkName("g_io_channel_get_encoding")] public static extern gchar* OChannelGetEncoding(GIOChannel* channel);
-	[LinkName("g_io_channel_set_close_on_unref")] public static extern void OChannelSetCloseOnUnref(GIOChannel* channel, gboolean do_close);
-	[LinkName("g_io_channel_get_close_on_unref")] public static extern gboolean OChannelGetCloseOnUnref(GIOChannel* channel);
-	[LinkName("g_io_channel_flush")] public static extern GIOStatus OChannelFlush(GIOChannel* channel, GError** error);
-	[LinkName("g_io_channel_read_line")] public static extern GIOStatus OChannelReadLine(GIOChannel* channel, gchar** str_return, gsize* length, gsize* terminator_pos, GError** error);
-	[LinkName("g_io_channel_read_line_string")] public static extern GIOStatus OChannelReadLineString(GIOChannel* channel, GString* buffer, gsize* terminator_pos, GError** error);
-	[LinkName("g_io_channel_read_to_end")] public static extern GIOStatus OChannelReadToEnd(GIOChannel* channel, gchar** str_return, gsize* length, GError** error);
-	[LinkName("g_io_channel_read_chars")] public static extern GIOStatus OChannelReadChars(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read, GError** error);
-	[LinkName("g_io_channel_read_unichar")] public static extern GIOStatus OChannelReadUnichar(GIOChannel* channel, gunichar* thechar, GError** error);
-	[LinkName("g_io_channel_write_chars")] public static extern GIOStatus OChannelWriteChars(GIOChannel* channel, gchar* buf, gssize count, gsize* bytes_written, GError** error);
-	[LinkName("g_io_channel_write_unichar")] public static extern GIOStatus OChannelWriteUnichar(GIOChannel* channel, gunichar thechar, GError** error);
-	[LinkName("g_io_channel_seek_position")] public static extern GIOStatus OChannelSeekPosition(GIOChannel* channel, gint64 offset, GSeekType type, GError** error);
-	[LinkName("g_io_channel_new_file")] public static extern GIOChannel* OChannelNewFile(gchar* filename, gchar* mode, GError** error);
-	[LinkName("g_io_channel_error_quark")] public static extern GQuark OChannelErrorQuark();
-	[LinkName("g_io_channel_error_from_errno")] public static extern GIOChannelError OChannelErrorFromErrno(gint en);
-	[LinkName("g_io_channel_unix_new")] public static extern GIOChannel* OChannelUnixNew(c_int fd);
-	[LinkName("g_io_channel_unix_get_fd")] public static extern gint OChannelUnixGetFd(GIOChannel* channel);
+	[LinkName("g_io_channel_init")] public static extern void IoChannelInit(GIOChannel* channel);
+	[LinkName("g_io_channel_ref")] public static extern GIOChannel* IoChannelRef(GIOChannel* channel);
+	[LinkName("g_io_channel_unref")] public static extern void IoChannelUnref(GIOChannel* channel);
+	[LinkName("g_io_channel_read")] public static extern GIOError IoChannelRead(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read);
+	[LinkName("g_io_channel_write")] public static extern GIOError IoChannelWrite(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_written);
+	[LinkName("g_io_channel_seek")] public static extern GIOError IoChannelSeek(GIOChannel* channel, gint64 offset, GSeekType type);
+	[LinkName("g_io_channel_close")] public static extern void IoChannelClose(GIOChannel* channel);
+	[LinkName("g_io_channel_shutdown")] public static extern GIOStatus IoChannelShutdown(GIOChannel* channel, gboolean flush, GError** err);
+	[LinkName("g_io_add_watch_full")] public static extern guint IoAddWatchFull(GIOChannel* channel, gint priority, GIOCondition condition, GIOFunc func, gpointer user_data, GDestroyNotify notify);
+	[LinkName("g_io_create_watch")] public static extern GSource* IoCreateWatch(GIOChannel* channel, GIOCondition condition);
+	[LinkName("g_io_add_watch")] public static extern guint IoAddWatch(GIOChannel* channel, GIOCondition condition, GIOFunc func, gpointer user_data);
+	[LinkName("g_io_channel_set_buffer_size")] public static extern void IoChannelSetBufferSize(GIOChannel* channel, gsize size);
+	[LinkName("g_io_channel_get_buffer_size")] public static extern gsize IoChannelGetBufferSize(GIOChannel* channel);
+	[LinkName("g_io_channel_get_buffer_condition")] public static extern GIOCondition IoChannelGetBufferCondition(GIOChannel* channel);
+	[LinkName("g_io_channel_set_flags")] public static extern GIOStatus IoChannelSetFlags(GIOChannel* channel, GIOFlags flags, GError** error);
+	[LinkName("g_io_channel_get_flags")] public static extern GIOFlags IoChannelGetFlags(GIOChannel* channel);
+	[LinkName("g_io_channel_set_line_term")] public static extern void IoChannelSetLineTerm(GIOChannel* channel, gchar* line_term, gint length);
+	[LinkName("g_io_channel_get_line_term")] public static extern gchar* IoChannelGetLineTerm(GIOChannel* channel, gint* length);
+	[LinkName("g_io_channel_set_buffered")] public static extern void IoChannelSetBuffered(GIOChannel* channel, gboolean buffered);
+	[LinkName("g_io_channel_get_buffered")] public static extern gboolean IoChannelGetBuffered(GIOChannel* channel);
+	[LinkName("g_io_channel_set_encoding")] public static extern GIOStatus IoChannelSetEncoding(GIOChannel* channel, gchar* encoding, GError** error);
+	[LinkName("g_io_channel_get_encoding")] public static extern gchar* IoChannelGetEncoding(GIOChannel* channel);
+	[LinkName("g_io_channel_set_close_on_unref")] public static extern void IoChannelSetCloseOnUnref(GIOChannel* channel, gboolean do_close);
+	[LinkName("g_io_channel_get_close_on_unref")] public static extern gboolean IoChannelGetCloseOnUnref(GIOChannel* channel);
+	[LinkName("g_io_channel_flush")] public static extern GIOStatus IoChannelFlush(GIOChannel* channel, GError** error);
+	[LinkName("g_io_channel_read_line")] public static extern GIOStatus IoChannelReadLine(GIOChannel* channel, gchar** str_return, gsize* length, gsize* terminator_pos, GError** error);
+	[LinkName("g_io_channel_read_line_string")] public static extern GIOStatus IoChannelReadLineString(GIOChannel* channel, GString* buffer, gsize* terminator_pos, GError** error);
+	[LinkName("g_io_channel_read_to_end")] public static extern GIOStatus IoChannelReadToEnd(GIOChannel* channel, gchar** str_return, gsize* length, GError** error);
+	[LinkName("g_io_channel_read_chars")] public static extern GIOStatus IoChannelReadChars(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read, GError** error);
+	[LinkName("g_io_channel_read_unichar")] public static extern GIOStatus IoChannelReadUnichar(GIOChannel* channel, gunichar* thechar, GError** error);
+	[LinkName("g_io_channel_write_chars")] public static extern GIOStatus IoChannelWriteChars(GIOChannel* channel, gchar* buf, gssize count, gsize* bytes_written, GError** error);
+	[LinkName("g_io_channel_write_unichar")] public static extern GIOStatus IoChannelWriteUnichar(GIOChannel* channel, gunichar thechar, GError** error);
+	[LinkName("g_io_channel_seek_position")] public static extern GIOStatus IoChannelSeekPosition(GIOChannel* channel, gint64 offset, GSeekType type, GError** error);
+	[LinkName("g_io_channel_new_file")] public static extern GIOChannel* IoChannelNewFile(gchar* filename, gchar* mode, GError** error);
+	[LinkName("g_io_channel_error_quark")] public static extern GQuark IoChannelErrorQuark();
+	[LinkName("g_io_channel_error_from_errno")] public static extern GIOChannelError IoChannelErrorFromErrno(gint en);
+	[LinkName("g_io_channel_unix_new")] public static extern GIOChannel* IoChannelUnixNew(c_int fd);
+	[LinkName("g_io_channel_unix_get_fd")] public static extern gint IoChannelUnixGetFd(GIOChannel* channel);
 }
 
 static
@@ -2989,14 +2989,14 @@ static
 
 extension GLib
 {
-	[LinkName("g_io_channel_win32_make_pollfd")] public static extern void OChannelWin32MakePollfd(GIOChannel* channel, GIOCondition condition, GPollFD* fd);
-	[LinkName("g_io_channel_win32_poll")] public static extern gint OChannelWin32Poll(GPollFD* fds, gint n_fds, gint timeout);
-	[LinkName("g_io_channel_win32_new_messages")] public static extern GIOChannel* OChannelWin32NewMessages(gsize hwnd);
-	[LinkName("g_io_channel_win32_new_fd")] public static extern GIOChannel* OChannelWin32NewFd(gint fd);
-	[LinkName("g_io_channel_win32_get_fd")] public static extern gint OChannelWin32GetFd(GIOChannel* channel);
-	[LinkName("g_io_channel_win32_new_socket")] public static extern GIOChannel* OChannelWin32NewSocket(gint socket);
-	[LinkName("g_io_channel_win32_new_stream_socket")] public static extern GIOChannel* OChannelWin32NewStreamSocket(gint socket);
-	[LinkName("g_io_channel_win32_set_debug")] public static extern void OChannelWin32SetDebug(GIOChannel* channel, gboolean flag);
+	[LinkName("g_io_channel_win32_make_pollfd")] public static extern void IoChannelWin32MakePollfd(GIOChannel* channel, GIOCondition condition, GPollFD* fd);
+	[LinkName("g_io_channel_win32_poll")] public static extern gint IoChannelWin32Poll(GPollFD* fds, gint n_fds, gint timeout);
+	[LinkName("g_io_channel_win32_new_messages")] public static extern GIOChannel* IoChannelWin32NewMessages(gsize hwnd);
+	[LinkName("g_io_channel_win32_new_fd")] public static extern GIOChannel* IoChannelWin32NewFd(gint fd);
+	[LinkName("g_io_channel_win32_get_fd")] public static extern gint IoChannelWin32GetFd(GIOChannel* channel);
+	[LinkName("g_io_channel_win32_new_socket")] public static extern GIOChannel* IoChannelWin32NewSocket(gint socket);
+	[LinkName("g_io_channel_win32_new_stream_socket")] public static extern GIOChannel* IoChannelWin32NewStreamSocket(gint socket);
+	[LinkName("g_io_channel_win32_set_debug")] public static extern void IoChannelWin32SetDebug(GIOChannel* channel, gboolean flag);
 }
 
 [AllowDuplicates] enum GKeyFileError : c_int

@@ -369,7 +369,7 @@ extension GIR
 	[LinkName("g_base_info_get_container")] public static extern GIBaseInfo* BaseInfoGetContainer(GIBaseInfo* info);
 	[LinkName("g_base_info_get_typelib")] public static extern GITypelib* BaseInfoGetTypelib(GIBaseInfo* info);
 	[LinkName("g_base_info_equal")] public static extern gboolean BaseInfoEqual(GIBaseInfo* info1, GIBaseInfo* info2);
-	[LinkName("g_info_new")] public static extern GIBaseInfo* NfoNew(GIInfoType type, GIBaseInfo* container, GITypelib* typelib, guint32 offset);
+	[LinkName("g_info_new")] public static extern GIBaseInfo* InfoNew(GIInfoType type, GIBaseInfo* container, GITypelib* typelib, guint32 offset);
 	[LinkName("g_callable_info_is_method")] public static extern gboolean CallableInfoIsMethod(GICallableInfo* info);
 	[LinkName("g_callable_info_can_throw_gerror")] public static extern gboolean CallableInfoCanThrowGerror(GICallableInfo* info);
 	[LinkName("g_callable_info_get_return_type")] public static extern GITypeInfo* CallableInfoGetReturnType(GICallableInfo* info);
@@ -404,7 +404,7 @@ extension GIR
 	[LinkName("g_function_info_get_flags")] public static extern GIFunctionInfoFlags FunctionInfoGetFlags(GIFunctionInfo* info);
 	[LinkName("g_function_info_get_property")] public static extern GIPropertyInfo* FunctionInfoGetProperty(GIFunctionInfo* info);
 	[LinkName("g_function_info_get_vfunc")] public static extern GIVFuncInfo* FunctionInfoGetVfunc(GIFunctionInfo* info);
-	[LinkName("g_invoke_error_quark")] public static extern GQuark NvokeErrorQuark();
+	[LinkName("g_invoke_error_quark")] public static extern GQuark InvokeErrorQuark();
 }
 
 /** GInvokeError:
@@ -427,22 +427,22 @@ extension GIR
 extension GIR
 {
 	[LinkName("g_function_info_invoke")] public static extern gboolean FunctionInfoInvoke(GIFunctionInfo* info, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, GError** error);
-	[LinkName("g_interface_info_get_n_prerequisites")] public static extern gint NterfaceInfoGetNPrerequisites(GIInterfaceInfo* info);
-	[LinkName("g_interface_info_get_prerequisite")] public static extern GIBaseInfo* NterfaceInfoGetPrerequisite(GIInterfaceInfo* info, gint n);
-	[LinkName("g_interface_info_get_n_properties")] public static extern gint NterfaceInfoGetNProperties(GIInterfaceInfo* info);
-	[LinkName("g_interface_info_get_property")] public static extern GIPropertyInfo* NterfaceInfoGetProperty(GIInterfaceInfo* info, gint n);
-	[LinkName("g_interface_info_get_n_methods")] public static extern gint NterfaceInfoGetNMethods(GIInterfaceInfo* info);
-	[LinkName("g_interface_info_get_method")] public static extern GIFunctionInfo* NterfaceInfoGetMethod(GIInterfaceInfo* info, gint n);
-	[LinkName("g_interface_info_find_method")] public static extern GIFunctionInfo* NterfaceInfoFindMethod(GIInterfaceInfo* info, gchar* name);
-	[LinkName("g_interface_info_get_n_signals")] public static extern gint NterfaceInfoGetNSignals(GIInterfaceInfo* info);
-	[LinkName("g_interface_info_get_signal")] public static extern GISignalInfo* NterfaceInfoGetSignal(GIInterfaceInfo* info, gint n);
-	[LinkName("g_interface_info_find_signal")] public static extern GISignalInfo* NterfaceInfoFindSignal(GIInterfaceInfo* info, gchar* name);
-	[LinkName("g_interface_info_get_n_vfuncs")] public static extern gint NterfaceInfoGetNVfuncs(GIInterfaceInfo* info);
-	[LinkName("g_interface_info_get_vfunc")] public static extern GIVFuncInfo* NterfaceInfoGetVfunc(GIInterfaceInfo* info, gint n);
-	[LinkName("g_interface_info_find_vfunc")] public static extern GIVFuncInfo* NterfaceInfoFindVfunc(GIInterfaceInfo* info, gchar* name);
-	[LinkName("g_interface_info_get_n_constants")] public static extern gint NterfaceInfoGetNConstants(GIInterfaceInfo* info);
-	[LinkName("g_interface_info_get_constant")] public static extern GIConstantInfo* NterfaceInfoGetConstant(GIInterfaceInfo* info, gint n);
-	[LinkName("g_interface_info_get_iface_struct")] public static extern GIStructInfo* NterfaceInfoGetIfaceStruct(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_n_prerequisites")] public static extern gint InterfaceInfoGetNPrerequisites(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_prerequisite")] public static extern GIBaseInfo* InterfaceInfoGetPrerequisite(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_get_n_properties")] public static extern gint InterfaceInfoGetNProperties(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_property")] public static extern GIPropertyInfo* InterfaceInfoGetProperty(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_get_n_methods")] public static extern gint InterfaceInfoGetNMethods(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_method")] public static extern GIFunctionInfo* InterfaceInfoGetMethod(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_find_method")] public static extern GIFunctionInfo* InterfaceInfoFindMethod(GIInterfaceInfo* info, gchar* name);
+	[LinkName("g_interface_info_get_n_signals")] public static extern gint InterfaceInfoGetNSignals(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_signal")] public static extern GISignalInfo* InterfaceInfoGetSignal(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_find_signal")] public static extern GISignalInfo* InterfaceInfoFindSignal(GIInterfaceInfo* info, gchar* name);
+	[LinkName("g_interface_info_get_n_vfuncs")] public static extern gint InterfaceInfoGetNVfuncs(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_vfunc")] public static extern GIVFuncInfo* InterfaceInfoGetVfunc(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_find_vfunc")] public static extern GIVFuncInfo* InterfaceInfoFindVfunc(GIInterfaceInfo* info, gchar* name);
+	[LinkName("g_interface_info_get_n_constants")] public static extern gint InterfaceInfoGetNConstants(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_constant")] public static extern GIConstantInfo* InterfaceInfoGetConstant(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_get_iface_struct")] public static extern GIStructInfo* InterfaceInfoGetIfaceStruct(GIInterfaceInfo* info);
 }
 
 /** GIObjectInfoRefFunction: (skip)
@@ -538,7 +538,7 @@ extension GIR
 	[LinkName("g_struct_info_get_copy_function")] public static extern c_char* StructInfoGetCopyFunction(GIStructInfo* info);
 	[LinkName("g_struct_info_get_free_function")] public static extern c_char* StructInfoGetFreeFunction(GIStructInfo* info);
 	[LinkName("g_type_tag_to_string")] public static extern gchar* TypeTagToString(GITypeTag type);
-	[LinkName("g_info_type_to_string")] public static extern gchar* NfoTypeToString(GIInfoType type);
+	[LinkName("g_info_type_to_string")] public static extern gchar* InfoTypeToString(GIInfoType type);
 	[LinkName("g_type_info_is_pointer")] public static extern gboolean TypeInfoIsPointer(GITypeInfo* info);
 	[LinkName("g_type_info_get_tag")] public static extern GITypeTag TypeInfoGetTag(GITypeInfo* info);
 	[LinkName("g_type_info_get_param_type")] public static extern GITypeInfo* TypeInfoGetParamType(GITypeInfo* info, gint n);
