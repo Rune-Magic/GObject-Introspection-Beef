@@ -1,0 +1,6 @@
+FileVersion = 1
+Dependencies = {corlib = "*", "C2Beef-Binding-Generator.git" = {Git = "https://github.com/Rune-Magic/C2Beef-Binding-Generator.git"}}
+
+[Project]
+Name = "GObject-Introspection-Beef.Setup"
+StartupObject = "GObject_Introspection_Beef.Setup.Program"

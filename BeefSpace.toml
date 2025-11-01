@@ -1,6 +1,5 @@
 FileVersion = 1
-Projects = {"GObject-Introspection-Beef.Setup" = {Path = "."}, "C2Beef-Binding-Generator.git" = {Git = "https://github.com/Rune-Magic/C2Beef-Binding-Generator.git"}}
-Unlocked = ["C2Beef-Binding-Generator.git"]
+Projects = {GObject-Introspection-Beef = {Path = "."}}
 
 [Workspace]
-StartupProject = "GObject-Introspection-Beef.Setup"
+StartupProject = "GObject-Introspection-Beef"
