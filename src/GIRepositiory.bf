@@ -3,6 +3,8 @@
  */
 
 using GLib;
+using GObject;
+
 using System;
 using System.Interop;
 

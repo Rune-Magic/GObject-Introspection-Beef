@@ -13,7 +13,9 @@ class Program
 	append static String usrInclude = .(64);
 
 	static StringView staticClass;
-	static StringView dir;
+	append static String dir = .(64);
+
+	static Dictionary<String, String> prettyPaths = new .(64) ~ DeleteDictionaryAndKeysAndValues!(_);
 
 	public static int Main(String[] args)
 	{
@@ -102,8 +104,15 @@ class Program
 			},
 			includeCursorFromFile = scope (cursorFile, currentHeader) =>
 			{
-				if (dir.IsNull) return String.Equals(cursorFile, currentHeader);
-				return StringView(cursorFile).StartsWith(dir);
+				if (dir.IsEmpty) return String.Equals(cursorFile, currentHeader);
+				StringView file = .(cursorFile);
+				String prettyPath;
+				if (!prettyPaths.TryGetValueAlt(file, out prettyPath))
+				{
+					prettyPath = Path.GetActualPathName(file, ..new .(64));
+					prettyPaths.Add(new .(file), prettyPath);
+				}
+				return prettyPath.StartsWith(dir);
 			},
 			isBlackListed = scope (cursor, spelling) =>
 			{
@@ -122,6 +131,11 @@ class Program
 				if (staticClass == "GIR")
 					return (cursor.kind == .MacroDefinition && !spelling.EndsWith("_VERSION")) ||
 						(!isOpaque && spelling.StartsWith("_GIRepository"));
+				if (staticClass == "GObject")
+					return cursor.kind == .MacroDefinition ||
+						(isOpaque && !StringView[?](
+							"_GTypeCValue", "_GTypePlugin", "_GParamSpecPool", "_GBinding", "_GBindingGroup", "_GSignalGroup"
+						).Contains(spelling));
 				return isOpaque;
 			},
 			handleTopLevelCursor = scope (cursor, unit, spelling, output, block) =>
@@ -138,23 +152,29 @@ class Program
 				typedefSpelling == "GIConv"
 		};
 		staticClass = "GIR";
-		dir = scope $"{usrInclude}/gobject-introspection-1.0";
+		Path.GetActualPathName(scope $"{usrInclude}/gobject-introspection-1.0", dir..Clear());
 		CBindings.Generate(
 			scope $"{usrInclude}/gobject-introspection-1.0/girepository.h",
 			"../src/GIRepositiory.bf",
-			"GIRepository", library, "GLib");
+			"GIRepository", library, "GLib", "GObject");
 		staticClass = "GIRFFI";
-		dir = null;
+		dir.Set(.Empty);
 		CBindings.Generate(
 			scope $"{usrInclude}/gobject-introspection-1.0/girffi.h",
 			"../src/GIRFFI.bf",
 			"GIRFFI", library, "GIRepository", "GLib");
 		staticClass = "GLib";
-		dir = scope $"{usrInclude}/glib-2.0";
+		Path.GetActualPathName(scope $"{usrInclude}/glib-2.0/glib", dir..Clear());
 		CBindings.Generate(
 			scope $"{usrInclude}/glib-2.0/glib.h",
 			"../src/GLib.bf",
 			"GLib", library);
+		staticClass = "GObject";
+		Path.GetActualPathName(scope $"{usrInclude}/glib-2.0/gobject", dir..Clear());
+		CBindings.Generate(
+			scope $"{usrInclude}/glib-2.0/glib-object.h",
+			"../src/GObject.bf",
+			"GObject", library, "GLib");
 		return 0;
 	}
 }

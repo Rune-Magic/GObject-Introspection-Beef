@@ -1,10 +1,33 @@
 using System;
 using System.FFI;
 
+using GLib;
+
 namespace GIRepository;
 
 static class GIR
 {
+}
+
+namespace GObject;
+
+[CRepr] struct GValue
+{
+	public GType g_type;
+	public Data[2] data;
+
+	[Union, CRepr] public struct Data
+	{
+		public gint v_int;
+		public guint v_uint;
+		public glong v_long;
+		public gulong v_ulong;
+		public gint64 v_int64;
+		public guint64 v_uint64;
+		public gfloat v_float;
+		public gdouble v_double;
+		public gpointer v_pointer;
+	}
 }
 
 namespace GIRFFI;
@@ -34,13 +57,8 @@ typealias gssize = int;
 typealias gintptr = int;
 typealias guintptr = uint;
 typealias goffset = int;
-typealias GType = int;
 
 struct tm;
-struct GValue;
-struct GClosure;
-typealias GParamFlags = gint;
-typealias GSignalFlags = gint;
 
 static class GLib
 {
