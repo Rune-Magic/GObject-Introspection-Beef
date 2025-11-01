@@ -10,19 +10,39 @@ namespace GObject_Introspection_Beef.Setup;
 
 class Program
 {
-	const let usrInclude = "C:/msys64/ucrt64/include";
+	append static String usrInclude = .(64);
 
 	static StringView staticClass;
+	static StringView dir;
 
 	public static int Main(String[] args)
 	{
+#if BF_PLATFORM_WINDOWS
+		usrInclude.Set("C:/msys64/ucrt64/include");
+#else
+		usrInclude.Set("/usr/include");
+#endif
+		while (!Directory.Exists(usrInclude))
+		{
+			Console.WriteLine("Unix include dir not found, have you install msys?");
+			Console.Write("Enter path to unix include dir: ");
+			Console.ReadLine(usrInclude..Clear());
+		}
+
+		while (!File.Exists(scope $"{usrInclude}/gobject-introspection-1.0/girepository.h"))
+		{
+			Console.WriteLine("Please install gobject-introspection package");
+			Console.Write("Proceed when ready...");
+			Console.Read();
+		}
+
 		CBindings.LibraryInfo library = scope .()
 		{
 			args = char8*[?](
-				String.ConstF($"-I{usrInclude}"),
-				String.ConstF($"-I{usrInclude}/glib-2.0"),
-				String.ConstF($"-I{usrInclude}/gobject-introspection-1.0"),
-				String.ConstF($"-I{usrInclude}/../lib/glib-2.0/include"),
+				scope $"-I{usrInclude}",
+				scope $"-I{usrInclude}/glib-2.0",
+				scope $"-I{usrInclude}/gobject-introspection-1.0",
+				scope $"-I{usrInclude}/../lib/glib-2.0/include",
 				"-D__GLIB_H_INSIDE__"
 			),
 			getBlock = scope (cursor, spelling) =>
@@ -82,7 +102,8 @@ class Program
 			},
 			includeCursorFromFile = scope (cursorFile, currentHeader) =>
 			{
-				return StringView(cursorFile).StartsWith(usrInclude + "/gobject-introspection-1.0");
+				if (dir.IsNull) return String.Equals(cursorFile, currentHeader);
+				return StringView(cursorFile).StartsWith(dir);
 			},
 			isBlackListed = scope (cursor, spelling) =>
 			{
@@ -117,23 +138,21 @@ class Program
 				typedefSpelling == "GIConv"
 		};
 		staticClass = "GIR";
+		dir = scope $"{usrInclude}/gobject-introspection-1.0";
 		CBindings.Generate(
-			usrInclude + "/gobject-introspection-1.0/girepository.h",
+			scope $"{usrInclude}/gobject-introspection-1.0/girepository.h",
 			"../src/GIRepositiory.bf",
 			"GIRepository", library, "GLib");
-		library.includeCursorFromFile = null;
 		staticClass = "GIRFFI";
+		dir = null;
 		CBindings.Generate(
-			usrInclude + "/gobject-introspection-1.0/girffi.h",
+			scope $"{usrInclude}/gobject-introspection-1.0/girffi.h",
 			"../src/GIRFFI.bf",
 			"GIRFFI", library, "GIRepository", "GLib");
-		library.includeCursorFromFile = scope (cursorFile, currentHeader) =>
-		{
-			return StringView(cursorFile).StartsWith(usrInclude + "/glib-2.0");
-		};
 		staticClass = "GLib";
+		dir = scope $"{usrInclude}/glib-2.0";
 		CBindings.Generate(
-			usrInclude + "/glib-2.0/glib.h",
+			scope $"{usrInclude}/glib-2.0/glib.h",
 			"../src/GLib.bf",
 			"GLib", library);
 		return 0;
