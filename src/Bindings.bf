@@ -1,15 +1,11 @@
 using System;
 using System.FFI;
 
-using GLib;
-
-namespace GIRepository;
+namespace GObject.Introspection;
 
 static class GIR
 {
 }
-
-namespace GObject;
 
 [CRepr] struct GValue
 {
@@ -30,8 +26,6 @@ namespace GObject;
 	}
 }
 
-namespace GIRFFI;
-
 typealias ffi_cif = FFILIB.FFICIF;
 typealias ffi_type = FFIType;
 typealias ffi_closure = void*;
@@ -39,8 +33,6 @@ typealias ffi_closure = void*;
 static class GIRFFI
 {
 }
-
-namespace GLib;
 
 typealias gint8  = int8;
 typealias gint16 = int16;
@@ -59,10 +51,10 @@ typealias guintptr = uint;
 typealias goffset = int;
 
 struct tm;
+typealias time_t = TimeSpan;
 
 static class GLib
 {
-	typealias time_t = TimeSpan;
 }
 
 static

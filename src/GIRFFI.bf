@@ -8,7 +8,7 @@ using GLib;
 using System;
 using System.Interop;
 
-namespace GIRFFI;
+namespace GObject.Introspection;
 
 /** GIFFIClosureCallback:
  *   @Param1 : TODO
@@ -37,16 +37,16 @@ typealias GIFFIReturnValue = GIArgument;
 extension GIRFFI
 {
 	[LinkName("gi_type_tag_get_ffi_type")] public static extern ffi_type* GiTypeTagGetFfiType(GITypeTag type_tag, gboolean is_pointer);
-	[LinkName("g_type_info_get_ffi_type")] public static extern ffi_type* TypeInfoGetFfiType(GITypeInfo* info);
+	[LinkName("g_type_info_get_ffi_type")] public static extern ffi_type* GTypeInfoGetFfiType(GITypeInfo* info);
 	[LinkName("gi_type_info_extract_ffi_return_value")] public static extern void GiTypeInfoExtractFfiReturnValue(GITypeInfo* return_info, GIFFIReturnValue* ffi_value, GIArgument* arg);
 	[LinkName("gi_type_tag_extract_ffi_return_value")] public static extern void GiTypeTagExtractFfiReturnValue(GITypeTag return_tag, GIInfoType interface_type, GIFFIReturnValue* ffi_value, GIArgument* arg);
-	[LinkName("g_function_info_prep_invoker")] public static extern gboolean FunctionInfoPrepInvoker(GIFunctionInfo* info, GIFunctionInvoker* invoker, GError** error);
-	[LinkName("g_function_invoker_new_for_address")] public static extern gboolean FunctionInvokerNewForAddress(gpointer addr, GICallableInfo* info, GIFunctionInvoker* invoker, GError** error);
-	[LinkName("g_function_invoker_destroy")] public static extern void FunctionInvokerDestroy(GIFunctionInvoker* invoker);
-	[LinkName("g_callable_info_prepare_closure")] public static extern ffi_closure* CallableInfoPrepareClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
-	[LinkName("g_callable_info_free_closure")] public static extern void CallableInfoFreeClosure(GICallableInfo* callable_info, ffi_closure* closure);
-	[LinkName("g_callable_info_create_closure")] public static extern ffi_closure* CallableInfoCreateClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
-	[LinkName("g_callable_info_get_closure_native_address")] public static extern gpointer* CallableInfoGetClosureNativeAddress(GICallableInfo* callable_info, ffi_closure* closure);
-	[LinkName("g_callable_info_destroy_closure")] public static extern void CallableInfoDestroyClosure(GICallableInfo* callable_info, ffi_closure* closure);
+	[LinkName("g_function_info_prep_invoker")] public static extern gboolean GFunctionInfoPrepInvoker(GIFunctionInfo* info, GIFunctionInvoker* invoker, GError** error);
+	[LinkName("g_function_invoker_new_for_address")] public static extern gboolean GFunctionInvokerNewForAddress(gpointer addr, GICallableInfo* info, GIFunctionInvoker* invoker, GError** error);
+	[LinkName("g_function_invoker_destroy")] public static extern void GFunctionInvokerDestroy(GIFunctionInvoker* invoker);
+	[LinkName("g_callable_info_prepare_closure")] public static extern ffi_closure* GCallableInfoPrepareClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
+	[LinkName("g_callable_info_free_closure")] public static extern void GCallableInfoFreeClosure(GICallableInfo* callable_info, ffi_closure* closure);
+	[LinkName("g_callable_info_create_closure")] public static extern ffi_closure* GCallableInfoCreateClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
+	[LinkName("g_callable_info_get_closure_native_address")] public static extern gpointer* GCallableInfoGetClosureNativeAddress(GICallableInfo* callable_info, ffi_closure* closure);
+	[LinkName("g_callable_info_destroy_closure")] public static extern void GCallableInfoDestroyClosure(GICallableInfo* callable_info, ffi_closure* closure);
 }
 

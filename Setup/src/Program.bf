@@ -16,6 +16,7 @@ class Program
 	append static String dir = .(64);
 
 	static Dictionary<String, String> prettyPaths = new .(64) ~ DeleteDictionaryAndKeysAndValues!(_);
+	static List<String> classes = new .(64) ~ DeleteContainerAndItems!(_);
 
 	public static int Main(String[] args)
 	{
@@ -49,7 +50,19 @@ class Program
 			),
 			getBlock = scope (cursor, spelling) =>
 			{
+				if (cursor.kind == .StructDecl && spelling[0] == 'G')
+				{
+					classes.Add(new .(spelling));
+					return null;
+				}
 				if (cursor.kind != .FunctionDecl || spelling[0] != 'g') return null;
+				String withoutUnderscores = scope .(spelling.Length);
+				for (let c in spelling)
+					if (c != '_')
+						withoutUnderscores.Append(c);
+				for (let clas in classes.Reversed)
+					if (withoutUnderscores.StartsWith(clas, .OrdinalIgnoreCase))
+						return clas;
 				return staticClass;
 			},
 			modifySourceName = scope (cursor, spelling, strBuffer) =>
@@ -60,9 +73,6 @@ class Program
 					spelling.TrimStart('_');
 					return;
 				}
-				if (spelling.StartsWith("g_ir_")) spelling.RemoveFromStart(5);
-				else if (spelling.StartsWith("g_irepository")) spelling.RemoveFromStart(3);
-				else if (spelling.StartsWith("g_")) spelling.RemoveFromStart(2);
 				bool upper = true;
 				strBuffer = new .(spelling.Length);
 				for (let c in spelling)
@@ -75,6 +85,14 @@ class Program
 					}
 				}
 				spelling = strBuffer;
+				for (let clas in classes.Reversed)
+					if (spelling.StartsWith(clas, .OrdinalIgnoreCase))
+					{
+						spelling.RemoveFromStart(clas.Length);
+						return;
+					}
+				if (spelling.StartsWith(staticClass))
+					spelling.RemoveFromStart(staticClass.Length);
 			},
 			modifyEnumCaseSpelling = scope (spelling, parentSpelling, strBuffer) =>
 			{
@@ -132,7 +150,7 @@ class Program
 					return (cursor.kind == .MacroDefinition && !spelling.EndsWith("_VERSION")) ||
 						(!isOpaque && spelling.StartsWith("_GIRepository"));
 				if (staticClass == "GObject")
-					return cursor.kind == .MacroDefinition ||
+					return cursor.kind == .MacroDefinition || spelling == "_GValue" || spelling == "GValue" ||
 						(isOpaque && !StringView[?](
 							"_GTypeCValue", "_GTypePlugin", "_GParamSpecPool", "_GBinding", "_GBindingGroup", "_GSignalGroup"
 						).Contains(spelling));
@@ -151,30 +169,31 @@ class Program
 			isHandleUnderlyingOpaque = scope (type, spelling, typedefSpelling) =>
 				typedefSpelling == "GIConv"
 		};
+		StringView outputNamespace = "GObject.Introspection";
 		staticClass = "GIR";
 		Path.GetActualPathName(scope $"{usrInclude}/gobject-introspection-1.0", dir..Clear());
 		CBindings.Generate(
 			scope $"{usrInclude}/gobject-introspection-1.0/girepository.h",
 			"../src/GIRepositiory.bf",
-			"GIRepository", library, "GLib", "GObject");
+			outputNamespace, library);
 		staticClass = "GIRFFI";
 		dir.Set(.Empty);
 		CBindings.Generate(
 			scope $"{usrInclude}/gobject-introspection-1.0/girffi.h",
 			"../src/GIRFFI.bf",
-			"GIRFFI", library, "GIRepository", "GLib");
+			outputNamespace, library, "GIRepository", "GLib");
 		staticClass = "GLib";
 		Path.GetActualPathName(scope $"{usrInclude}/glib-2.0/glib", dir..Clear());
 		CBindings.Generate(
 			scope $"{usrInclude}/glib-2.0/glib.h",
 			"../src/GLib.bf",
-			"GLib", library);
+			outputNamespace, library);
 		staticClass = "GObject";
 		Path.GetActualPathName(scope $"{usrInclude}/glib-2.0/gobject", dir..Clear());
 		CBindings.Generate(
 			scope $"{usrInclude}/glib-2.0/glib-object.h",
 			"../src/GObject.bf",
-			"GObject", library, "GLib");
+			outputNamespace, library);
 		return 0;
 	}
 }
