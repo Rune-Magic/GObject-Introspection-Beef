@@ -35,7 +35,15 @@ extension GIRFFI
 {
 	[Import(GIRFFI.so), LinkName("gi_type_tag_get_ffi_type")] public static extern ffi_type* iTypeTagGetFfiType(GITypeTag type_tag, gboolean is_pointer);
 	[Import(GIRFFI.so), LinkName("g_type_info_get_ffi_type")] public static extern ffi_type* TypeInfoGetFfiType(GITypeInfo* info);
-	[Import(GIRFFI.so), LinkName("gi_type_info_extract_ffi_return_value")] public static extern void iTypeInfoExtractFfiReturnValue(GITypeInfo* return_info, GIFFIReturnValue* ffi_value, GIArgument* arg);
+}
+
+extension GITypeInfo
+{
+	[Import(GIRFFI.so), LinkName("gi_type_info_extract_ffi_return_value")] public static extern void ExtractFfiReturnValue(GITypeInfo* return_info, GIFFIReturnValue* ffi_value, GIArgument* arg);
+}
+
+extension GIRFFI
+{
 	[Import(GIRFFI.so), LinkName("gi_type_tag_extract_ffi_return_value")] public static extern void iTypeTagExtractFfiReturnValue(GITypeTag return_tag, GIInfoType interface_type, GIFFIReturnValue* ffi_value, GIArgument* arg);
 	[Import(GIRFFI.so), LinkName("g_function_info_prep_invoker")] public static extern gboolean FunctionInfoPrepInvoker(GIFunctionInfo* info, GIFunctionInvoker* invoker, GError** error);
 	[Import(GIRFFI.so), LinkName("g_function_invoker_new_for_address")] public static extern gboolean FunctionInvokerNewForAddress(gpointer addr, GICallableInfo* info, GIFunctionInvoker* invoker, GError** error);

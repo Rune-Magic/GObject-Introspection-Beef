@@ -253,8 +253,13 @@ class Program
 				block = "";
 				if (cursor.kind != .TypedefDecl || !spelling.StartsWith("GI")) return .Continue;
 				StringView type = .(CBindings.GetString!(Clang.GetTypeSpelling(Clang.GetTypedefDeclUnderlyingType(cursor))));
-				if (type != "GIBaseInfo") return .Continue;
-				output = new $"struct {spelling} : GIBaseInfo;\n";
+				if (type == "GIBaseInfo")
+					output = new $"struct {spelling} : GIBaseInfo;\n";
+				else if (spelling == "GIBaseInfo")
+					output = new .("struct GIBaseInfo : GIBaseInfoStub;\n");
+				else
+					return .Continue;
+				classes.Add(new .(spelling));
 				return .Skip;
 			},
 			isHandleUnderlyingOpaque = scope (type, spelling, typedefSpelling) =>

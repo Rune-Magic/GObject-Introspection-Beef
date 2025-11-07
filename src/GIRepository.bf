@@ -26,7 +26,7 @@ static
 	public gpointer[4] padding;
 }
 
-typealias GIBaseInfo = GIBaseInfoStub;
+struct GIBaseInfo : GIBaseInfoStub;
 struct GICallableInfo : GIBaseInfo;
 struct GIFunctionInfo : GIBaseInfo;
 struct GICallbackInfo : GIBaseInfo;
@@ -44,7 +44,6 @@ struct GIPropertyInfo : GIBaseInfo;
 struct GIFieldInfo : GIBaseInfo;
 struct GIArgInfo : GIBaseInfo;
 struct GITypeInfo : GIBaseInfo;
-
 struct GIUnresolvedInfo;
 
 [Union, CRepr] struct GIArgument
