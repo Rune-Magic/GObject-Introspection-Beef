@@ -6,25 +6,41 @@ TargetType = "BeefLib"
 StartupObject = "GObject_Introspection_Beef.Program"
 
 [Configs.Debug.Win32]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
 
 [Configs.Debug.Win64]
-PostBuildCmds = ["CopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\girepository-1.0-1.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\girepository-1.0-1.pdb\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\gobject-2.0-0.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\gobject-2.0-0.pdb\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\glib-2.0-0.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\glib-2.0-0.pdb\")"]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
+PostBuildCmds = ["CopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\girepository-1.0-1.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\girepository-1.0-1.pdb\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\gobject-2.0-0.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\gobject-2.0-0.pdb\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\glib-2.0-0.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\glib-2.0-0.pdb\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\intl.dll\")\nCopyToDependents(\"c:/Projects/RunicProj/GObject-Introspection-Beef/Setup/WinGTK4/bin\\\\intl.pdb\")"]
 
 [Configs.Release.Win32]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
 
 [Configs.Release.Win64]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
 
 [Configs.Paranoid.Win32]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
 
 [Configs.Paranoid.Win64]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
 
 [Configs.Test.Win32]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
 
 [Configs.Test.Win64]
+LibPaths = ["$(Var Libs)"]
+PreBuildCmds = ["ReadFile(\"$(ProjectDir)/libs_windows.txt\", \"Libs\")"]
 PostBuildCmds = ["ExecuteCommandFile(\"$(ProjectDir)/copy.script\")"]
