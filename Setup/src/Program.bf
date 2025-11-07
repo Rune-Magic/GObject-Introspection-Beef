@@ -34,7 +34,7 @@ class Program
 		const String pkgConfig 
 #if BF_PLATFORM_WINDOWS
 			= @".\WinGTK4\bin\pkg-config.exe";
-		{
+		/*{
 			File.Delete("WinGTK4.json");
 			var command = "wget -O WinGTK4.json https://api.github.com/repos/wingtk/gvsbuild/releases/latest";
 			Assert!(system(command) == 0, "Failed to retrieve release data");
@@ -63,7 +63,7 @@ class Program
 				Console.WriteLine("Extracting using tar, this may take a while...");
 				Assert!(system("tar -xf WinGTK4.zip -C WinGTK4 -P") == 0, "Failed to extract WinGTK4.zip");
 			}
-		}
+		}*/
 #else
 			= "pkg-config";
 
@@ -84,7 +84,7 @@ class Program
 		Assert!(system(pkgConfig + " --libs gobject-introspection-1.0 > libs.txt") == 0, "Failed to get gobject-introspection libs");
 		Assert!(system(pkgConfig + " --cflags gobject-introspection-1.0 > cflags.txt") == 0, "Failed to get gobject-introspection cflags");
 
-		String cflagsStr = File.ReadAllText("cflags.txt", ..scope .(512));
+		String cflagsStr = File.ReadAllText("cflags.txt", ..scope .(512))..Trim();
 		cflagsStr.Append('\0');
 		List<char8*> cflags = scope .(16);
 		for (let flag in cflagsStr.Split(' '))
@@ -94,7 +94,7 @@ class Program
 		}
 
 		{
-			String libs = File.ReadAllText("libs.txt", ..scope .(512));
+			String libs = File.ReadAllText("libs.txt", ..scope .(512))..Trim();
 			String libNamesWindows = scope .(256), libNamesUnix = scope .(256);
 #if BF_PLATFORM_WINDOWS
 			List<StringView> libDirs = scope .(8);
@@ -102,9 +102,12 @@ class Program
 			{
 				if (!flag.StartsWith("-L")) continue;
 				flag.RemoveFromStart(2);
-				if (flag.EndsWith("../lib") || flag.EndsWith("..\\lib"))
-					flag.RemoveFromEnd("/../lib".Length);
 				libDirs.Add(flag);
+				if (flag.EndsWith("../lib") || flag.EndsWith("..\\lib"))
+				{
+					flag.RemoveFromEnd("/../lib".Length);
+					libDirs.Add(flag);
+				}
 			}
 			String copyPaths = scope .(256);
 #endif
@@ -113,7 +116,7 @@ class Program
 				if (!flag.StartsWith("-l")) continue;
 				flag.RemoveFromStart(2);
 				if (!libNamesWindows.IsEmpty) libNamesWindows.Append(';');
-				libNamesWindows.Append(flag, ".lib");
+				libNamesWindows.Append(libDirs[0], "/", flag, ".lib");
 				if (!libNamesUnix.IsEmpty) libNamesUnix.Append(';');
 				libNamesUnix.Append("lib", flag, ".a");
 #if BF_PLATFORM_WINDOWS
@@ -121,7 +124,7 @@ class Program
 					for (let file in Directory.EnumerateFiles(dir))
 					{
 						String fileName = file.GetFileName(..scope .(64));
-						if (!fileName.Contains(flag)) continue;
+						if (!fileName.Contains(flag) || fileName.EndsWith(".lib")) continue;
 						copyPaths.Append("CopyToDependents(");
 						let filePath = file.GetFilePath(..scope .(256));
 						filePath.Quote(copyPaths);
@@ -132,6 +135,8 @@ class Program
 #if BF_PLATFORM_WINDOWS
 			File.WriteAllText("../copy.script", copyPaths);
 #endif
+			File.WriteAllText("../libs_windows.txt", libNamesWindows);
+			File.WriteAllText("../libs_unix.txt", libNamesUnix);
 		}
 
 		int DoesFunctionNameStartWith(StringView func, StringView clas)

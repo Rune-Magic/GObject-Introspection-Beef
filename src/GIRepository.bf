@@ -16,13 +16,13 @@ static
 
 [CRepr] struct GIBaseInfoStub
 {
-	public c_int dummy1;
-	public c_int dummy2;
+	public gint32 dummy1;
+	public gint32 dummy2;
 	public gpointer dummy3;
 	public gpointer dummy4;
 	public gpointer dummy5;
-	public c_int dummy6;
-	public c_int dummy7;
+	public guint32 dummy6;
+	public guint32 dummy7;
 	public gpointer[4] padding;
 }
 
@@ -49,14 +49,14 @@ struct GIUnresolvedInfo;
 [Union, CRepr] struct GIArgument
 {
 	public gboolean v_boolean;
-	public c_int v_int8;
-	public c_int v_uint8;
-	public c_int v_int16;
-	public c_int v_uint16;
-	public c_int v_int32;
-	public c_int v_uint32;
-	public c_int v_int64;
-	public c_int v_uint64;
+	public gint8 v_int8;
+	public guint8 v_uint8;
+	public gint16 v_int16;
+	public guint16 v_uint16;
+	public gint32 v_int32;
+	public guint32 v_uint32;
+	public gint64 v_int64;
+	public guint64 v_uint64;
 	public gfloat v_float;
 	public gdouble v_double;
 	public gshort v_short;
@@ -65,8 +65,8 @@ struct GIUnresolvedInfo;
 	public guint v_uint;
 	public glong v_long;
 	public gulong v_ulong;
-	public c_int v_ssize;
-	public c_int v_size;
+	public gssize v_ssize;
+	public gsize v_size;
 	public gchar* v_string;
 	public gpointer v_pointer;
 }
@@ -332,8 +332,8 @@ extension GIArgInfo
 
 extension GITypelib
 {
-	[Import(GIR.so), LinkName("g_typelib_new_from_memory")] public static extern GITypelib* NewFromMemory(c_int* memory, c_int len, GError** error);
-	[Import(GIR.so), LinkName("g_typelib_new_from_const_memory")] public static extern GITypelib* NewFromConstMemory(c_int* memory, c_int len, GError** error);
+	[Import(GIR.so), LinkName("g_typelib_new_from_memory")] public static extern GITypelib* NewFromMemory(guint8* memory, gsize len, GError** error);
+	[Import(GIR.so), LinkName("g_typelib_new_from_const_memory")] public static extern GITypelib* NewFromConstMemory(guint8* memory, gsize len, GError** error);
 	[Import(GIR.so), LinkName("g_typelib_new_from_mapped_file")] public static extern GITypelib* NewFromMappedFile(GMappedFile* mfile, GError** error);
 	[Import(GIR.so), LinkName("g_typelib_free")] public static extern void Free(GITypelib* typelib);
 	[Import(GIR.so), LinkName("g_typelib_symbol")] public static extern gboolean Symbol(GITypelib* typelib, gchar* symbol_name, gpointer* symbol);
@@ -371,7 +371,7 @@ extension GIBaseInfo
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("g_info_new")] public static extern GIBaseInfo* InfoNew(GIInfoType type, GIBaseInfo* container, GITypelib* typelib, c_int offset);
+	[Import(GIR.so), LinkName("g_info_new")] public static extern GIBaseInfo* InfoNew(GIInfoType type, GIBaseInfo* container, GITypelib* typelib, guint32 offset);
 }
 
 extension GICallableInfo
@@ -411,7 +411,7 @@ extension GIEnumInfo
 
 extension GIValueInfo
 {
-	[Import(GIR.so), LinkName("g_value_info_get_value")] public static extern c_int GetValue(GIValueInfo* info);
+	[Import(GIR.so), LinkName("g_value_info_get_value")] public static extern gint64 GetValue(GIValueInfo* info);
 }
 
 extension GIFieldInfo
@@ -581,8 +581,8 @@ extension GIStructInfo
 	[Import(GIR.so), LinkName("g_struct_info_get_n_methods")] public static extern gint GetNMethods(GIStructInfo* info);
 	[Import(GIR.so), LinkName("g_struct_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIStructInfo* info, gint n);
 	[Import(GIR.so), LinkName("g_struct_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIStructInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_struct_info_get_size")] public static extern c_int GetSize(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_get_alignment")] public static extern c_int GetAlignment(GIStructInfo* info);
+	[Import(GIR.so), LinkName("g_struct_info_get_size")] public static extern gsize GetSize(GIStructInfo* info);
+	[Import(GIR.so), LinkName("g_struct_info_get_alignment")] public static extern gsize GetAlignment(GIStructInfo* info);
 	[Import(GIR.so), LinkName("g_struct_info_is_gtype_struct")] public static extern gboolean IsGtypeStruct(GIStructInfo* info);
 	[Import(GIR.so), LinkName("g_struct_info_is_foreign")] public static extern gboolean IsForeign(GIStructInfo* info);
 	[Import(GIR.so), LinkName("g_struct_info_get_copy_function")] public static extern c_char* GetCopyFunction(GIStructInfo* info);
@@ -627,8 +627,8 @@ extension GIUnionInfo
 	[Import(GIR.so), LinkName("g_union_info_get_discriminator_type")] public static extern GITypeInfo* GetDiscriminatorType(GIUnionInfo* info);
 	[Import(GIR.so), LinkName("g_union_info_get_discriminator")] public static extern GIConstantInfo* GetDiscriminator(GIUnionInfo* info, gint n);
 	[Import(GIR.so), LinkName("g_union_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIUnionInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_union_info_get_size")] public static extern c_int GetSize(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_alignment")] public static extern c_int GetAlignment(GIUnionInfo* info);
+	[Import(GIR.so), LinkName("g_union_info_get_size")] public static extern gsize GetSize(GIUnionInfo* info);
+	[Import(GIR.so), LinkName("g_union_info_get_alignment")] public static extern gsize GetAlignment(GIUnionInfo* info);
 	[Import(GIR.so), LinkName("g_union_info_get_copy_function")] public static extern c_char* GetCopyFunction(GIUnionInfo* info);
 	[Import(GIR.so), LinkName("g_union_info_get_free_function")] public static extern c_char* GetFreeFunction(GIUnionInfo* info);
 }

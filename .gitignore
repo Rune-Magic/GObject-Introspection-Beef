@@ -4,3 +4,5 @@ BeefSpace_User.toml
 BeefSpace_Lock.toml
 
 copy.script
+libs_unix.txt
+libs_windows.txt

@@ -7,7 +7,7 @@ using System.Interop;
 
 namespace GObject.Introspection;
 
-typealias GType = c_int;
+typealias GType = gsize;
 
 struct GTypeCValue;
 
@@ -405,16 +405,54 @@ function void GTypeInterfaceCheckFunc(gpointer check_data, gpointer g_iface);
 	Deprecated = (1 << 7),
 }
 
+/** GTypeInfo:
+ *  
+ *  `_size: Size of the class structure (required for interface, classed and instantiatable types)`
+ *  
+ *   @base _init: Location of the base initialization function (optional)
+ *   @base _finalize: Location of the base finalization function (optional)
+ *  
+ *  `_init: Location of the class initialization function for`
+ *  
+ *  classed and instantiatable types. Location of the default vtable
+ *  initialization function for interface types. (optional) This function
+ *  is used both to fill in virtual functions in the class or default vtable,
+ *  and to do type-specific setup such as registering signals and object
+ *  properties.
+ *  
+ *  `_finalize: Location of the class finalization function for`
+ *  
+ *  classed and instantiatable types. Location of the default vtable
+ *  finalization function for interface types. (optional)
+ *  
+ *  `_data: User-supplied data passed to the class init/finalize functions`
+ *  
+ *   @instance _size: Size of the instance (object) structure (required for instantiatable types only)
+ *   @n _preallocs: Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10 this field is ignored.
+ *   @instance _init: Location of the instance initialization function (optional, for instantiatable types only)
+ *   @value _table: A #GTypeValueTable function table for generic handling of GValues
+ *  of this type (usually only useful for fundamental types)
+ *  
+ *  This structure is used to provide the type system with the information
+ *  required to initialize and destruct (finalize) a type's class and
+ *  its instances.
+ *  
+ *  The initialized structure is passed to the g_type_register_static() function
+ *  (or is copied into the provided #GTypeInfo structure in the
+ *  g_type_plugin_complete_type_info()). The type system will perform a deep
+ *  copy of this structure, so its memory does not need to be persistent
+ *  across invocation of g_type_register_static().
+ */
 [CRepr] struct GTypeInfo
 {
-	public c_int class_size;
+	public guint16 class_size;
 	public GBaseInitFunc base_init;
 	public GBaseFinalizeFunc base_finalize;
 	public GClassInitFunc class_init;
 	public GClassFinalizeFunc class_finalize;
 	public gconstpointer class_data;
-	public c_int instance_size;
-	public c_int n_preallocs;
+	public guint16 instance_size;
+	public guint16 n_preallocs;
 	public GInstanceInitFunc instance_init;
 	public GTypeValueTable* value_table;
 }
@@ -724,11 +762,11 @@ extension GObject
 	[Import(GObject.so), LinkName("g_type_interface_add_prerequisite")] public static extern void TypeInterfaceAddPrerequisite(GType interface_type, GType prerequisite_type);
 	[Import(GObject.so), LinkName("g_type_interface_prerequisites")] public static extern GType* TypeInterfacePrerequisites(GType interface_type, guint* n_prerequisites);
 	[Import(GObject.so), LinkName("g_type_interface_instantiatable_prerequisite")] public static extern GType TypeInterfaceInstantiatablePrerequisite(GType interface_type);
-	[Import(GObject.so), LinkName("g_type_class_add_private")] public static extern void TypeClassAddPrivate(gpointer g_class, c_int private_size);
-	[Import(GObject.so), LinkName("g_type_add_instance_private")] public static extern gint TypeAddInstancePrivate(GType class_type, c_int private_size);
+	[Import(GObject.so), LinkName("g_type_class_add_private")] public static extern void TypeClassAddPrivate(gpointer g_class, gsize private_size);
+	[Import(GObject.so), LinkName("g_type_add_instance_private")] public static extern gint TypeAddInstancePrivate(GType class_type, gsize private_size);
 	[Import(GObject.so), LinkName("g_type_instance_get_private")] public static extern gpointer TypeInstanceGetPrivate(GTypeInstance* instance, GType private_type);
 	[Import(GObject.so), LinkName("g_type_class_adjust_private_offset")] public static extern void TypeClassAdjustPrivateOffset(gpointer g_class, gint* private_size_or_offset);
-	[Import(GObject.so), LinkName("g_type_add_class_private")] public static extern void TypeAddClassPrivate(GType class_type, c_int private_size);
+	[Import(GObject.so), LinkName("g_type_add_class_private")] public static extern void TypeAddClassPrivate(GType class_type, gsize private_size);
 	[Import(GObject.so), LinkName("g_type_class_get_private")] public static extern gpointer TypeClassGetPrivate(GTypeClass* klass, GType private_type);
 	[Import(GObject.so), LinkName("g_type_class_get_instance_private_offset")] public static extern gint TypeClassGetInstancePrivateOffset(gpointer g_class);
 	[Import(GObject.so), LinkName("g_type_ensure")] public static extern void TypeEnsure(GType type);
@@ -891,6 +929,17 @@ struct GParamSpecPool;
 	public gpointer[3] dummy;
 }
 
+/** GParameter:
+ *  
+ *  `: the parameter name`
+ *  
+ *   @value : the parameter value
+ *  
+ *  The GParameter struct is an auxiliary structure used
+ *  to hand parameter name/value pairs to g_object_newv().
+ *  
+ *  Deprecated: 2.54: This type is not introspectable.
+ */
 [CRepr] struct GParameter
 {
 	public gchar* name;
@@ -927,10 +976,34 @@ extension GObject
 }
 
 
+/** GParamSpecTypeInfo:
+ *   @instance _size: Size of the instance (object) structure.
+ *   @n _preallocs: Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10, it is ignored, since instances are allocated with the [slice allocator][glib-Memory-Slices] now.
+ *   @instance _init: Location of the instance initialization function (optional).
+ *   @value _type: The #GType of values conforming to this #GParamSpec
+ *   @finalize : The instance finalization function (optional).
+ *   @value _set_default: Resets a @value to the default value for @pspec 
+ *  (recommended, the default is g_value_reset()), see
+ *  g_param_value_set_default().
+ *   @value _validate: Ensures that the contents of @value comply with the
+ *  specifications set out by @pspec (optional), see
+ *  g_param_value_validate().
+ *   @values _cmp: Compares @value1 with @value2 according to @pspec 
+ *  (recommended, the default is memcmp()), see g_param_values_cmp().
+ *  
+ *  This structure is used to provide the type system with the information
+ *  required to initialize and destruct (finalize) a parameter's class and
+ *  instances thereof.
+ *  
+ *  The initialized structure is passed to the g_param_type_register_static()
+ *  The type system will perform a deep copy of this structure, so its memory
+ *  does not need to be persistent across invocation of
+ *  g_param_type_register_static().
+ */
 [CRepr] struct GParamSpecTypeInfo
 {
-	public c_int instance_size;
-	public c_int n_preallocs;
+	public guint16 instance_size;
+	public guint16 n_preallocs;
 	public function void(GParamSpec*) instance_init;
 	public GType value_type;
 	public function void(GParamSpec*) finalize;
@@ -1049,7 +1122,7 @@ function void GVaClosureMarshal(GClosure* closure, GValue* return_value, gpointe
 	[Bitfield(.Public, .BitsAt(bits: 1, pos: 29), "derivative_flag")]
 	[Bitfield(.Public, .BitsAt(bits: 1, pos: 30), "in_marshal")]
 	[Bitfield(.Public, .BitsAt(bits: 1, pos: 31), "is_invalid")]
-	private uint32 __bitfield_2800151;
+	private uint32 __bitfield_2784578;
 	public function void(GClosure*, GValue*, guint, GValue*, gpointer, gpointer) marshal;
 	public gpointer data;
 	public GClosureNotifyData* notifiers;
@@ -1556,6 +1629,67 @@ extension GObject
 
 typealias GInitiallyUnowned = GObject;
 
+/** GObjectClass:
+ *   @g _type_class: the parent class
+ *   @constructor : the @constructor function is called by g_object_new () to
+ *  complete the object initialization after all the construction properties are
+ *  set. The first thing a @constructor implementation must do is chain up to the
+ *   @constructor of the parent class. Overriding @constructor should be rarely
+ *  needed, e.g. to handle construct properties, or to implement singletons.
+ *  @see _property: the generic setter for all properties of this type. Should be
+ *       overridden for every type with properties. If implementations of
+ *       @see _property don't emit property change notification explicitly, this will
+ *       be done implicitly by the type system. However, if the notify signal is
+ *       emitted explicitly, the type system will not emit it a second time.
+ *        @get _property: the generic getter for all properties of this type. Should be
+ *       overridden for every type with properties.
+ *        @dispose : the @dispose function is supposed to drop all references to other
+ *       objects, but keep the instance otherwise intact, so that client method
+ *       invocations still work. It may be run multiple times (due to reference
+ *       loops). Before returning,@dispose should chain up to the @dispose method
+ *       of the parent class.
+ *        @finalize : instance finalization function, should finish the finalization of
+ *       the instance begun in @dispose and chain up to the @finalize method of the
+ *       parent class.
+ *        @dispatch _properties_changed: emits property change notification for a bunch
+ *       of properties. Overriding @dispatch _properties_changed should be rarely
+ *       needed.
+ *        @notify : the class closure for the notify signal
+ *        @constructed : the @constructed function is called by g_object_new() as the
+ *       final step of the object creation process.  At the point of the call, all
+ *       construction properties have been set on the object.  The purpose of this
+ *       call is to allow for object initialisation steps that can only be performed
+ *       after construction properties have been set.@constructed implementors
+ *       should chain up to the @constructed call of their parent class to allow it
+ *       to complete its initialisation.
+ *  
+ *  The class structure for the GObject type.
+ *  
+ *  |[<!-- language="C" -->
+ *  // Example of implementing a singleton using a constructor.
+ *  static MySingleton *the_singleton = NULL;
+ *  
+ *  static GObject*
+ *  my_singleton_constructor (GType                  type,
+ *  guint                  n_construct_params,
+ *  GObjectConstructParam *construct_params)
+ *  {
+ *  GObject *object;
+ *  
+ *  if (!the_singleton)
+ *  {
+ *  object = G_OBJECT_CLASS (parent_class)->constructor (type,
+ *  n_construct_params,
+ *  construct_params);
+ *  the_singleton = MY_SINGLETON (object);
+ *  }
+ *  else
+ *  object = g_object_ref (G_OBJECT (the_singleton));
+ *  
+ *  return object;
+ *  }
+ *  ]|
+ */
 typealias GInitiallyUnownedClass = GObjectClass;
 
 
@@ -1617,6 +1751,67 @@ function void GWeakNotify(gpointer data, GObject* where_the_object_was);
 	public GData* qdata;
 }
 
+/** GObjectClass:
+ *   @g _type_class: the parent class
+ *   @constructor : the @constructor function is called by g_object_new () to
+ *  complete the object initialization after all the construction properties are
+ *  set. The first thing a @constructor implementation must do is chain up to the
+ *   @constructor of the parent class. Overriding @constructor should be rarely
+ *  needed, e.g. to handle construct properties, or to implement singletons.
+ *  @see _property: the generic setter for all properties of this type. Should be
+ *       overridden for every type with properties. If implementations of
+ *       @see _property don't emit property change notification explicitly, this will
+ *       be done implicitly by the type system. However, if the notify signal is
+ *       emitted explicitly, the type system will not emit it a second time.
+ *        @get _property: the generic getter for all properties of this type. Should be
+ *       overridden for every type with properties.
+ *        @dispose : the @dispose function is supposed to drop all references to other
+ *       objects, but keep the instance otherwise intact, so that client method
+ *       invocations still work. It may be run multiple times (due to reference
+ *       loops). Before returning,@dispose should chain up to the @dispose method
+ *       of the parent class.
+ *        @finalize : instance finalization function, should finish the finalization of
+ *       the instance begun in @dispose and chain up to the @finalize method of the
+ *       parent class.
+ *        @dispatch _properties_changed: emits property change notification for a bunch
+ *       of properties. Overriding @dispatch _properties_changed should be rarely
+ *       needed.
+ *        @notify : the class closure for the notify signal
+ *        @constructed : the @constructed function is called by g_object_new() as the
+ *       final step of the object creation process.  At the point of the call, all
+ *       construction properties have been set on the object.  The purpose of this
+ *       call is to allow for object initialisation steps that can only be performed
+ *       after construction properties have been set.@constructed implementors
+ *       should chain up to the @constructed call of their parent class to allow it
+ *       to complete its initialisation.
+ *  
+ *  The class structure for the GObject type.
+ *  
+ *  |[<!-- language="C" -->
+ *  // Example of implementing a singleton using a constructor.
+ *  static MySingleton *the_singleton = NULL;
+ *  
+ *  static GObject*
+ *  my_singleton_constructor (GType                  type,
+ *  guint                  n_construct_params,
+ *  GObjectConstructParam *construct_params)
+ *  {
+ *  GObject *object;
+ *  
+ *  if (!the_singleton)
+ *  {
+ *  object = G_OBJECT_CLASS (parent_class)->constructor (type,
+ *  n_construct_params,
+ *  construct_params);
+ *  the_singleton = MY_SINGLETON (object);
+ *  }
+ *  else
+ *  object = g_object_ref (G_OBJECT (the_singleton));
+ *  
+ *  return object;
+ *  }
+ *  ]|
+ */
 [CRepr] struct GObjectClass
 {
 	public GTypeClass g_type_class;
@@ -1629,10 +1824,10 @@ function void GWeakNotify(gpointer data, GObject* where_the_object_was);
 	public function void(GObject*, guint, GParamSpec**) dispatch_properties_changed;
 	public function void(GObject*, GParamSpec*) notify;
 	public function void(GObject*) constructed;
-	public c_int flags;
-	public c_int n_construct_properties;
+	public gsize flags;
+	public gsize n_construct_properties;
 	public gpointer pspecs;
-	public c_int n_pspecs;
+	public gsize n_pspecs;
 	public gpointer[3] pdummy;
 }
 
@@ -1747,7 +1942,7 @@ extension GObject
 	[Import(GObject.so), LinkName("g_object_run_dispose")] public static extern void RunDispose(GObject* object);
 	[Import(GObject.so), LinkName("g_value_take_object")] public static extern void ValueTakeObject(GValue* value, gpointer v_object);
 	[Import(GObject.so), LinkName("g_value_set_object_take_ownership")] public static extern void ValueSetObjectTakeOwnership(GValue* value, gpointer v_object);
-	[Import(GObject.so), LinkName("g_object_compat_control")] public static extern c_int CompatControl(c_int what, gpointer data);
+	[Import(GObject.so), LinkName("g_object_compat_control")] public static extern gsize CompatControl(gsize what, gpointer data);
 	[Import(GObject.so), LinkName("g_clear_object")] public static extern void ClearObject(GObject** object_ptr);
 }
 
@@ -1973,20 +2168,36 @@ extension GObject
 
 
 
+/** GParamSpecChar:
+ *   @parent _instance: private #GParamSpec portion
+ *   @minimum : minimum value for the property specified
+ *   @maximum : maximum value for the property specified
+ *   @default _value: default value for the property specified
+ *  
+ *  A #GParamSpec derived structure that contains the meta data for character properties.
+ */
 [CRepr] struct GParamSpecChar
 {
 	public GParamSpec parent_instance;
-	public c_int minimum;
-	public c_int maximum;
-	public c_int default_value;
+	public gint8 minimum;
+	public gint8 maximum;
+	public gint8 default_value;
 }
 
+/** GParamSpecUChar:
+ *   @parent _instance: private #GParamSpec portion
+ *   @minimum : minimum value for the property specified
+ *   @maximum : maximum value for the property specified
+ *   @default _value: default value for the property specified
+ *  
+ *  A #GParamSpec derived structure that contains the meta data for unsigned character properties.
+ */
 [CRepr] struct GParamSpecUChar
 {
 	public GParamSpec parent_instance;
-	public c_int minimum;
-	public c_int maximum;
-	public c_int default_value;
+	public guint8 minimum;
+	public guint8 maximum;
+	public guint8 default_value;
 }
 
 /** GParamSpecBoolean:
@@ -2065,20 +2276,36 @@ extension GObject
 	public gulong default_value;
 }
 
+/** GParamSpecInt64:
+ *   @parent _instance: private #GParamSpec portion
+ *   @minimum : minimum value for the property specified
+ *   @maximum : maximum value for the property specified
+ *   @default _value: default value for the property specified
+ *  
+ *  A #GParamSpec derived structure that contains the meta data for 64bit integer properties.
+ */
 [CRepr] struct GParamSpecInt64
 {
 	public GParamSpec parent_instance;
-	public c_int minimum;
-	public c_int maximum;
-	public c_int default_value;
+	public gint64 minimum;
+	public gint64 maximum;
+	public gint64 default_value;
 }
 
+/** GParamSpecUInt64:
+ *   @parent _instance: private #GParamSpec portion
+ *   @minimum : minimum value for the property specified
+ *   @maximum : maximum value for the property specified
+ *   @default _value: default value for the property specified
+ *  
+ *  A #GParamSpec derived structure that contains the meta data for unsigned 64bit integer properties.
+ */
 [CRepr] struct GParamSpecUInt64
 {
 	public GParamSpec parent_instance;
-	public c_int minimum;
-	public c_int maximum;
-	public c_int default_value;
+	public guint64 minimum;
+	public guint64 maximum;
+	public guint64 default_value;
 }
 
 /** GParamSpecUnichar:
@@ -2184,7 +2411,7 @@ extension GObject
 	public gchar substitutor;
 	[Bitfield(.Public, .BitsAt(bits: 1, pos: 0), "null_fold_if_empty")]
 	[Bitfield(.Public, .BitsAt(bits: 1, pos: 1), "ensure_non_null")]
-	private uint32 __bitfield_2941957;
+	private uint32 __bitfield_2920922;
 }
 
 /** GParamSpecParam:
@@ -2305,15 +2532,15 @@ extension GObject
 
 extension GObject
 {
-	[Import(GObject.so), LinkName("g_param_spec_char")] public static extern GParamSpec* ParamSpecChar(gchar* name, gchar* nick, gchar* blurb, c_int minimum, c_int maximum, c_int default_value, GParamFlags flags);
-	[Import(GObject.so), LinkName("g_param_spec_uchar")] public static extern GParamSpec* ParamSpecUchar(gchar* name, gchar* nick, gchar* blurb, c_int minimum, c_int maximum, c_int default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_char")] public static extern GParamSpec* ParamSpecChar(gchar* name, gchar* nick, gchar* blurb, gint8 minimum, gint8 maximum, gint8 default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_uchar")] public static extern GParamSpec* ParamSpecUchar(gchar* name, gchar* nick, gchar* blurb, guint8 minimum, guint8 maximum, guint8 default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_boolean")] public static extern GParamSpec* ParamSpecBoolean(gchar* name, gchar* nick, gchar* blurb, gboolean default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_int")] public static extern GParamSpec* ParamSpecInt(gchar* name, gchar* nick, gchar* blurb, gint minimum, gint maximum, gint default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_uint")] public static extern GParamSpec* ParamSpecUint(gchar* name, gchar* nick, gchar* blurb, guint minimum, guint maximum, guint default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_long")] public static extern GParamSpec* ParamSpecLong(gchar* name, gchar* nick, gchar* blurb, glong minimum, glong maximum, glong default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_ulong")] public static extern GParamSpec* ParamSpecUlong(gchar* name, gchar* nick, gchar* blurb, gulong minimum, gulong maximum, gulong default_value, GParamFlags flags);
-	[Import(GObject.so), LinkName("g_param_spec_int64")] public static extern GParamSpec* ParamSpecInt64(gchar* name, gchar* nick, gchar* blurb, c_int minimum, c_int maximum, c_int default_value, GParamFlags flags);
-	[Import(GObject.so), LinkName("g_param_spec_uint64")] public static extern GParamSpec* ParamSpecUint64(gchar* name, gchar* nick, gchar* blurb, c_int minimum, c_int maximum, c_int default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_int64")] public static extern GParamSpec* ParamSpecInt64(gchar* name, gchar* nick, gchar* blurb, gint64 minimum, gint64 maximum, gint64 default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_uint64")] public static extern GParamSpec* ParamSpecUint64(gchar* name, gchar* nick, gchar* blurb, guint64 minimum, guint64 maximum, guint64 default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_unichar")] public static extern GParamSpec* ParamSpecUnichar(gchar* name, gchar* nick, gchar* blurb, gunichar default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_enum")] public static extern GParamSpec* ParamSpecEnum(gchar* name, gchar* nick, gchar* blurb, GType enum_type, gint default_value, GParamFlags flags);
 	[Import(GObject.so), LinkName("g_param_spec_flags")] public static extern GParamSpec* ParamSpecFlags(gchar* name, gchar* nick, gchar* blurb, GType flags_type, guint default_value, GParamFlags flags);
@@ -2378,6 +2605,15 @@ typealias GTypeModule_queueautoptr = GQueue*;
 	public gchar* name;
 }
 
+/** GTypeModuleClass:
+ *   @parent _class: the parent class
+ *   @load : loads the module and registers one or more types using
+ *  g_type_module_register_type().
+ *   @unload : unloads the module
+ *  
+ *  In order to implement dynamic loading of types based on #GTypeModule,
+ *  the @load and @unload functions in #GTypeModuleClass must be implemented.
+ */
 [CRepr] struct GTypeModuleClass
 {
 	public GObjectClass parent_class;
@@ -2494,8 +2730,8 @@ extension GObject
 	[Import(GObject.so), LinkName("g_value_array_sort_with_data")] public static extern GValueArray* ValueArraySortWithData(GValueArray* value_array, GCompareDataFunc compare_func, gpointer user_data);
 	[Import(GObject.so), LinkName("g_value_set_char")] public static extern void ValueSetChar(GValue* value, gchar v_char);
 	[Import(GObject.so), LinkName("g_value_get_char")] public static extern gchar ValueGetChar(GValue* value);
-	[Import(GObject.so), LinkName("g_value_set_schar")] public static extern void ValueSetSchar(GValue* value, c_int v_char);
-	[Import(GObject.so), LinkName("g_value_get_schar")] public static extern c_int ValueGetSchar(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_schar")] public static extern void ValueSetSchar(GValue* value, gint8 v_char);
+	[Import(GObject.so), LinkName("g_value_get_schar")] public static extern gint8 ValueGetSchar(GValue* value);
 	[Import(GObject.so), LinkName("g_value_set_uchar")] public static extern void ValueSetUchar(GValue* value, guchar v_uchar);
 	[Import(GObject.so), LinkName("g_value_get_uchar")] public static extern guchar ValueGetUchar(GValue* value);
 	[Import(GObject.so), LinkName("g_value_set_boolean")] public static extern void ValueSetBoolean(GValue* value, gboolean v_boolean);
@@ -2508,10 +2744,10 @@ extension GObject
 	[Import(GObject.so), LinkName("g_value_get_long")] public static extern glong ValueGetLong(GValue* value);
 	[Import(GObject.so), LinkName("g_value_set_ulong")] public static extern void ValueSetUlong(GValue* value, gulong v_ulong);
 	[Import(GObject.so), LinkName("g_value_get_ulong")] public static extern gulong ValueGetUlong(GValue* value);
-	[Import(GObject.so), LinkName("g_value_set_int64")] public static extern void ValueSetInt64(GValue* value, c_int v_int64);
-	[Import(GObject.so), LinkName("g_value_get_int64")] public static extern c_int ValueGetInt64(GValue* value);
-	[Import(GObject.so), LinkName("g_value_set_uint64")] public static extern void ValueSetUint64(GValue* value, c_int v_uint64);
-	[Import(GObject.so), LinkName("g_value_get_uint64")] public static extern c_int ValueGetUint64(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_int64")] public static extern void ValueSetInt64(GValue* value, gint64 v_int64);
+	[Import(GObject.so), LinkName("g_value_get_int64")] public static extern gint64 ValueGetInt64(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_uint64")] public static extern void ValueSetUint64(GValue* value, guint64 v_uint64);
+	[Import(GObject.so), LinkName("g_value_get_uint64")] public static extern guint64 ValueGetUint64(GValue* value);
 	[Import(GObject.so), LinkName("g_value_set_float")] public static extern void ValueSetFloat(GValue* value, gfloat v_float);
 	[Import(GObject.so), LinkName("g_value_get_float")] public static extern gfloat ValueGetFloat(GValue* value);
 	[Import(GObject.so), LinkName("g_value_set_double")] public static extern void ValueSetDouble(GValue* value, gdouble v_double);
