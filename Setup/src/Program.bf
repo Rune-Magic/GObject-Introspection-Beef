@@ -30,7 +30,7 @@ class Program
 			var command = "wget -O WinGTK4.json https://api.github.com/repos/wingtk/gvsbuild/releases/latest";
 			Runtime.Assert(system(command) == 0);
 
-			/*var tagOutput = File.ReadAllText("WinGTK4.json", ..scope .());
+			var tagOutput = File.ReadAllText("WinGTK4.json", ..scope .());
 			var startIndex = tagOutput.IndexOf("\"tag_name\":");
 			StringView tag = tagOutput[startIndex...]
 				..RemoveFromStart("\"tag_name\":".Length)
@@ -41,7 +41,7 @@ class Program
 			Console.WriteLine($"Downloading GTK4_Gvsbuild_{tag}_x64.zip, this may take a while");
 			var downloadCommand = scope $"wget -O WinGTK4.zip {url}";
 			File.Delete("WinGTK4.zip");
-			Runtime.Assert(system(downloadCommand) == 0);*/
+			Runtime.Assert(system(downloadCommand) == 0);
 
 			Directory.CreateDirectory("WinGTK4");
 			if (system("7z -version") == 0)
