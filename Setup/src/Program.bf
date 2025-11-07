@@ -22,13 +22,22 @@ class Program
 
 	public static int Main(String[] args)
 	{
+		mixin Assert(bool condition, StringView message)
+		{
+			if (!condition)
+			{
+				Console.Error.Write(message);
+				return 1;
+			}
+		}
+
 		const String pkgConfig 
 #if BF_PLATFORM_WINDOWS
 			= @".\WinGTK4\bin\pkg-config.exe";
 		{
 			File.Delete("WinGTK4.json");
 			var command = "wget -O WinGTK4.json https://api.github.com/repos/wingtk/gvsbuild/releases/latest";
-			Runtime.Assert(system(command) == 0);
+			Assert!(system(command) == 0, "Failed to retrieve release data");
 
 			var tagOutput = File.ReadAllText("WinGTK4.json", ..scope .());
 			var startIndex = tagOutput.IndexOf("\"tag_name\":");
@@ -41,18 +50,18 @@ class Program
 			Console.WriteLine($"Downloading GTK4_Gvsbuild_{tag}_x64.zip, this may take a while");
 			var downloadCommand = scope $"wget -O WinGTK4.zip {url}";
 			File.Delete("WinGTK4.zip");
-			Runtime.Assert(system(downloadCommand) == 0);
+			Assert!(system(downloadCommand) == 0, "Failed to download WInGTK4");
 
 			Directory.CreateDirectory("WinGTK4");
 			if (system("7z -version") == 0)
 			{
-				Runtime.Assert (system("7z x WinGTK4.zip -oWinGTK4 -y") == 0);
+				Assert!(system("7z x WinGTK4.zip -oWinGTK4 -y") == 0, "Failed to extract WinGTK4.zip");
 			}
 			else
 			{
 				Console.WriteLine("7z not found, install it for faster extracting speeds");
 				Console.WriteLine("Extracting using tar, this may take a while...");
-				//Runtime.Assert(system("tar -xf WinGTK4.zip -C WinGTK4 -P") == 0);
+				Assert!(system("tar -xf WinGTK4.zip -C WinGTK4 -P") == 0, "Failed to extract WinGTK4.zip");
 			}
 		}
 #else
@@ -72,8 +81,8 @@ class Program
 		RequirePackage!("gobject-introspection-1.0");
 #endif
 
-		Runtime.Assert(system(pkgConfig + " --libs gobject-introspection-1.0 > libs.txt") == 0);
-		Runtime.Assert(system(pkgConfig + " --cflags gobject-introspection-1.0 > cflags.txt") == 0);
+		Assert!(system(pkgConfig + " --libs gobject-introspection-1.0 > libs.txt") == 0, "Failed to get gobject-introspection libs");
+		Assert!(system(pkgConfig + " --cflags gobject-introspection-1.0 > cflags.txt") == 0, "Failed to get gobject-introspection cflags");
 
 		String cflagsStr = File.ReadAllText("cflags.txt", ..scope .(512));
 		cflagsStr.Append('\0');
