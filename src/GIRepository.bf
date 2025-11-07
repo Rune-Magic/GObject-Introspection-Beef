@@ -315,29 +315,29 @@ typealias GTypelib = GITypelib;
 
 extension GIArgInfo
 {
-	[Import(GIR.so), LinkName("g_arg_info_get_direction")] public static extern GIDirection GetDirection(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_is_return_value")] public static extern gboolean IsReturnValue(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_is_optional")] public static extern gboolean IsOptional(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_is_caller_allocates")] public static extern gboolean IsCallerAllocates(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_may_be_null")] public static extern gboolean MayBeNull(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_is_skip")] public static extern gboolean IsSkip(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_get_ownership_transfer")] public static extern GITransfer GetOwnershipTransfer(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_get_scope")] public static extern GIScopeType GetScope(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_get_closure")] public static extern gint GetClosure(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_get_destroy")] public static extern gint GetDestroy(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_get_type")] public static extern GITypeInfo* GetType(GIArgInfo* info);
-	[Import(GIR.so), LinkName("g_arg_info_load_type")] public static extern void LoadType(GIArgInfo* info, GITypeInfo* type);
+	[LinkName("g_arg_info_get_direction")] public static extern GIDirection GetDirection(GIArgInfo* info);
+	[LinkName("g_arg_info_is_return_value")] public static extern gboolean IsReturnValue(GIArgInfo* info);
+	[LinkName("g_arg_info_is_optional")] public static extern gboolean IsOptional(GIArgInfo* info);
+	[LinkName("g_arg_info_is_caller_allocates")] public static extern gboolean IsCallerAllocates(GIArgInfo* info);
+	[LinkName("g_arg_info_may_be_null")] public static extern gboolean MayBeNull(GIArgInfo* info);
+	[LinkName("g_arg_info_is_skip")] public static extern gboolean IsSkip(GIArgInfo* info);
+	[LinkName("g_arg_info_get_ownership_transfer")] public static extern GITransfer GetOwnershipTransfer(GIArgInfo* info);
+	[LinkName("g_arg_info_get_scope")] public static extern GIScopeType GetScope(GIArgInfo* info);
+	[LinkName("g_arg_info_get_closure")] public static extern gint GetClosure(GIArgInfo* info);
+	[LinkName("g_arg_info_get_destroy")] public static extern gint GetDestroy(GIArgInfo* info);
+	[LinkName("g_arg_info_get_type")] public static extern GITypeInfo* GetType(GIArgInfo* info);
+	[LinkName("g_arg_info_load_type")] public static extern void LoadType(GIArgInfo* info, GITypeInfo* type);
 }
 
 
 extension GITypelib
 {
-	[Import(GIR.so), LinkName("g_typelib_new_from_memory")] public static extern GITypelib* NewFromMemory(guint8* memory, gsize len, GError** error);
-	[Import(GIR.so), LinkName("g_typelib_new_from_const_memory")] public static extern GITypelib* NewFromConstMemory(guint8* memory, gsize len, GError** error);
-	[Import(GIR.so), LinkName("g_typelib_new_from_mapped_file")] public static extern GITypelib* NewFromMappedFile(GMappedFile* mfile, GError** error);
-	[Import(GIR.so), LinkName("g_typelib_free")] public static extern void Free(GITypelib* typelib);
-	[Import(GIR.so), LinkName("g_typelib_symbol")] public static extern gboolean Symbol(GITypelib* typelib, gchar* symbol_name, gpointer* symbol);
-	[Import(GIR.so), LinkName("g_typelib_get_namespace")] public static extern gchar* GetNamespace(GITypelib* typelib);
+	[LinkName("g_typelib_new_from_memory")] public static extern GITypelib* NewFromMemory(guint8* memory, gsize len, GError** error);
+	[LinkName("g_typelib_new_from_const_memory")] public static extern GITypelib* NewFromConstMemory(guint8* memory, gsize len, GError** error);
+	[LinkName("g_typelib_new_from_mapped_file")] public static extern GITypelib* NewFromMappedFile(GMappedFile* mfile, GError** error);
+	[LinkName("g_typelib_free")] public static extern void Free(GITypelib* typelib);
+	[LinkName("g_typelib_symbol")] public static extern gboolean Symbol(GITypelib* typelib, gchar* symbol_name, gpointer* symbol);
+	[LinkName("g_typelib_get_namespace")] public static extern gchar* GetNamespace(GITypelib* typelib);
 }
 
 /** GIAttributeIter:
@@ -355,86 +355,86 @@ extension GITypelib
 
 extension GIBaseInfo
 {
-	[Import(GIR.so), LinkName("g_base_info_gtype_get_type")] public static extern GType GtypeGetType();
-	[Import(GIR.so), LinkName("g_base_info_ref")] public static extern GIBaseInfo* Ref(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_unref")] public static extern void Unref(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_get_type")] public static extern GIInfoType GetType(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_get_name")] public static extern gchar* GetName(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_get_namespace")] public static extern gchar* GetNamespace(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_is_deprecated")] public static extern gboolean IsDeprecated(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_get_attribute")] public static extern gchar* GetAttribute(GIBaseInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_base_info_iterate_attributes")] public static extern gboolean IterateAttributes(GIBaseInfo* info, GIAttributeIter* iterator, c_char** name, c_char** value);
-	[Import(GIR.so), LinkName("g_base_info_get_container")] public static extern GIBaseInfo* GetContainer(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_get_typelib")] public static extern GITypelib* GetTypelib(GIBaseInfo* info);
-	[Import(GIR.so), LinkName("g_base_info_equal")] public static extern gboolean Equal(GIBaseInfo* info1, GIBaseInfo* info2);
+	[LinkName("g_base_info_gtype_get_type")] public static extern GType GtypeGetType();
+	[LinkName("g_base_info_ref")] public static extern GIBaseInfo* Ref(GIBaseInfo* info);
+	[LinkName("g_base_info_unref")] public static extern void Unref(GIBaseInfo* info);
+	[LinkName("g_base_info_get_type")] public static extern GIInfoType GetType(GIBaseInfo* info);
+	[LinkName("g_base_info_get_name")] public static extern gchar* GetName(GIBaseInfo* info);
+	[LinkName("g_base_info_get_namespace")] public static extern gchar* GetNamespace(GIBaseInfo* info);
+	[LinkName("g_base_info_is_deprecated")] public static extern gboolean IsDeprecated(GIBaseInfo* info);
+	[LinkName("g_base_info_get_attribute")] public static extern gchar* GetAttribute(GIBaseInfo* info, gchar* name);
+	[LinkName("g_base_info_iterate_attributes")] public static extern gboolean IterateAttributes(GIBaseInfo* info, GIAttributeIter* iterator, c_char** name, c_char** value);
+	[LinkName("g_base_info_get_container")] public static extern GIBaseInfo* GetContainer(GIBaseInfo* info);
+	[LinkName("g_base_info_get_typelib")] public static extern GITypelib* GetTypelib(GIBaseInfo* info);
+	[LinkName("g_base_info_equal")] public static extern gboolean Equal(GIBaseInfo* info1, GIBaseInfo* info2);
 }
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("g_info_new")] public static extern GIBaseInfo* InfoNew(GIInfoType type, GIBaseInfo* container, GITypelib* typelib, guint32 offset);
+	[LinkName("g_info_new")] public static extern GIBaseInfo* InfoNew(GIInfoType type, GIBaseInfo* container, GITypelib* typelib, guint32 offset);
 }
 
 extension GICallableInfo
 {
-	[Import(GIR.so), LinkName("g_callable_info_is_method")] public static extern gboolean IsMethod(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_can_throw_gerror")] public static extern gboolean CanThrowGerror(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_get_return_type")] public static extern GITypeInfo* GetReturnType(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_load_return_type")] public static extern void LoadReturnType(GICallableInfo* info, GITypeInfo* type);
-	[Import(GIR.so), LinkName("g_callable_info_get_return_attribute")] public static extern gchar* GetReturnAttribute(GICallableInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_callable_info_iterate_return_attributes")] public static extern gboolean IterateReturnAttributes(GICallableInfo* info, GIAttributeIter* iterator, c_char** name, c_char** value);
-	[Import(GIR.so), LinkName("g_callable_info_get_caller_owns")] public static extern GITransfer GetCallerOwns(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_may_return_null")] public static extern gboolean MayReturnNull(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_skip_return")] public static extern gboolean SkipReturn(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_get_n_args")] public static extern gint GetNArgs(GICallableInfo* info);
-	[Import(GIR.so), LinkName("g_callable_info_get_arg")] public static extern GIArgInfo* GetArg(GICallableInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_callable_info_load_arg")] public static extern void LoadArg(GICallableInfo* info, gint n, GIArgInfo* arg);
-	[Import(GIR.so), LinkName("g_callable_info_invoke")] public static extern gboolean Invoke(GICallableInfo* info, gpointer @function, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, gboolean is_method, gboolean throws, GError** error);
-	[Import(GIR.so), LinkName("g_callable_info_get_instance_ownership_transfer")] public static extern GITransfer GetInstanceOwnershipTransfer(GICallableInfo* info);
+	[LinkName("g_callable_info_is_method")] public static extern gboolean IsMethod(GICallableInfo* info);
+	[LinkName("g_callable_info_can_throw_gerror")] public static extern gboolean CanThrowGerror(GICallableInfo* info);
+	[LinkName("g_callable_info_get_return_type")] public static extern GITypeInfo* GetReturnType(GICallableInfo* info);
+	[LinkName("g_callable_info_load_return_type")] public static extern void LoadReturnType(GICallableInfo* info, GITypeInfo* type);
+	[LinkName("g_callable_info_get_return_attribute")] public static extern gchar* GetReturnAttribute(GICallableInfo* info, gchar* name);
+	[LinkName("g_callable_info_iterate_return_attributes")] public static extern gboolean IterateReturnAttributes(GICallableInfo* info, GIAttributeIter* iterator, c_char** name, c_char** value);
+	[LinkName("g_callable_info_get_caller_owns")] public static extern GITransfer GetCallerOwns(GICallableInfo* info);
+	[LinkName("g_callable_info_may_return_null")] public static extern gboolean MayReturnNull(GICallableInfo* info);
+	[LinkName("g_callable_info_skip_return")] public static extern gboolean SkipReturn(GICallableInfo* info);
+	[LinkName("g_callable_info_get_n_args")] public static extern gint GetNArgs(GICallableInfo* info);
+	[LinkName("g_callable_info_get_arg")] public static extern GIArgInfo* GetArg(GICallableInfo* info, gint n);
+	[LinkName("g_callable_info_load_arg")] public static extern void LoadArg(GICallableInfo* info, gint n, GIArgInfo* arg);
+	[LinkName("g_callable_info_invoke")] public static extern gboolean Invoke(GICallableInfo* info, gpointer @function, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, gboolean is_method, gboolean throws, GError** error);
+	[LinkName("g_callable_info_get_instance_ownership_transfer")] public static extern GITransfer GetInstanceOwnershipTransfer(GICallableInfo* info);
 }
 
 extension GIConstantInfo
 {
-	[Import(GIR.so), LinkName("g_constant_info_get_type")] public static extern GITypeInfo* GetType(GIConstantInfo* info);
-	[Import(GIR.so), LinkName("g_constant_info_free_value")] public static extern void FreeValue(GIConstantInfo* info, GIArgument* value);
-	[Import(GIR.so), LinkName("g_constant_info_get_value")] public static extern gint GetValue(GIConstantInfo* info, GIArgument* value);
+	[LinkName("g_constant_info_get_type")] public static extern GITypeInfo* GetType(GIConstantInfo* info);
+	[LinkName("g_constant_info_free_value")] public static extern void FreeValue(GIConstantInfo* info, GIArgument* value);
+	[LinkName("g_constant_info_get_value")] public static extern gint GetValue(GIConstantInfo* info, GIArgument* value);
 }
 
 extension GIEnumInfo
 {
-	[Import(GIR.so), LinkName("g_enum_info_get_n_values")] public static extern gint GetNValues(GIEnumInfo* info);
-	[Import(GIR.so), LinkName("g_enum_info_get_value")] public static extern GIValueInfo* GetValue(GIEnumInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_enum_info_get_n_methods")] public static extern gint GetNMethods(GIEnumInfo* info);
-	[Import(GIR.so), LinkName("g_enum_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIEnumInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_enum_info_get_storage_type")] public static extern GITypeTag GetStorageType(GIEnumInfo* info);
-	[Import(GIR.so), LinkName("g_enum_info_get_error_domain")] public static extern gchar* GetErrorDomain(GIEnumInfo* info);
+	[LinkName("g_enum_info_get_n_values")] public static extern gint GetNValues(GIEnumInfo* info);
+	[LinkName("g_enum_info_get_value")] public static extern GIValueInfo* GetValue(GIEnumInfo* info, gint n);
+	[LinkName("g_enum_info_get_n_methods")] public static extern gint GetNMethods(GIEnumInfo* info);
+	[LinkName("g_enum_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIEnumInfo* info, gint n);
+	[LinkName("g_enum_info_get_storage_type")] public static extern GITypeTag GetStorageType(GIEnumInfo* info);
+	[LinkName("g_enum_info_get_error_domain")] public static extern gchar* GetErrorDomain(GIEnumInfo* info);
 }
 
 extension GIValueInfo
 {
-	[Import(GIR.so), LinkName("g_value_info_get_value")] public static extern gint64 GetValue(GIValueInfo* info);
+	[LinkName("g_value_info_get_value")] public static extern gint64 GetValue(GIValueInfo* info);
 }
 
 extension GIFieldInfo
 {
-	[Import(GIR.so), LinkName("g_field_info_get_flags")] public static extern GIFieldInfoFlags GetFlags(GIFieldInfo* info);
-	[Import(GIR.so), LinkName("g_field_info_get_size")] public static extern gint GetSize(GIFieldInfo* info);
-	[Import(GIR.so), LinkName("g_field_info_get_offset")] public static extern gint GetOffset(GIFieldInfo* info);
-	[Import(GIR.so), LinkName("g_field_info_get_type")] public static extern GITypeInfo* GetType(GIFieldInfo* info);
-	[Import(GIR.so), LinkName("g_field_info_get_field")] public static extern gboolean GetField(GIFieldInfo* field_info, gpointer mem, GIArgument* value);
-	[Import(GIR.so), LinkName("g_field_info_set_field")] public static extern gboolean SetField(GIFieldInfo* field_info, gpointer mem, GIArgument* value);
+	[LinkName("g_field_info_get_flags")] public static extern GIFieldInfoFlags GetFlags(GIFieldInfo* info);
+	[LinkName("g_field_info_get_size")] public static extern gint GetSize(GIFieldInfo* info);
+	[LinkName("g_field_info_get_offset")] public static extern gint GetOffset(GIFieldInfo* info);
+	[LinkName("g_field_info_get_type")] public static extern GITypeInfo* GetType(GIFieldInfo* info);
+	[LinkName("g_field_info_get_field")] public static extern gboolean GetField(GIFieldInfo* field_info, gpointer mem, GIArgument* value);
+	[LinkName("g_field_info_set_field")] public static extern gboolean SetField(GIFieldInfo* field_info, gpointer mem, GIArgument* value);
 }
 
 extension GIFunctionInfo
 {
-	[Import(GIR.so), LinkName("g_function_info_get_symbol")] public static extern gchar* GetSymbol(GIFunctionInfo* info);
-	[Import(GIR.so), LinkName("g_function_info_get_flags")] public static extern GIFunctionInfoFlags GetFlags(GIFunctionInfo* info);
-	[Import(GIR.so), LinkName("g_function_info_get_property")] public static extern GIPropertyInfo* GetProperty(GIFunctionInfo* info);
-	[Import(GIR.so), LinkName("g_function_info_get_vfunc")] public static extern GIVFuncInfo* GetVfunc(GIFunctionInfo* info);
+	[LinkName("g_function_info_get_symbol")] public static extern gchar* GetSymbol(GIFunctionInfo* info);
+	[LinkName("g_function_info_get_flags")] public static extern GIFunctionInfoFlags GetFlags(GIFunctionInfo* info);
+	[LinkName("g_function_info_get_property")] public static extern GIPropertyInfo* GetProperty(GIFunctionInfo* info);
+	[LinkName("g_function_info_get_vfunc")] public static extern GIVFuncInfo* GetVfunc(GIFunctionInfo* info);
 }
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("g_invoke_error_quark")] public static extern GQuark InvokeErrorQuark();
+	[LinkName("g_invoke_error_quark")] public static extern GQuark InvokeErrorQuark();
 }
 
 /** GInvokeError:
@@ -456,27 +456,27 @@ extension GIR
 
 extension GIFunctionInfo
 {
-	[Import(GIR.so), LinkName("g_function_info_invoke")] public static extern gboolean Invoke(GIFunctionInfo* info, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, GError** error);
+	[LinkName("g_function_info_invoke")] public static extern gboolean Invoke(GIFunctionInfo* info, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, GError** error);
 }
 
 extension GIInterfaceInfo
 {
-	[Import(GIR.so), LinkName("g_interface_info_get_n_prerequisites")] public static extern gint GetNPrerequisites(GIInterfaceInfo* info);
-	[Import(GIR.so), LinkName("g_interface_info_get_prerequisite")] public static extern GIBaseInfo* GetPrerequisite(GIInterfaceInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_interface_info_get_n_properties")] public static extern gint GetNProperties(GIInterfaceInfo* info);
-	[Import(GIR.so), LinkName("g_interface_info_get_property")] public static extern GIPropertyInfo* GetProperty(GIInterfaceInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_interface_info_get_n_methods")] public static extern gint GetNMethods(GIInterfaceInfo* info);
-	[Import(GIR.so), LinkName("g_interface_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIInterfaceInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_interface_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIInterfaceInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_interface_info_get_n_signals")] public static extern gint GetNSignals(GIInterfaceInfo* info);
-	[Import(GIR.so), LinkName("g_interface_info_get_signal")] public static extern GISignalInfo* GetSignal(GIInterfaceInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_interface_info_find_signal")] public static extern GISignalInfo* FindSignal(GIInterfaceInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_interface_info_get_n_vfuncs")] public static extern gint GetNVfuncs(GIInterfaceInfo* info);
-	[Import(GIR.so), LinkName("g_interface_info_get_vfunc")] public static extern GIVFuncInfo* GetVfunc(GIInterfaceInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_interface_info_find_vfunc")] public static extern GIVFuncInfo* FindVfunc(GIInterfaceInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_interface_info_get_n_constants")] public static extern gint GetNConstants(GIInterfaceInfo* info);
-	[Import(GIR.so), LinkName("g_interface_info_get_constant")] public static extern GIConstantInfo* GetConstant(GIInterfaceInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_interface_info_get_iface_struct")] public static extern GIStructInfo* GetIfaceStruct(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_n_prerequisites")] public static extern gint GetNPrerequisites(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_prerequisite")] public static extern GIBaseInfo* GetPrerequisite(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_get_n_properties")] public static extern gint GetNProperties(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_property")] public static extern GIPropertyInfo* GetProperty(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_get_n_methods")] public static extern gint GetNMethods(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIInterfaceInfo* info, gchar* name);
+	[LinkName("g_interface_info_get_n_signals")] public static extern gint GetNSignals(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_signal")] public static extern GISignalInfo* GetSignal(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_find_signal")] public static extern GISignalInfo* FindSignal(GIInterfaceInfo* info, gchar* name);
+	[LinkName("g_interface_info_get_n_vfuncs")] public static extern gint GetNVfuncs(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_vfunc")] public static extern GIVFuncInfo* GetVfunc(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_find_vfunc")] public static extern GIVFuncInfo* FindVfunc(GIInterfaceInfo* info, gchar* name);
+	[LinkName("g_interface_info_get_n_constants")] public static extern gint GetNConstants(GIInterfaceInfo* info);
+	[LinkName("g_interface_info_get_constant")] public static extern GIConstantInfo* GetConstant(GIInterfaceInfo* info, gint n);
+	[LinkName("g_interface_info_get_iface_struct")] public static extern GIStructInfo* GetIfaceStruct(GIInterfaceInfo* info);
 }
 
 /** GIObjectInfoRefFunction: (skip)
@@ -514,140 +514,140 @@ function void* GIObjectInfoGetValueFunction(GValue* value);
 
 extension GIObjectInfo
 {
-	[Import(GIR.so), LinkName("g_object_info_get_type_name")] public static extern gchar* GetTypeName(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_type_init")] public static extern gchar* GetTypeInit(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_abstract")] public static extern gboolean GetAbstract(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_final")] public static extern gboolean GetFinal(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_fundamental")] public static extern gboolean GetFundamental(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_parent")] public static extern GIObjectInfo* GetParent(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_n_interfaces")] public static extern gint GetNInterfaces(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_interface")] public static extern GIInterfaceInfo* GetInterface(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_get_n_fields")] public static extern gint GetNFields(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_field")] public static extern GIFieldInfo* GetField(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_get_n_properties")] public static extern gint GetNProperties(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_property")] public static extern GIPropertyInfo* GetProperty(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_get_n_methods")] public static extern gint GetNMethods(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIObjectInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_object_info_find_method_using_interfaces")] public static extern GIFunctionInfo* FindMethodUsingInterfaces(GIObjectInfo* info, gchar* name, GIObjectInfo** implementor);
-	[Import(GIR.so), LinkName("g_object_info_get_n_signals")] public static extern gint GetNSignals(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_signal")] public static extern GISignalInfo* GetSignal(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_find_signal")] public static extern GISignalInfo* FindSignal(GIObjectInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_object_info_get_n_vfuncs")] public static extern gint GetNVfuncs(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_vfunc")] public static extern GIVFuncInfo* GetVfunc(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_find_vfunc")] public static extern GIVFuncInfo* FindVfunc(GIObjectInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_object_info_find_vfunc_using_interfaces")] public static extern GIVFuncInfo* FindVfuncUsingInterfaces(GIObjectInfo* info, gchar* name, GIObjectInfo** implementor);
-	[Import(GIR.so), LinkName("g_object_info_get_n_constants")] public static extern gint GetNConstants(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_constant")] public static extern GIConstantInfo* GetConstant(GIObjectInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_object_info_get_class_struct")] public static extern GIStructInfo* GetClassStruct(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_ref_function")] public static extern c_char* GetRefFunction(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_ref_function_pointer")] public static extern GIObjectInfoRefFunction GetRefFunctionPointer(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_unref_function")] public static extern c_char* GetUnrefFunction(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_unref_function_pointer")] public static extern GIObjectInfoUnrefFunction GetUnrefFunctionPointer(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_set_value_function")] public static extern c_char* GetSetValueFunction(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_set_value_function_pointer")] public static extern GIObjectInfoSetValueFunction GetSetValueFunctionPointer(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_get_value_function")] public static extern c_char* GetGetValueFunction(GIObjectInfo* info);
-	[Import(GIR.so), LinkName("g_object_info_get_get_value_function_pointer")] public static extern GIObjectInfoGetValueFunction GetGetValueFunctionPointer(GIObjectInfo* info);
+	[LinkName("g_object_info_get_type_name")] public static extern gchar* GetTypeName(GIObjectInfo* info);
+	[LinkName("g_object_info_get_type_init")] public static extern gchar* GetTypeInit(GIObjectInfo* info);
+	[LinkName("g_object_info_get_abstract")] public static extern gboolean GetAbstract(GIObjectInfo* info);
+	[LinkName("g_object_info_get_final")] public static extern gboolean GetFinal(GIObjectInfo* info);
+	[LinkName("g_object_info_get_fundamental")] public static extern gboolean GetFundamental(GIObjectInfo* info);
+	[LinkName("g_object_info_get_parent")] public static extern GIObjectInfo* GetParent(GIObjectInfo* info);
+	[LinkName("g_object_info_get_n_interfaces")] public static extern gint GetNInterfaces(GIObjectInfo* info);
+	[LinkName("g_object_info_get_interface")] public static extern GIInterfaceInfo* GetInterface(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_get_n_fields")] public static extern gint GetNFields(GIObjectInfo* info);
+	[LinkName("g_object_info_get_field")] public static extern GIFieldInfo* GetField(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_get_n_properties")] public static extern gint GetNProperties(GIObjectInfo* info);
+	[LinkName("g_object_info_get_property")] public static extern GIPropertyInfo* GetProperty(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_get_n_methods")] public static extern gint GetNMethods(GIObjectInfo* info);
+	[LinkName("g_object_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIObjectInfo* info, gchar* name);
+	[LinkName("g_object_info_find_method_using_interfaces")] public static extern GIFunctionInfo* FindMethodUsingInterfaces(GIObjectInfo* info, gchar* name, GIObjectInfo** implementor);
+	[LinkName("g_object_info_get_n_signals")] public static extern gint GetNSignals(GIObjectInfo* info);
+	[LinkName("g_object_info_get_signal")] public static extern GISignalInfo* GetSignal(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_find_signal")] public static extern GISignalInfo* FindSignal(GIObjectInfo* info, gchar* name);
+	[LinkName("g_object_info_get_n_vfuncs")] public static extern gint GetNVfuncs(GIObjectInfo* info);
+	[LinkName("g_object_info_get_vfunc")] public static extern GIVFuncInfo* GetVfunc(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_find_vfunc")] public static extern GIVFuncInfo* FindVfunc(GIObjectInfo* info, gchar* name);
+	[LinkName("g_object_info_find_vfunc_using_interfaces")] public static extern GIVFuncInfo* FindVfuncUsingInterfaces(GIObjectInfo* info, gchar* name, GIObjectInfo** implementor);
+	[LinkName("g_object_info_get_n_constants")] public static extern gint GetNConstants(GIObjectInfo* info);
+	[LinkName("g_object_info_get_constant")] public static extern GIConstantInfo* GetConstant(GIObjectInfo* info, gint n);
+	[LinkName("g_object_info_get_class_struct")] public static extern GIStructInfo* GetClassStruct(GIObjectInfo* info);
+	[LinkName("g_object_info_get_ref_function")] public static extern c_char* GetRefFunction(GIObjectInfo* info);
+	[LinkName("g_object_info_get_ref_function_pointer")] public static extern GIObjectInfoRefFunction GetRefFunctionPointer(GIObjectInfo* info);
+	[LinkName("g_object_info_get_unref_function")] public static extern c_char* GetUnrefFunction(GIObjectInfo* info);
+	[LinkName("g_object_info_get_unref_function_pointer")] public static extern GIObjectInfoUnrefFunction GetUnrefFunctionPointer(GIObjectInfo* info);
+	[LinkName("g_object_info_get_set_value_function")] public static extern c_char* GetSetValueFunction(GIObjectInfo* info);
+	[LinkName("g_object_info_get_set_value_function_pointer")] public static extern GIObjectInfoSetValueFunction GetSetValueFunctionPointer(GIObjectInfo* info);
+	[LinkName("g_object_info_get_get_value_function")] public static extern c_char* GetGetValueFunction(GIObjectInfo* info);
+	[LinkName("g_object_info_get_get_value_function_pointer")] public static extern GIObjectInfoGetValueFunction GetGetValueFunctionPointer(GIObjectInfo* info);
 }
 
 extension GIPropertyInfo
 {
-	[Import(GIR.so), LinkName("g_property_info_get_flags")] public static extern GParamFlags GetFlags(GIPropertyInfo* info);
-	[Import(GIR.so), LinkName("g_property_info_get_type")] public static extern GITypeInfo* GetType(GIPropertyInfo* info);
-	[Import(GIR.so), LinkName("g_property_info_get_ownership_transfer")] public static extern GITransfer GetOwnershipTransfer(GIPropertyInfo* info);
-	[Import(GIR.so), LinkName("g_property_info_get_setter")] public static extern GIFunctionInfo* GetSetter(GIPropertyInfo* info);
-	[Import(GIR.so), LinkName("g_property_info_get_getter")] public static extern GIFunctionInfo* GetGetter(GIPropertyInfo* info);
+	[LinkName("g_property_info_get_flags")] public static extern GParamFlags GetFlags(GIPropertyInfo* info);
+	[LinkName("g_property_info_get_type")] public static extern GITypeInfo* GetType(GIPropertyInfo* info);
+	[LinkName("g_property_info_get_ownership_transfer")] public static extern GITransfer GetOwnershipTransfer(GIPropertyInfo* info);
+	[LinkName("g_property_info_get_setter")] public static extern GIFunctionInfo* GetSetter(GIPropertyInfo* info);
+	[LinkName("g_property_info_get_getter")] public static extern GIFunctionInfo* GetGetter(GIPropertyInfo* info);
 }
 
 extension GIRegisteredTypeInfo
 {
-	[Import(GIR.so), LinkName("g_registered_type_info_get_type_name")] public static extern gchar* GetTypeName(GIRegisteredTypeInfo* info);
-	[Import(GIR.so), LinkName("g_registered_type_info_get_type_init")] public static extern gchar* GetTypeInit(GIRegisteredTypeInfo* info);
-	[Import(GIR.so), LinkName("g_registered_type_info_get_g_type")] public static extern GType GetGType(GIRegisteredTypeInfo* info);
+	[LinkName("g_registered_type_info_get_type_name")] public static extern gchar* GetTypeName(GIRegisteredTypeInfo* info);
+	[LinkName("g_registered_type_info_get_type_init")] public static extern gchar* GetTypeInit(GIRegisteredTypeInfo* info);
+	[LinkName("g_registered_type_info_get_g_type")] public static extern GType GetGType(GIRegisteredTypeInfo* info);
 }
 
 extension GISignalInfo
 {
-	[Import(GIR.so), LinkName("g_signal_info_get_flags")] public static extern GSignalFlags GetFlags(GISignalInfo* info);
-	[Import(GIR.so), LinkName("g_signal_info_get_class_closure")] public static extern GIVFuncInfo* GetClassClosure(GISignalInfo* info);
-	[Import(GIR.so), LinkName("g_signal_info_true_stops_emit")] public static extern gboolean TrueStopsEmit(GISignalInfo* info);
+	[LinkName("g_signal_info_get_flags")] public static extern GSignalFlags GetFlags(GISignalInfo* info);
+	[LinkName("g_signal_info_get_class_closure")] public static extern GIVFuncInfo* GetClassClosure(GISignalInfo* info);
+	[LinkName("g_signal_info_true_stops_emit")] public static extern gboolean TrueStopsEmit(GISignalInfo* info);
 }
 
 extension GIStructInfo
 {
-	[Import(GIR.so), LinkName("g_struct_info_get_n_fields")] public static extern gint GetNFields(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_get_field")] public static extern GIFieldInfo* GetField(GIStructInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_struct_info_find_field")] public static extern GIFieldInfo* FindField(GIStructInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_struct_info_get_n_methods")] public static extern gint GetNMethods(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIStructInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_struct_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIStructInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_struct_info_get_size")] public static extern gsize GetSize(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_get_alignment")] public static extern gsize GetAlignment(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_is_gtype_struct")] public static extern gboolean IsGtypeStruct(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_is_foreign")] public static extern gboolean IsForeign(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_get_copy_function")] public static extern c_char* GetCopyFunction(GIStructInfo* info);
-	[Import(GIR.so), LinkName("g_struct_info_get_free_function")] public static extern c_char* GetFreeFunction(GIStructInfo* info);
+	[LinkName("g_struct_info_get_n_fields")] public static extern gint GetNFields(GIStructInfo* info);
+	[LinkName("g_struct_info_get_field")] public static extern GIFieldInfo* GetField(GIStructInfo* info, gint n);
+	[LinkName("g_struct_info_find_field")] public static extern GIFieldInfo* FindField(GIStructInfo* info, gchar* name);
+	[LinkName("g_struct_info_get_n_methods")] public static extern gint GetNMethods(GIStructInfo* info);
+	[LinkName("g_struct_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIStructInfo* info, gint n);
+	[LinkName("g_struct_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIStructInfo* info, gchar* name);
+	[LinkName("g_struct_info_get_size")] public static extern gsize GetSize(GIStructInfo* info);
+	[LinkName("g_struct_info_get_alignment")] public static extern gsize GetAlignment(GIStructInfo* info);
+	[LinkName("g_struct_info_is_gtype_struct")] public static extern gboolean IsGtypeStruct(GIStructInfo* info);
+	[LinkName("g_struct_info_is_foreign")] public static extern gboolean IsForeign(GIStructInfo* info);
+	[LinkName("g_struct_info_get_copy_function")] public static extern c_char* GetCopyFunction(GIStructInfo* info);
+	[LinkName("g_struct_info_get_free_function")] public static extern c_char* GetFreeFunction(GIStructInfo* info);
 }
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("g_type_tag_to_string")] public static extern gchar* TypeTagToString(GITypeTag type);
-	[Import(GIR.so), LinkName("g_info_type_to_string")] public static extern gchar* InfoTypeToString(GIInfoType type);
+	[LinkName("g_type_tag_to_string")] public static extern gchar* TypeTagToString(GITypeTag type);
+	[LinkName("g_info_type_to_string")] public static extern gchar* InfoTypeToString(GIInfoType type);
 }
 
 extension GITypeInfo
 {
-	[Import(GIR.so), LinkName("g_type_info_is_pointer")] public static extern gboolean IsPointer(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_get_tag")] public static extern GITypeTag GetTag(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_get_param_type")] public static extern GITypeInfo* GetParamType(GITypeInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_type_info_get_interface")] public static extern GIBaseInfo* GetInterface(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_get_array_length")] public static extern gint GetArrayLength(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_get_array_fixed_size")] public static extern gint GetArrayFixedSize(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_is_zero_terminated")] public static extern gboolean IsZeroTerminated(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_get_array_type")] public static extern GIArrayType GetArrayType(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_get_storage_type")] public static extern GITypeTag GetStorageType(GITypeInfo* info);
-	[Import(GIR.so), LinkName("g_type_info_argument_from_hash_pointer")] public static extern void ArgumentFromHashPointer(GITypeInfo* info, gpointer hash_pointer, GIArgument* arg);
-	[Import(GIR.so), LinkName("g_type_info_hash_pointer_from_argument")] public static extern gpointer HashPointerFromArgument(GITypeInfo* info, GIArgument* arg);
+	[LinkName("g_type_info_is_pointer")] public static extern gboolean IsPointer(GITypeInfo* info);
+	[LinkName("g_type_info_get_tag")] public static extern GITypeTag GetTag(GITypeInfo* info);
+	[LinkName("g_type_info_get_param_type")] public static extern GITypeInfo* GetParamType(GITypeInfo* info, gint n);
+	[LinkName("g_type_info_get_interface")] public static extern GIBaseInfo* GetInterface(GITypeInfo* info);
+	[LinkName("g_type_info_get_array_length")] public static extern gint GetArrayLength(GITypeInfo* info);
+	[LinkName("g_type_info_get_array_fixed_size")] public static extern gint GetArrayFixedSize(GITypeInfo* info);
+	[LinkName("g_type_info_is_zero_terminated")] public static extern gboolean IsZeroTerminated(GITypeInfo* info);
+	[LinkName("g_type_info_get_array_type")] public static extern GIArrayType GetArrayType(GITypeInfo* info);
+	[LinkName("g_type_info_get_storage_type")] public static extern GITypeTag GetStorageType(GITypeInfo* info);
+	[LinkName("g_type_info_argument_from_hash_pointer")] public static extern void ArgumentFromHashPointer(GITypeInfo* info, gpointer hash_pointer, GIArgument* arg);
+	[LinkName("g_type_info_hash_pointer_from_argument")] public static extern gpointer HashPointerFromArgument(GITypeInfo* info, GIArgument* arg);
 }
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("gi_type_tag_argument_from_hash_pointer")] public static extern void iTypeTagArgumentFromHashPointer(GITypeTag storage_type, gpointer hash_pointer, GIArgument* arg);
-	[Import(GIR.so), LinkName("gi_type_tag_hash_pointer_from_argument")] public static extern gpointer iTypeTagHashPointerFromArgument(GITypeTag storage_type, GIArgument* arg);
+	[LinkName("gi_type_tag_argument_from_hash_pointer")] public static extern void iTypeTagArgumentFromHashPointer(GITypeTag storage_type, gpointer hash_pointer, GIArgument* arg);
+	[LinkName("gi_type_tag_hash_pointer_from_argument")] public static extern gpointer iTypeTagHashPointerFromArgument(GITypeTag storage_type, GIArgument* arg);
 }
 
 extension GIUnionInfo
 {
-	[Import(GIR.so), LinkName("g_union_info_get_n_fields")] public static extern gint GetNFields(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_field")] public static extern GIFieldInfo* GetField(GIUnionInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_union_info_get_n_methods")] public static extern gint GetNMethods(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIUnionInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_union_info_is_discriminated")] public static extern gboolean IsDiscriminated(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_discriminator_offset")] public static extern gint GetDiscriminatorOffset(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_discriminator_type")] public static extern GITypeInfo* GetDiscriminatorType(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_discriminator")] public static extern GIConstantInfo* GetDiscriminator(GIUnionInfo* info, gint n);
-	[Import(GIR.so), LinkName("g_union_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIUnionInfo* info, gchar* name);
-	[Import(GIR.so), LinkName("g_union_info_get_size")] public static extern gsize GetSize(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_alignment")] public static extern gsize GetAlignment(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_copy_function")] public static extern c_char* GetCopyFunction(GIUnionInfo* info);
-	[Import(GIR.so), LinkName("g_union_info_get_free_function")] public static extern c_char* GetFreeFunction(GIUnionInfo* info);
+	[LinkName("g_union_info_get_n_fields")] public static extern gint GetNFields(GIUnionInfo* info);
+	[LinkName("g_union_info_get_field")] public static extern GIFieldInfo* GetField(GIUnionInfo* info, gint n);
+	[LinkName("g_union_info_get_n_methods")] public static extern gint GetNMethods(GIUnionInfo* info);
+	[LinkName("g_union_info_get_method")] public static extern GIFunctionInfo* GetMethod(GIUnionInfo* info, gint n);
+	[LinkName("g_union_info_is_discriminated")] public static extern gboolean IsDiscriminated(GIUnionInfo* info);
+	[LinkName("g_union_info_get_discriminator_offset")] public static extern gint GetDiscriminatorOffset(GIUnionInfo* info);
+	[LinkName("g_union_info_get_discriminator_type")] public static extern GITypeInfo* GetDiscriminatorType(GIUnionInfo* info);
+	[LinkName("g_union_info_get_discriminator")] public static extern GIConstantInfo* GetDiscriminator(GIUnionInfo* info, gint n);
+	[LinkName("g_union_info_find_method")] public static extern GIFunctionInfo* FindMethod(GIUnionInfo* info, gchar* name);
+	[LinkName("g_union_info_get_size")] public static extern gsize GetSize(GIUnionInfo* info);
+	[LinkName("g_union_info_get_alignment")] public static extern gsize GetAlignment(GIUnionInfo* info);
+	[LinkName("g_union_info_get_copy_function")] public static extern c_char* GetCopyFunction(GIUnionInfo* info);
+	[LinkName("g_union_info_get_free_function")] public static extern c_char* GetFreeFunction(GIUnionInfo* info);
 }
 
 extension GIVFuncInfo
 {
-	[Import(GIR.so), LinkName("g_vfunc_info_get_flags")] public static extern GIVFuncInfoFlags GetFlags(GIVFuncInfo* info);
-	[Import(GIR.so), LinkName("g_vfunc_info_get_offset")] public static extern gint GetOffset(GIVFuncInfo* info);
-	[Import(GIR.so), LinkName("g_vfunc_info_get_signal")] public static extern GISignalInfo* GetSignal(GIVFuncInfo* info);
-	[Import(GIR.so), LinkName("g_vfunc_info_get_invoker")] public static extern GIFunctionInfo* GetInvoker(GIVFuncInfo* info);
-	[Import(GIR.so), LinkName("g_vfunc_info_get_address")] public static extern gpointer GetAddress(GIVFuncInfo* info, GType implementor_gtype, GError** error);
-	[Import(GIR.so), LinkName("g_vfunc_info_invoke")] public static extern gboolean Invoke(GIVFuncInfo* info, GType implementor, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, GError** error);
+	[LinkName("g_vfunc_info_get_flags")] public static extern GIVFuncInfoFlags GetFlags(GIVFuncInfo* info);
+	[LinkName("g_vfunc_info_get_offset")] public static extern gint GetOffset(GIVFuncInfo* info);
+	[LinkName("g_vfunc_info_get_signal")] public static extern GISignalInfo* GetSignal(GIVFuncInfo* info);
+	[LinkName("g_vfunc_info_get_invoker")] public static extern GIFunctionInfo* GetInvoker(GIVFuncInfo* info);
+	[LinkName("g_vfunc_info_get_address")] public static extern gpointer GetAddress(GIVFuncInfo* info, GType implementor_gtype, GError** error);
+	[LinkName("g_vfunc_info_invoke")] public static extern gboolean Invoke(GIVFuncInfo* info, GType implementor, GIArgument* in_args, c_int n_in_args, GIArgument* out_args, c_int n_out_args, GIArgument* return_value, GError** error);
 }
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("gi_get_major_version")] public static extern guint iGetMajorVersion();
-	[Import(GIR.so), LinkName("gi_get_minor_version")] public static extern guint iGetMinorVersion();
-	[Import(GIR.so), LinkName("gi_get_micro_version")] public static extern guint iGetMicroVersion();
+	[LinkName("gi_get_major_version")] public static extern guint iGetMajorVersion();
+	[LinkName("gi_get_minor_version")] public static extern guint iGetMinorVersion();
+	[LinkName("gi_get_micro_version")] public static extern guint iGetMicroVersion();
 }
 
 struct GIRepository;
@@ -668,31 +668,31 @@ struct GIRepositoryPrivate;
 
 extension GIRepository
 {
-	[Import(GIR.so), LinkName("g_irepository_get_type")] public static extern GType GetType();
-	[Import(GIR.so), LinkName("g_irepository_get_default")] public static extern GIRepository* GetDefault();
-	[Import(GIR.so), LinkName("g_irepository_prepend_search_path")] public static extern void PrependSearchPath(c_char* directory);
-	[Import(GIR.so), LinkName("g_irepository_prepend_library_path")] public static extern void PrependLibraryPath(c_char* directory);
-	[Import(GIR.so), LinkName("g_irepository_get_search_path")] public static extern GSList* GetSearchPath();
-	[Import(GIR.so), LinkName("g_irepository_load_typelib")] public static extern c_char* LoadTypelib(GIRepository* repository, GITypelib* typelib, GIRepositoryLoadFlags flags, GError** error);
-	[Import(GIR.so), LinkName("g_irepository_is_registered")] public static extern gboolean IsRegistered(GIRepository* repository, gchar* @namespace, gchar* version);
-	[Import(GIR.so), LinkName("g_irepository_find_by_name")] public static extern GIBaseInfo* FindByName(GIRepository* repository, gchar* @namespace, gchar* name);
-	[Import(GIR.so), LinkName("g_irepository_enumerate_versions")] public static extern GList* EnumerateVersions(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_require")] public static extern GITypelib* Require(GIRepository* repository, gchar* @namespace, gchar* version, GIRepositoryLoadFlags flags, GError** error);
-	[Import(GIR.so), LinkName("g_irepository_require_private")] public static extern GITypelib* RequirePrivate(GIRepository* repository, gchar* typelib_dir, gchar* @namespace, gchar* version, GIRepositoryLoadFlags flags, GError** error);
-	[Import(GIR.so), LinkName("g_irepository_get_immediate_dependencies")] public static extern gchar** GetImmediateDependencies(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_dependencies")] public static extern gchar** GetDependencies(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_loaded_namespaces")] public static extern gchar** GetLoadedNamespaces(GIRepository* repository);
-	[Import(GIR.so), LinkName("g_irepository_find_by_gtype")] public static extern GIBaseInfo* FindByGtype(GIRepository* repository, GType gtype);
-	[Import(GIR.so), LinkName("g_irepository_get_object_gtype_interfaces")] public static extern void GetObjectGtypeInterfaces(GIRepository* repository, GType gtype, guint* n_interfaces_out, GIInterfaceInfo*** interfaces_out);
-	[Import(GIR.so), LinkName("g_irepository_get_n_infos")] public static extern gint GetNInfos(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_info")] public static extern GIBaseInfo* GetInfo(GIRepository* repository, gchar* @namespace, gint index);
-	[Import(GIR.so), LinkName("g_irepository_find_by_error_domain")] public static extern GIEnumInfo* FindByErrorDomain(GIRepository* repository, GQuark domain);
-	[Import(GIR.so), LinkName("g_irepository_get_typelib_path")] public static extern gchar* GetTypelibPath(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_shared_library")] public static extern gchar* GetSharedLibrary(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_c_prefix")] public static extern gchar* GetCPrefix(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_version")] public static extern gchar* GetVersion(GIRepository* repository, gchar* @namespace);
-	[Import(GIR.so), LinkName("g_irepository_get_option_group")] public static extern GOptionGroup* GetOptionGroup();
-	[Import(GIR.so), LinkName("g_irepository_dump")] public static extern gboolean Dump(c_char* arg, GError** error);
+	[LinkName("g_irepository_get_type")] public static extern GType GetType();
+	[LinkName("g_irepository_get_default")] public static extern GIRepository* GetDefault();
+	[LinkName("g_irepository_prepend_search_path")] public static extern void PrependSearchPath(c_char* directory);
+	[LinkName("g_irepository_prepend_library_path")] public static extern void PrependLibraryPath(c_char* directory);
+	[LinkName("g_irepository_get_search_path")] public static extern GSList* GetSearchPath();
+	[LinkName("g_irepository_load_typelib")] public static extern c_char* LoadTypelib(GIRepository* repository, GITypelib* typelib, GIRepositoryLoadFlags flags, GError** error);
+	[LinkName("g_irepository_is_registered")] public static extern gboolean IsRegistered(GIRepository* repository, gchar* @namespace, gchar* version);
+	[LinkName("g_irepository_find_by_name")] public static extern GIBaseInfo* FindByName(GIRepository* repository, gchar* @namespace, gchar* name);
+	[LinkName("g_irepository_enumerate_versions")] public static extern GList* EnumerateVersions(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_require")] public static extern GITypelib* Require(GIRepository* repository, gchar* @namespace, gchar* version, GIRepositoryLoadFlags flags, GError** error);
+	[LinkName("g_irepository_require_private")] public static extern GITypelib* RequirePrivate(GIRepository* repository, gchar* typelib_dir, gchar* @namespace, gchar* version, GIRepositoryLoadFlags flags, GError** error);
+	[LinkName("g_irepository_get_immediate_dependencies")] public static extern gchar** GetImmediateDependencies(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_dependencies")] public static extern gchar** GetDependencies(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_loaded_namespaces")] public static extern gchar** GetLoadedNamespaces(GIRepository* repository);
+	[LinkName("g_irepository_find_by_gtype")] public static extern GIBaseInfo* FindByGtype(GIRepository* repository, GType gtype);
+	[LinkName("g_irepository_get_object_gtype_interfaces")] public static extern void GetObjectGtypeInterfaces(GIRepository* repository, GType gtype, guint* n_interfaces_out, GIInterfaceInfo*** interfaces_out);
+	[LinkName("g_irepository_get_n_infos")] public static extern gint GetNInfos(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_info")] public static extern GIBaseInfo* GetInfo(GIRepository* repository, gchar* @namespace, gint index);
+	[LinkName("g_irepository_find_by_error_domain")] public static extern GIEnumInfo* FindByErrorDomain(GIRepository* repository, GQuark domain);
+	[LinkName("g_irepository_get_typelib_path")] public static extern gchar* GetTypelibPath(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_shared_library")] public static extern gchar* GetSharedLibrary(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_c_prefix")] public static extern gchar* GetCPrefix(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_version")] public static extern gchar* GetVersion(GIRepository* repository, gchar* @namespace);
+	[LinkName("g_irepository_get_option_group")] public static extern GOptionGroup* GetOptionGroup();
+	[LinkName("g_irepository_dump")] public static extern gboolean Dump(c_char* arg, GError** error);
 }
 
 /** GIRepositoryError:
@@ -717,11 +717,11 @@ extension GIRepository
 
 extension GIRepository
 {
-	[Import(GIR.so), LinkName("g_irepository_error_quark")] public static extern GQuark ErrorQuark();
+	[LinkName("g_irepository_error_quark")] public static extern GQuark ErrorQuark();
 }
 
 extension GIR
 {
-	[Import(GIR.so), LinkName("gi_cclosure_marshal_generic")] public static extern void iCclosureMarshalGeneric(GClosure* closure, GValue* return_gvalue, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[LinkName("gi_cclosure_marshal_generic")] public static extern void iCclosureMarshalGeneric(GClosure* closure, GValue* return_gvalue, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
 }
 

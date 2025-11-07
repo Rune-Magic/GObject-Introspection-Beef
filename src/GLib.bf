@@ -163,111 +163,111 @@ struct GBytes;
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_array_new")] public static extern GArray* ArrayNew(gboolean zero_terminated, gboolean clear, guint element_size);
-	[Import(GLib.so), LinkName("g_array_new_take")] public static extern GArray* ArrayNewTake(gpointer data, gsize len, gboolean clear, gsize element_size);
-	[Import(GLib.so), LinkName("g_array_new_take_zero_terminated")] public static extern GArray* ArrayNewTakeZeroTerminated(gpointer data, gboolean clear, gsize element_size);
-	[Import(GLib.so), LinkName("g_array_steal")] public static extern gpointer ArraySteal(GArray* array, gsize* len);
-	[Import(GLib.so), LinkName("g_array_sized_new")] public static extern GArray* ArraySizedNew(gboolean zero_terminated, gboolean clear, guint element_size, guint reserved_size);
-	[Import(GLib.so), LinkName("g_array_copy")] public static extern GArray* ArrayCopy(GArray* array);
-	[Import(GLib.so), LinkName("g_array_free")] public static extern gchar* ArrayFree(GArray* array, gboolean free_segment);
-	[Import(GLib.so), LinkName("g_array_ref")] public static extern GArray* ArrayRef(GArray* array);
-	[Import(GLib.so), LinkName("g_array_unref")] public static extern void ArrayUnref(GArray* array);
-	[Import(GLib.so), LinkName("g_array_get_element_size")] public static extern guint ArrayGetElementSize(GArray* array);
-	[Import(GLib.so), LinkName("g_array_append_vals")] public static extern GArray* ArrayAppendVals(GArray* array, gconstpointer data, guint len);
-	[Import(GLib.so), LinkName("g_array_prepend_vals")] public static extern GArray* ArrayPrependVals(GArray* array, gconstpointer data, guint len);
-	[Import(GLib.so), LinkName("g_array_insert_vals")] public static extern GArray* ArrayInsertVals(GArray* array, guint index, gconstpointer data, guint len);
-	[Import(GLib.so), LinkName("g_array_set_size")] public static extern GArray* ArraySetSize(GArray* array, guint length);
-	[Import(GLib.so), LinkName("g_array_remove_index")] public static extern GArray* ArrayRemoveIndex(GArray* array, guint index);
-	[Import(GLib.so), LinkName("g_array_remove_index_fast")] public static extern GArray* ArrayRemoveIndexFast(GArray* array, guint index);
-	[Import(GLib.so), LinkName("g_array_remove_range")] public static extern GArray* ArrayRemoveRange(GArray* array, guint index, guint length);
-	[Import(GLib.so), LinkName("g_array_sort")] public static extern void ArraySort(GArray* array, GCompareFunc compare_func);
-	[Import(GLib.so), LinkName("g_array_sort_with_data")] public static extern void ArraySortWithData(GArray* array, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_array_binary_search")] public static extern gboolean ArrayBinarySearch(GArray* array, gconstpointer target, GCompareFunc compare_func, guint* out_match_index);
-	[Import(GLib.so), LinkName("g_array_set_clear_func")] public static extern void ArraySetClearFunc(GArray* array, GDestroyNotify clear_func);
-	[Import(GLib.so), LinkName("g_ptr_array_new")] public static extern GPtrArray* PtrArrayNew();
-	[Import(GLib.so), LinkName("g_ptr_array_new_with_free_func")] public static extern GPtrArray* PtrArrayNewWithFreeFunc(GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_new_take")] public static extern GPtrArray* PtrArrayNewTake(gpointer* data, gsize len, GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_new_from_array")] public static extern GPtrArray* PtrArrayNewFromArray(gpointer* data, gsize len, GCopyFunc copy_func, gpointer copy_func_user_data, GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_steal")] public static extern gpointer* PtrArraySteal(GPtrArray* array, gsize* len);
-	[Import(GLib.so), LinkName("g_ptr_array_copy")] public static extern GPtrArray* PtrArrayCopy(GPtrArray* array, GCopyFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_ptr_array_sized_new")] public static extern GPtrArray* PtrArraySizedNew(guint reserved_size);
-	[Import(GLib.so), LinkName("g_ptr_array_new_full")] public static extern GPtrArray* PtrArrayNewFull(guint reserved_size, GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_new_null_terminated")] public static extern GPtrArray* PtrArrayNewNullTerminated(guint reserved_size, GDestroyNotify element_free_func, gboolean null_terminated);
-	[Import(GLib.so), LinkName("g_ptr_array_new_take_null_terminated")] public static extern GPtrArray* PtrArrayNewTakeNullTerminated(gpointer* data, GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_new_from_null_terminated_array")] public static extern GPtrArray* PtrArrayNewFromNullTerminatedArray(gpointer* data, GCopyFunc copy_func, gpointer copy_func_user_data, GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_free")] public static extern gpointer* PtrArrayFree(GPtrArray* array, gboolean free_segment);
-	[Import(GLib.so), LinkName("g_ptr_array_ref")] public static extern GPtrArray* PtrArrayRef(GPtrArray* array);
-	[Import(GLib.so), LinkName("g_ptr_array_unref")] public static extern void PtrArrayUnref(GPtrArray* array);
-	[Import(GLib.so), LinkName("g_ptr_array_set_free_func")] public static extern void PtrArraySetFreeFunc(GPtrArray* array, GDestroyNotify element_free_func);
-	[Import(GLib.so), LinkName("g_ptr_array_set_size")] public static extern void PtrArraySetSize(GPtrArray* array, gint length);
-	[Import(GLib.so), LinkName("g_ptr_array_remove_index")] public static extern gpointer PtrArrayRemoveIndex(GPtrArray* array, guint index);
-	[Import(GLib.so), LinkName("g_ptr_array_remove_index_fast")] public static extern gpointer PtrArrayRemoveIndexFast(GPtrArray* array, guint index);
-	[Import(GLib.so), LinkName("g_ptr_array_steal_index")] public static extern gpointer PtrArrayStealIndex(GPtrArray* array, guint index);
-	[Import(GLib.so), LinkName("g_ptr_array_steal_index_fast")] public static extern gpointer PtrArrayStealIndexFast(GPtrArray* array, guint index);
-	[Import(GLib.so), LinkName("g_ptr_array_remove")] public static extern gboolean PtrArrayRemove(GPtrArray* array, gpointer data);
-	[Import(GLib.so), LinkName("g_ptr_array_remove_fast")] public static extern gboolean PtrArrayRemoveFast(GPtrArray* array, gpointer data);
-	[Import(GLib.so), LinkName("g_ptr_array_remove_range")] public static extern GPtrArray* PtrArrayRemoveRange(GPtrArray* array, guint index, guint length);
-	[Import(GLib.so), LinkName("g_ptr_array_add")] public static extern void PtrArrayAdd(GPtrArray* array, gpointer data);
-	[Import(GLib.so), LinkName("g_ptr_array_extend")] public static extern void PtrArrayExtend(GPtrArray* array_to_extend, GPtrArray* array, GCopyFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_ptr_array_extend_and_steal")] public static extern void PtrArrayExtendAndSteal(GPtrArray* array_to_extend, GPtrArray* array);
-	[Import(GLib.so), LinkName("g_ptr_array_insert")] public static extern void PtrArrayInsert(GPtrArray* array, gint index, gpointer data);
-	[Import(GLib.so), LinkName("g_ptr_array_sort")] public static extern void PtrArraySort(GPtrArray* array, GCompareFunc compare_func);
-	[Import(GLib.so), LinkName("g_ptr_array_sort_with_data")] public static extern void PtrArraySortWithData(GPtrArray* array, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_ptr_array_sort_values")] public static extern void PtrArraySortValues(GPtrArray* array, GCompareFunc compare_func);
-	[Import(GLib.so), LinkName("g_ptr_array_sort_values_with_data")] public static extern void PtrArraySortValuesWithData(GPtrArray* array, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_ptr_array_foreach")] public static extern void PtrArrayForeach(GPtrArray* array, GFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_ptr_array_find")] public static extern gboolean PtrArrayFind(GPtrArray* haystack, gconstpointer needle, guint* index);
-	[Import(GLib.so), LinkName("g_ptr_array_find_with_equal_func")] public static extern gboolean PtrArrayFindWithEqualFunc(GPtrArray* haystack, gconstpointer needle, GEqualFunc equal_func, guint* index);
-	[Import(GLib.so), LinkName("g_ptr_array_is_null_terminated")] public static extern gboolean PtrArrayIsNullTerminated(GPtrArray* array);
-	[Import(GLib.so), LinkName("g_byte_array_new")] public static extern GByteArray* ByteArrayNew();
-	[Import(GLib.so), LinkName("g_byte_array_new_take")] public static extern GByteArray* ByteArrayNewTake(guint8* data, gsize len);
-	[Import(GLib.so), LinkName("g_byte_array_steal")] public static extern guint8* ByteArraySteal(GByteArray* array, gsize* len);
-	[Import(GLib.so), LinkName("g_byte_array_sized_new")] public static extern GByteArray* ByteArraySizedNew(guint reserved_size);
-	[Import(GLib.so), LinkName("g_byte_array_free")] public static extern guint8* ByteArrayFree(GByteArray* array, gboolean free_segment);
-	[Import(GLib.so), LinkName("g_byte_array_free_to_bytes")] public static extern GBytes* ByteArrayFreeToBytes(GByteArray* array);
-	[Import(GLib.so), LinkName("g_byte_array_ref")] public static extern GByteArray* ByteArrayRef(GByteArray* array);
-	[Import(GLib.so), LinkName("g_byte_array_unref")] public static extern void ByteArrayUnref(GByteArray* array);
-	[Import(GLib.so), LinkName("g_byte_array_append")] public static extern GByteArray* ByteArrayAppend(GByteArray* array, guint8* data, guint len);
-	[Import(GLib.so), LinkName("g_byte_array_prepend")] public static extern GByteArray* ByteArrayPrepend(GByteArray* array, guint8* data, guint len);
-	[Import(GLib.so), LinkName("g_byte_array_set_size")] public static extern GByteArray* ByteArraySetSize(GByteArray* array, guint length);
-	[Import(GLib.so), LinkName("g_byte_array_remove_index")] public static extern GByteArray* ByteArrayRemoveIndex(GByteArray* array, guint index);
-	[Import(GLib.so), LinkName("g_byte_array_remove_index_fast")] public static extern GByteArray* ByteArrayRemoveIndexFast(GByteArray* array, guint index);
-	[Import(GLib.so), LinkName("g_byte_array_remove_range")] public static extern GByteArray* ByteArrayRemoveRange(GByteArray* array, guint index, guint length);
-	[Import(GLib.so), LinkName("g_byte_array_sort")] public static extern void ByteArraySort(GByteArray* array, GCompareFunc compare_func);
-	[Import(GLib.so), LinkName("g_byte_array_sort_with_data")] public static extern void ByteArraySortWithData(GByteArray* array, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_atomic_int_get")] public static extern gint AtomicIntGet(gint* atomic);
-	[Import(GLib.so), LinkName("g_atomic_int_set")] public static extern void AtomicIntSet(gint* atomic, gint newval);
-	[Import(GLib.so), LinkName("g_atomic_int_inc")] public static extern void AtomicIntInc(gint* atomic);
-	[Import(GLib.so), LinkName("g_atomic_int_dec_and_test")] public static extern gboolean AtomicIntDecAndTest(gint* atomic);
-	[Import(GLib.so), LinkName("g_atomic_int_compare_and_exchange")] public static extern gboolean AtomicIntCompareAndExchange(gint* atomic, gint oldval, gint newval);
-	[Import(GLib.so), LinkName("g_atomic_int_compare_and_exchange_full")] public static extern gboolean AtomicIntCompareAndExchangeFull(gint* atomic, gint oldval, gint newval, gint* preval);
-	[Import(GLib.so), LinkName("g_atomic_int_exchange")] public static extern gint AtomicIntExchange(gint* atomic, gint newval);
-	[Import(GLib.so), LinkName("g_atomic_int_add")] public static extern gint AtomicIntAdd(gint* atomic, gint val);
-	[Import(GLib.so), LinkName("g_atomic_int_and")] public static extern guint AtomicIntAnd(guint* atomic, guint val);
-	[Import(GLib.so), LinkName("g_atomic_int_or")] public static extern guint AtomicIntOr(guint* atomic, guint val);
-	[Import(GLib.so), LinkName("g_atomic_int_xor")] public static extern guint AtomicIntXor(guint* atomic, guint val);
-	[Import(GLib.so), LinkName("g_atomic_pointer_get")] public static extern gpointer AtomicPointerGet(void* atomic);
-	[Import(GLib.so), LinkName("g_atomic_pointer_set")] public static extern void AtomicPointerSet(void* atomic, gpointer newval);
-	[Import(GLib.so), LinkName("g_atomic_pointer_compare_and_exchange")] public static extern gboolean AtomicPointerCompareAndExchange(void* atomic, gpointer oldval, gpointer newval);
-	[Import(GLib.so), LinkName("g_atomic_pointer_compare_and_exchange_full")] public static extern gboolean AtomicPointerCompareAndExchangeFull(void* atomic, gpointer oldval, gpointer newval, void* preval);
-	[Import(GLib.so), LinkName("g_atomic_pointer_exchange")] public static extern gpointer AtomicPointerExchange(void* atomic, gpointer newval);
-	[Import(GLib.so), LinkName("g_atomic_pointer_add")] public static extern gintptr AtomicPointerAdd(void* atomic, gssize val);
-	[Import(GLib.so), LinkName("g_atomic_pointer_and")] public static extern guintptr AtomicPointerAnd(void* atomic, gsize val);
-	[Import(GLib.so), LinkName("g_atomic_pointer_or")] public static extern guintptr AtomicPointerOr(void* atomic, gsize val);
-	[Import(GLib.so), LinkName("g_atomic_pointer_xor")] public static extern guintptr AtomicPointerXor(void* atomic, gsize val);
-	[Import(GLib.so), LinkName("g_atomic_int_exchange_and_add")] public static extern gint AtomicIntExchangeAndAdd(gint* atomic, gint val);
+	[LinkName("g_array_new")] public static extern GArray* ArrayNew(gboolean zero_terminated, gboolean clear, guint element_size);
+	[LinkName("g_array_new_take")] public static extern GArray* ArrayNewTake(gpointer data, gsize len, gboolean clear, gsize element_size);
+	[LinkName("g_array_new_take_zero_terminated")] public static extern GArray* ArrayNewTakeZeroTerminated(gpointer data, gboolean clear, gsize element_size);
+	[LinkName("g_array_steal")] public static extern gpointer ArraySteal(GArray* array, gsize* len);
+	[LinkName("g_array_sized_new")] public static extern GArray* ArraySizedNew(gboolean zero_terminated, gboolean clear, guint element_size, guint reserved_size);
+	[LinkName("g_array_copy")] public static extern GArray* ArrayCopy(GArray* array);
+	[LinkName("g_array_free")] public static extern gchar* ArrayFree(GArray* array, gboolean free_segment);
+	[LinkName("g_array_ref")] public static extern GArray* ArrayRef(GArray* array);
+	[LinkName("g_array_unref")] public static extern void ArrayUnref(GArray* array);
+	[LinkName("g_array_get_element_size")] public static extern guint ArrayGetElementSize(GArray* array);
+	[LinkName("g_array_append_vals")] public static extern GArray* ArrayAppendVals(GArray* array, gconstpointer data, guint len);
+	[LinkName("g_array_prepend_vals")] public static extern GArray* ArrayPrependVals(GArray* array, gconstpointer data, guint len);
+	[LinkName("g_array_insert_vals")] public static extern GArray* ArrayInsertVals(GArray* array, guint index, gconstpointer data, guint len);
+	[LinkName("g_array_set_size")] public static extern GArray* ArraySetSize(GArray* array, guint length);
+	[LinkName("g_array_remove_index")] public static extern GArray* ArrayRemoveIndex(GArray* array, guint index);
+	[LinkName("g_array_remove_index_fast")] public static extern GArray* ArrayRemoveIndexFast(GArray* array, guint index);
+	[LinkName("g_array_remove_range")] public static extern GArray* ArrayRemoveRange(GArray* array, guint index, guint length);
+	[LinkName("g_array_sort")] public static extern void ArraySort(GArray* array, GCompareFunc compare_func);
+	[LinkName("g_array_sort_with_data")] public static extern void ArraySortWithData(GArray* array, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_array_binary_search")] public static extern gboolean ArrayBinarySearch(GArray* array, gconstpointer target, GCompareFunc compare_func, guint* out_match_index);
+	[LinkName("g_array_set_clear_func")] public static extern void ArraySetClearFunc(GArray* array, GDestroyNotify clear_func);
+	[LinkName("g_ptr_array_new")] public static extern GPtrArray* PtrArrayNew();
+	[LinkName("g_ptr_array_new_with_free_func")] public static extern GPtrArray* PtrArrayNewWithFreeFunc(GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_new_take")] public static extern GPtrArray* PtrArrayNewTake(gpointer* data, gsize len, GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_new_from_array")] public static extern GPtrArray* PtrArrayNewFromArray(gpointer* data, gsize len, GCopyFunc copy_func, gpointer copy_func_user_data, GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_steal")] public static extern gpointer* PtrArraySteal(GPtrArray* array, gsize* len);
+	[LinkName("g_ptr_array_copy")] public static extern GPtrArray* PtrArrayCopy(GPtrArray* array, GCopyFunc func, gpointer user_data);
+	[LinkName("g_ptr_array_sized_new")] public static extern GPtrArray* PtrArraySizedNew(guint reserved_size);
+	[LinkName("g_ptr_array_new_full")] public static extern GPtrArray* PtrArrayNewFull(guint reserved_size, GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_new_null_terminated")] public static extern GPtrArray* PtrArrayNewNullTerminated(guint reserved_size, GDestroyNotify element_free_func, gboolean null_terminated);
+	[LinkName("g_ptr_array_new_take_null_terminated")] public static extern GPtrArray* PtrArrayNewTakeNullTerminated(gpointer* data, GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_new_from_null_terminated_array")] public static extern GPtrArray* PtrArrayNewFromNullTerminatedArray(gpointer* data, GCopyFunc copy_func, gpointer copy_func_user_data, GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_free")] public static extern gpointer* PtrArrayFree(GPtrArray* array, gboolean free_segment);
+	[LinkName("g_ptr_array_ref")] public static extern GPtrArray* PtrArrayRef(GPtrArray* array);
+	[LinkName("g_ptr_array_unref")] public static extern void PtrArrayUnref(GPtrArray* array);
+	[LinkName("g_ptr_array_set_free_func")] public static extern void PtrArraySetFreeFunc(GPtrArray* array, GDestroyNotify element_free_func);
+	[LinkName("g_ptr_array_set_size")] public static extern void PtrArraySetSize(GPtrArray* array, gint length);
+	[LinkName("g_ptr_array_remove_index")] public static extern gpointer PtrArrayRemoveIndex(GPtrArray* array, guint index);
+	[LinkName("g_ptr_array_remove_index_fast")] public static extern gpointer PtrArrayRemoveIndexFast(GPtrArray* array, guint index);
+	[LinkName("g_ptr_array_steal_index")] public static extern gpointer PtrArrayStealIndex(GPtrArray* array, guint index);
+	[LinkName("g_ptr_array_steal_index_fast")] public static extern gpointer PtrArrayStealIndexFast(GPtrArray* array, guint index);
+	[LinkName("g_ptr_array_remove")] public static extern gboolean PtrArrayRemove(GPtrArray* array, gpointer data);
+	[LinkName("g_ptr_array_remove_fast")] public static extern gboolean PtrArrayRemoveFast(GPtrArray* array, gpointer data);
+	[LinkName("g_ptr_array_remove_range")] public static extern GPtrArray* PtrArrayRemoveRange(GPtrArray* array, guint index, guint length);
+	[LinkName("g_ptr_array_add")] public static extern void PtrArrayAdd(GPtrArray* array, gpointer data);
+	[LinkName("g_ptr_array_extend")] public static extern void PtrArrayExtend(GPtrArray* array_to_extend, GPtrArray* array, GCopyFunc func, gpointer user_data);
+	[LinkName("g_ptr_array_extend_and_steal")] public static extern void PtrArrayExtendAndSteal(GPtrArray* array_to_extend, GPtrArray* array);
+	[LinkName("g_ptr_array_insert")] public static extern void PtrArrayInsert(GPtrArray* array, gint index, gpointer data);
+	[LinkName("g_ptr_array_sort")] public static extern void PtrArraySort(GPtrArray* array, GCompareFunc compare_func);
+	[LinkName("g_ptr_array_sort_with_data")] public static extern void PtrArraySortWithData(GPtrArray* array, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_ptr_array_sort_values")] public static extern void PtrArraySortValues(GPtrArray* array, GCompareFunc compare_func);
+	[LinkName("g_ptr_array_sort_values_with_data")] public static extern void PtrArraySortValuesWithData(GPtrArray* array, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_ptr_array_foreach")] public static extern void PtrArrayForeach(GPtrArray* array, GFunc func, gpointer user_data);
+	[LinkName("g_ptr_array_find")] public static extern gboolean PtrArrayFind(GPtrArray* haystack, gconstpointer needle, guint* index);
+	[LinkName("g_ptr_array_find_with_equal_func")] public static extern gboolean PtrArrayFindWithEqualFunc(GPtrArray* haystack, gconstpointer needle, GEqualFunc equal_func, guint* index);
+	[LinkName("g_ptr_array_is_null_terminated")] public static extern gboolean PtrArrayIsNullTerminated(GPtrArray* array);
+	[LinkName("g_byte_array_new")] public static extern GByteArray* ByteArrayNew();
+	[LinkName("g_byte_array_new_take")] public static extern GByteArray* ByteArrayNewTake(guint8* data, gsize len);
+	[LinkName("g_byte_array_steal")] public static extern guint8* ByteArraySteal(GByteArray* array, gsize* len);
+	[LinkName("g_byte_array_sized_new")] public static extern GByteArray* ByteArraySizedNew(guint reserved_size);
+	[LinkName("g_byte_array_free")] public static extern guint8* ByteArrayFree(GByteArray* array, gboolean free_segment);
+	[LinkName("g_byte_array_free_to_bytes")] public static extern GBytes* ByteArrayFreeToBytes(GByteArray* array);
+	[LinkName("g_byte_array_ref")] public static extern GByteArray* ByteArrayRef(GByteArray* array);
+	[LinkName("g_byte_array_unref")] public static extern void ByteArrayUnref(GByteArray* array);
+	[LinkName("g_byte_array_append")] public static extern GByteArray* ByteArrayAppend(GByteArray* array, guint8* data, guint len);
+	[LinkName("g_byte_array_prepend")] public static extern GByteArray* ByteArrayPrepend(GByteArray* array, guint8* data, guint len);
+	[LinkName("g_byte_array_set_size")] public static extern GByteArray* ByteArraySetSize(GByteArray* array, guint length);
+	[LinkName("g_byte_array_remove_index")] public static extern GByteArray* ByteArrayRemoveIndex(GByteArray* array, guint index);
+	[LinkName("g_byte_array_remove_index_fast")] public static extern GByteArray* ByteArrayRemoveIndexFast(GByteArray* array, guint index);
+	[LinkName("g_byte_array_remove_range")] public static extern GByteArray* ByteArrayRemoveRange(GByteArray* array, guint index, guint length);
+	[LinkName("g_byte_array_sort")] public static extern void ByteArraySort(GByteArray* array, GCompareFunc compare_func);
+	[LinkName("g_byte_array_sort_with_data")] public static extern void ByteArraySortWithData(GByteArray* array, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_atomic_int_get")] public static extern gint AtomicIntGet(gint* atomic);
+	[LinkName("g_atomic_int_set")] public static extern void AtomicIntSet(gint* atomic, gint newval);
+	[LinkName("g_atomic_int_inc")] public static extern void AtomicIntInc(gint* atomic);
+	[LinkName("g_atomic_int_dec_and_test")] public static extern gboolean AtomicIntDecAndTest(gint* atomic);
+	[LinkName("g_atomic_int_compare_and_exchange")] public static extern gboolean AtomicIntCompareAndExchange(gint* atomic, gint oldval, gint newval);
+	[LinkName("g_atomic_int_compare_and_exchange_full")] public static extern gboolean AtomicIntCompareAndExchangeFull(gint* atomic, gint oldval, gint newval, gint* preval);
+	[LinkName("g_atomic_int_exchange")] public static extern gint AtomicIntExchange(gint* atomic, gint newval);
+	[LinkName("g_atomic_int_add")] public static extern gint AtomicIntAdd(gint* atomic, gint val);
+	[LinkName("g_atomic_int_and")] public static extern guint AtomicIntAnd(guint* atomic, guint val);
+	[LinkName("g_atomic_int_or")] public static extern guint AtomicIntOr(guint* atomic, guint val);
+	[LinkName("g_atomic_int_xor")] public static extern guint AtomicIntXor(guint* atomic, guint val);
+	[LinkName("g_atomic_pointer_get")] public static extern gpointer AtomicPointerGet(void* atomic);
+	[LinkName("g_atomic_pointer_set")] public static extern void AtomicPointerSet(void* atomic, gpointer newval);
+	[LinkName("g_atomic_pointer_compare_and_exchange")] public static extern gboolean AtomicPointerCompareAndExchange(void* atomic, gpointer oldval, gpointer newval);
+	[LinkName("g_atomic_pointer_compare_and_exchange_full")] public static extern gboolean AtomicPointerCompareAndExchangeFull(void* atomic, gpointer oldval, gpointer newval, void* preval);
+	[LinkName("g_atomic_pointer_exchange")] public static extern gpointer AtomicPointerExchange(void* atomic, gpointer newval);
+	[LinkName("g_atomic_pointer_add")] public static extern gintptr AtomicPointerAdd(void* atomic, gssize val);
+	[LinkName("g_atomic_pointer_and")] public static extern guintptr AtomicPointerAnd(void* atomic, gsize val);
+	[LinkName("g_atomic_pointer_or")] public static extern guintptr AtomicPointerOr(void* atomic, gsize val);
+	[LinkName("g_atomic_pointer_xor")] public static extern guintptr AtomicPointerXor(void* atomic, gsize val);
+	[LinkName("g_atomic_int_exchange_and_add")] public static extern gint AtomicIntExchangeAndAdd(gint* atomic, gint val);
 }
 
 typealias GQuark = guint32;
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_quark_try_string")] public static extern GQuark QuarkTryString(gchar* string);
-	[Import(GLib.so), LinkName("g_quark_from_static_string")] public static extern GQuark QuarkFromStaticString(gchar* string);
-	[Import(GLib.so), LinkName("g_quark_from_string")] public static extern GQuark QuarkFromString(gchar* string);
-	[Import(GLib.so), LinkName("g_quark_to_string")] public static extern gchar* QuarkToString(GQuark quark);
-	[Import(GLib.so), LinkName("g_intern_string")] public static extern gchar* InternString(gchar* string);
-	[Import(GLib.so), LinkName("g_intern_static_string")] public static extern gchar* InternStaticString(gchar* string);
+	[LinkName("g_quark_try_string")] public static extern GQuark QuarkTryString(gchar* string);
+	[LinkName("g_quark_from_static_string")] public static extern GQuark QuarkFromStaticString(gchar* string);
+	[LinkName("g_quark_from_string")] public static extern GQuark QuarkFromString(gchar* string);
+	[LinkName("g_quark_to_string")] public static extern gchar* QuarkToString(GQuark quark);
+	[LinkName("g_intern_string")] public static extern gchar* InternString(gchar* string);
+	[LinkName("g_intern_static_string")] public static extern gchar* InternStaticString(gchar* string);
 }
 
 
@@ -326,40 +326,40 @@ function void GErrorClearFunc(GError* error);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_error_domain_register_static")] public static extern GQuark ErrorDomainRegisterStatic(c_char* error_type_name, gsize error_type_private_size, GErrorInitFunc error_type_init, GErrorCopyFunc error_type_copy, GErrorClearFunc error_type_clear);
-	[Import(GLib.so), LinkName("g_error_domain_register")] public static extern GQuark ErrorDomainRegister(c_char* error_type_name, gsize error_type_private_size, GErrorInitFunc error_type_init, GErrorCopyFunc error_type_copy, GErrorClearFunc error_type_clear);
-	[Import(GLib.so), LinkName("g_error_new")] public static extern GError* ErrorNew(GQuark domain, gint code, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_error_new_literal")] public static extern GError* ErrorNewLiteral(GQuark domain, gint code, gchar* message);
-	[Import(GLib.so), LinkName("g_error_new_valist")] public static extern GError* ErrorNewValist(GQuark domain, gint code, gchar* format, VarArgs args);
-	[Import(GLib.so), LinkName("g_error_free")] public static extern void ErrorFree(GError* error);
-	[Import(GLib.so), LinkName("g_error_copy")] public static extern GError* ErrorCopy(GError* error);
-	[Import(GLib.so), LinkName("g_error_matches")] public static extern gboolean ErrorMatches(GError* error, GQuark domain, gint code);
-	[Import(GLib.so), LinkName("g_set_error")] public static extern void SetError(GError** err, GQuark domain, gint code, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_set_error_literal")] public static extern void SetErrorLiteral(GError** err, GQuark domain, gint code, gchar* message);
-	[Import(GLib.so), LinkName("g_propagate_error")] public static extern void PropagateError(GError** dest, GError* src);
-	[Import(GLib.so), LinkName("g_clear_error")] public static extern void ClearError(GError** err);
-	[Import(GLib.so), LinkName("g_prefix_error")] public static extern void PrefixError(GError** err, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_prefix_error_literal")] public static extern void PrefixErrorLiteral(GError** err, gchar* prefix);
-	[Import(GLib.so), LinkName("g_propagate_prefixed_error")] public static extern void PropagatePrefixedError(GError** dest, GError* src, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_get_user_name")] public static extern gchar* GetUserName();
-	[Import(GLib.so), LinkName("g_get_real_name")] public static extern gchar* GetRealName();
-	[Import(GLib.so), LinkName("g_get_home_dir")] public static extern gchar* GetHomeDir();
-	[Import(GLib.so), LinkName("g_get_tmp_dir")] public static extern gchar* GetTmpDir();
-	[Import(GLib.so), LinkName("g_get_host_name")] public static extern gchar* GetHostName();
-	[Import(GLib.so), LinkName("g_get_prgname")] public static extern gchar* GetPrgname();
-	[Import(GLib.so), LinkName("g_set_prgname")] public static extern void SetPrgname(gchar* prgname);
-	[Import(GLib.so), LinkName("g_get_application_name")] public static extern gchar* GetApplicationName();
-	[Import(GLib.so), LinkName("g_set_application_name")] public static extern void SetApplicationName(gchar* application_name);
-	[Import(GLib.so), LinkName("g_get_os_info")] public static extern gchar* GetOsInfo(gchar* key_name);
-	[Import(GLib.so), LinkName("g_reload_user_special_dirs_cache")] public static extern void ReloadUserSpecialDirsCache();
-	[Import(GLib.so), LinkName("g_get_user_data_dir")] public static extern gchar* GetUserDataDir();
-	[Import(GLib.so), LinkName("g_get_user_config_dir")] public static extern gchar* GetUserConfigDir();
-	[Import(GLib.so), LinkName("g_get_user_cache_dir")] public static extern gchar* GetUserCacheDir();
-	[Import(GLib.so), LinkName("g_get_user_state_dir")] public static extern gchar* GetUserStateDir();
-	[Import(GLib.so), LinkName("g_get_system_data_dirs")] public static extern gchar** GetSystemDataDirs();
-	[Import(GLib.so), LinkName("g_win32_get_system_data_dirs_for_module")] public static extern gchar** Win32GetSystemDataDirsForModule(function void() address_of_function);
-	[Import(GLib.so), LinkName("g_get_system_config_dirs")] public static extern gchar** GetSystemConfigDirs();
-	[Import(GLib.so), LinkName("g_get_user_runtime_dir")] public static extern gchar* GetUserRuntimeDir();
+	[LinkName("g_error_domain_register_static")] public static extern GQuark ErrorDomainRegisterStatic(c_char* error_type_name, gsize error_type_private_size, GErrorInitFunc error_type_init, GErrorCopyFunc error_type_copy, GErrorClearFunc error_type_clear);
+	[LinkName("g_error_domain_register")] public static extern GQuark ErrorDomainRegister(c_char* error_type_name, gsize error_type_private_size, GErrorInitFunc error_type_init, GErrorCopyFunc error_type_copy, GErrorClearFunc error_type_clear);
+	[LinkName("g_error_new")] public static extern GError* ErrorNew(GQuark domain, gint code, gchar* format, ...);
+	[LinkName("g_error_new_literal")] public static extern GError* ErrorNewLiteral(GQuark domain, gint code, gchar* message);
+	[LinkName("g_error_new_valist")] public static extern GError* ErrorNewValist(GQuark domain, gint code, gchar* format, VarArgs args);
+	[LinkName("g_error_free")] public static extern void ErrorFree(GError* error);
+	[LinkName("g_error_copy")] public static extern GError* ErrorCopy(GError* error);
+	[LinkName("g_error_matches")] public static extern gboolean ErrorMatches(GError* error, GQuark domain, gint code);
+	[LinkName("g_set_error")] public static extern void SetError(GError** err, GQuark domain, gint code, gchar* format, ...);
+	[LinkName("g_set_error_literal")] public static extern void SetErrorLiteral(GError** err, GQuark domain, gint code, gchar* message);
+	[LinkName("g_propagate_error")] public static extern void PropagateError(GError** dest, GError* src);
+	[LinkName("g_clear_error")] public static extern void ClearError(GError** err);
+	[LinkName("g_prefix_error")] public static extern void PrefixError(GError** err, gchar* format, ...);
+	[LinkName("g_prefix_error_literal")] public static extern void PrefixErrorLiteral(GError** err, gchar* prefix);
+	[LinkName("g_propagate_prefixed_error")] public static extern void PropagatePrefixedError(GError** dest, GError* src, gchar* format, ...);
+	[LinkName("g_get_user_name")] public static extern gchar* GetUserName();
+	[LinkName("g_get_real_name")] public static extern gchar* GetRealName();
+	[LinkName("g_get_home_dir")] public static extern gchar* GetHomeDir();
+	[LinkName("g_get_tmp_dir")] public static extern gchar* GetTmpDir();
+	[LinkName("g_get_host_name")] public static extern gchar* GetHostName();
+	[LinkName("g_get_prgname")] public static extern gchar* GetPrgname();
+	[LinkName("g_set_prgname")] public static extern void SetPrgname(gchar* prgname);
+	[LinkName("g_get_application_name")] public static extern gchar* GetApplicationName();
+	[LinkName("g_set_application_name")] public static extern void SetApplicationName(gchar* application_name);
+	[LinkName("g_get_os_info")] public static extern gchar* GetOsInfo(gchar* key_name);
+	[LinkName("g_reload_user_special_dirs_cache")] public static extern void ReloadUserSpecialDirsCache();
+	[LinkName("g_get_user_data_dir")] public static extern gchar* GetUserDataDir();
+	[LinkName("g_get_user_config_dir")] public static extern gchar* GetUserConfigDir();
+	[LinkName("g_get_user_cache_dir")] public static extern gchar* GetUserCacheDir();
+	[LinkName("g_get_user_state_dir")] public static extern gchar* GetUserStateDir();
+	[LinkName("g_get_system_data_dirs")] public static extern gchar** GetSystemDataDirs();
+	[LinkName("g_win32_get_system_data_dirs_for_module")] public static extern gchar** Win32GetSystemDataDirsForModule(function void() address_of_function);
+	[LinkName("g_get_system_config_dirs")] public static extern gchar** GetSystemConfigDirs();
+	[LinkName("g_get_user_runtime_dir")] public static extern gchar* GetUserRuntimeDir();
 }
 
 /** GUserDirectory:
@@ -398,7 +398,7 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_get_user_special_dir")] public static extern gchar* GetUserSpecialDir(GUserDirectory directory);
+	[LinkName("g_get_user_special_dir")] public static extern gchar* GetUserSpecialDir(GUserDirectory directory);
 }
 
 
@@ -410,10 +410,10 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_parse_debug_string")] public static extern guint ParseDebugString(gchar* string, GDebugKey* keys, guint nkeys);
-	[Import(GLib.so), LinkName("g_snprintf")] public static extern gint Snprintf(gchar* string, gulong n, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_vsnprintf")] public static extern gint Vsnprintf(gchar* string, gulong n, gchar* format, VarArgs args);
-	[Import(GLib.so), LinkName("g_nullify_pointer")] public static extern void NullifyPointer(gpointer* nullify_location);
+	[LinkName("g_parse_debug_string")] public static extern guint ParseDebugString(gchar* string, GDebugKey* keys, guint nkeys);
+	[LinkName("g_snprintf")] public static extern gint Snprintf(gchar* string, gulong n, gchar* format, ...);
+	[LinkName("g_vsnprintf")] public static extern gint Vsnprintf(gchar* string, gulong n, gchar* format, VarArgs args);
+	[LinkName("g_nullify_pointer")] public static extern void NullifyPointer(gpointer* nullify_location);
 }
 
 [AllowDuplicates] enum GFormatSizeFlags : c_int
@@ -428,9 +428,9 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_format_size_full")] public static extern gchar* FormatSizeFull(guint64 size, GFormatSizeFlags flags);
-	[Import(GLib.so), LinkName("g_format_size")] public static extern gchar* FormatSize(guint64 size);
-	[Import(GLib.so), LinkName("g_format_size_for_display")] public static extern gchar* FormatSizeForDisplay(goffset size);
+	[LinkName("g_format_size_full")] public static extern gchar* FormatSizeFull(guint64 size, GFormatSizeFlags flags);
+	[LinkName("g_format_size")] public static extern gchar* FormatSize(guint64 size);
+	[LinkName("g_format_size_for_display")] public static extern gchar* FormatSizeForDisplay(goffset size);
 }
 
 /** GVoidFunc:
@@ -443,22 +443,22 @@ function void GVoidFunc();
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_atexit")] public static extern void Atexit(GVoidFunc func);
+	[LinkName("g_atexit")] public static extern void Atexit(GVoidFunc func);
 }
 
 static
 {
-	[Import(GLib.so), LinkName("atexit")] public static extern c_int Atexit(function void());
+	[LinkName("atexit")] public static extern c_int Atexit(function void());
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_find_program_in_path")] public static extern gchar* FindProgramInPath(gchar* program);
-	[Import(GLib.so), LinkName("g_bit_nth_lsf")] public static extern gint BitNthLsf(gulong mask, gint nth_bit);
-	[Import(GLib.so), LinkName("g_bit_nth_msf")] public static extern gint BitNthMsf(gulong mask, gint nth_bit);
-	[Import(GLib.so), LinkName("g_bit_storage")] public static extern guint BitStorage(gulong number);
-	[Import(GLib.so), LinkName("g_abort")] public static extern void Abort();
-	[Import(GLib.so), LinkName("g_thread_error_quark")] public static extern GQuark ThreadErrorQuark();
+	[LinkName("g_find_program_in_path")] public static extern gchar* FindProgramInPath(gchar* program);
+	[LinkName("g_bit_nth_lsf")] public static extern gint BitNthLsf(gulong mask, gint nth_bit);
+	[LinkName("g_bit_nth_msf")] public static extern gint BitNthMsf(gulong mask, gint nth_bit);
+	[LinkName("g_bit_storage")] public static extern guint BitStorage(gulong number);
+	[LinkName("g_abort")] public static extern void Abort();
+	[LinkName("g_thread_error_quark")] public static extern GQuark ThreadErrorQuark();
 }
 
 [AllowDuplicates] enum GThreadError : c_int
@@ -521,48 +521,48 @@ function gpointer GThreadFunc(gpointer data);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_thread_ref")] public static extern GThread* ThreadRef(GThread* thread);
-	[Import(GLib.so), LinkName("g_thread_unref")] public static extern void ThreadUnref(GThread* thread);
-	[Import(GLib.so), LinkName("g_thread_new")] public static extern GThread* ThreadNew(gchar* name, GThreadFunc func, gpointer data);
-	[Import(GLib.so), LinkName("g_thread_try_new")] public static extern GThread* ThreadTryNew(gchar* name, GThreadFunc func, gpointer data, GError** error);
-	[Import(GLib.so), LinkName("g_thread_self")] public static extern GThread* ThreadSelf();
-	[Import(GLib.so), LinkName("g_thread_exit")] public static extern void ThreadExit(gpointer retval);
-	[Import(GLib.so), LinkName("g_thread_join")] public static extern gpointer ThreadJoin(GThread* thread);
-	[Import(GLib.so), LinkName("g_thread_yield")] public static extern void ThreadYield();
-	[Import(GLib.so), LinkName("g_thread_get_name")] public static extern c_char* ThreadGetName(GThread* thread);
-	[Import(GLib.so), LinkName("g_mutex_init")] public static extern void MutexInit(GMutex* mutex);
-	[Import(GLib.so), LinkName("g_mutex_clear")] public static extern void MutexClear(GMutex* mutex);
-	[Import(GLib.so), LinkName("g_mutex_lock")] public static extern void MutexLock(GMutex* mutex);
-	[Import(GLib.so), LinkName("g_mutex_trylock")] public static extern gboolean MutexTrylock(GMutex* mutex);
-	[Import(GLib.so), LinkName("g_mutex_unlock")] public static extern void MutexUnlock(GMutex* mutex);
-	[Import(GLib.so), LinkName("g_rw_lock_init")] public static extern void RwLockInit(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_clear")] public static extern void RwLockClear(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_writer_lock")] public static extern void RwLockWriterLock(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_writer_trylock")] public static extern gboolean RwLockWriterTrylock(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_writer_unlock")] public static extern void RwLockWriterUnlock(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_reader_lock")] public static extern void RwLockReaderLock(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_reader_trylock")] public static extern gboolean RwLockReaderTrylock(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rw_lock_reader_unlock")] public static extern void RwLockReaderUnlock(GRWLock* rw_lock);
-	[Import(GLib.so), LinkName("g_rec_mutex_init")] public static extern void RecMutexInit(GRecMutex* rec_mutex);
-	[Import(GLib.so), LinkName("g_rec_mutex_clear")] public static extern void RecMutexClear(GRecMutex* rec_mutex);
-	[Import(GLib.so), LinkName("g_rec_mutex_lock")] public static extern void RecMutexLock(GRecMutex* rec_mutex);
-	[Import(GLib.so), LinkName("g_rec_mutex_trylock")] public static extern gboolean RecMutexTrylock(GRecMutex* rec_mutex);
-	[Import(GLib.so), LinkName("g_rec_mutex_unlock")] public static extern void RecMutexUnlock(GRecMutex* rec_mutex);
-	[Import(GLib.so), LinkName("g_cond_init")] public static extern void CondInit(GCond* cond);
-	[Import(GLib.so), LinkName("g_cond_clear")] public static extern void CondClear(GCond* cond);
-	[Import(GLib.so), LinkName("g_cond_wait")] public static extern void CondWait(GCond* cond, GMutex* mutex);
-	[Import(GLib.so), LinkName("g_cond_signal")] public static extern void CondSignal(GCond* cond);
-	[Import(GLib.so), LinkName("g_cond_broadcast")] public static extern void CondBroadcast(GCond* cond);
-	[Import(GLib.so), LinkName("g_cond_wait_until")] public static extern gboolean CondWaitUntil(GCond* cond, GMutex* mutex, gint64 end_time);
-	[Import(GLib.so), LinkName("g_private_get")] public static extern gpointer PrivateGet(GPrivate* key);
-	[Import(GLib.so), LinkName("g_private_set")] public static extern void PrivateSet(GPrivate* key, gpointer value);
-	[Import(GLib.so), LinkName("g_private_replace")] public static extern void PrivateReplace(GPrivate* key, gpointer value);
-	[Import(GLib.so), LinkName("g_once_impl")] public static extern gpointer OnceImpl(GOnce* once, GThreadFunc func, gpointer arg);
-	[Import(GLib.so), LinkName("g_once_init_enter")] public static extern gboolean OnceInitEnter(void* location);
-	[Import(GLib.so), LinkName("g_once_init_leave")] public static extern void OnceInitLeave(void* location, gsize result);
-	[Import(GLib.so), LinkName("g_once_init_enter_pointer")] public static extern gboolean OnceInitEnterPointer(void* location);
-	[Import(GLib.so), LinkName("g_once_init_leave_pointer")] public static extern void OnceInitLeavePointer(void* location, gpointer result);
-	[Import(GLib.so), LinkName("g_get_num_processors")] public static extern guint GetNumProcessors();
+	[LinkName("g_thread_ref")] public static extern GThread* ThreadRef(GThread* thread);
+	[LinkName("g_thread_unref")] public static extern void ThreadUnref(GThread* thread);
+	[LinkName("g_thread_new")] public static extern GThread* ThreadNew(gchar* name, GThreadFunc func, gpointer data);
+	[LinkName("g_thread_try_new")] public static extern GThread* ThreadTryNew(gchar* name, GThreadFunc func, gpointer data, GError** error);
+	[LinkName("g_thread_self")] public static extern GThread* ThreadSelf();
+	[LinkName("g_thread_exit")] public static extern void ThreadExit(gpointer retval);
+	[LinkName("g_thread_join")] public static extern gpointer ThreadJoin(GThread* thread);
+	[LinkName("g_thread_yield")] public static extern void ThreadYield();
+	[LinkName("g_thread_get_name")] public static extern c_char* ThreadGetName(GThread* thread);
+	[LinkName("g_mutex_init")] public static extern void MutexInit(GMutex* mutex);
+	[LinkName("g_mutex_clear")] public static extern void MutexClear(GMutex* mutex);
+	[LinkName("g_mutex_lock")] public static extern void MutexLock(GMutex* mutex);
+	[LinkName("g_mutex_trylock")] public static extern gboolean MutexTrylock(GMutex* mutex);
+	[LinkName("g_mutex_unlock")] public static extern void MutexUnlock(GMutex* mutex);
+	[LinkName("g_rw_lock_init")] public static extern void RwLockInit(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_clear")] public static extern void RwLockClear(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_writer_lock")] public static extern void RwLockWriterLock(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_writer_trylock")] public static extern gboolean RwLockWriterTrylock(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_writer_unlock")] public static extern void RwLockWriterUnlock(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_reader_lock")] public static extern void RwLockReaderLock(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_reader_trylock")] public static extern gboolean RwLockReaderTrylock(GRWLock* rw_lock);
+	[LinkName("g_rw_lock_reader_unlock")] public static extern void RwLockReaderUnlock(GRWLock* rw_lock);
+	[LinkName("g_rec_mutex_init")] public static extern void RecMutexInit(GRecMutex* rec_mutex);
+	[LinkName("g_rec_mutex_clear")] public static extern void RecMutexClear(GRecMutex* rec_mutex);
+	[LinkName("g_rec_mutex_lock")] public static extern void RecMutexLock(GRecMutex* rec_mutex);
+	[LinkName("g_rec_mutex_trylock")] public static extern gboolean RecMutexTrylock(GRecMutex* rec_mutex);
+	[LinkName("g_rec_mutex_unlock")] public static extern void RecMutexUnlock(GRecMutex* rec_mutex);
+	[LinkName("g_cond_init")] public static extern void CondInit(GCond* cond);
+	[LinkName("g_cond_clear")] public static extern void CondClear(GCond* cond);
+	[LinkName("g_cond_wait")] public static extern void CondWait(GCond* cond, GMutex* mutex);
+	[LinkName("g_cond_signal")] public static extern void CondSignal(GCond* cond);
+	[LinkName("g_cond_broadcast")] public static extern void CondBroadcast(GCond* cond);
+	[LinkName("g_cond_wait_until")] public static extern gboolean CondWaitUntil(GCond* cond, GMutex* mutex, gint64 end_time);
+	[LinkName("g_private_get")] public static extern gpointer PrivateGet(GPrivate* key);
+	[LinkName("g_private_set")] public static extern void PrivateSet(GPrivate* key, gpointer value);
+	[LinkName("g_private_replace")] public static extern void PrivateReplace(GPrivate* key, gpointer value);
+	[LinkName("g_once_impl")] public static extern gpointer OnceImpl(GOnce* once, GThreadFunc func, gpointer arg);
+	[LinkName("g_once_init_enter")] public static extern gboolean OnceInitEnter(void* location);
+	[LinkName("g_once_init_leave")] public static extern void OnceInitLeave(void* location, gsize result);
+	[LinkName("g_once_init_enter_pointer")] public static extern gboolean OnceInitEnterPointer(void* location);
+	[LinkName("g_once_init_leave_pointer")] public static extern void OnceInitLeavePointer(void* location, gpointer result);
+	[LinkName("g_get_num_processors")] public static extern guint GetNumProcessors();
 }
 
 /** GMutexLocker:
@@ -597,57 +597,57 @@ struct GAsyncQueue;
 
 extension GAsyncQueue
 {
-	[Import(GLib.so), LinkName("g_async_queue_new")] public static extern GAsyncQueue* New();
-	[Import(GLib.so), LinkName("g_async_queue_new_full")] public static extern GAsyncQueue* NewFull(GDestroyNotify item_free_func);
-	[Import(GLib.so), LinkName("g_async_queue_lock")] public static extern void Lock(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_unlock")] public static extern void Unlock(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_ref")] public static extern GAsyncQueue* Ref(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_unref")] public static extern void Unref(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_ref_unlocked")] public static extern void RefUnlocked(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_unref_and_unlock")] public static extern void UnrefAndUnlock(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_push")] public static extern void Push(GAsyncQueue* queue, gpointer data);
-	[Import(GLib.so), LinkName("g_async_queue_push_unlocked")] public static extern void PushUnlocked(GAsyncQueue* queue, gpointer data);
-	[Import(GLib.so), LinkName("g_async_queue_push_sorted")] public static extern void PushSorted(GAsyncQueue* queue, gpointer data, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_async_queue_push_sorted_unlocked")] public static extern void PushSortedUnlocked(GAsyncQueue* queue, gpointer data, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_async_queue_pop")] public static extern gpointer Pop(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_pop_unlocked")] public static extern gpointer PopUnlocked(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_try_pop")] public static extern gpointer TryPop(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_try_pop_unlocked")] public static extern gpointer TryPopUnlocked(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_timeout_pop")] public static extern gpointer TimeoutPop(GAsyncQueue* queue, guint64 timeout);
-	[Import(GLib.so), LinkName("g_async_queue_timeout_pop_unlocked")] public static extern gpointer TimeoutPopUnlocked(GAsyncQueue* queue, guint64 timeout);
-	[Import(GLib.so), LinkName("g_async_queue_length")] public static extern gint Length(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_length_unlocked")] public static extern gint LengthUnlocked(GAsyncQueue* queue);
-	[Import(GLib.so), LinkName("g_async_queue_sort")] public static extern void Sort(GAsyncQueue* queue, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_async_queue_sort_unlocked")] public static extern void SortUnlocked(GAsyncQueue* queue, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_async_queue_remove")] public static extern gboolean Remove(GAsyncQueue* queue, gpointer item);
-	[Import(GLib.so), LinkName("g_async_queue_remove_unlocked")] public static extern gboolean RemoveUnlocked(GAsyncQueue* queue, gpointer item);
-	[Import(GLib.so), LinkName("g_async_queue_push_front")] public static extern void PushFront(GAsyncQueue* queue, gpointer item);
-	[Import(GLib.so), LinkName("g_async_queue_push_front_unlocked")] public static extern void PushFrontUnlocked(GAsyncQueue* queue, gpointer item);
-	[Import(GLib.so), LinkName("g_async_queue_timed_pop")] public static extern gpointer TimedPop(GAsyncQueue* queue, GTimeVal* end_time);
-	[Import(GLib.so), LinkName("g_async_queue_timed_pop_unlocked")] public static extern gpointer TimedPopUnlocked(GAsyncQueue* queue, GTimeVal* end_time);
+	[LinkName("g_async_queue_new")] public static extern GAsyncQueue* New();
+	[LinkName("g_async_queue_new_full")] public static extern GAsyncQueue* NewFull(GDestroyNotify item_free_func);
+	[LinkName("g_async_queue_lock")] public static extern void Lock(GAsyncQueue* queue);
+	[LinkName("g_async_queue_unlock")] public static extern void Unlock(GAsyncQueue* queue);
+	[LinkName("g_async_queue_ref")] public static extern GAsyncQueue* Ref(GAsyncQueue* queue);
+	[LinkName("g_async_queue_unref")] public static extern void Unref(GAsyncQueue* queue);
+	[LinkName("g_async_queue_ref_unlocked")] public static extern void RefUnlocked(GAsyncQueue* queue);
+	[LinkName("g_async_queue_unref_and_unlock")] public static extern void UnrefAndUnlock(GAsyncQueue* queue);
+	[LinkName("g_async_queue_push")] public static extern void Push(GAsyncQueue* queue, gpointer data);
+	[LinkName("g_async_queue_push_unlocked")] public static extern void PushUnlocked(GAsyncQueue* queue, gpointer data);
+	[LinkName("g_async_queue_push_sorted")] public static extern void PushSorted(GAsyncQueue* queue, gpointer data, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_async_queue_push_sorted_unlocked")] public static extern void PushSortedUnlocked(GAsyncQueue* queue, gpointer data, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_async_queue_pop")] public static extern gpointer Pop(GAsyncQueue* queue);
+	[LinkName("g_async_queue_pop_unlocked")] public static extern gpointer PopUnlocked(GAsyncQueue* queue);
+	[LinkName("g_async_queue_try_pop")] public static extern gpointer TryPop(GAsyncQueue* queue);
+	[LinkName("g_async_queue_try_pop_unlocked")] public static extern gpointer TryPopUnlocked(GAsyncQueue* queue);
+	[LinkName("g_async_queue_timeout_pop")] public static extern gpointer TimeoutPop(GAsyncQueue* queue, guint64 timeout);
+	[LinkName("g_async_queue_timeout_pop_unlocked")] public static extern gpointer TimeoutPopUnlocked(GAsyncQueue* queue, guint64 timeout);
+	[LinkName("g_async_queue_length")] public static extern gint Length(GAsyncQueue* queue);
+	[LinkName("g_async_queue_length_unlocked")] public static extern gint LengthUnlocked(GAsyncQueue* queue);
+	[LinkName("g_async_queue_sort")] public static extern void Sort(GAsyncQueue* queue, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_async_queue_sort_unlocked")] public static extern void SortUnlocked(GAsyncQueue* queue, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_async_queue_remove")] public static extern gboolean Remove(GAsyncQueue* queue, gpointer item);
+	[LinkName("g_async_queue_remove_unlocked")] public static extern gboolean RemoveUnlocked(GAsyncQueue* queue, gpointer item);
+	[LinkName("g_async_queue_push_front")] public static extern void PushFront(GAsyncQueue* queue, gpointer item);
+	[LinkName("g_async_queue_push_front_unlocked")] public static extern void PushFrontUnlocked(GAsyncQueue* queue, gpointer item);
+	[LinkName("g_async_queue_timed_pop")] public static extern gpointer TimedPop(GAsyncQueue* queue, GTimeVal* end_time);
+	[LinkName("g_async_queue_timed_pop_unlocked")] public static extern gpointer TimedPopUnlocked(GAsyncQueue* queue, GTimeVal* end_time);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_on_error_query")] public static extern void OnErrorQuery(gchar* prg_name);
-	[Import(GLib.so), LinkName("g_on_error_stack_trace")] public static extern void OnErrorStackTrace(gchar* prg_name);
-	[Import(GLib.so), LinkName("g_base64_encode_step")] public static extern gsize Base64EncodeStep(guchar* @in, gsize len, gboolean break_lines, gchar* @out, gint* state, gint* save);
-	[Import(GLib.so), LinkName("g_base64_encode_close")] public static extern gsize Base64EncodeClose(gboolean break_lines, gchar* @out, gint* state, gint* save);
-	[Import(GLib.so), LinkName("g_base64_encode")] public static extern gchar* Base64Encode(guchar* data, gsize len);
-	[Import(GLib.so), LinkName("g_base64_decode_step")] public static extern gsize Base64DecodeStep(gchar* @in, gsize len, guchar* @out, gint* state, guint* save);
-	[Import(GLib.so), LinkName("g_base64_decode")] public static extern guchar* Base64Decode(gchar* text, gsize* out_len);
-	[Import(GLib.so), LinkName("g_base64_decode_inplace")] public static extern guchar* Base64DecodeInplace(gchar* text, gsize* out_len);
-	[Import(GLib.so), LinkName("g_bit_lock")] public static extern void BitLock(gint* address, gint lock_bit);
-	[Import(GLib.so), LinkName("g_bit_lock_and_get")] public static extern void BitLockAndGet(gint* address, guint lock_bit, gint* out_val);
-	[Import(GLib.so), LinkName("g_bit_trylock")] public static extern gboolean BitTrylock(gint* address, gint lock_bit);
-	[Import(GLib.so), LinkName("g_bit_unlock")] public static extern void BitUnlock(gint* address, gint lock_bit);
-	[Import(GLib.so), LinkName("g_bit_unlock_and_set")] public static extern void BitUnlockAndSet(gint* address, guint lock_bit, gint new_val, gint preserve_mask);
-	[Import(GLib.so), LinkName("g_pointer_bit_lock")] public static extern void PointerBitLock(void* address, gint lock_bit);
-	[Import(GLib.so), LinkName("g_pointer_bit_lock_and_get")] public static extern void PointerBitLockAndGet(gpointer address, guint lock_bit, guintptr* out_ptr);
-	[Import(GLib.so), LinkName("g_pointer_bit_trylock")] public static extern gboolean PointerBitTrylock(void* address, gint lock_bit);
-	[Import(GLib.so), LinkName("g_pointer_bit_unlock")] public static extern void PointerBitUnlock(void* address, gint lock_bit);
-	[Import(GLib.so), LinkName("g_pointer_bit_lock_mask_ptr")] public static extern gpointer PointerBitLockMaskPtr(gpointer ptr, guint lock_bit, gboolean set, guintptr preserve_mask, gpointer preserve_ptr);
-	[Import(GLib.so), LinkName("g_pointer_bit_unlock_and_set")] public static extern void PointerBitUnlockAndSet(void* address, guint lock_bit, gpointer ptr, guintptr preserve_mask);
+	[LinkName("g_on_error_query")] public static extern void OnErrorQuery(gchar* prg_name);
+	[LinkName("g_on_error_stack_trace")] public static extern void OnErrorStackTrace(gchar* prg_name);
+	[LinkName("g_base64_encode_step")] public static extern gsize Base64EncodeStep(guchar* @in, gsize len, gboolean break_lines, gchar* @out, gint* state, gint* save);
+	[LinkName("g_base64_encode_close")] public static extern gsize Base64EncodeClose(gboolean break_lines, gchar* @out, gint* state, gint* save);
+	[LinkName("g_base64_encode")] public static extern gchar* Base64Encode(guchar* data, gsize len);
+	[LinkName("g_base64_decode_step")] public static extern gsize Base64DecodeStep(gchar* @in, gsize len, guchar* @out, gint* state, guint* save);
+	[LinkName("g_base64_decode")] public static extern guchar* Base64Decode(gchar* text, gsize* out_len);
+	[LinkName("g_base64_decode_inplace")] public static extern guchar* Base64DecodeInplace(gchar* text, gsize* out_len);
+	[LinkName("g_bit_lock")] public static extern void BitLock(gint* address, gint lock_bit);
+	[LinkName("g_bit_lock_and_get")] public static extern void BitLockAndGet(gint* address, guint lock_bit, gint* out_val);
+	[LinkName("g_bit_trylock")] public static extern gboolean BitTrylock(gint* address, gint lock_bit);
+	[LinkName("g_bit_unlock")] public static extern void BitUnlock(gint* address, gint lock_bit);
+	[LinkName("g_bit_unlock_and_set")] public static extern void BitUnlockAndSet(gint* address, guint lock_bit, gint new_val, gint preserve_mask);
+	[LinkName("g_pointer_bit_lock")] public static extern void PointerBitLock(void* address, gint lock_bit);
+	[LinkName("g_pointer_bit_lock_and_get")] public static extern void PointerBitLockAndGet(gpointer address, guint lock_bit, guintptr* out_ptr);
+	[LinkName("g_pointer_bit_trylock")] public static extern gboolean PointerBitTrylock(void* address, gint lock_bit);
+	[LinkName("g_pointer_bit_unlock")] public static extern void PointerBitUnlock(void* address, gint lock_bit);
+	[LinkName("g_pointer_bit_lock_mask_ptr")] public static extern gpointer PointerBitLockMaskPtr(gpointer ptr, guint lock_bit, gboolean set, guintptr preserve_mask, gpointer preserve_ptr);
+	[LinkName("g_pointer_bit_unlock_and_set")] public static extern void PointerBitUnlockAndSet(void* address, guint lock_bit, gpointer ptr, guintptr preserve_mask);
 }
 
 struct GTimeZone;
@@ -675,19 +675,19 @@ struct GTimeZone;
 
 extension GTimeZone
 {
-	[Import(GLib.so), LinkName("g_time_zone_new")] public static extern GTimeZone* New(gchar* identifier);
-	[Import(GLib.so), LinkName("g_time_zone_new_identifier")] public static extern GTimeZone* NewIdentifier(gchar* identifier);
-	[Import(GLib.so), LinkName("g_time_zone_new_utc")] public static extern GTimeZone* NewUtc();
-	[Import(GLib.so), LinkName("g_time_zone_new_local")] public static extern GTimeZone* NewLocal();
-	[Import(GLib.so), LinkName("g_time_zone_new_offset")] public static extern GTimeZone* NewOffset(gint32 seconds);
-	[Import(GLib.so), LinkName("g_time_zone_ref")] public static extern GTimeZone* Ref(GTimeZone* tz);
-	[Import(GLib.so), LinkName("g_time_zone_unref")] public static extern void Unref(GTimeZone* tz);
-	[Import(GLib.so), LinkName("g_time_zone_find_interval")] public static extern gint FindInterval(GTimeZone* tz, GTimeType type, gint64 time);
-	[Import(GLib.so), LinkName("g_time_zone_adjust_time")] public static extern gint AdjustTime(GTimeZone* tz, GTimeType type, gint64* time);
-	[Import(GLib.so), LinkName("g_time_zone_get_abbreviation")] public static extern gchar* GetAbbreviation(GTimeZone* tz, gint interval);
-	[Import(GLib.so), LinkName("g_time_zone_get_offset")] public static extern gint32 GetOffset(GTimeZone* tz, gint interval);
-	[Import(GLib.so), LinkName("g_time_zone_is_dst")] public static extern gboolean IsDst(GTimeZone* tz, gint interval);
-	[Import(GLib.so), LinkName("g_time_zone_get_identifier")] public static extern gchar* GetIdentifier(GTimeZone* tz);
+	[LinkName("g_time_zone_new")] public static extern GTimeZone* New(gchar* identifier);
+	[LinkName("g_time_zone_new_identifier")] public static extern GTimeZone* NewIdentifier(gchar* identifier);
+	[LinkName("g_time_zone_new_utc")] public static extern GTimeZone* NewUtc();
+	[LinkName("g_time_zone_new_local")] public static extern GTimeZone* NewLocal();
+	[LinkName("g_time_zone_new_offset")] public static extern GTimeZone* NewOffset(gint32 seconds);
+	[LinkName("g_time_zone_ref")] public static extern GTimeZone* Ref(GTimeZone* tz);
+	[LinkName("g_time_zone_unref")] public static extern void Unref(GTimeZone* tz);
+	[LinkName("g_time_zone_find_interval")] public static extern gint FindInterval(GTimeZone* tz, GTimeType type, gint64 time);
+	[LinkName("g_time_zone_adjust_time")] public static extern gint AdjustTime(GTimeZone* tz, GTimeType type, gint64* time);
+	[LinkName("g_time_zone_get_abbreviation")] public static extern gchar* GetAbbreviation(GTimeZone* tz, gint interval);
+	[LinkName("g_time_zone_get_offset")] public static extern gint32 GetOffset(GTimeZone* tz, gint interval);
+	[LinkName("g_time_zone_is_dst")] public static extern gboolean IsDst(GTimeZone* tz, gint interval);
+	[LinkName("g_time_zone_get_identifier")] public static extern gchar* GetIdentifier(GTimeZone* tz);
 }
 
 /** GTimeSpan:
@@ -702,59 +702,59 @@ struct GDateTime;
 
 extension GDateTime
 {
-	[Import(GLib.so), LinkName("g_date_time_unref")] public static extern void Unref(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_ref")] public static extern GDateTime* Ref(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_new_now")] public static extern GDateTime* NewNow(GTimeZone* tz);
-	[Import(GLib.so), LinkName("g_date_time_new_now_local")] public static extern GDateTime* NewNowLocal();
-	[Import(GLib.so), LinkName("g_date_time_new_now_utc")] public static extern GDateTime* NewNowUtc();
-	[Import(GLib.so), LinkName("g_date_time_new_from_unix_local")] public static extern GDateTime* NewFromUnixLocal(gint64 t);
-	[Import(GLib.so), LinkName("g_date_time_new_from_unix_utc")] public static extern GDateTime* NewFromUnixUtc(gint64 t);
-	[Import(GLib.so), LinkName("g_date_time_new_from_unix_local_usec")] public static extern GDateTime* NewFromUnixLocalUsec(gint64 usecs);
-	[Import(GLib.so), LinkName("g_date_time_new_from_unix_utc_usec")] public static extern GDateTime* NewFromUnixUtcUsec(gint64 usecs);
-	[Import(GLib.so), LinkName("g_date_time_new_from_timeval_local")] public static extern GDateTime* NewFromTimevalLocal(GTimeVal* tv);
-	[Import(GLib.so), LinkName("g_date_time_new_from_timeval_utc")] public static extern GDateTime* NewFromTimevalUtc(GTimeVal* tv);
-	[Import(GLib.so), LinkName("g_date_time_new_from_iso8601")] public static extern GDateTime* NewFromIso8601(gchar* text, GTimeZone* default_tz);
-	[Import(GLib.so), LinkName("g_date_time_new")] public static extern GDateTime* New(GTimeZone* tz, gint year, gint month, gint day, gint hour, gint minute, gdouble seconds);
-	[Import(GLib.so), LinkName("g_date_time_new_local")] public static extern GDateTime* NewLocal(gint year, gint month, gint day, gint hour, gint minute, gdouble seconds);
-	[Import(GLib.so), LinkName("g_date_time_new_utc")] public static extern GDateTime* NewUtc(gint year, gint month, gint day, gint hour, gint minute, gdouble seconds);
-	[Import(GLib.so), LinkName("g_date_time_add")] public static extern GDateTime* Add(GDateTime* datetime, GTimeSpan timespan);
-	[Import(GLib.so), LinkName("g_date_time_add_years")] public static extern GDateTime* AddYears(GDateTime* datetime, gint years);
-	[Import(GLib.so), LinkName("g_date_time_add_months")] public static extern GDateTime* AddMonths(GDateTime* datetime, gint months);
-	[Import(GLib.so), LinkName("g_date_time_add_weeks")] public static extern GDateTime* AddWeeks(GDateTime* datetime, gint weeks);
-	[Import(GLib.so), LinkName("g_date_time_add_days")] public static extern GDateTime* AddDays(GDateTime* datetime, gint days);
-	[Import(GLib.so), LinkName("g_date_time_add_hours")] public static extern GDateTime* AddHours(GDateTime* datetime, gint hours);
-	[Import(GLib.so), LinkName("g_date_time_add_minutes")] public static extern GDateTime* AddMinutes(GDateTime* datetime, gint minutes);
-	[Import(GLib.so), LinkName("g_date_time_add_seconds")] public static extern GDateTime* AddSeconds(GDateTime* datetime, gdouble seconds);
-	[Import(GLib.so), LinkName("g_date_time_add_full")] public static extern GDateTime* AddFull(GDateTime* datetime, gint years, gint months, gint days, gint hours, gint minutes, gdouble seconds);
-	[Import(GLib.so), LinkName("g_date_time_compare")] public static extern gint Compare(gconstpointer dt1, gconstpointer dt2);
-	[Import(GLib.so), LinkName("g_date_time_difference")] public static extern GTimeSpan Difference(GDateTime* end, GDateTime* begin);
-	[Import(GLib.so), LinkName("g_date_time_hash")] public static extern guint Hash(gconstpointer datetime);
-	[Import(GLib.so), LinkName("g_date_time_equal")] public static extern gboolean Equal(gconstpointer dt1, gconstpointer dt2);
-	[Import(GLib.so), LinkName("g_date_time_get_ymd")] public static extern void GetYmd(GDateTime* datetime, gint* year, gint* month, gint* day);
-	[Import(GLib.so), LinkName("g_date_time_get_year")] public static extern gint GetYear(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_month")] public static extern gint GetMonth(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_day_of_month")] public static extern gint GetDayOfMonth(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_week_numbering_year")] public static extern gint GetWeekNumberingYear(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_week_of_year")] public static extern gint GetWeekOfYear(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_day_of_week")] public static extern gint GetDayOfWeek(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_day_of_year")] public static extern gint GetDayOfYear(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_hour")] public static extern gint GetHour(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_minute")] public static extern gint GetMinute(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_second")] public static extern gint GetSecond(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_microsecond")] public static extern gint GetMicrosecond(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_seconds")] public static extern gdouble GetSeconds(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_to_unix")] public static extern gint64 ToUnix(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_to_unix_usec")] public static extern gint64 ToUnixUsec(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_to_timeval")] public static extern gboolean ToTimeval(GDateTime* datetime, GTimeVal* tv);
-	[Import(GLib.so), LinkName("g_date_time_get_utc_offset")] public static extern GTimeSpan GetUtcOffset(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_timezone")] public static extern GTimeZone* GetTimezone(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_get_timezone_abbreviation")] public static extern gchar* GetTimezoneAbbreviation(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_is_daylight_savings")] public static extern gboolean IsDaylightSavings(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_to_timezone")] public static extern GDateTime* ToTimezone(GDateTime* datetime, GTimeZone* tz);
-	[Import(GLib.so), LinkName("g_date_time_to_local")] public static extern GDateTime* ToLocal(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_to_utc")] public static extern GDateTime* ToUtc(GDateTime* datetime);
-	[Import(GLib.so), LinkName("g_date_time_format")] public static extern gchar* Format(GDateTime* datetime, gchar* format);
-	[Import(GLib.so), LinkName("g_date_time_format_iso8601")] public static extern gchar* FormatIso8601(GDateTime* datetime);
+	[LinkName("g_date_time_unref")] public static extern void Unref(GDateTime* datetime);
+	[LinkName("g_date_time_ref")] public static extern GDateTime* Ref(GDateTime* datetime);
+	[LinkName("g_date_time_new_now")] public static extern GDateTime* NewNow(GTimeZone* tz);
+	[LinkName("g_date_time_new_now_local")] public static extern GDateTime* NewNowLocal();
+	[LinkName("g_date_time_new_now_utc")] public static extern GDateTime* NewNowUtc();
+	[LinkName("g_date_time_new_from_unix_local")] public static extern GDateTime* NewFromUnixLocal(gint64 t);
+	[LinkName("g_date_time_new_from_unix_utc")] public static extern GDateTime* NewFromUnixUtc(gint64 t);
+	[LinkName("g_date_time_new_from_unix_local_usec")] public static extern GDateTime* NewFromUnixLocalUsec(gint64 usecs);
+	[LinkName("g_date_time_new_from_unix_utc_usec")] public static extern GDateTime* NewFromUnixUtcUsec(gint64 usecs);
+	[LinkName("g_date_time_new_from_timeval_local")] public static extern GDateTime* NewFromTimevalLocal(GTimeVal* tv);
+	[LinkName("g_date_time_new_from_timeval_utc")] public static extern GDateTime* NewFromTimevalUtc(GTimeVal* tv);
+	[LinkName("g_date_time_new_from_iso8601")] public static extern GDateTime* NewFromIso8601(gchar* text, GTimeZone* default_tz);
+	[LinkName("g_date_time_new")] public static extern GDateTime* New(GTimeZone* tz, gint year, gint month, gint day, gint hour, gint minute, gdouble seconds);
+	[LinkName("g_date_time_new_local")] public static extern GDateTime* NewLocal(gint year, gint month, gint day, gint hour, gint minute, gdouble seconds);
+	[LinkName("g_date_time_new_utc")] public static extern GDateTime* NewUtc(gint year, gint month, gint day, gint hour, gint minute, gdouble seconds);
+	[LinkName("g_date_time_add")] public static extern GDateTime* Add(GDateTime* datetime, GTimeSpan timespan);
+	[LinkName("g_date_time_add_years")] public static extern GDateTime* AddYears(GDateTime* datetime, gint years);
+	[LinkName("g_date_time_add_months")] public static extern GDateTime* AddMonths(GDateTime* datetime, gint months);
+	[LinkName("g_date_time_add_weeks")] public static extern GDateTime* AddWeeks(GDateTime* datetime, gint weeks);
+	[LinkName("g_date_time_add_days")] public static extern GDateTime* AddDays(GDateTime* datetime, gint days);
+	[LinkName("g_date_time_add_hours")] public static extern GDateTime* AddHours(GDateTime* datetime, gint hours);
+	[LinkName("g_date_time_add_minutes")] public static extern GDateTime* AddMinutes(GDateTime* datetime, gint minutes);
+	[LinkName("g_date_time_add_seconds")] public static extern GDateTime* AddSeconds(GDateTime* datetime, gdouble seconds);
+	[LinkName("g_date_time_add_full")] public static extern GDateTime* AddFull(GDateTime* datetime, gint years, gint months, gint days, gint hours, gint minutes, gdouble seconds);
+	[LinkName("g_date_time_compare")] public static extern gint Compare(gconstpointer dt1, gconstpointer dt2);
+	[LinkName("g_date_time_difference")] public static extern GTimeSpan Difference(GDateTime* end, GDateTime* begin);
+	[LinkName("g_date_time_hash")] public static extern guint Hash(gconstpointer datetime);
+	[LinkName("g_date_time_equal")] public static extern gboolean Equal(gconstpointer dt1, gconstpointer dt2);
+	[LinkName("g_date_time_get_ymd")] public static extern void GetYmd(GDateTime* datetime, gint* year, gint* month, gint* day);
+	[LinkName("g_date_time_get_year")] public static extern gint GetYear(GDateTime* datetime);
+	[LinkName("g_date_time_get_month")] public static extern gint GetMonth(GDateTime* datetime);
+	[LinkName("g_date_time_get_day_of_month")] public static extern gint GetDayOfMonth(GDateTime* datetime);
+	[LinkName("g_date_time_get_week_numbering_year")] public static extern gint GetWeekNumberingYear(GDateTime* datetime);
+	[LinkName("g_date_time_get_week_of_year")] public static extern gint GetWeekOfYear(GDateTime* datetime);
+	[LinkName("g_date_time_get_day_of_week")] public static extern gint GetDayOfWeek(GDateTime* datetime);
+	[LinkName("g_date_time_get_day_of_year")] public static extern gint GetDayOfYear(GDateTime* datetime);
+	[LinkName("g_date_time_get_hour")] public static extern gint GetHour(GDateTime* datetime);
+	[LinkName("g_date_time_get_minute")] public static extern gint GetMinute(GDateTime* datetime);
+	[LinkName("g_date_time_get_second")] public static extern gint GetSecond(GDateTime* datetime);
+	[LinkName("g_date_time_get_microsecond")] public static extern gint GetMicrosecond(GDateTime* datetime);
+	[LinkName("g_date_time_get_seconds")] public static extern gdouble GetSeconds(GDateTime* datetime);
+	[LinkName("g_date_time_to_unix")] public static extern gint64 ToUnix(GDateTime* datetime);
+	[LinkName("g_date_time_to_unix_usec")] public static extern gint64 ToUnixUsec(GDateTime* datetime);
+	[LinkName("g_date_time_to_timeval")] public static extern gboolean ToTimeval(GDateTime* datetime, GTimeVal* tv);
+	[LinkName("g_date_time_get_utc_offset")] public static extern GTimeSpan GetUtcOffset(GDateTime* datetime);
+	[LinkName("g_date_time_get_timezone")] public static extern GTimeZone* GetTimezone(GDateTime* datetime);
+	[LinkName("g_date_time_get_timezone_abbreviation")] public static extern gchar* GetTimezoneAbbreviation(GDateTime* datetime);
+	[LinkName("g_date_time_is_daylight_savings")] public static extern gboolean IsDaylightSavings(GDateTime* datetime);
+	[LinkName("g_date_time_to_timezone")] public static extern GDateTime* ToTimezone(GDateTime* datetime, GTimeZone* tz);
+	[LinkName("g_date_time_to_local")] public static extern GDateTime* ToLocal(GDateTime* datetime);
+	[LinkName("g_date_time_to_utc")] public static extern GDateTime* ToUtc(GDateTime* datetime);
+	[LinkName("g_date_time_format")] public static extern gchar* Format(GDateTime* datetime, gchar* format);
+	[LinkName("g_date_time_format_iso8601")] public static extern gchar* FormatIso8601(GDateTime* datetime);
 }
 
 /** GBookmarkFileError:
@@ -785,90 +785,90 @@ extension GDateTime
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_bookmark_file_error_quark")] public static extern GQuark BookmarkFileErrorQuark();
+	[LinkName("g_bookmark_file_error_quark")] public static extern GQuark BookmarkFileErrorQuark();
 }
 
 struct GBookmarkFile;
 
 extension GBookmarkFile
 {
-	[Import(GLib.so), LinkName("g_bookmark_file_new")] public static extern GBookmarkFile* New();
-	[Import(GLib.so), LinkName("g_bookmark_file_free")] public static extern void Free(GBookmarkFile* bookmark);
-	[Import(GLib.so), LinkName("g_bookmark_file_copy")] public static extern GBookmarkFile* Copy(GBookmarkFile* bookmark);
-	[Import(GLib.so), LinkName("g_bookmark_file_load_from_file")] public static extern gboolean LoadFromFile(GBookmarkFile* bookmark, gchar* filename, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_load_from_data")] public static extern gboolean LoadFromData(GBookmarkFile* bookmark, gchar* data, gsize length, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_load_from_data_dirs")] public static extern gboolean LoadFromDataDirs(GBookmarkFile* bookmark, gchar* file, gchar** full_path, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_to_data")] public static extern gchar* ToData(GBookmarkFile* bookmark, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_to_file")] public static extern gboolean ToFile(GBookmarkFile* bookmark, gchar* filename, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_title")] public static extern void SetTitle(GBookmarkFile* bookmark, gchar* uri, gchar* title);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_title")] public static extern gchar* GetTitle(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_description")] public static extern void SetDescription(GBookmarkFile* bookmark, gchar* uri, gchar* description);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_description")] public static extern gchar* GetDescription(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_mime_type")] public static extern void SetMimeType(GBookmarkFile* bookmark, gchar* uri, gchar* mime_type);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_mime_type")] public static extern gchar* GetMimeType(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_groups")] public static extern void SetGroups(GBookmarkFile* bookmark, gchar* uri, gchar** groups, gsize length);
-	[Import(GLib.so), LinkName("g_bookmark_file_add_group")] public static extern void AddGroup(GBookmarkFile* bookmark, gchar* uri, gchar* group);
-	[Import(GLib.so), LinkName("g_bookmark_file_has_group")] public static extern gboolean HasGroup(GBookmarkFile* bookmark, gchar* uri, gchar* group, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_groups")] public static extern gchar** GetGroups(GBookmarkFile* bookmark, gchar* uri, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_add_application")] public static extern void AddApplication(GBookmarkFile* bookmark, gchar* uri, gchar* name, gchar* exec);
-	[Import(GLib.so), LinkName("g_bookmark_file_has_application")] public static extern gboolean HasApplication(GBookmarkFile* bookmark, gchar* uri, gchar* name, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_applications")] public static extern gchar** GetApplications(GBookmarkFile* bookmark, gchar* uri, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_app_info")] public static extern gboolean SetAppInfo(GBookmarkFile* bookmark, gchar* uri, gchar* name, gchar* exec, gint count, time_t stamp, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_application_info")] public static extern gboolean SetApplicationInfo(GBookmarkFile* bookmark, c_char* uri, c_char* name, c_char* exec, c_int count, GDateTime* stamp, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_app_info")] public static extern gboolean GetAppInfo(GBookmarkFile* bookmark, gchar* uri, gchar* name, gchar** exec, guint* count, time_t* stamp, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_application_info")] public static extern gboolean GetApplicationInfo(GBookmarkFile* bookmark, c_char* uri, c_char* name, c_char** exec, c_uint* count, GDateTime** stamp, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_is_private")] public static extern void SetIsPrivate(GBookmarkFile* bookmark, gchar* uri, gboolean is_private);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_is_private")] public static extern gboolean GetIsPrivate(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_icon")] public static extern void SetIcon(GBookmarkFile* bookmark, gchar* uri, gchar* href, gchar* mime_type);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_icon")] public static extern gboolean GetIcon(GBookmarkFile* bookmark, gchar* uri, gchar** href, gchar** mime_type, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_added")] public static extern void SetAdded(GBookmarkFile* bookmark, gchar* uri, time_t added);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_added_date_time")] public static extern void SetAddedDateTime(GBookmarkFile* bookmark, c_char* uri, GDateTime* added);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_added")] public static extern time_t GetAdded(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_added_date_time")] public static extern GDateTime* GetAddedDateTime(GBookmarkFile* bookmark, c_char* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_modified")] public static extern void SetModified(GBookmarkFile* bookmark, gchar* uri, time_t modified);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_modified_date_time")] public static extern void SetModifiedDateTime(GBookmarkFile* bookmark, c_char* uri, GDateTime* modified);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_modified")] public static extern time_t GetModified(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_modified_date_time")] public static extern GDateTime* GetModifiedDateTime(GBookmarkFile* bookmark, c_char* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_visited")] public static extern void SetVisited(GBookmarkFile* bookmark, gchar* uri, time_t visited);
-	[Import(GLib.so), LinkName("g_bookmark_file_set_visited_date_time")] public static extern void SetVisitedDateTime(GBookmarkFile* bookmark, c_char* uri, GDateTime* visited);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_visited")] public static extern time_t GetVisited(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_visited_date_time")] public static extern GDateTime* GetVisitedDateTime(GBookmarkFile* bookmark, c_char* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_has_item")] public static extern gboolean HasItem(GBookmarkFile* bookmark, gchar* uri);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_size")] public static extern gint GetSize(GBookmarkFile* bookmark);
-	[Import(GLib.so), LinkName("g_bookmark_file_get_uris")] public static extern gchar** GetUris(GBookmarkFile* bookmark, gsize* length);
-	[Import(GLib.so), LinkName("g_bookmark_file_remove_group")] public static extern gboolean RemoveGroup(GBookmarkFile* bookmark, gchar* uri, gchar* group, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_remove_application")] public static extern gboolean RemoveApplication(GBookmarkFile* bookmark, gchar* uri, gchar* name, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_remove_item")] public static extern gboolean RemoveItem(GBookmarkFile* bookmark, gchar* uri, GError** error);
-	[Import(GLib.so), LinkName("g_bookmark_file_move_item")] public static extern gboolean MoveItem(GBookmarkFile* bookmark, gchar* old_uri, gchar* new_uri, GError** error);
+	[LinkName("g_bookmark_file_new")] public static extern GBookmarkFile* New();
+	[LinkName("g_bookmark_file_free")] public static extern void Free(GBookmarkFile* bookmark);
+	[LinkName("g_bookmark_file_copy")] public static extern GBookmarkFile* Copy(GBookmarkFile* bookmark);
+	[LinkName("g_bookmark_file_load_from_file")] public static extern gboolean LoadFromFile(GBookmarkFile* bookmark, gchar* filename, GError** error);
+	[LinkName("g_bookmark_file_load_from_data")] public static extern gboolean LoadFromData(GBookmarkFile* bookmark, gchar* data, gsize length, GError** error);
+	[LinkName("g_bookmark_file_load_from_data_dirs")] public static extern gboolean LoadFromDataDirs(GBookmarkFile* bookmark, gchar* file, gchar** full_path, GError** error);
+	[LinkName("g_bookmark_file_to_data")] public static extern gchar* ToData(GBookmarkFile* bookmark, gsize* length, GError** error);
+	[LinkName("g_bookmark_file_to_file")] public static extern gboolean ToFile(GBookmarkFile* bookmark, gchar* filename, GError** error);
+	[LinkName("g_bookmark_file_set_title")] public static extern void SetTitle(GBookmarkFile* bookmark, gchar* uri, gchar* title);
+	[LinkName("g_bookmark_file_get_title")] public static extern gchar* GetTitle(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_set_description")] public static extern void SetDescription(GBookmarkFile* bookmark, gchar* uri, gchar* description);
+	[LinkName("g_bookmark_file_get_description")] public static extern gchar* GetDescription(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_set_mime_type")] public static extern void SetMimeType(GBookmarkFile* bookmark, gchar* uri, gchar* mime_type);
+	[LinkName("g_bookmark_file_get_mime_type")] public static extern gchar* GetMimeType(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_set_groups")] public static extern void SetGroups(GBookmarkFile* bookmark, gchar* uri, gchar** groups, gsize length);
+	[LinkName("g_bookmark_file_add_group")] public static extern void AddGroup(GBookmarkFile* bookmark, gchar* uri, gchar* group);
+	[LinkName("g_bookmark_file_has_group")] public static extern gboolean HasGroup(GBookmarkFile* bookmark, gchar* uri, gchar* group, GError** error);
+	[LinkName("g_bookmark_file_get_groups")] public static extern gchar** GetGroups(GBookmarkFile* bookmark, gchar* uri, gsize* length, GError** error);
+	[LinkName("g_bookmark_file_add_application")] public static extern void AddApplication(GBookmarkFile* bookmark, gchar* uri, gchar* name, gchar* exec);
+	[LinkName("g_bookmark_file_has_application")] public static extern gboolean HasApplication(GBookmarkFile* bookmark, gchar* uri, gchar* name, GError** error);
+	[LinkName("g_bookmark_file_get_applications")] public static extern gchar** GetApplications(GBookmarkFile* bookmark, gchar* uri, gsize* length, GError** error);
+	[LinkName("g_bookmark_file_set_app_info")] public static extern gboolean SetAppInfo(GBookmarkFile* bookmark, gchar* uri, gchar* name, gchar* exec, gint count, time_t stamp, GError** error);
+	[LinkName("g_bookmark_file_set_application_info")] public static extern gboolean SetApplicationInfo(GBookmarkFile* bookmark, c_char* uri, c_char* name, c_char* exec, c_int count, GDateTime* stamp, GError** error);
+	[LinkName("g_bookmark_file_get_app_info")] public static extern gboolean GetAppInfo(GBookmarkFile* bookmark, gchar* uri, gchar* name, gchar** exec, guint* count, time_t* stamp, GError** error);
+	[LinkName("g_bookmark_file_get_application_info")] public static extern gboolean GetApplicationInfo(GBookmarkFile* bookmark, c_char* uri, c_char* name, c_char** exec, c_uint* count, GDateTime** stamp, GError** error);
+	[LinkName("g_bookmark_file_set_is_private")] public static extern void SetIsPrivate(GBookmarkFile* bookmark, gchar* uri, gboolean is_private);
+	[LinkName("g_bookmark_file_get_is_private")] public static extern gboolean GetIsPrivate(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_set_icon")] public static extern void SetIcon(GBookmarkFile* bookmark, gchar* uri, gchar* href, gchar* mime_type);
+	[LinkName("g_bookmark_file_get_icon")] public static extern gboolean GetIcon(GBookmarkFile* bookmark, gchar* uri, gchar** href, gchar** mime_type, GError** error);
+	[LinkName("g_bookmark_file_set_added")] public static extern void SetAdded(GBookmarkFile* bookmark, gchar* uri, time_t added);
+	[LinkName("g_bookmark_file_set_added_date_time")] public static extern void SetAddedDateTime(GBookmarkFile* bookmark, c_char* uri, GDateTime* added);
+	[LinkName("g_bookmark_file_get_added")] public static extern time_t GetAdded(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_get_added_date_time")] public static extern GDateTime* GetAddedDateTime(GBookmarkFile* bookmark, c_char* uri, GError** error);
+	[LinkName("g_bookmark_file_set_modified")] public static extern void SetModified(GBookmarkFile* bookmark, gchar* uri, time_t modified);
+	[LinkName("g_bookmark_file_set_modified_date_time")] public static extern void SetModifiedDateTime(GBookmarkFile* bookmark, c_char* uri, GDateTime* modified);
+	[LinkName("g_bookmark_file_get_modified")] public static extern time_t GetModified(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_get_modified_date_time")] public static extern GDateTime* GetModifiedDateTime(GBookmarkFile* bookmark, c_char* uri, GError** error);
+	[LinkName("g_bookmark_file_set_visited")] public static extern void SetVisited(GBookmarkFile* bookmark, gchar* uri, time_t visited);
+	[LinkName("g_bookmark_file_set_visited_date_time")] public static extern void SetVisitedDateTime(GBookmarkFile* bookmark, c_char* uri, GDateTime* visited);
+	[LinkName("g_bookmark_file_get_visited")] public static extern time_t GetVisited(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_get_visited_date_time")] public static extern GDateTime* GetVisitedDateTime(GBookmarkFile* bookmark, c_char* uri, GError** error);
+	[LinkName("g_bookmark_file_has_item")] public static extern gboolean HasItem(GBookmarkFile* bookmark, gchar* uri);
+	[LinkName("g_bookmark_file_get_size")] public static extern gint GetSize(GBookmarkFile* bookmark);
+	[LinkName("g_bookmark_file_get_uris")] public static extern gchar** GetUris(GBookmarkFile* bookmark, gsize* length);
+	[LinkName("g_bookmark_file_remove_group")] public static extern gboolean RemoveGroup(GBookmarkFile* bookmark, gchar* uri, gchar* group, GError** error);
+	[LinkName("g_bookmark_file_remove_application")] public static extern gboolean RemoveApplication(GBookmarkFile* bookmark, gchar* uri, gchar* name, GError** error);
+	[LinkName("g_bookmark_file_remove_item")] public static extern gboolean RemoveItem(GBookmarkFile* bookmark, gchar* uri, GError** error);
+	[LinkName("g_bookmark_file_move_item")] public static extern gboolean MoveItem(GBookmarkFile* bookmark, gchar* old_uri, gchar* new_uri, GError** error);
 }
 
 extension GBytes
 {
-	[Import(GLib.so), LinkName("g_bytes_new")] public static extern GBytes* New(gconstpointer data, gsize size);
-	[Import(GLib.so), LinkName("g_bytes_new_take")] public static extern GBytes* NewTake(gpointer data, gsize size);
-	[Import(GLib.so), LinkName("g_bytes_new_static")] public static extern GBytes* NewStatic(gconstpointer data, gsize size);
-	[Import(GLib.so), LinkName("g_bytes_new_with_free_func")] public static extern GBytes* NewWithFreeFunc(gconstpointer data, gsize size, GDestroyNotify free_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_bytes_new_from_bytes")] public static extern GBytes* NewFromBytes(GBytes* bytes, gsize offset, gsize length);
-	[Import(GLib.so), LinkName("g_bytes_get_data")] public static extern gconstpointer GetData(GBytes* bytes, gsize* size);
-	[Import(GLib.so), LinkName("g_bytes_get_size")] public static extern gsize GetSize(GBytes* bytes);
-	[Import(GLib.so), LinkName("g_bytes_ref")] public static extern GBytes* Ref(GBytes* bytes);
-	[Import(GLib.so), LinkName("g_bytes_unref")] public static extern void Unref(GBytes* bytes);
-	[Import(GLib.so), LinkName("g_bytes_unref_to_data")] public static extern gpointer UnrefToData(GBytes* bytes, gsize* size);
-	[Import(GLib.so), LinkName("g_bytes_unref_to_array")] public static extern GByteArray* UnrefToArray(GBytes* bytes);
-	[Import(GLib.so), LinkName("g_bytes_hash")] public static extern guint Hash(gconstpointer bytes);
-	[Import(GLib.so), LinkName("g_bytes_equal")] public static extern gboolean Equal(gconstpointer bytes1, gconstpointer bytes2);
-	[Import(GLib.so), LinkName("g_bytes_compare")] public static extern gint Compare(gconstpointer bytes1, gconstpointer bytes2);
-	[Import(GLib.so), LinkName("g_bytes_get_region")] public static extern gconstpointer GetRegion(GBytes* bytes, gsize element_size, gsize offset, gsize n_elements);
+	[LinkName("g_bytes_new")] public static extern GBytes* New(gconstpointer data, gsize size);
+	[LinkName("g_bytes_new_take")] public static extern GBytes* NewTake(gpointer data, gsize size);
+	[LinkName("g_bytes_new_static")] public static extern GBytes* NewStatic(gconstpointer data, gsize size);
+	[LinkName("g_bytes_new_with_free_func")] public static extern GBytes* NewWithFreeFunc(gconstpointer data, gsize size, GDestroyNotify free_func, gpointer user_data);
+	[LinkName("g_bytes_new_from_bytes")] public static extern GBytes* NewFromBytes(GBytes* bytes, gsize offset, gsize length);
+	[LinkName("g_bytes_get_data")] public static extern gconstpointer GetData(GBytes* bytes, gsize* size);
+	[LinkName("g_bytes_get_size")] public static extern gsize GetSize(GBytes* bytes);
+	[LinkName("g_bytes_ref")] public static extern GBytes* Ref(GBytes* bytes);
+	[LinkName("g_bytes_unref")] public static extern void Unref(GBytes* bytes);
+	[LinkName("g_bytes_unref_to_data")] public static extern gpointer UnrefToData(GBytes* bytes, gsize* size);
+	[LinkName("g_bytes_unref_to_array")] public static extern GByteArray* UnrefToArray(GBytes* bytes);
+	[LinkName("g_bytes_hash")] public static extern guint Hash(gconstpointer bytes);
+	[LinkName("g_bytes_equal")] public static extern gboolean Equal(gconstpointer bytes1, gconstpointer bytes2);
+	[LinkName("g_bytes_compare")] public static extern gint Compare(gconstpointer bytes1, gconstpointer bytes2);
+	[LinkName("g_bytes_get_region")] public static extern gconstpointer GetRegion(GBytes* bytes, gsize element_size, gsize offset, gsize n_elements);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_get_charset")] public static extern gboolean GetCharset(c_char** charset);
-	[Import(GLib.so), LinkName("g_get_codeset")] public static extern gchar* GetCodeset();
-	[Import(GLib.so), LinkName("g_get_console_charset")] public static extern gboolean GetConsoleCharset(c_char** charset);
-	[Import(GLib.so), LinkName("g_get_language_names")] public static extern gchar** GetLanguageNames();
-	[Import(GLib.so), LinkName("g_get_language_names_with_category")] public static extern gchar** GetLanguageNamesWithCategory(gchar* category_name);
-	[Import(GLib.so), LinkName("g_get_locale_variants")] public static extern gchar** GetLocaleVariants(gchar* locale);
+	[LinkName("g_get_charset")] public static extern gboolean GetCharset(c_char** charset);
+	[LinkName("g_get_codeset")] public static extern gchar* GetCodeset();
+	[LinkName("g_get_console_charset")] public static extern gboolean GetConsoleCharset(c_char** charset);
+	[LinkName("g_get_language_names")] public static extern gchar** GetLanguageNames();
+	[LinkName("g_get_language_names_with_category")] public static extern gchar** GetLanguageNamesWithCategory(gchar* category_name);
+	[LinkName("g_get_locale_variants")] public static extern gchar** GetLocaleVariants(gchar* locale);
 }
 
 /** GChecksumType:
@@ -899,21 +899,21 @@ struct GChecksum;
 
 extension GChecksum
 {
-	[Import(GLib.so), LinkName("g_checksum_type_get_length")] public static extern gssize TypeGetLength(GChecksumType checksum_type);
-	[Import(GLib.so), LinkName("g_checksum_new")] public static extern GChecksum* New(GChecksumType checksum_type);
-	[Import(GLib.so), LinkName("g_checksum_reset")] public static extern void Reset(GChecksum* checksum);
-	[Import(GLib.so), LinkName("g_checksum_copy")] public static extern GChecksum* Copy(GChecksum* checksum);
-	[Import(GLib.so), LinkName("g_checksum_free")] public static extern void Free(GChecksum* checksum);
-	[Import(GLib.so), LinkName("g_checksum_update")] public static extern void Update(GChecksum* checksum, guchar* data, gssize length);
-	[Import(GLib.so), LinkName("g_checksum_get_string")] public static extern gchar* GetString(GChecksum* checksum);
-	[Import(GLib.so), LinkName("g_checksum_get_digest")] public static extern void GetDigest(GChecksum* checksum, guint8* buffer, gsize* digest_len);
+	[LinkName("g_checksum_type_get_length")] public static extern gssize TypeGetLength(GChecksumType checksum_type);
+	[LinkName("g_checksum_new")] public static extern GChecksum* New(GChecksumType checksum_type);
+	[LinkName("g_checksum_reset")] public static extern void Reset(GChecksum* checksum);
+	[LinkName("g_checksum_copy")] public static extern GChecksum* Copy(GChecksum* checksum);
+	[LinkName("g_checksum_free")] public static extern void Free(GChecksum* checksum);
+	[LinkName("g_checksum_update")] public static extern void Update(GChecksum* checksum, guchar* data, gssize length);
+	[LinkName("g_checksum_get_string")] public static extern gchar* GetString(GChecksum* checksum);
+	[LinkName("g_checksum_get_digest")] public static extern void GetDigest(GChecksum* checksum, guint8* buffer, gsize* digest_len);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_compute_checksum_for_data")] public static extern gchar* ComputeChecksumForData(GChecksumType checksum_type, guchar* data, gsize length);
-	[Import(GLib.so), LinkName("g_compute_checksum_for_string")] public static extern gchar* ComputeChecksumForString(GChecksumType checksum_type, gchar* str, gssize length);
-	[Import(GLib.so), LinkName("g_compute_checksum_for_bytes")] public static extern gchar* ComputeChecksumForBytes(GChecksumType checksum_type, GBytes* data);
+	[LinkName("g_compute_checksum_for_data")] public static extern gchar* ComputeChecksumForData(GChecksumType checksum_type, guchar* data, gsize length);
+	[LinkName("g_compute_checksum_for_string")] public static extern gchar* ComputeChecksumForString(GChecksumType checksum_type, gchar* str, gssize length);
+	[LinkName("g_compute_checksum_for_bytes")] public static extern gchar* ComputeChecksumForBytes(GChecksumType checksum_type, GBytes* data);
 }
 
 /** GConvertError:
@@ -947,7 +947,7 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_convert_error_quark")] public static extern GQuark ConvertErrorQuark();
+	[LinkName("g_convert_error_quark")] public static extern GQuark ConvertErrorQuark();
 }
 
 /** GIConv: (skip)
@@ -959,22 +959,22 @@ class GIConv { private this() {} }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_iconv_open")] public static extern GIConv IconvOpen(gchar* to_codeset, gchar* from_codeset);
-	[Import(GLib.so), LinkName("g_iconv")] public static extern gsize Iconv(GIConv converter, gchar** inbuf, gsize* inbytes_left, gchar** outbuf, gsize* outbytes_left);
-	[Import(GLib.so), LinkName("g_iconv_close")] public static extern gint IconvClose(GIConv converter);
-	[Import(GLib.so), LinkName("g_convert")] public static extern gchar* Convert(gchar* str, gssize len, gchar* to_codeset, gchar* from_codeset, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_convert_with_iconv")] public static extern gchar* ConvertWithIconv(gchar* str, gssize len, GIConv converter, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_convert_with_fallback")] public static extern gchar* ConvertWithFallback(gchar* str, gssize len, gchar* to_codeset, gchar* from_codeset, gchar* fallback, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_locale_to_utf8")] public static extern gchar* LocaleToUtf8(gchar* opsysstring, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_locale_from_utf8")] public static extern gchar* LocaleFromUtf8(gchar* utf8string, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_filename_to_utf8")] public static extern gchar* FilenameToUtf8(gchar* opsysstring, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_filename_from_utf8")] public static extern gchar* FilenameFromUtf8(gchar* utf8string, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_filename_from_uri")] public static extern gchar* FilenameFromUri(gchar* uri, gchar** hostname, GError** error);
-	[Import(GLib.so), LinkName("g_filename_to_uri")] public static extern gchar* FilenameToUri(gchar* filename, gchar* hostname, GError** error);
-	[Import(GLib.so), LinkName("g_filename_display_name")] public static extern gchar* FilenameDisplayName(gchar* filename);
-	[Import(GLib.so), LinkName("g_get_filename_charsets")] public static extern gboolean GetFilenameCharsets(gchar*** filename_charsets);
-	[Import(GLib.so), LinkName("g_filename_display_basename")] public static extern gchar* FilenameDisplayBasename(gchar* filename);
-	[Import(GLib.so), LinkName("g_uri_list_extract_uris")] public static extern gchar** UriListExtractUris(gchar* uri_list);
+	[LinkName("g_iconv_open")] public static extern GIConv IconvOpen(gchar* to_codeset, gchar* from_codeset);
+	[LinkName("g_iconv")] public static extern gsize Iconv(GIConv converter, gchar** inbuf, gsize* inbytes_left, gchar** outbuf, gsize* outbytes_left);
+	[LinkName("g_iconv_close")] public static extern gint IconvClose(GIConv converter);
+	[LinkName("g_convert")] public static extern gchar* Convert(gchar* str, gssize len, gchar* to_codeset, gchar* from_codeset, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_convert_with_iconv")] public static extern gchar* ConvertWithIconv(gchar* str, gssize len, GIConv converter, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_convert_with_fallback")] public static extern gchar* ConvertWithFallback(gchar* str, gssize len, gchar* to_codeset, gchar* from_codeset, gchar* fallback, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_locale_to_utf8")] public static extern gchar* LocaleToUtf8(gchar* opsysstring, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_locale_from_utf8")] public static extern gchar* LocaleFromUtf8(gchar* utf8string, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_filename_to_utf8")] public static extern gchar* FilenameToUtf8(gchar* opsysstring, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_filename_from_utf8")] public static extern gchar* FilenameFromUtf8(gchar* utf8string, gssize len, gsize* bytes_read, gsize* bytes_written, GError** error);
+	[LinkName("g_filename_from_uri")] public static extern gchar* FilenameFromUri(gchar* uri, gchar** hostname, GError** error);
+	[LinkName("g_filename_to_uri")] public static extern gchar* FilenameToUri(gchar* filename, gchar* hostname, GError** error);
+	[LinkName("g_filename_display_name")] public static extern gchar* FilenameDisplayName(gchar* filename);
+	[LinkName("g_get_filename_charsets")] public static extern gboolean GetFilenameCharsets(gchar*** filename_charsets);
+	[LinkName("g_filename_display_basename")] public static extern gchar* FilenameDisplayBasename(gchar* filename);
+	[LinkName("g_uri_list_extract_uris")] public static extern gchar** UriListExtractUris(gchar* uri_list);
 }
 
 struct GData;
@@ -983,30 +983,30 @@ function void GDataForeachFunc(GQuark key_id, gpointer data, gpointer user_data)
 
 extension GData
 {
-	[Import(GLib.so), LinkName("g_datalist_init")] public static extern void listInit(GData** datalist);
-	[Import(GLib.so), LinkName("g_datalist_clear")] public static extern void listClear(GData** datalist);
-	[Import(GLib.so), LinkName("g_datalist_id_get_data")] public static extern gpointer listIdGetData(GData** datalist, GQuark key_id);
-	[Import(GLib.so), LinkName("g_datalist_id_set_data_full")] public static extern void listIdSetDataFull(GData** datalist, GQuark key_id, gpointer data, GDestroyNotify destroy_func);
-	[Import(GLib.so), LinkName("g_datalist_id_remove_multiple")] public static extern void listIdRemoveMultiple(GData** datalist, GQuark* keys, gsize n_keys);
+	[LinkName("g_datalist_init")] public static extern void listInit(GData** datalist);
+	[LinkName("g_datalist_clear")] public static extern void listClear(GData** datalist);
+	[LinkName("g_datalist_id_get_data")] public static extern gpointer listIdGetData(GData** datalist, GQuark key_id);
+	[LinkName("g_datalist_id_set_data_full")] public static extern void listIdSetDataFull(GData** datalist, GQuark key_id, gpointer data, GDestroyNotify destroy_func);
+	[LinkName("g_datalist_id_remove_multiple")] public static extern void listIdRemoveMultiple(GData** datalist, GQuark* keys, gsize n_keys);
 }
 
 function gpointer GDuplicateFunc(gpointer data, gpointer user_data);
 
 extension GData
 {
-	[Import(GLib.so), LinkName("g_datalist_id_dup_data")] public static extern gpointer listIdDupData(GData** datalist, GQuark key_id, GDuplicateFunc dup_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_datalist_id_replace_data")] public static extern gboolean listIdReplaceData(GData** datalist, GQuark key_id, gpointer oldval, gpointer newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
-	[Import(GLib.so), LinkName("g_datalist_id_remove_no_notify")] public static extern gpointer listIdRemoveNoNotify(GData** datalist, GQuark key_id);
-	[Import(GLib.so), LinkName("g_datalist_foreach")] public static extern void listForeach(GData** datalist, GDataForeachFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_datalist_set_flags")] public static extern void listSetFlags(GData** datalist, guint flags);
-	[Import(GLib.so), LinkName("g_datalist_unset_flags")] public static extern void listUnsetFlags(GData** datalist, guint flags);
-	[Import(GLib.so), LinkName("g_datalist_get_flags")] public static extern guint listGetFlags(GData** datalist);
-	[Import(GLib.so), LinkName("g_dataset_destroy")] public static extern void setDestroy(gconstpointer dataset_location);
-	[Import(GLib.so), LinkName("g_dataset_id_get_data")] public static extern gpointer setIdGetData(gconstpointer dataset_location, GQuark key_id);
-	[Import(GLib.so), LinkName("g_datalist_get_data")] public static extern gpointer listGetData(GData** datalist, gchar* key);
-	[Import(GLib.so), LinkName("g_dataset_id_set_data_full")] public static extern void setIdSetDataFull(gconstpointer dataset_location, GQuark key_id, gpointer data, GDestroyNotify destroy_func);
-	[Import(GLib.so), LinkName("g_dataset_id_remove_no_notify")] public static extern gpointer setIdRemoveNoNotify(gconstpointer dataset_location, GQuark key_id);
-	[Import(GLib.so), LinkName("g_dataset_foreach")] public static extern void setForeach(gconstpointer dataset_location, GDataForeachFunc func, gpointer user_data);
+	[LinkName("g_datalist_id_dup_data")] public static extern gpointer listIdDupData(GData** datalist, GQuark key_id, GDuplicateFunc dup_func, gpointer user_data);
+	[LinkName("g_datalist_id_replace_data")] public static extern gboolean listIdReplaceData(GData** datalist, GQuark key_id, gpointer oldval, gpointer newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
+	[LinkName("g_datalist_id_remove_no_notify")] public static extern gpointer listIdRemoveNoNotify(GData** datalist, GQuark key_id);
+	[LinkName("g_datalist_foreach")] public static extern void listForeach(GData** datalist, GDataForeachFunc func, gpointer user_data);
+	[LinkName("g_datalist_set_flags")] public static extern void listSetFlags(GData** datalist, guint flags);
+	[LinkName("g_datalist_unset_flags")] public static extern void listUnsetFlags(GData** datalist, guint flags);
+	[LinkName("g_datalist_get_flags")] public static extern guint listGetFlags(GData** datalist);
+	[LinkName("g_dataset_destroy")] public static extern void setDestroy(gconstpointer dataset_location);
+	[LinkName("g_dataset_id_get_data")] public static extern gpointer setIdGetData(gconstpointer dataset_location, GQuark key_id);
+	[LinkName("g_datalist_get_data")] public static extern gpointer listGetData(GData** datalist, gchar* key);
+	[LinkName("g_dataset_id_set_data_full")] public static extern void setIdSetDataFull(gconstpointer dataset_location, GQuark key_id, gpointer data, GDestroyNotify destroy_func);
+	[LinkName("g_dataset_id_remove_no_notify")] public static extern gpointer setIdRemoveNoNotify(gconstpointer dataset_location, GQuark key_id);
+	[LinkName("g_dataset_foreach")] public static extern void setForeach(gconstpointer dataset_location, GDataForeachFunc func, gpointer user_data);
 }
 
 typealias GTime = gint32;
@@ -1066,81 +1066,81 @@ typealias GDateDay = guint8;
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_date_new")] public static extern GDate* DateNew();
-	[Import(GLib.so), LinkName("g_date_new_dmy")] public static extern GDate* DateNewDmy(GDateDay day, GDateMonth month, GDateYear year);
-	[Import(GLib.so), LinkName("g_date_new_julian")] public static extern GDate* DateNewJulian(guint32 julian_day);
-	[Import(GLib.so), LinkName("g_date_free")] public static extern void DateFree(GDate* date);
-	[Import(GLib.so), LinkName("g_date_copy")] public static extern GDate* DateCopy(GDate* date);
-	[Import(GLib.so), LinkName("g_date_valid")] public static extern gboolean DateValid(GDate* date);
-	[Import(GLib.so), LinkName("g_date_valid_day")] public static extern gboolean DateValidDay(GDateDay day);
-	[Import(GLib.so), LinkName("g_date_valid_month")] public static extern gboolean DateValidMonth(GDateMonth month);
-	[Import(GLib.so), LinkName("g_date_valid_year")] public static extern gboolean DateValidYear(GDateYear year);
-	[Import(GLib.so), LinkName("g_date_valid_weekday")] public static extern gboolean DateValidWeekday(GDateWeekday weekday);
-	[Import(GLib.so), LinkName("g_date_valid_julian")] public static extern gboolean DateValidJulian(guint32 julian_date);
-	[Import(GLib.so), LinkName("g_date_valid_dmy")] public static extern gboolean DateValidDmy(GDateDay day, GDateMonth month, GDateYear year);
-	[Import(GLib.so), LinkName("g_date_get_weekday")] public static extern GDateWeekday DateGetWeekday(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_month")] public static extern GDateMonth DateGetMonth(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_year")] public static extern GDateYear DateGetYear(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_day")] public static extern GDateDay DateGetDay(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_julian")] public static extern guint32 DateGetJulian(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_day_of_year")] public static extern guint DateGetDayOfYear(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_monday_week_of_year")] public static extern guint DateGetMondayWeekOfYear(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_sunday_week_of_year")] public static extern guint DateGetSundayWeekOfYear(GDate* date);
-	[Import(GLib.so), LinkName("g_date_get_week_of_year")] public static extern guint DateGetWeekOfYear(GDate* date, GDateWeekday first_day_of_week);
-	[Import(GLib.so), LinkName("g_date_get_iso8601_week_of_year")] public static extern guint DateGetIso8601WeekOfYear(GDate* date);
-	[Import(GLib.so), LinkName("g_date_clear")] public static extern void DateClear(GDate* date, guint n_dates);
-	[Import(GLib.so), LinkName("g_date_set_parse")] public static extern void DateSetParse(GDate* date, gchar* str);
-	[Import(GLib.so), LinkName("g_date_set_time_t")] public static extern void DateSetTimeT(GDate* date, time_t timet);
-	[Import(GLib.so), LinkName("g_date_set_time_val")] public static extern void DateSetTimeVal(GDate* date, GTimeVal* timeval);
-	[Import(GLib.so), LinkName("g_date_set_time")] public static extern void DateSetTime(GDate* date, GTime time);
-	[Import(GLib.so), LinkName("g_date_set_month")] public static extern void DateSetMonth(GDate* date, GDateMonth month);
-	[Import(GLib.so), LinkName("g_date_set_day")] public static extern void DateSetDay(GDate* date, GDateDay day);
-	[Import(GLib.so), LinkName("g_date_set_year")] public static extern void DateSetYear(GDate* date, GDateYear year);
-	[Import(GLib.so), LinkName("g_date_set_dmy")] public static extern void DateSetDmy(GDate* date, GDateDay day, GDateMonth month, GDateYear y);
-	[Import(GLib.so), LinkName("g_date_set_julian")] public static extern void DateSetJulian(GDate* date, guint32 julian_date);
-	[Import(GLib.so), LinkName("g_date_is_first_of_month")] public static extern gboolean DateIsFirstOfMonth(GDate* date);
-	[Import(GLib.so), LinkName("g_date_is_last_of_month")] public static extern gboolean DateIsLastOfMonth(GDate* date);
-	[Import(GLib.so), LinkName("g_date_add_days")] public static extern void DateAddDays(GDate* date, guint n_days);
-	[Import(GLib.so), LinkName("g_date_subtract_days")] public static extern void DateSubtractDays(GDate* date, guint n_days);
-	[Import(GLib.so), LinkName("g_date_add_months")] public static extern void DateAddMonths(GDate* date, guint n_months);
-	[Import(GLib.so), LinkName("g_date_subtract_months")] public static extern void DateSubtractMonths(GDate* date, guint n_months);
-	[Import(GLib.so), LinkName("g_date_add_years")] public static extern void DateAddYears(GDate* date, guint n_years);
-	[Import(GLib.so), LinkName("g_date_subtract_years")] public static extern void DateSubtractYears(GDate* date, guint n_years);
-	[Import(GLib.so), LinkName("g_date_is_leap_year")] public static extern gboolean DateIsLeapYear(GDateYear year);
-	[Import(GLib.so), LinkName("g_date_get_days_in_month")] public static extern guint8 DateGetDaysInMonth(GDateMonth month, GDateYear year);
-	[Import(GLib.so), LinkName("g_date_get_monday_weeks_in_year")] public static extern guint8 DateGetMondayWeeksInYear(GDateYear year);
-	[Import(GLib.so), LinkName("g_date_get_sunday_weeks_in_year")] public static extern guint8 DateGetSundayWeeksInYear(GDateYear year);
-	[Import(GLib.so), LinkName("g_date_get_weeks_in_year")] public static extern guint8 DateGetWeeksInYear(GDateYear year, GDateWeekday first_day_of_week);
-	[Import(GLib.so), LinkName("g_date_days_between")] public static extern gint DateDaysBetween(GDate* date1, GDate* date2);
-	[Import(GLib.so), LinkName("g_date_compare")] public static extern gint DateCompare(GDate* lhs, GDate* rhs);
-	[Import(GLib.so), LinkName("g_date_to_struct_tm")] public static extern void DateToStructTm(GDate* date, tm* tm);
-	[Import(GLib.so), LinkName("g_date_clamp")] public static extern void DateClamp(GDate* date, GDate* min_date, GDate* max_date);
-	[Import(GLib.so), LinkName("g_date_order")] public static extern void DateOrder(GDate* date1, GDate* date2);
-	[Import(GLib.so), LinkName("g_date_strftime")] public static extern gsize DateStrftime(gchar* s, gsize slen, gchar* format, GDate* date);
+	[LinkName("g_date_new")] public static extern GDate* DateNew();
+	[LinkName("g_date_new_dmy")] public static extern GDate* DateNewDmy(GDateDay day, GDateMonth month, GDateYear year);
+	[LinkName("g_date_new_julian")] public static extern GDate* DateNewJulian(guint32 julian_day);
+	[LinkName("g_date_free")] public static extern void DateFree(GDate* date);
+	[LinkName("g_date_copy")] public static extern GDate* DateCopy(GDate* date);
+	[LinkName("g_date_valid")] public static extern gboolean DateValid(GDate* date);
+	[LinkName("g_date_valid_day")] public static extern gboolean DateValidDay(GDateDay day);
+	[LinkName("g_date_valid_month")] public static extern gboolean DateValidMonth(GDateMonth month);
+	[LinkName("g_date_valid_year")] public static extern gboolean DateValidYear(GDateYear year);
+	[LinkName("g_date_valid_weekday")] public static extern gboolean DateValidWeekday(GDateWeekday weekday);
+	[LinkName("g_date_valid_julian")] public static extern gboolean DateValidJulian(guint32 julian_date);
+	[LinkName("g_date_valid_dmy")] public static extern gboolean DateValidDmy(GDateDay day, GDateMonth month, GDateYear year);
+	[LinkName("g_date_get_weekday")] public static extern GDateWeekday DateGetWeekday(GDate* date);
+	[LinkName("g_date_get_month")] public static extern GDateMonth DateGetMonth(GDate* date);
+	[LinkName("g_date_get_year")] public static extern GDateYear DateGetYear(GDate* date);
+	[LinkName("g_date_get_day")] public static extern GDateDay DateGetDay(GDate* date);
+	[LinkName("g_date_get_julian")] public static extern guint32 DateGetJulian(GDate* date);
+	[LinkName("g_date_get_day_of_year")] public static extern guint DateGetDayOfYear(GDate* date);
+	[LinkName("g_date_get_monday_week_of_year")] public static extern guint DateGetMondayWeekOfYear(GDate* date);
+	[LinkName("g_date_get_sunday_week_of_year")] public static extern guint DateGetSundayWeekOfYear(GDate* date);
+	[LinkName("g_date_get_week_of_year")] public static extern guint DateGetWeekOfYear(GDate* date, GDateWeekday first_day_of_week);
+	[LinkName("g_date_get_iso8601_week_of_year")] public static extern guint DateGetIso8601WeekOfYear(GDate* date);
+	[LinkName("g_date_clear")] public static extern void DateClear(GDate* date, guint n_dates);
+	[LinkName("g_date_set_parse")] public static extern void DateSetParse(GDate* date, gchar* str);
+	[LinkName("g_date_set_time_t")] public static extern void DateSetTimeT(GDate* date, time_t timet);
+	[LinkName("g_date_set_time_val")] public static extern void DateSetTimeVal(GDate* date, GTimeVal* timeval);
+	[LinkName("g_date_set_time")] public static extern void DateSetTime(GDate* date, GTime time);
+	[LinkName("g_date_set_month")] public static extern void DateSetMonth(GDate* date, GDateMonth month);
+	[LinkName("g_date_set_day")] public static extern void DateSetDay(GDate* date, GDateDay day);
+	[LinkName("g_date_set_year")] public static extern void DateSetYear(GDate* date, GDateYear year);
+	[LinkName("g_date_set_dmy")] public static extern void DateSetDmy(GDate* date, GDateDay day, GDateMonth month, GDateYear y);
+	[LinkName("g_date_set_julian")] public static extern void DateSetJulian(GDate* date, guint32 julian_date);
+	[LinkName("g_date_is_first_of_month")] public static extern gboolean DateIsFirstOfMonth(GDate* date);
+	[LinkName("g_date_is_last_of_month")] public static extern gboolean DateIsLastOfMonth(GDate* date);
+	[LinkName("g_date_add_days")] public static extern void DateAddDays(GDate* date, guint n_days);
+	[LinkName("g_date_subtract_days")] public static extern void DateSubtractDays(GDate* date, guint n_days);
+	[LinkName("g_date_add_months")] public static extern void DateAddMonths(GDate* date, guint n_months);
+	[LinkName("g_date_subtract_months")] public static extern void DateSubtractMonths(GDate* date, guint n_months);
+	[LinkName("g_date_add_years")] public static extern void DateAddYears(GDate* date, guint n_years);
+	[LinkName("g_date_subtract_years")] public static extern void DateSubtractYears(GDate* date, guint n_years);
+	[LinkName("g_date_is_leap_year")] public static extern gboolean DateIsLeapYear(GDateYear year);
+	[LinkName("g_date_get_days_in_month")] public static extern guint8 DateGetDaysInMonth(GDateMonth month, GDateYear year);
+	[LinkName("g_date_get_monday_weeks_in_year")] public static extern guint8 DateGetMondayWeeksInYear(GDateYear year);
+	[LinkName("g_date_get_sunday_weeks_in_year")] public static extern guint8 DateGetSundayWeeksInYear(GDateYear year);
+	[LinkName("g_date_get_weeks_in_year")] public static extern guint8 DateGetWeeksInYear(GDateYear year, GDateWeekday first_day_of_week);
+	[LinkName("g_date_days_between")] public static extern gint DateDaysBetween(GDate* date1, GDate* date2);
+	[LinkName("g_date_compare")] public static extern gint DateCompare(GDate* lhs, GDate* rhs);
+	[LinkName("g_date_to_struct_tm")] public static extern void DateToStructTm(GDate* date, tm* tm);
+	[LinkName("g_date_clamp")] public static extern void DateClamp(GDate* date, GDate* min_date, GDate* max_date);
+	[LinkName("g_date_order")] public static extern void DateOrder(GDate* date1, GDate* date2);
+	[LinkName("g_date_strftime")] public static extern gsize DateStrftime(gchar* s, gsize slen, gchar* format, GDate* date);
 }
 
 struct GDir;
 
 extension GDir
 {
-	[Import(GLib.so), LinkName("g_dir_open")] public static extern GDir* Open(gchar* path, guint flags, GError** error);
-	[Import(GLib.so), LinkName("g_dir_read_name")] public static extern gchar* ReadName(GDir* dir);
-	[Import(GLib.so), LinkName("g_dir_rewind")] public static extern void Rewind(GDir* dir);
-	[Import(GLib.so), LinkName("g_dir_close")] public static extern void Close(GDir* dir);
-	[Import(GLib.so), LinkName("g_dir_ref")] public static extern GDir* Ref(GDir* dir);
-	[Import(GLib.so), LinkName("g_dir_unref")] public static extern void Unref(GDir* dir);
+	[LinkName("g_dir_open")] public static extern GDir* Open(gchar* path, guint flags, GError** error);
+	[LinkName("g_dir_read_name")] public static extern gchar* ReadName(GDir* dir);
+	[LinkName("g_dir_rewind")] public static extern void Rewind(GDir* dir);
+	[LinkName("g_dir_close")] public static extern void Close(GDir* dir);
+	[LinkName("g_dir_ref")] public static extern GDir* Ref(GDir* dir);
+	[LinkName("g_dir_unref")] public static extern void Unref(GDir* dir);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_getenv")] public static extern gchar* Getenv(gchar* variable);
-	[Import(GLib.so), LinkName("g_setenv")] public static extern gboolean Setenv(gchar* variable, gchar* value, gboolean overwrite);
-	[Import(GLib.so), LinkName("g_unsetenv")] public static extern void Unsetenv(gchar* variable);
-	[Import(GLib.so), LinkName("g_listenv")] public static extern gchar** Listenv();
-	[Import(GLib.so), LinkName("g_get_environ")] public static extern gchar** GetEnviron();
-	[Import(GLib.so), LinkName("g_environ_getenv")] public static extern gchar* EnvironGetenv(gchar** envp, gchar* variable);
-	[Import(GLib.so), LinkName("g_environ_setenv")] public static extern gchar** EnvironSetenv(gchar** envp, gchar* variable, gchar* value, gboolean overwrite);
-	[Import(GLib.so), LinkName("g_environ_unsetenv")] public static extern gchar** EnvironUnsetenv(gchar** envp, gchar* variable);
+	[LinkName("g_getenv")] public static extern gchar* Getenv(gchar* variable);
+	[LinkName("g_setenv")] public static extern gboolean Setenv(gchar* variable, gchar* value, gboolean overwrite);
+	[LinkName("g_unsetenv")] public static extern void Unsetenv(gchar* variable);
+	[LinkName("g_listenv")] public static extern gchar** Listenv();
+	[LinkName("g_get_environ")] public static extern gchar** GetEnviron();
+	[LinkName("g_environ_getenv")] public static extern gchar* EnvironGetenv(gchar** envp, gchar* variable);
+	[LinkName("g_environ_setenv")] public static extern gchar** EnvironSetenv(gchar** envp, gchar* variable, gchar* value, gboolean overwrite);
+	[LinkName("g_environ_unsetenv")] public static extern gchar** EnvironUnsetenv(gchar** envp, gchar* variable);
 }
 
 [AllowDuplicates] enum GFileError : c_int
@@ -1214,70 +1214,70 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_file_error_quark")] public static extern GQuark FileErrorQuark();
-	[Import(GLib.so), LinkName("g_file_error_from_errno")] public static extern GFileError FileErrorFromErrno(gint err_no);
-	[Import(GLib.so), LinkName("g_file_test")] public static extern gboolean FileTest(gchar* filename, GFileTest test);
-	[Import(GLib.so), LinkName("g_file_get_contents")] public static extern gboolean FileGetContents(gchar* filename, gchar** contents, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_file_set_contents")] public static extern gboolean FileSetContents(gchar* filename, gchar* contents, gssize length, GError** error);
-	[Import(GLib.so), LinkName("g_file_set_contents_full")] public static extern gboolean FileSetContentsFull(gchar* filename, gchar* contents, gssize length, GFileSetContentsFlags flags, c_int mode, GError** error);
-	[Import(GLib.so), LinkName("g_file_read_link")] public static extern gchar* FileReadLink(gchar* filename, GError** error);
-	[Import(GLib.so), LinkName("g_mkdtemp")] public static extern gchar* Mkdtemp(gchar* tmpl);
-	[Import(GLib.so), LinkName("g_mkdtemp_full")] public static extern gchar* MkdtempFull(gchar* tmpl, gint mode);
-	[Import(GLib.so), LinkName("g_mkstemp")] public static extern gint Mkstemp(gchar* tmpl);
-	[Import(GLib.so), LinkName("g_mkstemp_full")] public static extern gint MkstempFull(gchar* tmpl, gint flags, gint mode);
-	[Import(GLib.so), LinkName("g_file_open_tmp")] public static extern gint FileOpenTmp(gchar* tmpl, gchar** name_used, GError** error);
+	[LinkName("g_file_error_quark")] public static extern GQuark FileErrorQuark();
+	[LinkName("g_file_error_from_errno")] public static extern GFileError FileErrorFromErrno(gint err_no);
+	[LinkName("g_file_test")] public static extern gboolean FileTest(gchar* filename, GFileTest test);
+	[LinkName("g_file_get_contents")] public static extern gboolean FileGetContents(gchar* filename, gchar** contents, gsize* length, GError** error);
+	[LinkName("g_file_set_contents")] public static extern gboolean FileSetContents(gchar* filename, gchar* contents, gssize length, GError** error);
+	[LinkName("g_file_set_contents_full")] public static extern gboolean FileSetContentsFull(gchar* filename, gchar* contents, gssize length, GFileSetContentsFlags flags, c_int mode, GError** error);
+	[LinkName("g_file_read_link")] public static extern gchar* FileReadLink(gchar* filename, GError** error);
+	[LinkName("g_mkdtemp")] public static extern gchar* Mkdtemp(gchar* tmpl);
+	[LinkName("g_mkdtemp_full")] public static extern gchar* MkdtempFull(gchar* tmpl, gint mode);
+	[LinkName("g_mkstemp")] public static extern gint Mkstemp(gchar* tmpl);
+	[LinkName("g_mkstemp_full")] public static extern gint MkstempFull(gchar* tmpl, gint flags, gint mode);
+	[LinkName("g_file_open_tmp")] public static extern gint FileOpenTmp(gchar* tmpl, gchar** name_used, GError** error);
 }
 
 extension GDir
 {
-	[Import(GLib.so), LinkName("g_dir_make_tmp")] public static extern gchar* MakeTmp(gchar* tmpl, GError** error);
+	[LinkName("g_dir_make_tmp")] public static extern gchar* MakeTmp(gchar* tmpl, GError** error);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_build_path")] public static extern gchar* BuildPath(gchar* separator, gchar* first_element, ...);
-	[Import(GLib.so), LinkName("g_build_pathv")] public static extern gchar* BuildPathv(gchar* separator, gchar** args);
-	[Import(GLib.so), LinkName("g_build_filename")] public static extern gchar* BuildFilename(gchar* first_element, ...);
-	[Import(GLib.so), LinkName("g_build_filenamev")] public static extern gchar* BuildFilenamev(gchar** args);
-	[Import(GLib.so), LinkName("g_build_filename_valist")] public static extern gchar* BuildFilenameValist(gchar* first_element, VarArgs* args);
-	[Import(GLib.so), LinkName("g_mkdir_with_parents")] public static extern gint MkdirWithParents(gchar* pathname, gint mode);
-	[Import(GLib.so), LinkName("g_path_is_absolute")] public static extern gboolean PathIsAbsolute(gchar* file_name);
-	[Import(GLib.so), LinkName("g_path_skip_root")] public static extern gchar* PathSkipRoot(gchar* file_name);
-	[Import(GLib.so), LinkName("g_basename")] public static extern gchar* Basename(gchar* file_name);
-	[Import(GLib.so), LinkName("g_get_current_dir")] public static extern gchar* GetCurrentDir();
-	[Import(GLib.so), LinkName("g_path_get_basename")] public static extern gchar* PathGetBasename(gchar* file_name);
-	[Import(GLib.so), LinkName("g_path_get_dirname")] public static extern gchar* PathGetDirname(gchar* file_name);
-	[Import(GLib.so), LinkName("g_canonicalize_filename")] public static extern gchar* CanonicalizeFilename(gchar* filename, gchar* relative_to);
-	[Import(GLib.so), LinkName("g_strip_context")] public static extern gchar* StripContext(gchar* msgid, gchar* msgval);
-	[Import(GLib.so), LinkName("g_dgettext")] public static extern gchar* Dgettext(gchar* domain, gchar* msgid);
-	[Import(GLib.so), LinkName("g_dcgettext")] public static extern gchar* Dcgettext(gchar* domain, gchar* msgid, gint category);
-	[Import(GLib.so), LinkName("g_dngettext")] public static extern gchar* Dngettext(gchar* domain, gchar* msgid, gchar* msgid_plural, gulong n);
-	[Import(GLib.so), LinkName("g_dpgettext")] public static extern gchar* Dpgettext(gchar* domain, gchar* msgctxtid, gsize msgidoffset);
-	[Import(GLib.so), LinkName("g_dpgettext2")] public static extern gchar* Dpgettext2(gchar* domain, gchar* context, gchar* msgid);
+	[LinkName("g_build_path")] public static extern gchar* BuildPath(gchar* separator, gchar* first_element, ...);
+	[LinkName("g_build_pathv")] public static extern gchar* BuildPathv(gchar* separator, gchar** args);
+	[LinkName("g_build_filename")] public static extern gchar* BuildFilename(gchar* first_element, ...);
+	[LinkName("g_build_filenamev")] public static extern gchar* BuildFilenamev(gchar** args);
+	[LinkName("g_build_filename_valist")] public static extern gchar* BuildFilenameValist(gchar* first_element, VarArgs* args);
+	[LinkName("g_mkdir_with_parents")] public static extern gint MkdirWithParents(gchar* pathname, gint mode);
+	[LinkName("g_path_is_absolute")] public static extern gboolean PathIsAbsolute(gchar* file_name);
+	[LinkName("g_path_skip_root")] public static extern gchar* PathSkipRoot(gchar* file_name);
+	[LinkName("g_basename")] public static extern gchar* Basename(gchar* file_name);
+	[LinkName("g_get_current_dir")] public static extern gchar* GetCurrentDir();
+	[LinkName("g_path_get_basename")] public static extern gchar* PathGetBasename(gchar* file_name);
+	[LinkName("g_path_get_dirname")] public static extern gchar* PathGetDirname(gchar* file_name);
+	[LinkName("g_canonicalize_filename")] public static extern gchar* CanonicalizeFilename(gchar* filename, gchar* relative_to);
+	[LinkName("g_strip_context")] public static extern gchar* StripContext(gchar* msgid, gchar* msgval);
+	[LinkName("g_dgettext")] public static extern gchar* Dgettext(gchar* domain, gchar* msgid);
+	[LinkName("g_dcgettext")] public static extern gchar* Dcgettext(gchar* domain, gchar* msgid, gint category);
+	[LinkName("g_dngettext")] public static extern gchar* Dngettext(gchar* domain, gchar* msgid, gchar* msgid_plural, gulong n);
+	[LinkName("g_dpgettext")] public static extern gchar* Dpgettext(gchar* domain, gchar* msgctxtid, gsize msgidoffset);
+	[LinkName("g_dpgettext2")] public static extern gchar* Dpgettext2(gchar* domain, gchar* context, gchar* msgid);
 }
 
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_free")] public static extern void Free(gpointer mem);
-	[Import(GLib.so), LinkName("g_free_sized")] public static extern void FreeSized(gpointer mem, c_size size);
-	[Import(GLib.so), LinkName("g_clear_pointer")] public static extern void ClearPointer(gpointer* pp, GDestroyNotify destroy);
-	[Import(GLib.so), LinkName("g_malloc")] public static extern gpointer Malloc(gsize n_bytes);
-	[Import(GLib.so), LinkName("g_malloc0")] public static extern gpointer Malloc0(gsize n_bytes);
-	[Import(GLib.so), LinkName("g_realloc")] public static extern gpointer Realloc(gpointer mem, gsize n_bytes);
-	[Import(GLib.so), LinkName("g_try_malloc")] public static extern gpointer TryMalloc(gsize n_bytes);
-	[Import(GLib.so), LinkName("g_try_malloc0")] public static extern gpointer TryMalloc0(gsize n_bytes);
-	[Import(GLib.so), LinkName("g_try_realloc")] public static extern gpointer TryRealloc(gpointer mem, gsize n_bytes);
-	[Import(GLib.so), LinkName("g_malloc_n")] public static extern gpointer MallocN(gsize n_blocks, gsize n_block_bytes);
-	[Import(GLib.so), LinkName("g_malloc0_n")] public static extern gpointer Malloc0N(gsize n_blocks, gsize n_block_bytes);
-	[Import(GLib.so), LinkName("g_realloc_n")] public static extern gpointer ReallocN(gpointer mem, gsize n_blocks, gsize n_block_bytes);
-	[Import(GLib.so), LinkName("g_try_malloc_n")] public static extern gpointer TryMallocN(gsize n_blocks, gsize n_block_bytes);
-	[Import(GLib.so), LinkName("g_try_malloc0_n")] public static extern gpointer TryMalloc0N(gsize n_blocks, gsize n_block_bytes);
-	[Import(GLib.so), LinkName("g_try_realloc_n")] public static extern gpointer TryReallocN(gpointer mem, gsize n_blocks, gsize n_block_bytes);
-	[Import(GLib.so), LinkName("g_aligned_alloc")] public static extern gpointer AlignedAlloc(gsize n_blocks, gsize n_block_bytes, gsize alignment);
-	[Import(GLib.so), LinkName("g_aligned_alloc0")] public static extern gpointer AlignedAlloc0(gsize n_blocks, gsize n_block_bytes, gsize alignment);
-	[Import(GLib.so), LinkName("g_aligned_free")] public static extern void AlignedFree(gpointer mem);
-	[Import(GLib.so), LinkName("g_aligned_free_sized")] public static extern void AlignedFreeSized(gpointer mem, c_size alignment, c_size size);
+	[LinkName("g_free")] public static extern void Free(gpointer mem);
+	[LinkName("g_free_sized")] public static extern void FreeSized(gpointer mem, c_size size);
+	[LinkName("g_clear_pointer")] public static extern void ClearPointer(gpointer* pp, GDestroyNotify destroy);
+	[LinkName("g_malloc")] public static extern gpointer Malloc(gsize n_bytes);
+	[LinkName("g_malloc0")] public static extern gpointer Malloc0(gsize n_bytes);
+	[LinkName("g_realloc")] public static extern gpointer Realloc(gpointer mem, gsize n_bytes);
+	[LinkName("g_try_malloc")] public static extern gpointer TryMalloc(gsize n_bytes);
+	[LinkName("g_try_malloc0")] public static extern gpointer TryMalloc0(gsize n_bytes);
+	[LinkName("g_try_realloc")] public static extern gpointer TryRealloc(gpointer mem, gsize n_bytes);
+	[LinkName("g_malloc_n")] public static extern gpointer MallocN(gsize n_blocks, gsize n_block_bytes);
+	[LinkName("g_malloc0_n")] public static extern gpointer Malloc0N(gsize n_blocks, gsize n_block_bytes);
+	[LinkName("g_realloc_n")] public static extern gpointer ReallocN(gpointer mem, gsize n_blocks, gsize n_block_bytes);
+	[LinkName("g_try_malloc_n")] public static extern gpointer TryMallocN(gsize n_blocks, gsize n_block_bytes);
+	[LinkName("g_try_malloc0_n")] public static extern gpointer TryMalloc0N(gsize n_blocks, gsize n_block_bytes);
+	[LinkName("g_try_realloc_n")] public static extern gpointer TryReallocN(gpointer mem, gsize n_blocks, gsize n_block_bytes);
+	[LinkName("g_aligned_alloc")] public static extern gpointer AlignedAlloc(gsize n_blocks, gsize n_block_bytes, gsize alignment);
+	[LinkName("g_aligned_alloc0")] public static extern gpointer AlignedAlloc0(gsize n_blocks, gsize n_block_bytes, gsize alignment);
+	[LinkName("g_aligned_free")] public static extern void AlignedFree(gpointer mem);
+	[LinkName("g_aligned_free_sized")] public static extern void AlignedFreeSized(gpointer mem, c_size alignment, c_size size);
 }
 
 [CRepr] struct GMemVTable
@@ -1292,8 +1292,8 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_mem_set_vtable")] public static extern void MemSetVtable(GMemVTable* vtable);
-	[Import(GLib.so), LinkName("g_mem_is_system_malloc")] public static extern gboolean MemIsSystemMalloc();
+	[LinkName("g_mem_set_vtable")] public static extern void MemSetVtable(GMemVTable* vtable);
+	[LinkName("g_mem_is_system_malloc")] public static extern gboolean MemIsSystemMalloc();
 }
 
 static
@@ -1304,7 +1304,7 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_mem_profile")] public static extern void MemProfile();
+	[LinkName("g_mem_profile")] public static extern void MemProfile();
 }
 
 
@@ -1341,32 +1341,32 @@ function void GNodeForeachFunc(GNode* node, gpointer data);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_node_new")] public static extern GNode* NodeNew(gpointer data);
-	[Import(GLib.so), LinkName("g_node_destroy")] public static extern void NodeDestroy(GNode* root);
-	[Import(GLib.so), LinkName("g_node_unlink")] public static extern void NodeUnlink(GNode* node);
-	[Import(GLib.so), LinkName("g_node_copy_deep")] public static extern GNode* NodeCopyDeep(GNode* node, GCopyFunc copy_func, gpointer data);
-	[Import(GLib.so), LinkName("g_node_copy")] public static extern GNode* NodeCopy(GNode* node);
-	[Import(GLib.so), LinkName("g_node_insert")] public static extern GNode* NodeInsert(GNode* parent, gint position, GNode* node);
-	[Import(GLib.so), LinkName("g_node_insert_before")] public static extern GNode* NodeInsertBefore(GNode* parent, GNode* sibling, GNode* node);
-	[Import(GLib.so), LinkName("g_node_insert_after")] public static extern GNode* NodeInsertAfter(GNode* parent, GNode* sibling, GNode* node);
-	[Import(GLib.so), LinkName("g_node_prepend")] public static extern GNode* NodePrepend(GNode* parent, GNode* node);
-	[Import(GLib.so), LinkName("g_node_n_nodes")] public static extern guint NodeNNodes(GNode* root, GTraverseFlags flags);
-	[Import(GLib.so), LinkName("g_node_get_root")] public static extern GNode* NodeGetRoot(GNode* node);
-	[Import(GLib.so), LinkName("g_node_is_ancestor")] public static extern gboolean NodeIsAncestor(GNode* node, GNode* descendant);
-	[Import(GLib.so), LinkName("g_node_depth")] public static extern guint NodeDepth(GNode* node);
-	[Import(GLib.so), LinkName("g_node_find")] public static extern GNode* NodeFind(GNode* root, GTraverseType order, GTraverseFlags flags, gpointer data);
-	[Import(GLib.so), LinkName("g_node_traverse")] public static extern void NodeTraverse(GNode* root, GTraverseType order, GTraverseFlags flags, gint max_depth, GNodeTraverseFunc func, gpointer data);
-	[Import(GLib.so), LinkName("g_node_max_height")] public static extern guint NodeMaxHeight(GNode* root);
-	[Import(GLib.so), LinkName("g_node_children_foreach")] public static extern void NodeChildrenForeach(GNode* node, GTraverseFlags flags, GNodeForeachFunc func, gpointer data);
-	[Import(GLib.so), LinkName("g_node_reverse_children")] public static extern void NodeReverseChildren(GNode* node);
-	[Import(GLib.so), LinkName("g_node_n_children")] public static extern guint NodeNChildren(GNode* node);
-	[Import(GLib.so), LinkName("g_node_nth_child")] public static extern GNode* NodeNthChild(GNode* node, guint n);
-	[Import(GLib.so), LinkName("g_node_last_child")] public static extern GNode* NodeLastChild(GNode* node);
-	[Import(GLib.so), LinkName("g_node_find_child")] public static extern GNode* NodeFindChild(GNode* node, GTraverseFlags flags, gpointer data);
-	[Import(GLib.so), LinkName("g_node_child_position")] public static extern gint NodeChildPosition(GNode* node, GNode* child);
-	[Import(GLib.so), LinkName("g_node_child_index")] public static extern gint NodeChildIndex(GNode* node, gpointer data);
-	[Import(GLib.so), LinkName("g_node_first_sibling")] public static extern GNode* NodeFirstSibling(GNode* node);
-	[Import(GLib.so), LinkName("g_node_last_sibling")] public static extern GNode* NodeLastSibling(GNode* node);
+	[LinkName("g_node_new")] public static extern GNode* NodeNew(gpointer data);
+	[LinkName("g_node_destroy")] public static extern void NodeDestroy(GNode* root);
+	[LinkName("g_node_unlink")] public static extern void NodeUnlink(GNode* node);
+	[LinkName("g_node_copy_deep")] public static extern GNode* NodeCopyDeep(GNode* node, GCopyFunc copy_func, gpointer data);
+	[LinkName("g_node_copy")] public static extern GNode* NodeCopy(GNode* node);
+	[LinkName("g_node_insert")] public static extern GNode* NodeInsert(GNode* parent, gint position, GNode* node);
+	[LinkName("g_node_insert_before")] public static extern GNode* NodeInsertBefore(GNode* parent, GNode* sibling, GNode* node);
+	[LinkName("g_node_insert_after")] public static extern GNode* NodeInsertAfter(GNode* parent, GNode* sibling, GNode* node);
+	[LinkName("g_node_prepend")] public static extern GNode* NodePrepend(GNode* parent, GNode* node);
+	[LinkName("g_node_n_nodes")] public static extern guint NodeNNodes(GNode* root, GTraverseFlags flags);
+	[LinkName("g_node_get_root")] public static extern GNode* NodeGetRoot(GNode* node);
+	[LinkName("g_node_is_ancestor")] public static extern gboolean NodeIsAncestor(GNode* node, GNode* descendant);
+	[LinkName("g_node_depth")] public static extern guint NodeDepth(GNode* node);
+	[LinkName("g_node_find")] public static extern GNode* NodeFind(GNode* root, GTraverseType order, GTraverseFlags flags, gpointer data);
+	[LinkName("g_node_traverse")] public static extern void NodeTraverse(GNode* root, GTraverseType order, GTraverseFlags flags, gint max_depth, GNodeTraverseFunc func, gpointer data);
+	[LinkName("g_node_max_height")] public static extern guint NodeMaxHeight(GNode* root);
+	[LinkName("g_node_children_foreach")] public static extern void NodeChildrenForeach(GNode* node, GTraverseFlags flags, GNodeForeachFunc func, gpointer data);
+	[LinkName("g_node_reverse_children")] public static extern void NodeReverseChildren(GNode* node);
+	[LinkName("g_node_n_children")] public static extern guint NodeNChildren(GNode* node);
+	[LinkName("g_node_nth_child")] public static extern GNode* NodeNthChild(GNode* node, guint n);
+	[LinkName("g_node_last_child")] public static extern GNode* NodeLastChild(GNode* node);
+	[LinkName("g_node_find_child")] public static extern GNode* NodeFindChild(GNode* node, GTraverseFlags flags, gpointer data);
+	[LinkName("g_node_child_position")] public static extern gint NodeChildPosition(GNode* node, GNode* child);
+	[LinkName("g_node_child_index")] public static extern gint NodeChildIndex(GNode* node, gpointer data);
+	[LinkName("g_node_first_sibling")] public static extern GNode* NodeFirstSibling(GNode* node);
+	[LinkName("g_node_last_sibling")] public static extern GNode* NodeLastSibling(GNode* node);
 }
 
 
@@ -1379,39 +1379,39 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_list_alloc")] public static extern GList* ListAlloc();
-	[Import(GLib.so), LinkName("g_list_free")] public static extern void ListFree(GList* list);
-	[Import(GLib.so), LinkName("g_list_free_1")] public static extern void ListFree1(GList* list);
-	[Import(GLib.so), LinkName("g_list_free_full")] public static extern void ListFreeFull(GList* list, GDestroyNotify free_func);
-	[Import(GLib.so), LinkName("g_list_append")] public static extern GList* ListAppend(GList* list, gpointer data);
-	[Import(GLib.so), LinkName("g_list_prepend")] public static extern GList* ListPrepend(GList* list, gpointer data);
-	[Import(GLib.so), LinkName("g_list_insert")] public static extern GList* ListInsert(GList* list, gpointer data, gint position);
-	[Import(GLib.so), LinkName("g_list_insert_sorted")] public static extern GList* ListInsertSorted(GList* list, gpointer data, GCompareFunc func);
-	[Import(GLib.so), LinkName("g_list_insert_sorted_with_data")] public static extern GList* ListInsertSortedWithData(GList* list, gpointer data, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_list_insert_before")] public static extern GList* ListInsertBefore(GList* list, GList* sibling, gpointer data);
-	[Import(GLib.so), LinkName("g_list_insert_before_link")] public static extern GList* ListInsertBeforeLink(GList* list, GList* sibling, GList* link);
-	[Import(GLib.so), LinkName("g_list_concat")] public static extern GList* ListConcat(GList* list1, GList* list2);
-	[Import(GLib.so), LinkName("g_list_remove")] public static extern GList* ListRemove(GList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_list_remove_all")] public static extern GList* ListRemoveAll(GList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_list_remove_link")] public static extern GList* ListRemoveLink(GList* list, GList* llink);
-	[Import(GLib.so), LinkName("g_list_delete_link")] public static extern GList* ListDeleteLink(GList* list, GList* link);
-	[Import(GLib.so), LinkName("g_list_reverse")] public static extern GList* ListReverse(GList* list);
-	[Import(GLib.so), LinkName("g_list_copy")] public static extern GList* ListCopy(GList* list);
-	[Import(GLib.so), LinkName("g_list_copy_deep")] public static extern GList* ListCopyDeep(GList* list, GCopyFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_list_nth")] public static extern GList* ListNth(GList* list, guint n);
-	[Import(GLib.so), LinkName("g_list_nth_prev")] public static extern GList* ListNthPrev(GList* list, guint n);
-	[Import(GLib.so), LinkName("g_list_find")] public static extern GList* ListFind(GList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_list_find_custom")] public static extern GList* ListFindCustom(GList* list, gconstpointer data, GCompareFunc func);
-	[Import(GLib.so), LinkName("g_list_position")] public static extern gint ListPosition(GList* list, GList* llink);
-	[Import(GLib.so), LinkName("g_list_index")] public static extern gint ListIndex(GList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_list_last")] public static extern GList* ListLast(GList* list);
-	[Import(GLib.so), LinkName("g_list_first")] public static extern GList* ListFirst(GList* list);
-	[Import(GLib.so), LinkName("g_list_length")] public static extern guint ListLength(GList* list);
-	[Import(GLib.so), LinkName("g_list_foreach")] public static extern void ListForeach(GList* list, GFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_list_sort")] public static extern GList* ListSort(GList* list, GCompareFunc compare_func);
-	[Import(GLib.so), LinkName("g_list_sort_with_data")] public static extern GList* ListSortWithData(GList* list, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_list_nth_data")] public static extern gpointer ListNthData(GList* list, guint n);
-	[Import(GLib.so), LinkName("g_clear_list")] public static extern void ClearList(GList** list_ptr, GDestroyNotify destroy);
+	[LinkName("g_list_alloc")] public static extern GList* ListAlloc();
+	[LinkName("g_list_free")] public static extern void ListFree(GList* list);
+	[LinkName("g_list_free_1")] public static extern void ListFree1(GList* list);
+	[LinkName("g_list_free_full")] public static extern void ListFreeFull(GList* list, GDestroyNotify free_func);
+	[LinkName("g_list_append")] public static extern GList* ListAppend(GList* list, gpointer data);
+	[LinkName("g_list_prepend")] public static extern GList* ListPrepend(GList* list, gpointer data);
+	[LinkName("g_list_insert")] public static extern GList* ListInsert(GList* list, gpointer data, gint position);
+	[LinkName("g_list_insert_sorted")] public static extern GList* ListInsertSorted(GList* list, gpointer data, GCompareFunc func);
+	[LinkName("g_list_insert_sorted_with_data")] public static extern GList* ListInsertSortedWithData(GList* list, gpointer data, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_list_insert_before")] public static extern GList* ListInsertBefore(GList* list, GList* sibling, gpointer data);
+	[LinkName("g_list_insert_before_link")] public static extern GList* ListInsertBeforeLink(GList* list, GList* sibling, GList* link);
+	[LinkName("g_list_concat")] public static extern GList* ListConcat(GList* list1, GList* list2);
+	[LinkName("g_list_remove")] public static extern GList* ListRemove(GList* list, gconstpointer data);
+	[LinkName("g_list_remove_all")] public static extern GList* ListRemoveAll(GList* list, gconstpointer data);
+	[LinkName("g_list_remove_link")] public static extern GList* ListRemoveLink(GList* list, GList* llink);
+	[LinkName("g_list_delete_link")] public static extern GList* ListDeleteLink(GList* list, GList* link);
+	[LinkName("g_list_reverse")] public static extern GList* ListReverse(GList* list);
+	[LinkName("g_list_copy")] public static extern GList* ListCopy(GList* list);
+	[LinkName("g_list_copy_deep")] public static extern GList* ListCopyDeep(GList* list, GCopyFunc func, gpointer user_data);
+	[LinkName("g_list_nth")] public static extern GList* ListNth(GList* list, guint n);
+	[LinkName("g_list_nth_prev")] public static extern GList* ListNthPrev(GList* list, guint n);
+	[LinkName("g_list_find")] public static extern GList* ListFind(GList* list, gconstpointer data);
+	[LinkName("g_list_find_custom")] public static extern GList* ListFindCustom(GList* list, gconstpointer data, GCompareFunc func);
+	[LinkName("g_list_position")] public static extern gint ListPosition(GList* list, GList* llink);
+	[LinkName("g_list_index")] public static extern gint ListIndex(GList* list, gconstpointer data);
+	[LinkName("g_list_last")] public static extern GList* ListLast(GList* list);
+	[LinkName("g_list_first")] public static extern GList* ListFirst(GList* list);
+	[LinkName("g_list_length")] public static extern guint ListLength(GList* list);
+	[LinkName("g_list_foreach")] public static extern void ListForeach(GList* list, GFunc func, gpointer user_data);
+	[LinkName("g_list_sort")] public static extern GList* ListSort(GList* list, GCompareFunc compare_func);
+	[LinkName("g_list_sort_with_data")] public static extern GList* ListSortWithData(GList* list, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_list_nth_data")] public static extern gpointer ListNthData(GList* list, guint n);
+	[LinkName("g_clear_list")] public static extern void ClearList(GList** list_ptr, GDestroyNotify destroy);
 }
 
 struct GHashTable;
@@ -1431,79 +1431,79 @@ function gboolean GHRFunc(gpointer key, gpointer value, gpointer user_data);
 
 extension GHashTable
 {
-	[Import(GLib.so), LinkName("g_hash_table_new")] public static extern GHashTable* New(GHashFunc hash_func, GEqualFunc key_equal_func);
-	[Import(GLib.so), LinkName("g_hash_table_new_full")] public static extern GHashTable* NewFull(GHashFunc hash_func, GEqualFunc key_equal_func, GDestroyNotify key_destroy_func, GDestroyNotify value_destroy_func);
-	[Import(GLib.so), LinkName("g_hash_table_new_similar")] public static extern GHashTable* NewSimilar(GHashTable* other_hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_destroy")] public static extern void Destroy(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_insert")] public static extern gboolean Insert(GHashTable* hash_table, gpointer key, gpointer value);
-	[Import(GLib.so), LinkName("g_hash_table_replace")] public static extern gboolean Replace(GHashTable* hash_table, gpointer key, gpointer value);
-	[Import(GLib.so), LinkName("g_hash_table_add")] public static extern gboolean Add(GHashTable* hash_table, gpointer key);
-	[Import(GLib.so), LinkName("g_hash_table_remove")] public static extern gboolean Remove(GHashTable* hash_table, gconstpointer key);
-	[Import(GLib.so), LinkName("g_hash_table_remove_all")] public static extern void RemoveAll(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_steal")] public static extern gboolean Steal(GHashTable* hash_table, gconstpointer key);
-	[Import(GLib.so), LinkName("g_hash_table_steal_extended")] public static extern gboolean StealExtended(GHashTable* hash_table, gconstpointer lookup_key, gpointer* stolen_key, gpointer* stolen_value);
-	[Import(GLib.so), LinkName("g_hash_table_steal_all")] public static extern void StealAll(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_steal_all_keys")] public static extern GPtrArray* StealAllKeys(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_steal_all_values")] public static extern GPtrArray* StealAllValues(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_lookup")] public static extern gpointer Lookup(GHashTable* hash_table, gconstpointer key);
-	[Import(GLib.so), LinkName("g_hash_table_contains")] public static extern gboolean Contains(GHashTable* hash_table, gconstpointer key);
-	[Import(GLib.so), LinkName("g_hash_table_lookup_extended")] public static extern gboolean LookupExtended(GHashTable* hash_table, gconstpointer lookup_key, gpointer* orig_key, gpointer* value);
-	[Import(GLib.so), LinkName("g_hash_table_foreach")] public static extern void Foreach(GHashTable* hash_table, GHFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_hash_table_find")] public static extern gpointer Find(GHashTable* hash_table, GHRFunc predicate, gpointer user_data);
-	[Import(GLib.so), LinkName("g_hash_table_foreach_remove")] public static extern guint ForeachRemove(GHashTable* hash_table, GHRFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_hash_table_foreach_steal")] public static extern guint ForeachSteal(GHashTable* hash_table, GHRFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_hash_table_size")] public static extern guint Size(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_get_keys")] public static extern GList* GetKeys(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_get_values")] public static extern GList* GetValues(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_get_keys_as_array")] public static extern gpointer* GetKeysAsArray(GHashTable* hash_table, guint* length);
-	[Import(GLib.so), LinkName("g_hash_table_get_keys_as_ptr_array")] public static extern GPtrArray* GetKeysAsPtrArray(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_get_values_as_ptr_array")] public static extern GPtrArray* GetValuesAsPtrArray(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_iter_init")] public static extern void IterInit(GHashTableIter* iter, GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_iter_next")] public static extern gboolean IterNext(GHashTableIter* iter, gpointer* key, gpointer* value);
-	[Import(GLib.so), LinkName("g_hash_table_iter_get_hash_table")] public static extern GHashTable* IterGetHashTable(GHashTableIter* iter);
-	[Import(GLib.so), LinkName("g_hash_table_iter_remove")] public static extern void IterRemove(GHashTableIter* iter);
-	[Import(GLib.so), LinkName("g_hash_table_iter_replace")] public static extern void IterReplace(GHashTableIter* iter, gpointer value);
-	[Import(GLib.so), LinkName("g_hash_table_iter_steal")] public static extern void IterSteal(GHashTableIter* iter);
-	[Import(GLib.so), LinkName("g_hash_table_ref")] public static extern GHashTable* Ref(GHashTable* hash_table);
-	[Import(GLib.so), LinkName("g_hash_table_unref")] public static extern void Unref(GHashTable* hash_table);
+	[LinkName("g_hash_table_new")] public static extern GHashTable* New(GHashFunc hash_func, GEqualFunc key_equal_func);
+	[LinkName("g_hash_table_new_full")] public static extern GHashTable* NewFull(GHashFunc hash_func, GEqualFunc key_equal_func, GDestroyNotify key_destroy_func, GDestroyNotify value_destroy_func);
+	[LinkName("g_hash_table_new_similar")] public static extern GHashTable* NewSimilar(GHashTable* other_hash_table);
+	[LinkName("g_hash_table_destroy")] public static extern void Destroy(GHashTable* hash_table);
+	[LinkName("g_hash_table_insert")] public static extern gboolean Insert(GHashTable* hash_table, gpointer key, gpointer value);
+	[LinkName("g_hash_table_replace")] public static extern gboolean Replace(GHashTable* hash_table, gpointer key, gpointer value);
+	[LinkName("g_hash_table_add")] public static extern gboolean Add(GHashTable* hash_table, gpointer key);
+	[LinkName("g_hash_table_remove")] public static extern gboolean Remove(GHashTable* hash_table, gconstpointer key);
+	[LinkName("g_hash_table_remove_all")] public static extern void RemoveAll(GHashTable* hash_table);
+	[LinkName("g_hash_table_steal")] public static extern gboolean Steal(GHashTable* hash_table, gconstpointer key);
+	[LinkName("g_hash_table_steal_extended")] public static extern gboolean StealExtended(GHashTable* hash_table, gconstpointer lookup_key, gpointer* stolen_key, gpointer* stolen_value);
+	[LinkName("g_hash_table_steal_all")] public static extern void StealAll(GHashTable* hash_table);
+	[LinkName("g_hash_table_steal_all_keys")] public static extern GPtrArray* StealAllKeys(GHashTable* hash_table);
+	[LinkName("g_hash_table_steal_all_values")] public static extern GPtrArray* StealAllValues(GHashTable* hash_table);
+	[LinkName("g_hash_table_lookup")] public static extern gpointer Lookup(GHashTable* hash_table, gconstpointer key);
+	[LinkName("g_hash_table_contains")] public static extern gboolean Contains(GHashTable* hash_table, gconstpointer key);
+	[LinkName("g_hash_table_lookup_extended")] public static extern gboolean LookupExtended(GHashTable* hash_table, gconstpointer lookup_key, gpointer* orig_key, gpointer* value);
+	[LinkName("g_hash_table_foreach")] public static extern void Foreach(GHashTable* hash_table, GHFunc func, gpointer user_data);
+	[LinkName("g_hash_table_find")] public static extern gpointer Find(GHashTable* hash_table, GHRFunc predicate, gpointer user_data);
+	[LinkName("g_hash_table_foreach_remove")] public static extern guint ForeachRemove(GHashTable* hash_table, GHRFunc func, gpointer user_data);
+	[LinkName("g_hash_table_foreach_steal")] public static extern guint ForeachSteal(GHashTable* hash_table, GHRFunc func, gpointer user_data);
+	[LinkName("g_hash_table_size")] public static extern guint Size(GHashTable* hash_table);
+	[LinkName("g_hash_table_get_keys")] public static extern GList* GetKeys(GHashTable* hash_table);
+	[LinkName("g_hash_table_get_values")] public static extern GList* GetValues(GHashTable* hash_table);
+	[LinkName("g_hash_table_get_keys_as_array")] public static extern gpointer* GetKeysAsArray(GHashTable* hash_table, guint* length);
+	[LinkName("g_hash_table_get_keys_as_ptr_array")] public static extern GPtrArray* GetKeysAsPtrArray(GHashTable* hash_table);
+	[LinkName("g_hash_table_get_values_as_ptr_array")] public static extern GPtrArray* GetValuesAsPtrArray(GHashTable* hash_table);
+	[LinkName("g_hash_table_iter_init")] public static extern void IterInit(GHashTableIter* iter, GHashTable* hash_table);
+	[LinkName("g_hash_table_iter_next")] public static extern gboolean IterNext(GHashTableIter* iter, gpointer* key, gpointer* value);
+	[LinkName("g_hash_table_iter_get_hash_table")] public static extern GHashTable* IterGetHashTable(GHashTableIter* iter);
+	[LinkName("g_hash_table_iter_remove")] public static extern void IterRemove(GHashTableIter* iter);
+	[LinkName("g_hash_table_iter_replace")] public static extern void IterReplace(GHashTableIter* iter, gpointer value);
+	[LinkName("g_hash_table_iter_steal")] public static extern void IterSteal(GHashTableIter* iter);
+	[LinkName("g_hash_table_ref")] public static extern GHashTable* Ref(GHashTable* hash_table);
+	[LinkName("g_hash_table_unref")] public static extern void Unref(GHashTable* hash_table);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_str_equal")] public static extern gboolean StrEqual(gconstpointer v1, gconstpointer v2);
-	[Import(GLib.so), LinkName("g_str_hash")] public static extern guint StrHash(gconstpointer v);
-	[Import(GLib.so), LinkName("g_int_equal")] public static extern gboolean IntEqual(gconstpointer v1, gconstpointer v2);
-	[Import(GLib.so), LinkName("g_int_hash")] public static extern guint IntHash(gconstpointer v);
-	[Import(GLib.so), LinkName("g_int64_equal")] public static extern gboolean Int64Equal(gconstpointer v1, gconstpointer v2);
-	[Import(GLib.so), LinkName("g_int64_hash")] public static extern guint Int64Hash(gconstpointer v);
-	[Import(GLib.so), LinkName("g_double_equal")] public static extern gboolean DoubleEqual(gconstpointer v1, gconstpointer v2);
-	[Import(GLib.so), LinkName("g_double_hash")] public static extern guint DoubleHash(gconstpointer v);
+	[LinkName("g_str_equal")] public static extern gboolean StrEqual(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_str_hash")] public static extern guint StrHash(gconstpointer v);
+	[LinkName("g_int_equal")] public static extern gboolean IntEqual(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_int_hash")] public static extern guint IntHash(gconstpointer v);
+	[LinkName("g_int64_equal")] public static extern gboolean Int64Equal(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_int64_hash")] public static extern guint Int64Hash(gconstpointer v);
+	[LinkName("g_double_equal")] public static extern gboolean DoubleEqual(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_double_hash")] public static extern guint DoubleHash(gconstpointer v);
 }
 
 extension GDir
 {
-	[Import(GLib.so), LinkName("g_direct_hash")] public static extern guint ectHash(gconstpointer v);
-	[Import(GLib.so), LinkName("g_direct_equal")] public static extern gboolean ectEqual(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_direct_hash")] public static extern guint ectHash(gconstpointer v);
+	[LinkName("g_direct_equal")] public static extern gboolean ectEqual(gconstpointer v1, gconstpointer v2);
 }
 
 struct GHmac;
 
 extension GHmac
 {
-	[Import(GLib.so), LinkName("g_hmac_new")] public static extern GHmac* New(GChecksumType digest_type, guchar* key, gsize key_len);
-	[Import(GLib.so), LinkName("g_hmac_copy")] public static extern GHmac* Copy(GHmac* hmac);
-	[Import(GLib.so), LinkName("g_hmac_ref")] public static extern GHmac* Ref(GHmac* hmac);
-	[Import(GLib.so), LinkName("g_hmac_unref")] public static extern void Unref(GHmac* hmac);
-	[Import(GLib.so), LinkName("g_hmac_update")] public static extern void Update(GHmac* hmac, guchar* data, gssize length);
-	[Import(GLib.so), LinkName("g_hmac_get_string")] public static extern gchar* GetString(GHmac* hmac);
-	[Import(GLib.so), LinkName("g_hmac_get_digest")] public static extern void GetDigest(GHmac* hmac, guint8* buffer, gsize* digest_len);
+	[LinkName("g_hmac_new")] public static extern GHmac* New(GChecksumType digest_type, guchar* key, gsize key_len);
+	[LinkName("g_hmac_copy")] public static extern GHmac* Copy(GHmac* hmac);
+	[LinkName("g_hmac_ref")] public static extern GHmac* Ref(GHmac* hmac);
+	[LinkName("g_hmac_unref")] public static extern void Unref(GHmac* hmac);
+	[LinkName("g_hmac_update")] public static extern void Update(GHmac* hmac, guchar* data, gssize length);
+	[LinkName("g_hmac_get_string")] public static extern gchar* GetString(GHmac* hmac);
+	[LinkName("g_hmac_get_digest")] public static extern void GetDigest(GHmac* hmac, guint8* buffer, gsize* digest_len);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_compute_hmac_for_data")] public static extern gchar* ComputeHmacForData(GChecksumType digest_type, guchar* key, gsize key_len, guchar* data, gsize length);
-	[Import(GLib.so), LinkName("g_compute_hmac_for_string")] public static extern gchar* ComputeHmacForString(GChecksumType digest_type, guchar* key, gsize key_len, gchar* str, gssize length);
-	[Import(GLib.so), LinkName("g_compute_hmac_for_bytes")] public static extern gchar* ComputeHmacForBytes(GChecksumType digest_type, GBytes* key, GBytes* data);
+	[LinkName("g_compute_hmac_for_data")] public static extern gchar* ComputeHmacForData(GChecksumType digest_type, guchar* key, gsize key_len, guchar* data, gsize length);
+	[LinkName("g_compute_hmac_for_string")] public static extern gchar* ComputeHmacForString(GChecksumType digest_type, guchar* key, gsize key_len, gchar* str, gssize length);
+	[LinkName("g_compute_hmac_for_bytes")] public static extern gchar* ComputeHmacForBytes(GChecksumType digest_type, GBytes* key, GBytes* data);
 }
 
 
@@ -1555,34 +1555,34 @@ function void GHookFinalizeFunc(GHookList* hook_list, GHook* hook);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_hook_list_init")] public static extern void HookListInit(GHookList* hook_list, guint hook_size);
-	[Import(GLib.so), LinkName("g_hook_list_clear")] public static extern void HookListClear(GHookList* hook_list);
-	[Import(GLib.so), LinkName("g_hook_alloc")] public static extern GHook* HookAlloc(GHookList* hook_list);
-	[Import(GLib.so), LinkName("g_hook_free")] public static extern void HookFree(GHookList* hook_list, GHook* hook);
-	[Import(GLib.so), LinkName("g_hook_ref")] public static extern GHook* HookRef(GHookList* hook_list, GHook* hook);
-	[Import(GLib.so), LinkName("g_hook_unref")] public static extern void HookUnref(GHookList* hook_list, GHook* hook);
-	[Import(GLib.so), LinkName("g_hook_destroy")] public static extern gboolean HookDestroy(GHookList* hook_list, gulong hook_id);
-	[Import(GLib.so), LinkName("g_hook_destroy_link")] public static extern void HookDestroyLink(GHookList* hook_list, GHook* hook);
-	[Import(GLib.so), LinkName("g_hook_prepend")] public static extern void HookPrepend(GHookList* hook_list, GHook* hook);
-	[Import(GLib.so), LinkName("g_hook_insert_before")] public static extern void HookInsertBefore(GHookList* hook_list, GHook* sibling, GHook* hook);
-	[Import(GLib.so), LinkName("g_hook_insert_sorted")] public static extern void HookInsertSorted(GHookList* hook_list, GHook* hook, GHookCompareFunc func);
-	[Import(GLib.so), LinkName("g_hook_get")] public static extern GHook* HookGet(GHookList* hook_list, gulong hook_id);
-	[Import(GLib.so), LinkName("g_hook_find")] public static extern GHook* HookFind(GHookList* hook_list, gboolean need_valids, GHookFindFunc func, gpointer data);
-	[Import(GLib.so), LinkName("g_hook_find_data")] public static extern GHook* HookFindData(GHookList* hook_list, gboolean need_valids, gpointer data);
-	[Import(GLib.so), LinkName("g_hook_find_func")] public static extern GHook* HookFindFunc(GHookList* hook_list, gboolean need_valids, gpointer func);
-	[Import(GLib.so), LinkName("g_hook_find_func_data")] public static extern GHook* HookFindFuncData(GHookList* hook_list, gboolean need_valids, gpointer func, gpointer data);
-	[Import(GLib.so), LinkName("g_hook_first_valid")] public static extern GHook* HookFirstValid(GHookList* hook_list, gboolean may_be_in_call);
-	[Import(GLib.so), LinkName("g_hook_next_valid")] public static extern GHook* HookNextValid(GHookList* hook_list, GHook* hook, gboolean may_be_in_call);
-	[Import(GLib.so), LinkName("g_hook_compare_ids")] public static extern gint HookCompareIds(GHook* new_hook, GHook* sibling);
-	[Import(GLib.so), LinkName("g_hook_list_invoke")] public static extern void HookListInvoke(GHookList* hook_list, gboolean may_recurse);
-	[Import(GLib.so), LinkName("g_hook_list_invoke_check")] public static extern void HookListInvokeCheck(GHookList* hook_list, gboolean may_recurse);
-	[Import(GLib.so), LinkName("g_hook_list_marshal")] public static extern void HookListMarshal(GHookList* hook_list, gboolean may_recurse, GHookMarshaller marshaller, gpointer marshal_data);
-	[Import(GLib.so), LinkName("g_hook_list_marshal_check")] public static extern void HookListMarshalCheck(GHookList* hook_list, gboolean may_recurse, GHookCheckMarshaller marshaller, gpointer marshal_data);
-	[Import(GLib.so), LinkName("g_hostname_is_non_ascii")] public static extern gboolean HostnameIsNonAscii(gchar* hostname);
-	[Import(GLib.so), LinkName("g_hostname_is_ascii_encoded")] public static extern gboolean HostnameIsAsciiEncoded(gchar* hostname);
-	[Import(GLib.so), LinkName("g_hostname_is_ip_address")] public static extern gboolean HostnameIsIpAddress(gchar* hostname);
-	[Import(GLib.so), LinkName("g_hostname_to_ascii")] public static extern gchar* HostnameToAscii(gchar* hostname);
-	[Import(GLib.so), LinkName("g_hostname_to_unicode")] public static extern gchar* HostnameToUnicode(gchar* hostname);
+	[LinkName("g_hook_list_init")] public static extern void HookListInit(GHookList* hook_list, guint hook_size);
+	[LinkName("g_hook_list_clear")] public static extern void HookListClear(GHookList* hook_list);
+	[LinkName("g_hook_alloc")] public static extern GHook* HookAlloc(GHookList* hook_list);
+	[LinkName("g_hook_free")] public static extern void HookFree(GHookList* hook_list, GHook* hook);
+	[LinkName("g_hook_ref")] public static extern GHook* HookRef(GHookList* hook_list, GHook* hook);
+	[LinkName("g_hook_unref")] public static extern void HookUnref(GHookList* hook_list, GHook* hook);
+	[LinkName("g_hook_destroy")] public static extern gboolean HookDestroy(GHookList* hook_list, gulong hook_id);
+	[LinkName("g_hook_destroy_link")] public static extern void HookDestroyLink(GHookList* hook_list, GHook* hook);
+	[LinkName("g_hook_prepend")] public static extern void HookPrepend(GHookList* hook_list, GHook* hook);
+	[LinkName("g_hook_insert_before")] public static extern void HookInsertBefore(GHookList* hook_list, GHook* sibling, GHook* hook);
+	[LinkName("g_hook_insert_sorted")] public static extern void HookInsertSorted(GHookList* hook_list, GHook* hook, GHookCompareFunc func);
+	[LinkName("g_hook_get")] public static extern GHook* HookGet(GHookList* hook_list, gulong hook_id);
+	[LinkName("g_hook_find")] public static extern GHook* HookFind(GHookList* hook_list, gboolean need_valids, GHookFindFunc func, gpointer data);
+	[LinkName("g_hook_find_data")] public static extern GHook* HookFindData(GHookList* hook_list, gboolean need_valids, gpointer data);
+	[LinkName("g_hook_find_func")] public static extern GHook* HookFindFunc(GHookList* hook_list, gboolean need_valids, gpointer func);
+	[LinkName("g_hook_find_func_data")] public static extern GHook* HookFindFuncData(GHookList* hook_list, gboolean need_valids, gpointer func, gpointer data);
+	[LinkName("g_hook_first_valid")] public static extern GHook* HookFirstValid(GHookList* hook_list, gboolean may_be_in_call);
+	[LinkName("g_hook_next_valid")] public static extern GHook* HookNextValid(GHookList* hook_list, GHook* hook, gboolean may_be_in_call);
+	[LinkName("g_hook_compare_ids")] public static extern gint HookCompareIds(GHook* new_hook, GHook* sibling);
+	[LinkName("g_hook_list_invoke")] public static extern void HookListInvoke(GHookList* hook_list, gboolean may_recurse);
+	[LinkName("g_hook_list_invoke_check")] public static extern void HookListInvokeCheck(GHookList* hook_list, gboolean may_recurse);
+	[LinkName("g_hook_list_marshal")] public static extern void HookListMarshal(GHookList* hook_list, gboolean may_recurse, GHookMarshaller marshaller, gpointer marshal_data);
+	[LinkName("g_hook_list_marshal_check")] public static extern void HookListMarshalCheck(GHookList* hook_list, gboolean may_recurse, GHookCheckMarshaller marshaller, gpointer marshal_data);
+	[LinkName("g_hostname_is_non_ascii")] public static extern gboolean HostnameIsNonAscii(gchar* hostname);
+	[LinkName("g_hostname_is_ascii_encoded")] public static extern gboolean HostnameIsAsciiEncoded(gchar* hostname);
+	[LinkName("g_hostname_is_ip_address")] public static extern gboolean HostnameIsIpAddress(gchar* hostname);
+	[LinkName("g_hostname_to_ascii")] public static extern gchar* HostnameToAscii(gchar* hostname);
+	[LinkName("g_hostname_to_unicode")] public static extern gchar* HostnameToUnicode(gchar* hostname);
 }
 
 
@@ -1626,7 +1626,7 @@ extension GLib
 	 *  A format specifier that can be used in printf()-style format strings
 	 *  when printing the @fd member of a #GPollFD.
 	 */
-	[Import(GLib.so), LinkName("g_poll")] public static extern gint Poll(GPollFD* fds, guint nfds, gint timeout);
+	[LinkName("g_poll")] public static extern gint Poll(GPollFD* fds, guint nfds, gint timeout);
 
 }
 
@@ -1639,36 +1639,36 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_slist_alloc")] public static extern GSList* SlistAlloc();
-	[Import(GLib.so), LinkName("g_slist_free")] public static extern void SlistFree(GSList* list);
-	[Import(GLib.so), LinkName("g_slist_free_1")] public static extern void SlistFree1(GSList* list);
-	[Import(GLib.so), LinkName("g_slist_free_full")] public static extern void SlistFreeFull(GSList* list, GDestroyNotify free_func);
-	[Import(GLib.so), LinkName("g_slist_append")] public static extern GSList* SlistAppend(GSList* list, gpointer data);
-	[Import(GLib.so), LinkName("g_slist_prepend")] public static extern GSList* SlistPrepend(GSList* list, gpointer data);
-	[Import(GLib.so), LinkName("g_slist_insert")] public static extern GSList* SlistInsert(GSList* list, gpointer data, gint position);
-	[Import(GLib.so), LinkName("g_slist_insert_sorted")] public static extern GSList* SlistInsertSorted(GSList* list, gpointer data, GCompareFunc func);
-	[Import(GLib.so), LinkName("g_slist_insert_sorted_with_data")] public static extern GSList* SlistInsertSortedWithData(GSList* list, gpointer data, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_slist_insert_before")] public static extern GSList* SlistInsertBefore(GSList* slist, GSList* sibling, gpointer data);
-	[Import(GLib.so), LinkName("g_slist_concat")] public static extern GSList* SlistConcat(GSList* list1, GSList* list2);
-	[Import(GLib.so), LinkName("g_slist_remove")] public static extern GSList* SlistRemove(GSList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_slist_remove_all")] public static extern GSList* SlistRemoveAll(GSList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_slist_remove_link")] public static extern GSList* SlistRemoveLink(GSList* list, GSList* link);
-	[Import(GLib.so), LinkName("g_slist_delete_link")] public static extern GSList* SlistDeleteLink(GSList* list, GSList* link);
-	[Import(GLib.so), LinkName("g_slist_reverse")] public static extern GSList* SlistReverse(GSList* list);
-	[Import(GLib.so), LinkName("g_slist_copy")] public static extern GSList* SlistCopy(GSList* list);
-	[Import(GLib.so), LinkName("g_slist_copy_deep")] public static extern GSList* SlistCopyDeep(GSList* list, GCopyFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_slist_nth")] public static extern GSList* SlistNth(GSList* list, guint n);
-	[Import(GLib.so), LinkName("g_slist_find")] public static extern GSList* SlistFind(GSList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_slist_find_custom")] public static extern GSList* SlistFindCustom(GSList* list, gconstpointer data, GCompareFunc func);
-	[Import(GLib.so), LinkName("g_slist_position")] public static extern gint SlistPosition(GSList* list, GSList* llink);
-	[Import(GLib.so), LinkName("g_slist_index")] public static extern gint SlistIndex(GSList* list, gconstpointer data);
-	[Import(GLib.so), LinkName("g_slist_last")] public static extern GSList* SlistLast(GSList* list);
-	[Import(GLib.so), LinkName("g_slist_length")] public static extern guint SlistLength(GSList* list);
-	[Import(GLib.so), LinkName("g_slist_foreach")] public static extern void SlistForeach(GSList* list, GFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_slist_sort")] public static extern GSList* SlistSort(GSList* list, GCompareFunc compare_func);
-	[Import(GLib.so), LinkName("g_slist_sort_with_data")] public static extern GSList* SlistSortWithData(GSList* list, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_slist_nth_data")] public static extern gpointer SlistNthData(GSList* list, guint n);
-	[Import(GLib.so), LinkName("g_clear_slist")] public static extern void ClearSlist(GSList** slist_ptr, GDestroyNotify destroy);
+	[LinkName("g_slist_alloc")] public static extern GSList* SlistAlloc();
+	[LinkName("g_slist_free")] public static extern void SlistFree(GSList* list);
+	[LinkName("g_slist_free_1")] public static extern void SlistFree1(GSList* list);
+	[LinkName("g_slist_free_full")] public static extern void SlistFreeFull(GSList* list, GDestroyNotify free_func);
+	[LinkName("g_slist_append")] public static extern GSList* SlistAppend(GSList* list, gpointer data);
+	[LinkName("g_slist_prepend")] public static extern GSList* SlistPrepend(GSList* list, gpointer data);
+	[LinkName("g_slist_insert")] public static extern GSList* SlistInsert(GSList* list, gpointer data, gint position);
+	[LinkName("g_slist_insert_sorted")] public static extern GSList* SlistInsertSorted(GSList* list, gpointer data, GCompareFunc func);
+	[LinkName("g_slist_insert_sorted_with_data")] public static extern GSList* SlistInsertSortedWithData(GSList* list, gpointer data, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_slist_insert_before")] public static extern GSList* SlistInsertBefore(GSList* slist, GSList* sibling, gpointer data);
+	[LinkName("g_slist_concat")] public static extern GSList* SlistConcat(GSList* list1, GSList* list2);
+	[LinkName("g_slist_remove")] public static extern GSList* SlistRemove(GSList* list, gconstpointer data);
+	[LinkName("g_slist_remove_all")] public static extern GSList* SlistRemoveAll(GSList* list, gconstpointer data);
+	[LinkName("g_slist_remove_link")] public static extern GSList* SlistRemoveLink(GSList* list, GSList* link);
+	[LinkName("g_slist_delete_link")] public static extern GSList* SlistDeleteLink(GSList* list, GSList* link);
+	[LinkName("g_slist_reverse")] public static extern GSList* SlistReverse(GSList* list);
+	[LinkName("g_slist_copy")] public static extern GSList* SlistCopy(GSList* list);
+	[LinkName("g_slist_copy_deep")] public static extern GSList* SlistCopyDeep(GSList* list, GCopyFunc func, gpointer user_data);
+	[LinkName("g_slist_nth")] public static extern GSList* SlistNth(GSList* list, guint n);
+	[LinkName("g_slist_find")] public static extern GSList* SlistFind(GSList* list, gconstpointer data);
+	[LinkName("g_slist_find_custom")] public static extern GSList* SlistFindCustom(GSList* list, gconstpointer data, GCompareFunc func);
+	[LinkName("g_slist_position")] public static extern gint SlistPosition(GSList* list, GSList* llink);
+	[LinkName("g_slist_index")] public static extern gint SlistIndex(GSList* list, gconstpointer data);
+	[LinkName("g_slist_last")] public static extern GSList* SlistLast(GSList* list);
+	[LinkName("g_slist_length")] public static extern guint SlistLength(GSList* list);
+	[LinkName("g_slist_foreach")] public static extern void SlistForeach(GSList* list, GFunc func, gpointer user_data);
+	[LinkName("g_slist_sort")] public static extern GSList* SlistSort(GSList* list, GCompareFunc compare_func);
+	[LinkName("g_slist_sort_with_data")] public static extern GSList* SlistSortWithData(GSList* list, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_slist_nth_data")] public static extern gpointer SlistNthData(GSList* list, guint n);
+	[LinkName("g_clear_slist")] public static extern void ClearSlist(GSList** slist_ptr, GDestroyNotify destroy);
 }
 
 [AllowDuplicates] enum GIOCondition : c_int
@@ -1893,43 +1893,43 @@ function void GSourceFuncsFinalizeFunc(GSource* source);
 
 extension GMainContext
 {
-	[Import(GLib.so), LinkName("g_main_context_new")] public static extern GMainContext* New();
-	[Import(GLib.so), LinkName("g_main_context_new_with_flags")] public static extern GMainContext* NewWithFlags(GMainContextFlags flags);
-	[Import(GLib.so), LinkName("g_main_context_ref")] public static extern GMainContext* Ref(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_unref")] public static extern void Unref(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_default")] public static extern GMainContext* Default();
-	[Import(GLib.so), LinkName("g_main_context_iteration")] public static extern gboolean Iteration(GMainContext* context, gboolean may_block);
-	[Import(GLib.so), LinkName("g_main_context_pending")] public static extern gboolean Pending(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_find_source_by_id")] public static extern GSource* FindSourceById(GMainContext* context, guint source_id);
-	[Import(GLib.so), LinkName("g_main_context_find_source_by_user_data")] public static extern GSource* FindSourceByUserData(GMainContext* context, gpointer user_data);
-	[Import(GLib.so), LinkName("g_main_context_find_source_by_funcs_user_data")] public static extern GSource* FindSourceByFuncsUserData(GMainContext* context, GSourceFuncs* funcs, gpointer user_data);
-	[Import(GLib.so), LinkName("g_main_context_wakeup")] public static extern void Wakeup(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_acquire")] public static extern gboolean Acquire(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_release")] public static extern void Release(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_is_owner")] public static extern gboolean IsOwner(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_wait")] public static extern gboolean Wait(GMainContext* context, GCond* cond, GMutex* mutex);
-	[Import(GLib.so), LinkName("g_main_context_prepare")] public static extern gboolean Prepare(GMainContext* context, gint* priority);
-	[Import(GLib.so), LinkName("g_main_context_query")] public static extern gint Query(GMainContext* context, gint max_priority, gint* timeout, GPollFD* fds, gint n_fds);
-	[Import(GLib.so), LinkName("g_main_context_check")] public static extern gboolean Check(GMainContext* context, gint max_priority, GPollFD* fds, gint n_fds);
-	[Import(GLib.so), LinkName("g_main_context_dispatch")] public static extern void Dispatch(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_set_poll_func")] public static extern void SetPollFunc(GMainContext* context, GPollFunc func);
-	[Import(GLib.so), LinkName("g_main_context_get_poll_func")] public static extern GPollFunc GetPollFunc(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_add_poll")] public static extern void AddPoll(GMainContext* context, GPollFD* fd, gint priority);
-	[Import(GLib.so), LinkName("g_main_context_remove_poll")] public static extern void RemovePoll(GMainContext* context, GPollFD* fd);
+	[LinkName("g_main_context_new")] public static extern GMainContext* New();
+	[LinkName("g_main_context_new_with_flags")] public static extern GMainContext* NewWithFlags(GMainContextFlags flags);
+	[LinkName("g_main_context_ref")] public static extern GMainContext* Ref(GMainContext* context);
+	[LinkName("g_main_context_unref")] public static extern void Unref(GMainContext* context);
+	[LinkName("g_main_context_default")] public static extern GMainContext* Default();
+	[LinkName("g_main_context_iteration")] public static extern gboolean Iteration(GMainContext* context, gboolean may_block);
+	[LinkName("g_main_context_pending")] public static extern gboolean Pending(GMainContext* context);
+	[LinkName("g_main_context_find_source_by_id")] public static extern GSource* FindSourceById(GMainContext* context, guint source_id);
+	[LinkName("g_main_context_find_source_by_user_data")] public static extern GSource* FindSourceByUserData(GMainContext* context, gpointer user_data);
+	[LinkName("g_main_context_find_source_by_funcs_user_data")] public static extern GSource* FindSourceByFuncsUserData(GMainContext* context, GSourceFuncs* funcs, gpointer user_data);
+	[LinkName("g_main_context_wakeup")] public static extern void Wakeup(GMainContext* context);
+	[LinkName("g_main_context_acquire")] public static extern gboolean Acquire(GMainContext* context);
+	[LinkName("g_main_context_release")] public static extern void Release(GMainContext* context);
+	[LinkName("g_main_context_is_owner")] public static extern gboolean IsOwner(GMainContext* context);
+	[LinkName("g_main_context_wait")] public static extern gboolean Wait(GMainContext* context, GCond* cond, GMutex* mutex);
+	[LinkName("g_main_context_prepare")] public static extern gboolean Prepare(GMainContext* context, gint* priority);
+	[LinkName("g_main_context_query")] public static extern gint Query(GMainContext* context, gint max_priority, gint* timeout, GPollFD* fds, gint n_fds);
+	[LinkName("g_main_context_check")] public static extern gboolean Check(GMainContext* context, gint max_priority, GPollFD* fds, gint n_fds);
+	[LinkName("g_main_context_dispatch")] public static extern void Dispatch(GMainContext* context);
+	[LinkName("g_main_context_set_poll_func")] public static extern void SetPollFunc(GMainContext* context, GPollFunc func);
+	[LinkName("g_main_context_get_poll_func")] public static extern GPollFunc GetPollFunc(GMainContext* context);
+	[LinkName("g_main_context_add_poll")] public static extern void AddPoll(GMainContext* context, GPollFD* fd, gint priority);
+	[LinkName("g_main_context_remove_poll")] public static extern void RemovePoll(GMainContext* context, GPollFD* fd);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_main_depth")] public static extern gint MainDepth();
-	[Import(GLib.so), LinkName("g_main_current_source")] public static extern GSource* MainCurrentSource();
+	[LinkName("g_main_depth")] public static extern gint MainDepth();
+	[LinkName("g_main_current_source")] public static extern GSource* MainCurrentSource();
 }
 
 extension GMainContext
 {
-	[Import(GLib.so), LinkName("g_main_context_push_thread_default")] public static extern void PushThreadDefault(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_pop_thread_default")] public static extern void PopThreadDefault(GMainContext* context);
-	[Import(GLib.so), LinkName("g_main_context_get_thread_default")] public static extern GMainContext* GetThreadDefault();
-	[Import(GLib.so), LinkName("g_main_context_ref_thread_default")] public static extern GMainContext* RefThreadDefault();
+	[LinkName("g_main_context_push_thread_default")] public static extern void PushThreadDefault(GMainContext* context);
+	[LinkName("g_main_context_pop_thread_default")] public static extern void PopThreadDefault(GMainContext* context);
+	[LinkName("g_main_context_get_thread_default")] public static extern GMainContext* GetThreadDefault();
+	[LinkName("g_main_context_ref_thread_default")] public static extern GMainContext* RefThreadDefault();
 }
 
 /** GMainContextPusher:
@@ -1942,56 +1942,56 @@ typealias GMainContextPusher = void;
 
 extension GMainLoop
 {
-	[Import(GLib.so), LinkName("g_main_loop_new")] public static extern GMainLoop* New(GMainContext* context, gboolean is_running);
-	[Import(GLib.so), LinkName("g_main_loop_run")] public static extern void Run(GMainLoop* loop);
-	[Import(GLib.so), LinkName("g_main_loop_quit")] public static extern void Quit(GMainLoop* loop);
-	[Import(GLib.so), LinkName("g_main_loop_ref")] public static extern GMainLoop* Ref(GMainLoop* loop);
-	[Import(GLib.so), LinkName("g_main_loop_unref")] public static extern void Unref(GMainLoop* loop);
-	[Import(GLib.so), LinkName("g_main_loop_is_running")] public static extern gboolean IsRunning(GMainLoop* loop);
-	[Import(GLib.so), LinkName("g_main_loop_get_context")] public static extern GMainContext* GetContext(GMainLoop* loop);
+	[LinkName("g_main_loop_new")] public static extern GMainLoop* New(GMainContext* context, gboolean is_running);
+	[LinkName("g_main_loop_run")] public static extern void Run(GMainLoop* loop);
+	[LinkName("g_main_loop_quit")] public static extern void Quit(GMainLoop* loop);
+	[LinkName("g_main_loop_ref")] public static extern GMainLoop* Ref(GMainLoop* loop);
+	[LinkName("g_main_loop_unref")] public static extern void Unref(GMainLoop* loop);
+	[LinkName("g_main_loop_is_running")] public static extern gboolean IsRunning(GMainLoop* loop);
+	[LinkName("g_main_loop_get_context")] public static extern GMainContext* GetContext(GMainLoop* loop);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_source_new")] public static extern GSource* SourceNew(GSourceFuncs* source_funcs, guint struct_size);
-	[Import(GLib.so), LinkName("g_source_set_dispose_function")] public static extern void SourceSetDisposeFunction(GSource* source, GSourceDisposeFunc dispose);
-	[Import(GLib.so), LinkName("g_source_ref")] public static extern GSource* SourceRef(GSource* source);
-	[Import(GLib.so), LinkName("g_source_unref")] public static extern void SourceUnref(GSource* source);
-	[Import(GLib.so), LinkName("g_source_attach")] public static extern guint SourceAttach(GSource* source, GMainContext* context);
-	[Import(GLib.so), LinkName("g_source_destroy")] public static extern void SourceDestroy(GSource* source);
-	[Import(GLib.so), LinkName("g_source_set_priority")] public static extern void SourceSetPriority(GSource* source, gint priority);
-	[Import(GLib.so), LinkName("g_source_get_priority")] public static extern gint SourceGetPriority(GSource* source);
-	[Import(GLib.so), LinkName("g_source_set_can_recurse")] public static extern void SourceSetCanRecurse(GSource* source, gboolean can_recurse);
-	[Import(GLib.so), LinkName("g_source_get_can_recurse")] public static extern gboolean SourceGetCanRecurse(GSource* source);
-	[Import(GLib.so), LinkName("g_source_get_id")] public static extern guint SourceGetId(GSource* source);
-	[Import(GLib.so), LinkName("g_source_get_context")] public static extern GMainContext* SourceGetContext(GSource* source);
-	[Import(GLib.so), LinkName("g_source_dup_context")] public static extern GMainContext* SourceDupContext(GSource* source);
-	[Import(GLib.so), LinkName("g_source_set_callback")] public static extern void SourceSetCallback(GSource* source, GSourceFunc func, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_source_set_funcs")] public static extern void SourceSetFuncs(GSource* source, GSourceFuncs* funcs);
-	[Import(GLib.so), LinkName("g_source_is_destroyed")] public static extern gboolean SourceIsDestroyed(GSource* source);
-	[Import(GLib.so), LinkName("g_source_set_name")] public static extern void SourceSetName(GSource* source, c_char* name);
-	[Import(GLib.so), LinkName("g_source_set_static_name")] public static extern void SourceSetStaticName(GSource* source, c_char* name);
-	[Import(GLib.so), LinkName("g_source_get_name")] public static extern c_char* SourceGetName(GSource* source);
-	[Import(GLib.so), LinkName("g_source_set_name_by_id")] public static extern void SourceSetNameById(guint tag, c_char* name);
-	[Import(GLib.so), LinkName("g_source_set_ready_time")] public static extern void SourceSetReadyTime(GSource* source, gint64 ready_time);
-	[Import(GLib.so), LinkName("g_source_get_ready_time")] public static extern gint64 SourceGetReadyTime(GSource* source);
-	[Import(GLib.so), LinkName("g_source_set_callback_indirect")] public static extern void SourceSetCallbackIndirect(GSource* source, gpointer callback_data, GSourceCallbackFuncs* callback_funcs);
-	[Import(GLib.so), LinkName("g_source_add_poll")] public static extern void SourceAddPoll(GSource* source, GPollFD* fd);
-	[Import(GLib.so), LinkName("g_source_remove_poll")] public static extern void SourceRemovePoll(GSource* source, GPollFD* fd);
-	[Import(GLib.so), LinkName("g_source_add_child_source")] public static extern void SourceAddChildSource(GSource* source, GSource* child_source);
-	[Import(GLib.so), LinkName("g_source_remove_child_source")] public static extern void SourceRemoveChildSource(GSource* source, GSource* child_source);
-	[Import(GLib.so), LinkName("g_source_get_current_time")] public static extern void SourceGetCurrentTime(GSource* source, GTimeVal* timeval);
-	[Import(GLib.so), LinkName("g_source_get_time")] public static extern gint64 SourceGetTime(GSource* source);
-	[Import(GLib.so), LinkName("g_idle_source_new")] public static extern GSource* IdleSourceNew();
-	[Import(GLib.so), LinkName("g_child_watch_source_new")] public static extern GSource* ChildWatchSourceNew(GPid pid);
-	[Import(GLib.so), LinkName("g_timeout_source_new")] public static extern GSource* TimeoutSourceNew(guint interval);
-	[Import(GLib.so), LinkName("g_timeout_source_new_seconds")] public static extern GSource* TimeoutSourceNewSeconds(guint interval);
-	[Import(GLib.so), LinkName("g_get_current_time")] public static extern void GetCurrentTime(GTimeVal* result);
-	[Import(GLib.so), LinkName("g_get_monotonic_time")] public static extern gint64 GetMonotonicTime();
-	[Import(GLib.so), LinkName("g_get_real_time")] public static extern gint64 GetRealTime();
-	[Import(GLib.so), LinkName("g_source_remove")] public static extern gboolean SourceRemove(guint tag);
-	[Import(GLib.so), LinkName("g_source_remove_by_user_data")] public static extern gboolean SourceRemoveByUserData(gpointer user_data);
-	[Import(GLib.so), LinkName("g_source_remove_by_funcs_user_data")] public static extern gboolean SourceRemoveByFuncsUserData(GSourceFuncs* funcs, gpointer user_data);
+	[LinkName("g_source_new")] public static extern GSource* SourceNew(GSourceFuncs* source_funcs, guint struct_size);
+	[LinkName("g_source_set_dispose_function")] public static extern void SourceSetDisposeFunction(GSource* source, GSourceDisposeFunc dispose);
+	[LinkName("g_source_ref")] public static extern GSource* SourceRef(GSource* source);
+	[LinkName("g_source_unref")] public static extern void SourceUnref(GSource* source);
+	[LinkName("g_source_attach")] public static extern guint SourceAttach(GSource* source, GMainContext* context);
+	[LinkName("g_source_destroy")] public static extern void SourceDestroy(GSource* source);
+	[LinkName("g_source_set_priority")] public static extern void SourceSetPriority(GSource* source, gint priority);
+	[LinkName("g_source_get_priority")] public static extern gint SourceGetPriority(GSource* source);
+	[LinkName("g_source_set_can_recurse")] public static extern void SourceSetCanRecurse(GSource* source, gboolean can_recurse);
+	[LinkName("g_source_get_can_recurse")] public static extern gboolean SourceGetCanRecurse(GSource* source);
+	[LinkName("g_source_get_id")] public static extern guint SourceGetId(GSource* source);
+	[LinkName("g_source_get_context")] public static extern GMainContext* SourceGetContext(GSource* source);
+	[LinkName("g_source_dup_context")] public static extern GMainContext* SourceDupContext(GSource* source);
+	[LinkName("g_source_set_callback")] public static extern void SourceSetCallback(GSource* source, GSourceFunc func, gpointer data, GDestroyNotify notify);
+	[LinkName("g_source_set_funcs")] public static extern void SourceSetFuncs(GSource* source, GSourceFuncs* funcs);
+	[LinkName("g_source_is_destroyed")] public static extern gboolean SourceIsDestroyed(GSource* source);
+	[LinkName("g_source_set_name")] public static extern void SourceSetName(GSource* source, c_char* name);
+	[LinkName("g_source_set_static_name")] public static extern void SourceSetStaticName(GSource* source, c_char* name);
+	[LinkName("g_source_get_name")] public static extern c_char* SourceGetName(GSource* source);
+	[LinkName("g_source_set_name_by_id")] public static extern void SourceSetNameById(guint tag, c_char* name);
+	[LinkName("g_source_set_ready_time")] public static extern void SourceSetReadyTime(GSource* source, gint64 ready_time);
+	[LinkName("g_source_get_ready_time")] public static extern gint64 SourceGetReadyTime(GSource* source);
+	[LinkName("g_source_set_callback_indirect")] public static extern void SourceSetCallbackIndirect(GSource* source, gpointer callback_data, GSourceCallbackFuncs* callback_funcs);
+	[LinkName("g_source_add_poll")] public static extern void SourceAddPoll(GSource* source, GPollFD* fd);
+	[LinkName("g_source_remove_poll")] public static extern void SourceRemovePoll(GSource* source, GPollFD* fd);
+	[LinkName("g_source_add_child_source")] public static extern void SourceAddChildSource(GSource* source, GSource* child_source);
+	[LinkName("g_source_remove_child_source")] public static extern void SourceRemoveChildSource(GSource* source, GSource* child_source);
+	[LinkName("g_source_get_current_time")] public static extern void SourceGetCurrentTime(GSource* source, GTimeVal* timeval);
+	[LinkName("g_source_get_time")] public static extern gint64 SourceGetTime(GSource* source);
+	[LinkName("g_idle_source_new")] public static extern GSource* IdleSourceNew();
+	[LinkName("g_child_watch_source_new")] public static extern GSource* ChildWatchSourceNew(GPid pid);
+	[LinkName("g_timeout_source_new")] public static extern GSource* TimeoutSourceNew(guint interval);
+	[LinkName("g_timeout_source_new_seconds")] public static extern GSource* TimeoutSourceNewSeconds(guint interval);
+	[LinkName("g_get_current_time")] public static extern void GetCurrentTime(GTimeVal* result);
+	[LinkName("g_get_monotonic_time")] public static extern gint64 GetMonotonicTime();
+	[LinkName("g_get_real_time")] public static extern gint64 GetRealTime();
+	[LinkName("g_source_remove")] public static extern gboolean SourceRemove(guint tag);
+	[LinkName("g_source_remove_by_user_data")] public static extern gboolean SourceRemoveByUserData(gpointer user_data);
+	[LinkName("g_source_remove_by_funcs_user_data")] public static extern gboolean SourceRemoveByFuncsUserData(GSourceFuncs* funcs, gpointer user_data);
 }
 
 /** GClearHandleFunc:
@@ -2008,25 +2008,25 @@ function void GClearHandleFunc(guint handle_id);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_clear_handle_id")] public static extern void ClearHandleId(guint* tag_ptr, GClearHandleFunc clear_func);
-	[Import(GLib.so), LinkName("g_timeout_add_full")] public static extern guint TimeoutAddFull(gint priority, guint interval, GSourceFunc @function, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_timeout_add")] public static extern guint TimeoutAdd(guint interval, GSourceFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_timeout_add_once")] public static extern guint TimeoutAddOnce(guint interval, GSourceOnceFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_timeout_add_seconds_full")] public static extern guint TimeoutAddSecondsFull(gint priority, guint interval, GSourceFunc @function, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_timeout_add_seconds")] public static extern guint TimeoutAddSeconds(guint interval, GSourceFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_timeout_add_seconds_once")] public static extern guint TimeoutAddSecondsOnce(guint interval, GSourceOnceFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_child_watch_add_full")] public static extern guint ChildWatchAddFull(gint priority, GPid pid, GChildWatchFunc @function, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_child_watch_add")] public static extern guint ChildWatchAdd(GPid pid, GChildWatchFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_idle_add")] public static extern guint IdleAdd(GSourceFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_idle_add_full")] public static extern guint IdleAddFull(gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_idle_add_once")] public static extern guint IdleAddOnce(GSourceOnceFunc @function, gpointer data);
-	[Import(GLib.so), LinkName("g_idle_remove_by_data")] public static extern gboolean IdleRemoveByData(gpointer data);
+	[LinkName("g_clear_handle_id")] public static extern void ClearHandleId(guint* tag_ptr, GClearHandleFunc clear_func);
+	[LinkName("g_timeout_add_full")] public static extern guint TimeoutAddFull(gint priority, guint interval, GSourceFunc @function, gpointer data, GDestroyNotify notify);
+	[LinkName("g_timeout_add")] public static extern guint TimeoutAdd(guint interval, GSourceFunc @function, gpointer data);
+	[LinkName("g_timeout_add_once")] public static extern guint TimeoutAddOnce(guint interval, GSourceOnceFunc @function, gpointer data);
+	[LinkName("g_timeout_add_seconds_full")] public static extern guint TimeoutAddSecondsFull(gint priority, guint interval, GSourceFunc @function, gpointer data, GDestroyNotify notify);
+	[LinkName("g_timeout_add_seconds")] public static extern guint TimeoutAddSeconds(guint interval, GSourceFunc @function, gpointer data);
+	[LinkName("g_timeout_add_seconds_once")] public static extern guint TimeoutAddSecondsOnce(guint interval, GSourceOnceFunc @function, gpointer data);
+	[LinkName("g_child_watch_add_full")] public static extern guint ChildWatchAddFull(gint priority, GPid pid, GChildWatchFunc @function, gpointer data, GDestroyNotify notify);
+	[LinkName("g_child_watch_add")] public static extern guint ChildWatchAdd(GPid pid, GChildWatchFunc @function, gpointer data);
+	[LinkName("g_idle_add")] public static extern guint IdleAdd(GSourceFunc @function, gpointer data);
+	[LinkName("g_idle_add_full")] public static extern guint IdleAddFull(gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
+	[LinkName("g_idle_add_once")] public static extern guint IdleAddOnce(GSourceOnceFunc @function, gpointer data);
+	[LinkName("g_idle_remove_by_data")] public static extern gboolean IdleRemoveByData(gpointer data);
 }
 
 extension GMainContext
 {
-	[Import(GLib.so), LinkName("g_main_context_invoke_full")] public static extern void InvokeFull(GMainContext* context, gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_main_context_invoke")] public static extern void Invoke(GMainContext* context, GSourceFunc @function, gpointer data);
+	[LinkName("g_main_context_invoke_full")] public static extern void InvokeFull(GMainContext* context, gint priority, GSourceFunc @function, gpointer data, GDestroyNotify notify);
+	[LinkName("g_main_context_invoke")] public static extern void Invoke(GMainContext* context, GSourceFunc @function, gpointer data);
 }
 
 static
@@ -2637,41 +2637,41 @@ typealias gunichar2 = guint16;
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_unicode_script_to_iso15924")] public static extern guint32 UnicodeScriptToIso15924(GUnicodeScript script);
-	[Import(GLib.so), LinkName("g_unicode_script_from_iso15924")] public static extern GUnicodeScript UnicodeScriptFromIso15924(guint32 iso15924);
-	[Import(GLib.so), LinkName("g_unichar_isalnum")] public static extern gboolean UnicharIsalnum(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isalpha")] public static extern gboolean UnicharIsalpha(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_iscntrl")] public static extern gboolean UnicharIscntrl(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isdigit")] public static extern gboolean UnicharIsdigit(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isgraph")] public static extern gboolean UnicharIsgraph(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_islower")] public static extern gboolean UnicharIslower(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isprint")] public static extern gboolean UnicharIsprint(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_ispunct")] public static extern gboolean UnicharIspunct(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isspace")] public static extern gboolean UnicharIsspace(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isupper")] public static extern gboolean UnicharIsupper(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isxdigit")] public static extern gboolean UnicharIsxdigit(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_istitle")] public static extern gboolean UnicharIstitle(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_isdefined")] public static extern gboolean UnicharIsdefined(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_iswide")] public static extern gboolean UnicharIswide(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_iswide_cjk")] public static extern gboolean UnicharIswideCjk(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_iszerowidth")] public static extern gboolean UnicharIszerowidth(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_ismark")] public static extern gboolean UnicharIsmark(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_toupper")] public static extern gunichar UnicharToupper(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_tolower")] public static extern gunichar UnicharTolower(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_totitle")] public static extern gunichar UnicharTotitle(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_digit_value")] public static extern gint UnicharDigitValue(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_xdigit_value")] public static extern gint UnicharXdigitValue(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_type")] public static extern GUnicodeType UnicharType(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_break_type")] public static extern GUnicodeBreakType UnicharBreakType(gunichar c);
-	[Import(GLib.so), LinkName("g_unichar_combining_class")] public static extern gint UnicharCombiningClass(gunichar uc);
-	[Import(GLib.so), LinkName("g_unichar_get_mirror_char")] public static extern gboolean UnicharGetMirrorChar(gunichar ch, gunichar* mirrored_ch);
-	[Import(GLib.so), LinkName("g_unichar_get_script")] public static extern GUnicodeScript UnicharGetScript(gunichar ch);
-	[Import(GLib.so), LinkName("g_unichar_validate")] public static extern gboolean UnicharValidate(gunichar ch);
-	[Import(GLib.so), LinkName("g_unichar_compose")] public static extern gboolean UnicharCompose(gunichar a, gunichar b, gunichar* ch);
-	[Import(GLib.so), LinkName("g_unichar_decompose")] public static extern gboolean UnicharDecompose(gunichar ch, gunichar* a, gunichar* b);
-	[Import(GLib.so), LinkName("g_unichar_fully_decompose")] public static extern gsize UnicharFullyDecompose(gunichar ch, gboolean compat, gunichar* result, gsize result_len);
-	[Import(GLib.so), LinkName("g_unicode_canonical_ordering")] public static extern void UnicodeCanonicalOrdering(gunichar* string, gsize len);
-	[Import(GLib.so), LinkName("g_unicode_canonical_decomposition")] public static extern gunichar* UnicodeCanonicalDecomposition(gunichar ch, gsize* result_len);
+	[LinkName("g_unicode_script_to_iso15924")] public static extern guint32 UnicodeScriptToIso15924(GUnicodeScript script);
+	[LinkName("g_unicode_script_from_iso15924")] public static extern GUnicodeScript UnicodeScriptFromIso15924(guint32 iso15924);
+	[LinkName("g_unichar_isalnum")] public static extern gboolean UnicharIsalnum(gunichar c);
+	[LinkName("g_unichar_isalpha")] public static extern gboolean UnicharIsalpha(gunichar c);
+	[LinkName("g_unichar_iscntrl")] public static extern gboolean UnicharIscntrl(gunichar c);
+	[LinkName("g_unichar_isdigit")] public static extern gboolean UnicharIsdigit(gunichar c);
+	[LinkName("g_unichar_isgraph")] public static extern gboolean UnicharIsgraph(gunichar c);
+	[LinkName("g_unichar_islower")] public static extern gboolean UnicharIslower(gunichar c);
+	[LinkName("g_unichar_isprint")] public static extern gboolean UnicharIsprint(gunichar c);
+	[LinkName("g_unichar_ispunct")] public static extern gboolean UnicharIspunct(gunichar c);
+	[LinkName("g_unichar_isspace")] public static extern gboolean UnicharIsspace(gunichar c);
+	[LinkName("g_unichar_isupper")] public static extern gboolean UnicharIsupper(gunichar c);
+	[LinkName("g_unichar_isxdigit")] public static extern gboolean UnicharIsxdigit(gunichar c);
+	[LinkName("g_unichar_istitle")] public static extern gboolean UnicharIstitle(gunichar c);
+	[LinkName("g_unichar_isdefined")] public static extern gboolean UnicharIsdefined(gunichar c);
+	[LinkName("g_unichar_iswide")] public static extern gboolean UnicharIswide(gunichar c);
+	[LinkName("g_unichar_iswide_cjk")] public static extern gboolean UnicharIswideCjk(gunichar c);
+	[LinkName("g_unichar_iszerowidth")] public static extern gboolean UnicharIszerowidth(gunichar c);
+	[LinkName("g_unichar_ismark")] public static extern gboolean UnicharIsmark(gunichar c);
+	[LinkName("g_unichar_toupper")] public static extern gunichar UnicharToupper(gunichar c);
+	[LinkName("g_unichar_tolower")] public static extern gunichar UnicharTolower(gunichar c);
+	[LinkName("g_unichar_totitle")] public static extern gunichar UnicharTotitle(gunichar c);
+	[LinkName("g_unichar_digit_value")] public static extern gint UnicharDigitValue(gunichar c);
+	[LinkName("g_unichar_xdigit_value")] public static extern gint UnicharXdigitValue(gunichar c);
+	[LinkName("g_unichar_type")] public static extern GUnicodeType UnicharType(gunichar c);
+	[LinkName("g_unichar_break_type")] public static extern GUnicodeBreakType UnicharBreakType(gunichar c);
+	[LinkName("g_unichar_combining_class")] public static extern gint UnicharCombiningClass(gunichar uc);
+	[LinkName("g_unichar_get_mirror_char")] public static extern gboolean UnicharGetMirrorChar(gunichar ch, gunichar* mirrored_ch);
+	[LinkName("g_unichar_get_script")] public static extern GUnicodeScript UnicharGetScript(gunichar ch);
+	[LinkName("g_unichar_validate")] public static extern gboolean UnicharValidate(gunichar ch);
+	[LinkName("g_unichar_compose")] public static extern gboolean UnicharCompose(gunichar a, gunichar b, gunichar* ch);
+	[LinkName("g_unichar_decompose")] public static extern gboolean UnicharDecompose(gunichar ch, gunichar* a, gunichar* b);
+	[LinkName("g_unichar_fully_decompose")] public static extern gsize UnicharFullyDecompose(gunichar ch, gboolean compat, gunichar* result, gsize result_len);
+	[LinkName("g_unicode_canonical_ordering")] public static extern void UnicodeCanonicalOrdering(gunichar* string, gsize len);
+	[LinkName("g_unicode_canonical_decomposition")] public static extern gunichar* UnicodeCanonicalDecomposition(gunichar ch, gsize* result_len);
 }
 
 static
@@ -2681,33 +2681,33 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_utf8_get_char")] public static extern gunichar Utf8GetChar(gchar* p);
-	[Import(GLib.so), LinkName("g_utf8_get_char_validated")] public static extern gunichar Utf8GetCharValidated(gchar* p, gssize max_len);
-	[Import(GLib.so), LinkName("g_utf8_offset_to_pointer")] public static extern gchar* Utf8OffsetToPointer(gchar* str, glong offset);
-	[Import(GLib.so), LinkName("g_utf8_pointer_to_offset")] public static extern glong Utf8PointerToOffset(gchar* str, gchar* pos);
-	[Import(GLib.so), LinkName("g_utf8_prev_char")] public static extern gchar* Utf8PrevChar(gchar* p);
-	[Import(GLib.so), LinkName("g_utf8_find_next_char")] public static extern gchar* Utf8FindNextChar(gchar* p, gchar* end);
-	[Import(GLib.so), LinkName("g_utf8_find_prev_char")] public static extern gchar* Utf8FindPrevChar(gchar* str, gchar* p);
-	[Import(GLib.so), LinkName("g_utf8_strlen")] public static extern glong Utf8Strlen(gchar* p, gssize max);
-	[Import(GLib.so), LinkName("g_utf8_substring")] public static extern gchar* Utf8Substring(gchar* str, glong start_pos, glong end_pos);
-	[Import(GLib.so), LinkName("g_utf8_strncpy")] public static extern gchar* Utf8Strncpy(gchar* dest, gchar* src, gsize n);
-	[Import(GLib.so), LinkName("g_utf8_truncate_middle")] public static extern gchar* Utf8TruncateMiddle(gchar* string, gsize truncate_length);
-	[Import(GLib.so), LinkName("g_utf8_strchr")] public static extern gchar* Utf8Strchr(gchar* p, gssize len, gunichar c);
-	[Import(GLib.so), LinkName("g_utf8_strrchr")] public static extern gchar* Utf8Strrchr(gchar* p, gssize len, gunichar c);
-	[Import(GLib.so), LinkName("g_utf8_strreverse")] public static extern gchar* Utf8Strreverse(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_utf8_to_utf16")] public static extern gunichar2* Utf8ToUtf16(gchar* str, glong len, glong* items_read, glong* items_written, GError** error);
-	[Import(GLib.so), LinkName("g_utf8_to_ucs4")] public static extern gunichar* Utf8ToUcs4(gchar* str, glong len, glong* items_read, glong* items_written, GError** error);
-	[Import(GLib.so), LinkName("g_utf8_to_ucs4_fast")] public static extern gunichar* Utf8ToUcs4Fast(gchar* str, glong len, glong* items_written);
-	[Import(GLib.so), LinkName("g_utf16_to_ucs4")] public static extern gunichar* Utf16ToUcs4(gunichar2* str, glong len, glong* items_read, glong* items_written, GError** error);
-	[Import(GLib.so), LinkName("g_utf16_to_utf8")] public static extern gchar* Utf16ToUtf8(gunichar2* str, glong len, glong* items_read, glong* items_written, GError** error);
-	[Import(GLib.so), LinkName("g_ucs4_to_utf16")] public static extern gunichar2* Ucs4ToUtf16(gunichar* str, glong len, glong* items_read, glong* items_written, GError** error);
-	[Import(GLib.so), LinkName("g_ucs4_to_utf8")] public static extern gchar* Ucs4ToUtf8(gunichar* str, glong len, glong* items_read, glong* items_written, GError** error);
-	[Import(GLib.so), LinkName("g_unichar_to_utf8")] public static extern gint UnicharToUtf8(gunichar c, gchar* outbuf);
-	[Import(GLib.so), LinkName("g_utf8_validate")] public static extern gboolean Utf8Validate(gchar* str, gssize max_len, gchar** end);
-	[Import(GLib.so), LinkName("g_utf8_validate_len")] public static extern gboolean Utf8ValidateLen(gchar* str, gsize max_len, gchar** end);
-	[Import(GLib.so), LinkName("g_utf8_strup")] public static extern gchar* Utf8Strup(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_utf8_strdown")] public static extern gchar* Utf8Strdown(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_utf8_casefold")] public static extern gchar* Utf8Casefold(gchar* str, gssize len);
+	[LinkName("g_utf8_get_char")] public static extern gunichar Utf8GetChar(gchar* p);
+	[LinkName("g_utf8_get_char_validated")] public static extern gunichar Utf8GetCharValidated(gchar* p, gssize max_len);
+	[LinkName("g_utf8_offset_to_pointer")] public static extern gchar* Utf8OffsetToPointer(gchar* str, glong offset);
+	[LinkName("g_utf8_pointer_to_offset")] public static extern glong Utf8PointerToOffset(gchar* str, gchar* pos);
+	[LinkName("g_utf8_prev_char")] public static extern gchar* Utf8PrevChar(gchar* p);
+	[LinkName("g_utf8_find_next_char")] public static extern gchar* Utf8FindNextChar(gchar* p, gchar* end);
+	[LinkName("g_utf8_find_prev_char")] public static extern gchar* Utf8FindPrevChar(gchar* str, gchar* p);
+	[LinkName("g_utf8_strlen")] public static extern glong Utf8Strlen(gchar* p, gssize max);
+	[LinkName("g_utf8_substring")] public static extern gchar* Utf8Substring(gchar* str, glong start_pos, glong end_pos);
+	[LinkName("g_utf8_strncpy")] public static extern gchar* Utf8Strncpy(gchar* dest, gchar* src, gsize n);
+	[LinkName("g_utf8_truncate_middle")] public static extern gchar* Utf8TruncateMiddle(gchar* string, gsize truncate_length);
+	[LinkName("g_utf8_strchr")] public static extern gchar* Utf8Strchr(gchar* p, gssize len, gunichar c);
+	[LinkName("g_utf8_strrchr")] public static extern gchar* Utf8Strrchr(gchar* p, gssize len, gunichar c);
+	[LinkName("g_utf8_strreverse")] public static extern gchar* Utf8Strreverse(gchar* str, gssize len);
+	[LinkName("g_utf8_to_utf16")] public static extern gunichar2* Utf8ToUtf16(gchar* str, glong len, glong* items_read, glong* items_written, GError** error);
+	[LinkName("g_utf8_to_ucs4")] public static extern gunichar* Utf8ToUcs4(gchar* str, glong len, glong* items_read, glong* items_written, GError** error);
+	[LinkName("g_utf8_to_ucs4_fast")] public static extern gunichar* Utf8ToUcs4Fast(gchar* str, glong len, glong* items_written);
+	[LinkName("g_utf16_to_ucs4")] public static extern gunichar* Utf16ToUcs4(gunichar2* str, glong len, glong* items_read, glong* items_written, GError** error);
+	[LinkName("g_utf16_to_utf8")] public static extern gchar* Utf16ToUtf8(gunichar2* str, glong len, glong* items_read, glong* items_written, GError** error);
+	[LinkName("g_ucs4_to_utf16")] public static extern gunichar2* Ucs4ToUtf16(gunichar* str, glong len, glong* items_read, glong* items_written, GError** error);
+	[LinkName("g_ucs4_to_utf8")] public static extern gchar* Ucs4ToUtf8(gunichar* str, glong len, glong* items_read, glong* items_written, GError** error);
+	[LinkName("g_unichar_to_utf8")] public static extern gint UnicharToUtf8(gunichar c, gchar* outbuf);
+	[LinkName("g_utf8_validate")] public static extern gboolean Utf8Validate(gchar* str, gssize max_len, gchar** end);
+	[LinkName("g_utf8_validate_len")] public static extern gboolean Utf8ValidateLen(gchar* str, gsize max_len, gchar** end);
+	[LinkName("g_utf8_strup")] public static extern gchar* Utf8Strup(gchar* str, gssize len);
+	[LinkName("g_utf8_strdown")] public static extern gchar* Utf8Strdown(gchar* str, gssize len);
+	[LinkName("g_utf8_casefold")] public static extern gchar* Utf8Casefold(gchar* str, gssize len);
 }
 
 /** GNormalizeMode:
@@ -2747,11 +2747,11 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_utf8_normalize")] public static extern gchar* Utf8Normalize(gchar* str, gssize len, GNormalizeMode mode);
-	[Import(GLib.so), LinkName("g_utf8_collate")] public static extern gint Utf8Collate(gchar* str1, gchar* str2);
-	[Import(GLib.so), LinkName("g_utf8_collate_key")] public static extern gchar* Utf8CollateKey(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_utf8_collate_key_for_filename")] public static extern gchar* Utf8CollateKeyForFilename(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_utf8_make_valid")] public static extern gchar* Utf8MakeValid(gchar* str, gssize len);
+	[LinkName("g_utf8_normalize")] public static extern gchar* Utf8Normalize(gchar* str, gssize len, GNormalizeMode mode);
+	[LinkName("g_utf8_collate")] public static extern gint Utf8Collate(gchar* str1, gchar* str2);
+	[LinkName("g_utf8_collate_key")] public static extern gchar* Utf8CollateKey(gchar* str, gssize len);
+	[LinkName("g_utf8_collate_key_for_filename")] public static extern gchar* Utf8CollateKeyForFilename(gchar* str, gssize len);
+	[LinkName("g_utf8_make_valid")] public static extern gchar* Utf8MakeValid(gchar* str, gssize len);
 }
 
 [AllowDuplicates] enum GAsciiType : c_int
@@ -2776,68 +2776,68 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_ascii_tolower")] public static extern gchar AsciiTolower(gchar c);
-	[Import(GLib.so), LinkName("g_ascii_toupper")] public static extern gchar AsciiToupper(gchar c);
-	[Import(GLib.so), LinkName("g_ascii_digit_value")] public static extern gint AsciiDigitValue(gchar c);
-	[Import(GLib.so), LinkName("g_ascii_xdigit_value")] public static extern gint AsciiXdigitValue(gchar c);
-	[Import(GLib.so), LinkName("g_strdelimit")] public static extern gchar* Strdelimit(gchar* string, gchar* delimiters, gchar new_delimiter);
-	[Import(GLib.so), LinkName("g_strcanon")] public static extern gchar* Strcanon(gchar* string, gchar* valid_chars, gchar substitutor);
-	[Import(GLib.so), LinkName("g_strerror")] public static extern gchar* Strerror(gint errnum);
-	[Import(GLib.so), LinkName("g_strsignal")] public static extern gchar* Strsignal(gint signum);
-	[Import(GLib.so), LinkName("g_strreverse")] public static extern gchar* Strreverse(gchar* string);
-	[Import(GLib.so), LinkName("g_strlcpy")] public static extern gsize Strlcpy(gchar* dest, gchar* src, gsize dest_size);
-	[Import(GLib.so), LinkName("g_strlcat")] public static extern gsize Strlcat(gchar* dest, gchar* src, gsize dest_size);
-	[Import(GLib.so), LinkName("g_strstr_len")] public static extern gchar* StrstrLen(gchar* haystack, gssize haystack_len, gchar* needle);
-	[Import(GLib.so), LinkName("g_strrstr")] public static extern gchar* Strrstr(gchar* haystack, gchar* needle);
-	[Import(GLib.so), LinkName("g_strrstr_len")] public static extern gchar* StrrstrLen(gchar* haystack, gssize haystack_len, gchar* needle);
-	[Import(GLib.so), LinkName("g_str_has_suffix")] public static extern gboolean StrHasSuffix(gchar* str, gchar* suffix);
-	[Import(GLib.so), LinkName("g_str_has_prefix")] public static extern gboolean StrHasPrefix(gchar* str, gchar* prefix);
-	[Import(GLib.so), LinkName("g_strtod")] public static extern gdouble Strtod(gchar* nptr, gchar** endptr);
-	[Import(GLib.so), LinkName("g_ascii_strtod")] public static extern gdouble AsciiStrtod(gchar* nptr, gchar** endptr);
-	[Import(GLib.so), LinkName("g_ascii_strtoull")] public static extern guint64 AsciiStrtoull(gchar* nptr, gchar** endptr, guint @base);
-	[Import(GLib.so), LinkName("g_ascii_strtoll")] public static extern gint64 AsciiStrtoll(gchar* nptr, gchar** endptr, guint @base);
-	[Import(GLib.so), LinkName("g_ascii_dtostr")] public static extern gchar* AsciiDtostr(gchar* buffer, gint buf_len, gdouble d);
-	[Import(GLib.so), LinkName("g_ascii_formatd")] public static extern gchar* AsciiFormatd(gchar* buffer, gint buf_len, gchar* format, gdouble d);
-	[Import(GLib.so), LinkName("g_strchug")] public static extern gchar* Strchug(gchar* string);
-	[Import(GLib.so), LinkName("g_strchomp")] public static extern gchar* Strchomp(gchar* string);
-	[Import(GLib.so), LinkName("g_ascii_strcasecmp")] public static extern gint AsciiStrcasecmp(gchar* s1, gchar* s2);
-	[Import(GLib.so), LinkName("g_ascii_strncasecmp")] public static extern gint AsciiStrncasecmp(gchar* s1, gchar* s2, gsize n);
-	[Import(GLib.so), LinkName("g_ascii_strdown")] public static extern gchar* AsciiStrdown(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_ascii_strup")] public static extern gchar* AsciiStrup(gchar* str, gssize len);
-	[Import(GLib.so), LinkName("g_str_is_ascii")] public static extern gboolean StrIsAscii(gchar* str);
-	[Import(GLib.so), LinkName("g_strcasecmp")] public static extern gint Strcasecmp(gchar* s1, gchar* s2);
-	[Import(GLib.so), LinkName("g_strncasecmp")] public static extern gint Strncasecmp(gchar* s1, gchar* s2, guint n);
-	[Import(GLib.so), LinkName("g_strdown")] public static extern gchar* Strdown(gchar* string);
-	[Import(GLib.so), LinkName("g_strup")] public static extern gchar* Strup(gchar* string);
-	[Import(GLib.so), LinkName("g_strdup")] public static extern gchar* Strdup(gchar* str);
-	[Import(GLib.so), LinkName("g_strdup_printf")] public static extern gchar* StrdupPrintf(gchar* format, ...);
-	[Import(GLib.so), LinkName("g_strdup_vprintf")] public static extern gchar* StrdupVprintf(gchar* format, VarArgs args);
-	[Import(GLib.so), LinkName("g_strndup")] public static extern gchar* Strndup(gchar* str, gsize n);
-	[Import(GLib.so), LinkName("g_strnfill")] public static extern gchar* Strnfill(gsize length, gchar fill_char);
-	[Import(GLib.so), LinkName("g_strconcat")] public static extern gchar* Strconcat(gchar* string1, ...);
-	[Import(GLib.so), LinkName("g_strjoin")] public static extern gchar* Strjoin(gchar* separator, ...);
-	[Import(GLib.so), LinkName("g_strcompress")] public static extern gchar* Strcompress(gchar* source);
-	[Import(GLib.so), LinkName("g_strescape")] public static extern gchar* Strescape(gchar* source, gchar* exceptions);
-	[Import(GLib.so), LinkName("g_memdup")] public static extern gpointer Memdup(gconstpointer mem, guint byte_size);
-	[Import(GLib.so), LinkName("g_memdup2")] public static extern gpointer Memdup2(gconstpointer mem, gsize byte_size);
+	[LinkName("g_ascii_tolower")] public static extern gchar AsciiTolower(gchar c);
+	[LinkName("g_ascii_toupper")] public static extern gchar AsciiToupper(gchar c);
+	[LinkName("g_ascii_digit_value")] public static extern gint AsciiDigitValue(gchar c);
+	[LinkName("g_ascii_xdigit_value")] public static extern gint AsciiXdigitValue(gchar c);
+	[LinkName("g_strdelimit")] public static extern gchar* Strdelimit(gchar* string, gchar* delimiters, gchar new_delimiter);
+	[LinkName("g_strcanon")] public static extern gchar* Strcanon(gchar* string, gchar* valid_chars, gchar substitutor);
+	[LinkName("g_strerror")] public static extern gchar* Strerror(gint errnum);
+	[LinkName("g_strsignal")] public static extern gchar* Strsignal(gint signum);
+	[LinkName("g_strreverse")] public static extern gchar* Strreverse(gchar* string);
+	[LinkName("g_strlcpy")] public static extern gsize Strlcpy(gchar* dest, gchar* src, gsize dest_size);
+	[LinkName("g_strlcat")] public static extern gsize Strlcat(gchar* dest, gchar* src, gsize dest_size);
+	[LinkName("g_strstr_len")] public static extern gchar* StrstrLen(gchar* haystack, gssize haystack_len, gchar* needle);
+	[LinkName("g_strrstr")] public static extern gchar* Strrstr(gchar* haystack, gchar* needle);
+	[LinkName("g_strrstr_len")] public static extern gchar* StrrstrLen(gchar* haystack, gssize haystack_len, gchar* needle);
+	[LinkName("g_str_has_suffix")] public static extern gboolean StrHasSuffix(gchar* str, gchar* suffix);
+	[LinkName("g_str_has_prefix")] public static extern gboolean StrHasPrefix(gchar* str, gchar* prefix);
+	[LinkName("g_strtod")] public static extern gdouble Strtod(gchar* nptr, gchar** endptr);
+	[LinkName("g_ascii_strtod")] public static extern gdouble AsciiStrtod(gchar* nptr, gchar** endptr);
+	[LinkName("g_ascii_strtoull")] public static extern guint64 AsciiStrtoull(gchar* nptr, gchar** endptr, guint @base);
+	[LinkName("g_ascii_strtoll")] public static extern gint64 AsciiStrtoll(gchar* nptr, gchar** endptr, guint @base);
+	[LinkName("g_ascii_dtostr")] public static extern gchar* AsciiDtostr(gchar* buffer, gint buf_len, gdouble d);
+	[LinkName("g_ascii_formatd")] public static extern gchar* AsciiFormatd(gchar* buffer, gint buf_len, gchar* format, gdouble d);
+	[LinkName("g_strchug")] public static extern gchar* Strchug(gchar* string);
+	[LinkName("g_strchomp")] public static extern gchar* Strchomp(gchar* string);
+	[LinkName("g_ascii_strcasecmp")] public static extern gint AsciiStrcasecmp(gchar* s1, gchar* s2);
+	[LinkName("g_ascii_strncasecmp")] public static extern gint AsciiStrncasecmp(gchar* s1, gchar* s2, gsize n);
+	[LinkName("g_ascii_strdown")] public static extern gchar* AsciiStrdown(gchar* str, gssize len);
+	[LinkName("g_ascii_strup")] public static extern gchar* AsciiStrup(gchar* str, gssize len);
+	[LinkName("g_str_is_ascii")] public static extern gboolean StrIsAscii(gchar* str);
+	[LinkName("g_strcasecmp")] public static extern gint Strcasecmp(gchar* s1, gchar* s2);
+	[LinkName("g_strncasecmp")] public static extern gint Strncasecmp(gchar* s1, gchar* s2, guint n);
+	[LinkName("g_strdown")] public static extern gchar* Strdown(gchar* string);
+	[LinkName("g_strup")] public static extern gchar* Strup(gchar* string);
+	[LinkName("g_strdup")] public static extern gchar* Strdup(gchar* str);
+	[LinkName("g_strdup_printf")] public static extern gchar* StrdupPrintf(gchar* format, ...);
+	[LinkName("g_strdup_vprintf")] public static extern gchar* StrdupVprintf(gchar* format, VarArgs args);
+	[LinkName("g_strndup")] public static extern gchar* Strndup(gchar* str, gsize n);
+	[LinkName("g_strnfill")] public static extern gchar* Strnfill(gsize length, gchar fill_char);
+	[LinkName("g_strconcat")] public static extern gchar* Strconcat(gchar* string1, ...);
+	[LinkName("g_strjoin")] public static extern gchar* Strjoin(gchar* separator, ...);
+	[LinkName("g_strcompress")] public static extern gchar* Strcompress(gchar* source);
+	[LinkName("g_strescape")] public static extern gchar* Strescape(gchar* source, gchar* exceptions);
+	[LinkName("g_memdup")] public static extern gpointer Memdup(gconstpointer mem, guint byte_size);
+	[LinkName("g_memdup2")] public static extern gpointer Memdup2(gconstpointer mem, gsize byte_size);
 }
 
 typealias GStrv = gchar**;
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_strsplit")] public static extern gchar** Strsplit(gchar* string, gchar* delimiter, gint max_tokens);
-	[Import(GLib.so), LinkName("g_strsplit_set")] public static extern gchar** StrsplitSet(gchar* string, gchar* delimiters, gint max_tokens);
-	[Import(GLib.so), LinkName("g_strjoinv")] public static extern gchar* Strjoinv(gchar* separator, gchar** str_array);
-	[Import(GLib.so), LinkName("g_strfreev")] public static extern void Strfreev(gchar** str_array);
-	[Import(GLib.so), LinkName("g_strdupv")] public static extern gchar** Strdupv(gchar** str_array);
-	[Import(GLib.so), LinkName("g_strv_length")] public static extern guint StrvLength(gchar** str_array);
-	[Import(GLib.so), LinkName("g_stpcpy")] public static extern gchar* Stpcpy(gchar* dest, c_char* src);
-	[Import(GLib.so), LinkName("g_str_to_ascii")] public static extern gchar* StrToAscii(gchar* str, gchar* from_locale);
-	[Import(GLib.so), LinkName("g_str_tokenize_and_fold")] public static extern gchar** StrTokenizeAndFold(gchar* string, gchar* translit_locale, gchar*** ascii_alternates);
-	[Import(GLib.so), LinkName("g_str_match_string")] public static extern gboolean StrMatchString(gchar* search_term, gchar* potential_hit, gboolean accept_alternates);
-	[Import(GLib.so), LinkName("g_strv_contains")] public static extern gboolean StrvContains(gchar** strv, gchar* str);
-	[Import(GLib.so), LinkName("g_strv_equal")] public static extern gboolean StrvEqual(gchar** strv1, gchar** strv2);
+	[LinkName("g_strsplit")] public static extern gchar** Strsplit(gchar* string, gchar* delimiter, gint max_tokens);
+	[LinkName("g_strsplit_set")] public static extern gchar** StrsplitSet(gchar* string, gchar* delimiters, gint max_tokens);
+	[LinkName("g_strjoinv")] public static extern gchar* Strjoinv(gchar* separator, gchar** str_array);
+	[LinkName("g_strfreev")] public static extern void Strfreev(gchar** str_array);
+	[LinkName("g_strdupv")] public static extern gchar** Strdupv(gchar** str_array);
+	[LinkName("g_strv_length")] public static extern guint StrvLength(gchar** str_array);
+	[LinkName("g_stpcpy")] public static extern gchar* Stpcpy(gchar* dest, c_char* src);
+	[LinkName("g_str_to_ascii")] public static extern gchar* StrToAscii(gchar* str, gchar* from_locale);
+	[LinkName("g_str_tokenize_and_fold")] public static extern gchar** StrTokenizeAndFold(gchar* string, gchar* translit_locale, gchar*** ascii_alternates);
+	[LinkName("g_str_match_string")] public static extern gboolean StrMatchString(gchar* search_term, gchar* potential_hit, gboolean accept_alternates);
+	[LinkName("g_strv_contains")] public static extern gboolean StrvContains(gchar** strv, gchar* str);
+	[LinkName("g_strv_equal")] public static extern gboolean StrvEqual(gchar** strv1, gchar** strv2);
 }
 
 /** GNumberParserError:
@@ -2856,9 +2856,9 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_number_parser_error_quark")] public static extern GQuark NumberParserErrorQuark();
-	[Import(GLib.so), LinkName("g_ascii_string_to_signed")] public static extern gboolean AsciiStringToSigned(gchar* str, guint @base, gint64 min, gint64 max, gint64* out_num, GError** error);
-	[Import(GLib.so), LinkName("g_ascii_string_to_unsigned")] public static extern gboolean AsciiStringToUnsigned(gchar* str, guint @base, guint64 min, guint64 max, guint64* out_num, GError** error);
+	[LinkName("g_number_parser_error_quark")] public static extern GQuark NumberParserErrorQuark();
+	[LinkName("g_ascii_string_to_signed")] public static extern gboolean AsciiStringToSigned(gchar* str, guint @base, gint64 min, gint64 max, gint64* out_num, GError** error);
+	[LinkName("g_ascii_string_to_unsigned")] public static extern gboolean AsciiStringToUnsigned(gchar* str, guint @base, guint64 min, guint64 max, guint64* out_num, GError** error);
 }
 
 
@@ -2871,44 +2871,44 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_string_new")] public static extern GString* StringNew(gchar* init);
-	[Import(GLib.so), LinkName("g_string_new_take")] public static extern GString* StringNewTake(gchar* init);
-	[Import(GLib.so), LinkName("g_string_new_len")] public static extern GString* StringNewLen(gchar* init, gssize len);
-	[Import(GLib.so), LinkName("g_string_sized_new")] public static extern GString* StringSizedNew(gsize dfl_size);
-	[Import(GLib.so), LinkName("g_string_copy")] public static extern GString* StringCopy(GString* string);
-	[Import(GLib.so), LinkName("g_string_free")] public static extern gchar* StringFree(GString* string, gboolean free_segment);
-	[Import(GLib.so), LinkName("g_string_free_and_steal")] public static extern gchar* StringFreeAndSteal(GString* string);
-	[Import(GLib.so), LinkName("g_string_free_to_bytes")] public static extern GBytes* StringFreeToBytes(GString* string);
-	[Import(GLib.so), LinkName("g_string_equal")] public static extern gboolean StringEqual(GString* v, GString* v2);
-	[Import(GLib.so), LinkName("g_string_hash")] public static extern guint StringHash(GString* str);
-	[Import(GLib.so), LinkName("g_string_assign")] public static extern GString* StringAssign(GString* string, gchar* rval);
-	[Import(GLib.so), LinkName("g_string_truncate")] public static extern GString* StringTruncate(GString* string, gsize len);
-	[Import(GLib.so), LinkName("g_string_set_size")] public static extern GString* StringSetSize(GString* string, gsize len);
-	[Import(GLib.so), LinkName("g_string_insert_len")] public static extern GString* StringInsertLen(GString* string, gssize pos, gchar* val, gssize len);
-	[Import(GLib.so), LinkName("g_string_append")] public static extern GString* StringAppend(GString* string, gchar* val);
-	[Import(GLib.so), LinkName("g_string_append_len")] public static extern GString* StringAppendLen(GString* string, gchar* val, gssize len);
-	[Import(GLib.so), LinkName("g_string_append_c")] public static extern GString* StringAppendC(GString* string, gchar c);
-	[Import(GLib.so), LinkName("g_string_append_unichar")] public static extern GString* StringAppendUnichar(GString* string, gunichar wc);
-	[Import(GLib.so), LinkName("g_string_prepend")] public static extern GString* StringPrepend(GString* string, gchar* val);
-	[Import(GLib.so), LinkName("g_string_prepend_c")] public static extern GString* StringPrependC(GString* string, gchar c);
-	[Import(GLib.so), LinkName("g_string_prepend_unichar")] public static extern GString* StringPrependUnichar(GString* string, gunichar wc);
-	[Import(GLib.so), LinkName("g_string_prepend_len")] public static extern GString* StringPrependLen(GString* string, gchar* val, gssize len);
-	[Import(GLib.so), LinkName("g_string_insert")] public static extern GString* StringInsert(GString* string, gssize pos, gchar* val);
-	[Import(GLib.so), LinkName("g_string_insert_c")] public static extern GString* StringInsertC(GString* string, gssize pos, gchar c);
-	[Import(GLib.so), LinkName("g_string_insert_unichar")] public static extern GString* StringInsertUnichar(GString* string, gssize pos, gunichar wc);
-	[Import(GLib.so), LinkName("g_string_overwrite")] public static extern GString* StringOverwrite(GString* string, gsize pos, gchar* val);
-	[Import(GLib.so), LinkName("g_string_overwrite_len")] public static extern GString* StringOverwriteLen(GString* string, gsize pos, gchar* val, gssize len);
-	[Import(GLib.so), LinkName("g_string_erase")] public static extern GString* StringErase(GString* string, gssize pos, gssize len);
-	[Import(GLib.so), LinkName("g_string_replace")] public static extern guint StringReplace(GString* string, gchar* find, gchar* replace, guint limit);
-	[Import(GLib.so), LinkName("g_string_ascii_down")] public static extern GString* StringAsciiDown(GString* string);
-	[Import(GLib.so), LinkName("g_string_ascii_up")] public static extern GString* StringAsciiUp(GString* string);
-	[Import(GLib.so), LinkName("g_string_vprintf")] public static extern void StringVprintf(GString* string, gchar* format, VarArgs args);
-	[Import(GLib.so), LinkName("g_string_printf")] public static extern void StringPrintf(GString* string, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_string_append_vprintf")] public static extern void StringAppendVprintf(GString* string, gchar* format, VarArgs args);
-	[Import(GLib.so), LinkName("g_string_append_printf")] public static extern void StringAppendPrintf(GString* string, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_string_append_uri_escaped")] public static extern GString* StringAppendUriEscaped(GString* string, gchar* unescaped, gchar* reserved_chars_allowed, gboolean allow_utf8);
-	[Import(GLib.so), LinkName("g_string_down")] public static extern GString* StringDown(GString* string);
-	[Import(GLib.so), LinkName("g_string_up")] public static extern GString* StringUp(GString* string);
+	[LinkName("g_string_new")] public static extern GString* StringNew(gchar* init);
+	[LinkName("g_string_new_take")] public static extern GString* StringNewTake(gchar* init);
+	[LinkName("g_string_new_len")] public static extern GString* StringNewLen(gchar* init, gssize len);
+	[LinkName("g_string_sized_new")] public static extern GString* StringSizedNew(gsize dfl_size);
+	[LinkName("g_string_copy")] public static extern GString* StringCopy(GString* string);
+	[LinkName("g_string_free")] public static extern gchar* StringFree(GString* string, gboolean free_segment);
+	[LinkName("g_string_free_and_steal")] public static extern gchar* StringFreeAndSteal(GString* string);
+	[LinkName("g_string_free_to_bytes")] public static extern GBytes* StringFreeToBytes(GString* string);
+	[LinkName("g_string_equal")] public static extern gboolean StringEqual(GString* v, GString* v2);
+	[LinkName("g_string_hash")] public static extern guint StringHash(GString* str);
+	[LinkName("g_string_assign")] public static extern GString* StringAssign(GString* string, gchar* rval);
+	[LinkName("g_string_truncate")] public static extern GString* StringTruncate(GString* string, gsize len);
+	[LinkName("g_string_set_size")] public static extern GString* StringSetSize(GString* string, gsize len);
+	[LinkName("g_string_insert_len")] public static extern GString* StringInsertLen(GString* string, gssize pos, gchar* val, gssize len);
+	[LinkName("g_string_append")] public static extern GString* StringAppend(GString* string, gchar* val);
+	[LinkName("g_string_append_len")] public static extern GString* StringAppendLen(GString* string, gchar* val, gssize len);
+	[LinkName("g_string_append_c")] public static extern GString* StringAppendC(GString* string, gchar c);
+	[LinkName("g_string_append_unichar")] public static extern GString* StringAppendUnichar(GString* string, gunichar wc);
+	[LinkName("g_string_prepend")] public static extern GString* StringPrepend(GString* string, gchar* val);
+	[LinkName("g_string_prepend_c")] public static extern GString* StringPrependC(GString* string, gchar c);
+	[LinkName("g_string_prepend_unichar")] public static extern GString* StringPrependUnichar(GString* string, gunichar wc);
+	[LinkName("g_string_prepend_len")] public static extern GString* StringPrependLen(GString* string, gchar* val, gssize len);
+	[LinkName("g_string_insert")] public static extern GString* StringInsert(GString* string, gssize pos, gchar* val);
+	[LinkName("g_string_insert_c")] public static extern GString* StringInsertC(GString* string, gssize pos, gchar c);
+	[LinkName("g_string_insert_unichar")] public static extern GString* StringInsertUnichar(GString* string, gssize pos, gunichar wc);
+	[LinkName("g_string_overwrite")] public static extern GString* StringOverwrite(GString* string, gsize pos, gchar* val);
+	[LinkName("g_string_overwrite_len")] public static extern GString* StringOverwriteLen(GString* string, gsize pos, gchar* val, gssize len);
+	[LinkName("g_string_erase")] public static extern GString* StringErase(GString* string, gssize pos, gssize len);
+	[LinkName("g_string_replace")] public static extern guint StringReplace(GString* string, gchar* find, gchar* replace, guint limit);
+	[LinkName("g_string_ascii_down")] public static extern GString* StringAsciiDown(GString* string);
+	[LinkName("g_string_ascii_up")] public static extern GString* StringAsciiUp(GString* string);
+	[LinkName("g_string_vprintf")] public static extern void StringVprintf(GString* string, gchar* format, VarArgs args);
+	[LinkName("g_string_printf")] public static extern void StringPrintf(GString* string, gchar* format, ...);
+	[LinkName("g_string_append_vprintf")] public static extern void StringAppendVprintf(GString* string, gchar* format, VarArgs args);
+	[LinkName("g_string_append_printf")] public static extern void StringAppendPrintf(GString* string, gchar* format, ...);
+	[LinkName("g_string_append_uri_escaped")] public static extern GString* StringAppendUriEscaped(GString* string, gchar* unescaped, gchar* reserved_chars_allowed, gboolean allow_utf8);
+	[LinkName("g_string_down")] public static extern GString* StringDown(GString* string);
+	[LinkName("g_string_up")] public static extern GString* StringUp(GString* string);
 }
 
 
@@ -3004,44 +3004,44 @@ function gboolean GIOFunc(GIOChannel* source, GIOCondition condition, gpointer d
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_io_channel_init")] public static extern void IoChannelInit(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_ref")] public static extern GIOChannel* IoChannelRef(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_unref")] public static extern void IoChannelUnref(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_read")] public static extern GIOError IoChannelRead(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read);
-	[Import(GLib.so), LinkName("g_io_channel_write")] public static extern GIOError IoChannelWrite(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_written);
-	[Import(GLib.so), LinkName("g_io_channel_seek")] public static extern GIOError IoChannelSeek(GIOChannel* channel, gint64 offset, GSeekType type);
-	[Import(GLib.so), LinkName("g_io_channel_close")] public static extern void IoChannelClose(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_shutdown")] public static extern GIOStatus IoChannelShutdown(GIOChannel* channel, gboolean flush, GError** err);
-	[Import(GLib.so), LinkName("g_io_add_watch_full")] public static extern guint IoAddWatchFull(GIOChannel* channel, gint priority, GIOCondition condition, GIOFunc func, gpointer user_data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_io_create_watch")] public static extern GSource* IoCreateWatch(GIOChannel* channel, GIOCondition condition);
-	[Import(GLib.so), LinkName("g_io_add_watch")] public static extern guint IoAddWatch(GIOChannel* channel, GIOCondition condition, GIOFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_io_channel_set_buffer_size")] public static extern void IoChannelSetBufferSize(GIOChannel* channel, gsize size);
-	[Import(GLib.so), LinkName("g_io_channel_get_buffer_size")] public static extern gsize IoChannelGetBufferSize(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_get_buffer_condition")] public static extern GIOCondition IoChannelGetBufferCondition(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_set_flags")] public static extern GIOStatus IoChannelSetFlags(GIOChannel* channel, GIOFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_get_flags")] public static extern GIOFlags IoChannelGetFlags(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_set_line_term")] public static extern void IoChannelSetLineTerm(GIOChannel* channel, gchar* line_term, gint length);
-	[Import(GLib.so), LinkName("g_io_channel_get_line_term")] public static extern gchar* IoChannelGetLineTerm(GIOChannel* channel, gint* length);
-	[Import(GLib.so), LinkName("g_io_channel_set_buffered")] public static extern void IoChannelSetBuffered(GIOChannel* channel, gboolean buffered);
-	[Import(GLib.so), LinkName("g_io_channel_get_buffered")] public static extern gboolean IoChannelGetBuffered(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_set_encoding")] public static extern GIOStatus IoChannelSetEncoding(GIOChannel* channel, gchar* encoding, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_get_encoding")] public static extern gchar* IoChannelGetEncoding(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_set_close_on_unref")] public static extern void IoChannelSetCloseOnUnref(GIOChannel* channel, gboolean do_close);
-	[Import(GLib.so), LinkName("g_io_channel_get_close_on_unref")] public static extern gboolean IoChannelGetCloseOnUnref(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_flush")] public static extern GIOStatus IoChannelFlush(GIOChannel* channel, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_read_line")] public static extern GIOStatus IoChannelReadLine(GIOChannel* channel, gchar** str_return, gsize* length, gsize* terminator_pos, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_read_line_string")] public static extern GIOStatus IoChannelReadLineString(GIOChannel* channel, GString* buffer, gsize* terminator_pos, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_read_to_end")] public static extern GIOStatus IoChannelReadToEnd(GIOChannel* channel, gchar** str_return, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_read_chars")] public static extern GIOStatus IoChannelReadChars(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_read_unichar")] public static extern GIOStatus IoChannelReadUnichar(GIOChannel* channel, gunichar* thechar, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_write_chars")] public static extern GIOStatus IoChannelWriteChars(GIOChannel* channel, gchar* buf, gssize count, gsize* bytes_written, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_write_unichar")] public static extern GIOStatus IoChannelWriteUnichar(GIOChannel* channel, gunichar thechar, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_seek_position")] public static extern GIOStatus IoChannelSeekPosition(GIOChannel* channel, gint64 offset, GSeekType type, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_new_file")] public static extern GIOChannel* IoChannelNewFile(gchar* filename, gchar* mode, GError** error);
-	[Import(GLib.so), LinkName("g_io_channel_error_quark")] public static extern GQuark IoChannelErrorQuark();
-	[Import(GLib.so), LinkName("g_io_channel_error_from_errno")] public static extern GIOChannelError IoChannelErrorFromErrno(gint en);
-	[Import(GLib.so), LinkName("g_io_channel_unix_new")] public static extern GIOChannel* IoChannelUnixNew(c_int fd);
-	[Import(GLib.so), LinkName("g_io_channel_unix_get_fd")] public static extern gint IoChannelUnixGetFd(GIOChannel* channel);
+	[LinkName("g_io_channel_init")] public static extern void IoChannelInit(GIOChannel* channel);
+	[LinkName("g_io_channel_ref")] public static extern GIOChannel* IoChannelRef(GIOChannel* channel);
+	[LinkName("g_io_channel_unref")] public static extern void IoChannelUnref(GIOChannel* channel);
+	[LinkName("g_io_channel_read")] public static extern GIOError IoChannelRead(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read);
+	[LinkName("g_io_channel_write")] public static extern GIOError IoChannelWrite(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_written);
+	[LinkName("g_io_channel_seek")] public static extern GIOError IoChannelSeek(GIOChannel* channel, gint64 offset, GSeekType type);
+	[LinkName("g_io_channel_close")] public static extern void IoChannelClose(GIOChannel* channel);
+	[LinkName("g_io_channel_shutdown")] public static extern GIOStatus IoChannelShutdown(GIOChannel* channel, gboolean flush, GError** err);
+	[LinkName("g_io_add_watch_full")] public static extern guint IoAddWatchFull(GIOChannel* channel, gint priority, GIOCondition condition, GIOFunc func, gpointer user_data, GDestroyNotify notify);
+	[LinkName("g_io_create_watch")] public static extern GSource* IoCreateWatch(GIOChannel* channel, GIOCondition condition);
+	[LinkName("g_io_add_watch")] public static extern guint IoAddWatch(GIOChannel* channel, GIOCondition condition, GIOFunc func, gpointer user_data);
+	[LinkName("g_io_channel_set_buffer_size")] public static extern void IoChannelSetBufferSize(GIOChannel* channel, gsize size);
+	[LinkName("g_io_channel_get_buffer_size")] public static extern gsize IoChannelGetBufferSize(GIOChannel* channel);
+	[LinkName("g_io_channel_get_buffer_condition")] public static extern GIOCondition IoChannelGetBufferCondition(GIOChannel* channel);
+	[LinkName("g_io_channel_set_flags")] public static extern GIOStatus IoChannelSetFlags(GIOChannel* channel, GIOFlags flags, GError** error);
+	[LinkName("g_io_channel_get_flags")] public static extern GIOFlags IoChannelGetFlags(GIOChannel* channel);
+	[LinkName("g_io_channel_set_line_term")] public static extern void IoChannelSetLineTerm(GIOChannel* channel, gchar* line_term, gint length);
+	[LinkName("g_io_channel_get_line_term")] public static extern gchar* IoChannelGetLineTerm(GIOChannel* channel, gint* length);
+	[LinkName("g_io_channel_set_buffered")] public static extern void IoChannelSetBuffered(GIOChannel* channel, gboolean buffered);
+	[LinkName("g_io_channel_get_buffered")] public static extern gboolean IoChannelGetBuffered(GIOChannel* channel);
+	[LinkName("g_io_channel_set_encoding")] public static extern GIOStatus IoChannelSetEncoding(GIOChannel* channel, gchar* encoding, GError** error);
+	[LinkName("g_io_channel_get_encoding")] public static extern gchar* IoChannelGetEncoding(GIOChannel* channel);
+	[LinkName("g_io_channel_set_close_on_unref")] public static extern void IoChannelSetCloseOnUnref(GIOChannel* channel, gboolean do_close);
+	[LinkName("g_io_channel_get_close_on_unref")] public static extern gboolean IoChannelGetCloseOnUnref(GIOChannel* channel);
+	[LinkName("g_io_channel_flush")] public static extern GIOStatus IoChannelFlush(GIOChannel* channel, GError** error);
+	[LinkName("g_io_channel_read_line")] public static extern GIOStatus IoChannelReadLine(GIOChannel* channel, gchar** str_return, gsize* length, gsize* terminator_pos, GError** error);
+	[LinkName("g_io_channel_read_line_string")] public static extern GIOStatus IoChannelReadLineString(GIOChannel* channel, GString* buffer, gsize* terminator_pos, GError** error);
+	[LinkName("g_io_channel_read_to_end")] public static extern GIOStatus IoChannelReadToEnd(GIOChannel* channel, gchar** str_return, gsize* length, GError** error);
+	[LinkName("g_io_channel_read_chars")] public static extern GIOStatus IoChannelReadChars(GIOChannel* channel, gchar* buf, gsize count, gsize* bytes_read, GError** error);
+	[LinkName("g_io_channel_read_unichar")] public static extern GIOStatus IoChannelReadUnichar(GIOChannel* channel, gunichar* thechar, GError** error);
+	[LinkName("g_io_channel_write_chars")] public static extern GIOStatus IoChannelWriteChars(GIOChannel* channel, gchar* buf, gssize count, gsize* bytes_written, GError** error);
+	[LinkName("g_io_channel_write_unichar")] public static extern GIOStatus IoChannelWriteUnichar(GIOChannel* channel, gunichar thechar, GError** error);
+	[LinkName("g_io_channel_seek_position")] public static extern GIOStatus IoChannelSeekPosition(GIOChannel* channel, gint64 offset, GSeekType type, GError** error);
+	[LinkName("g_io_channel_new_file")] public static extern GIOChannel* IoChannelNewFile(gchar* filename, gchar* mode, GError** error);
+	[LinkName("g_io_channel_error_quark")] public static extern GQuark IoChannelErrorQuark();
+	[LinkName("g_io_channel_error_from_errno")] public static extern GIOChannelError IoChannelErrorFromErrno(gint en);
+	[LinkName("g_io_channel_unix_new")] public static extern GIOChannel* IoChannelUnixNew(c_int fd);
+	[LinkName("g_io_channel_unix_get_fd")] public static extern gint IoChannelUnixGetFd(GIOChannel* channel);
 }
 
 static
@@ -3051,14 +3051,14 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_io_channel_win32_make_pollfd")] public static extern void IoChannelWin32MakePollfd(GIOChannel* channel, GIOCondition condition, GPollFD* fd);
-	[Import(GLib.so), LinkName("g_io_channel_win32_poll")] public static extern gint IoChannelWin32Poll(GPollFD* fds, gint n_fds, gint timeout);
-	[Import(GLib.so), LinkName("g_io_channel_win32_new_messages")] public static extern GIOChannel* IoChannelWin32NewMessages(gsize hwnd);
-	[Import(GLib.so), LinkName("g_io_channel_win32_new_fd")] public static extern GIOChannel* IoChannelWin32NewFd(gint fd);
-	[Import(GLib.so), LinkName("g_io_channel_win32_get_fd")] public static extern gint IoChannelWin32GetFd(GIOChannel* channel);
-	[Import(GLib.so), LinkName("g_io_channel_win32_new_socket")] public static extern GIOChannel* IoChannelWin32NewSocket(gint socket);
-	[Import(GLib.so), LinkName("g_io_channel_win32_new_stream_socket")] public static extern GIOChannel* IoChannelWin32NewStreamSocket(gint socket);
-	[Import(GLib.so), LinkName("g_io_channel_win32_set_debug")] public static extern void IoChannelWin32SetDebug(GIOChannel* channel, gboolean flag);
+	[LinkName("g_io_channel_win32_make_pollfd")] public static extern void IoChannelWin32MakePollfd(GIOChannel* channel, GIOCondition condition, GPollFD* fd);
+	[LinkName("g_io_channel_win32_poll")] public static extern gint IoChannelWin32Poll(GPollFD* fds, gint n_fds, gint timeout);
+	[LinkName("g_io_channel_win32_new_messages")] public static extern GIOChannel* IoChannelWin32NewMessages(gsize hwnd);
+	[LinkName("g_io_channel_win32_new_fd")] public static extern GIOChannel* IoChannelWin32NewFd(gint fd);
+	[LinkName("g_io_channel_win32_get_fd")] public static extern gint IoChannelWin32GetFd(GIOChannel* channel);
+	[LinkName("g_io_channel_win32_new_socket")] public static extern GIOChannel* IoChannelWin32NewSocket(gint socket);
+	[LinkName("g_io_channel_win32_new_stream_socket")] public static extern GIOChannel* IoChannelWin32NewStreamSocket(gint socket);
+	[LinkName("g_io_channel_win32_set_debug")] public static extern void IoChannelWin32SetDebug(GIOChannel* channel, gboolean flag);
 }
 
 [AllowDuplicates] enum GKeyFileError : c_int
@@ -3073,7 +3073,7 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_key_file_error_quark")] public static extern GQuark KeyFileErrorQuark();
+	[LinkName("g_key_file_error_quark")] public static extern GQuark KeyFileErrorQuark();
 }
 
 struct GKeyFile;
@@ -3087,69 +3087,69 @@ struct GKeyFile;
 
 extension GKeyFile
 {
-	[Import(GLib.so), LinkName("g_key_file_new")] public static extern GKeyFile* New();
-	[Import(GLib.so), LinkName("g_key_file_ref")] public static extern GKeyFile* Ref(GKeyFile* key_file);
-	[Import(GLib.so), LinkName("g_key_file_unref")] public static extern void Unref(GKeyFile* key_file);
-	[Import(GLib.so), LinkName("g_key_file_free")] public static extern void Free(GKeyFile* key_file);
-	[Import(GLib.so), LinkName("g_key_file_set_list_separator")] public static extern void SetListSeparator(GKeyFile* key_file, gchar separator);
-	[Import(GLib.so), LinkName("g_key_file_load_from_file")] public static extern gboolean LoadFromFile(GKeyFile* key_file, gchar* file, GKeyFileFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_load_from_data")] public static extern gboolean LoadFromData(GKeyFile* key_file, gchar* data, gsize length, GKeyFileFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_load_from_bytes")] public static extern gboolean LoadFromBytes(GKeyFile* key_file, GBytes* bytes, GKeyFileFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_load_from_dirs")] public static extern gboolean LoadFromDirs(GKeyFile* key_file, gchar* file, gchar** search_dirs, gchar** full_path, GKeyFileFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_load_from_data_dirs")] public static extern gboolean LoadFromDataDirs(GKeyFile* key_file, gchar* file, gchar** full_path, GKeyFileFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_to_data")] public static extern gchar* ToData(GKeyFile* key_file, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_save_to_file")] public static extern gboolean SaveToFile(GKeyFile* key_file, gchar* filename, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_get_start_group")] public static extern gchar* GetStartGroup(GKeyFile* key_file);
-	[Import(GLib.so), LinkName("g_key_file_get_groups")] public static extern gchar** GetGroups(GKeyFile* key_file, gsize* length);
-	[Import(GLib.so), LinkName("g_key_file_get_keys")] public static extern gchar** GetKeys(GKeyFile* key_file, gchar* group_name, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_has_group")] public static extern gboolean HasGroup(GKeyFile* key_file, gchar* group_name);
-	[Import(GLib.so), LinkName("g_key_file_has_key")] public static extern gboolean HasKey(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_get_value")] public static extern gchar* GetValue(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_value")] public static extern void SetValue(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* value);
-	[Import(GLib.so), LinkName("g_key_file_get_string")] public static extern gchar* GetString(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_string")] public static extern void SetString(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* string);
-	[Import(GLib.so), LinkName("g_key_file_get_locale_string")] public static extern gchar* GetLocaleString(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_get_locale_for_key")] public static extern gchar* GetLocaleForKey(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale);
-	[Import(GLib.so), LinkName("g_key_file_set_locale_string")] public static extern void SetLocaleString(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, gchar* string);
-	[Import(GLib.so), LinkName("g_key_file_get_boolean")] public static extern gboolean GetBoolean(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_boolean")] public static extern void SetBoolean(GKeyFile* key_file, gchar* group_name, gchar* key, gboolean value);
-	[Import(GLib.so), LinkName("g_key_file_get_integer")] public static extern gint GetInteger(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_integer")] public static extern void SetInteger(GKeyFile* key_file, gchar* group_name, gchar* key, gint value);
-	[Import(GLib.so), LinkName("g_key_file_get_int64")] public static extern gint64 GetInt64(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_int64")] public static extern void SetInt64(GKeyFile* key_file, gchar* group_name, gchar* key, gint64 value);
-	[Import(GLib.so), LinkName("g_key_file_get_uint64")] public static extern guint64 GetUint64(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_uint64")] public static extern void SetUint64(GKeyFile* key_file, gchar* group_name, gchar* key, guint64 value);
-	[Import(GLib.so), LinkName("g_key_file_get_double")] public static extern gdouble GetDouble(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_double")] public static extern void SetDouble(GKeyFile* key_file, gchar* group_name, gchar* key, gdouble value);
-	[Import(GLib.so), LinkName("g_key_file_get_string_list")] public static extern gchar** GetStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_string_list")] public static extern void SetStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gchar** list, gsize length);
-	[Import(GLib.so), LinkName("g_key_file_get_locale_string_list")] public static extern gchar** GetLocaleStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_locale_string_list")] public static extern void SetLocaleStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, gchar** list, gsize length);
-	[Import(GLib.so), LinkName("g_key_file_get_boolean_list")] public static extern gboolean* GetBooleanList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_boolean_list")] public static extern void SetBooleanList(GKeyFile* key_file, gchar* group_name, gchar* key, gboolean* list, gsize length);
-	[Import(GLib.so), LinkName("g_key_file_get_integer_list")] public static extern gint* GetIntegerList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_double_list")] public static extern void SetDoubleList(GKeyFile* key_file, gchar* group_name, gchar* key, gdouble* list, gsize length);
-	[Import(GLib.so), LinkName("g_key_file_get_double_list")] public static extern gdouble* GetDoubleList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_set_integer_list")] public static extern void SetIntegerList(GKeyFile* key_file, gchar* group_name, gchar* key, gint* list, gsize length);
-	[Import(GLib.so), LinkName("g_key_file_set_comment")] public static extern gboolean SetComment(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* comment, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_get_comment")] public static extern gchar* GetComment(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_remove_comment")] public static extern gboolean RemoveComment(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_remove_key")] public static extern gboolean RemoveKey(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
-	[Import(GLib.so), LinkName("g_key_file_remove_group")] public static extern gboolean RemoveGroup(GKeyFile* key_file, gchar* group_name, GError** error);
+	[LinkName("g_key_file_new")] public static extern GKeyFile* New();
+	[LinkName("g_key_file_ref")] public static extern GKeyFile* Ref(GKeyFile* key_file);
+	[LinkName("g_key_file_unref")] public static extern void Unref(GKeyFile* key_file);
+	[LinkName("g_key_file_free")] public static extern void Free(GKeyFile* key_file);
+	[LinkName("g_key_file_set_list_separator")] public static extern void SetListSeparator(GKeyFile* key_file, gchar separator);
+	[LinkName("g_key_file_load_from_file")] public static extern gboolean LoadFromFile(GKeyFile* key_file, gchar* file, GKeyFileFlags flags, GError** error);
+	[LinkName("g_key_file_load_from_data")] public static extern gboolean LoadFromData(GKeyFile* key_file, gchar* data, gsize length, GKeyFileFlags flags, GError** error);
+	[LinkName("g_key_file_load_from_bytes")] public static extern gboolean LoadFromBytes(GKeyFile* key_file, GBytes* bytes, GKeyFileFlags flags, GError** error);
+	[LinkName("g_key_file_load_from_dirs")] public static extern gboolean LoadFromDirs(GKeyFile* key_file, gchar* file, gchar** search_dirs, gchar** full_path, GKeyFileFlags flags, GError** error);
+	[LinkName("g_key_file_load_from_data_dirs")] public static extern gboolean LoadFromDataDirs(GKeyFile* key_file, gchar* file, gchar** full_path, GKeyFileFlags flags, GError** error);
+	[LinkName("g_key_file_to_data")] public static extern gchar* ToData(GKeyFile* key_file, gsize* length, GError** error);
+	[LinkName("g_key_file_save_to_file")] public static extern gboolean SaveToFile(GKeyFile* key_file, gchar* filename, GError** error);
+	[LinkName("g_key_file_get_start_group")] public static extern gchar* GetStartGroup(GKeyFile* key_file);
+	[LinkName("g_key_file_get_groups")] public static extern gchar** GetGroups(GKeyFile* key_file, gsize* length);
+	[LinkName("g_key_file_get_keys")] public static extern gchar** GetKeys(GKeyFile* key_file, gchar* group_name, gsize* length, GError** error);
+	[LinkName("g_key_file_has_group")] public static extern gboolean HasGroup(GKeyFile* key_file, gchar* group_name);
+	[LinkName("g_key_file_has_key")] public static extern gboolean HasKey(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_get_value")] public static extern gchar* GetValue(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_value")] public static extern void SetValue(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* value);
+	[LinkName("g_key_file_get_string")] public static extern gchar* GetString(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_string")] public static extern void SetString(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* string);
+	[LinkName("g_key_file_get_locale_string")] public static extern gchar* GetLocaleString(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, GError** error);
+	[LinkName("g_key_file_get_locale_for_key")] public static extern gchar* GetLocaleForKey(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale);
+	[LinkName("g_key_file_set_locale_string")] public static extern void SetLocaleString(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, gchar* string);
+	[LinkName("g_key_file_get_boolean")] public static extern gboolean GetBoolean(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_boolean")] public static extern void SetBoolean(GKeyFile* key_file, gchar* group_name, gchar* key, gboolean value);
+	[LinkName("g_key_file_get_integer")] public static extern gint GetInteger(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_integer")] public static extern void SetInteger(GKeyFile* key_file, gchar* group_name, gchar* key, gint value);
+	[LinkName("g_key_file_get_int64")] public static extern gint64 GetInt64(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_int64")] public static extern void SetInt64(GKeyFile* key_file, gchar* group_name, gchar* key, gint64 value);
+	[LinkName("g_key_file_get_uint64")] public static extern guint64 GetUint64(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_uint64")] public static extern void SetUint64(GKeyFile* key_file, gchar* group_name, gchar* key, guint64 value);
+	[LinkName("g_key_file_get_double")] public static extern gdouble GetDouble(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_set_double")] public static extern void SetDouble(GKeyFile* key_file, gchar* group_name, gchar* key, gdouble value);
+	[LinkName("g_key_file_get_string_list")] public static extern gchar** GetStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
+	[LinkName("g_key_file_set_string_list")] public static extern void SetStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gchar** list, gsize length);
+	[LinkName("g_key_file_get_locale_string_list")] public static extern gchar** GetLocaleStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, gsize* length, GError** error);
+	[LinkName("g_key_file_set_locale_string_list")] public static extern void SetLocaleStringList(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* locale, gchar** list, gsize length);
+	[LinkName("g_key_file_get_boolean_list")] public static extern gboolean* GetBooleanList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
+	[LinkName("g_key_file_set_boolean_list")] public static extern void SetBooleanList(GKeyFile* key_file, gchar* group_name, gchar* key, gboolean* list, gsize length);
+	[LinkName("g_key_file_get_integer_list")] public static extern gint* GetIntegerList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
+	[LinkName("g_key_file_set_double_list")] public static extern void SetDoubleList(GKeyFile* key_file, gchar* group_name, gchar* key, gdouble* list, gsize length);
+	[LinkName("g_key_file_get_double_list")] public static extern gdouble* GetDoubleList(GKeyFile* key_file, gchar* group_name, gchar* key, gsize* length, GError** error);
+	[LinkName("g_key_file_set_integer_list")] public static extern void SetIntegerList(GKeyFile* key_file, gchar* group_name, gchar* key, gint* list, gsize length);
+	[LinkName("g_key_file_set_comment")] public static extern gboolean SetComment(GKeyFile* key_file, gchar* group_name, gchar* key, gchar* comment, GError** error);
+	[LinkName("g_key_file_get_comment")] public static extern gchar* GetComment(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_remove_comment")] public static extern gboolean RemoveComment(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_remove_key")] public static extern gboolean RemoveKey(GKeyFile* key_file, gchar* group_name, gchar* key, GError** error);
+	[LinkName("g_key_file_remove_group")] public static extern gboolean RemoveGroup(GKeyFile* key_file, gchar* group_name, GError** error);
 }
 
 struct GMappedFile;
 
 extension GMappedFile
 {
-	[Import(GLib.so), LinkName("g_mapped_file_new")] public static extern GMappedFile* New(gchar* filename, gboolean writable, GError** error);
-	[Import(GLib.so), LinkName("g_mapped_file_new_from_fd")] public static extern GMappedFile* NewFromFd(gint fd, gboolean writable, GError** error);
-	[Import(GLib.so), LinkName("g_mapped_file_get_length")] public static extern gsize GetLength(GMappedFile* file);
-	[Import(GLib.so), LinkName("g_mapped_file_get_contents")] public static extern gchar* GetContents(GMappedFile* file);
-	[Import(GLib.so), LinkName("g_mapped_file_get_bytes")] public static extern GBytes* GetBytes(GMappedFile* file);
-	[Import(GLib.so), LinkName("g_mapped_file_ref")] public static extern GMappedFile* Ref(GMappedFile* file);
-	[Import(GLib.so), LinkName("g_mapped_file_unref")] public static extern void Unref(GMappedFile* file);
-	[Import(GLib.so), LinkName("g_mapped_file_free")] public static extern void Free(GMappedFile* file);
+	[LinkName("g_mapped_file_new")] public static extern GMappedFile* New(gchar* filename, gboolean writable, GError** error);
+	[LinkName("g_mapped_file_new_from_fd")] public static extern GMappedFile* NewFromFd(gint fd, gboolean writable, GError** error);
+	[LinkName("g_mapped_file_get_length")] public static extern gsize GetLength(GMappedFile* file);
+	[LinkName("g_mapped_file_get_contents")] public static extern gchar* GetContents(GMappedFile* file);
+	[LinkName("g_mapped_file_get_bytes")] public static extern GBytes* GetBytes(GMappedFile* file);
+	[LinkName("g_mapped_file_ref")] public static extern GMappedFile* Ref(GMappedFile* file);
+	[LinkName("g_mapped_file_unref")] public static extern void Unref(GMappedFile* file);
+	[LinkName("g_mapped_file_free")] public static extern void Free(GMappedFile* file);
 }
 
 /** GMarkupError:
@@ -3180,7 +3180,7 @@ extension GMappedFile
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_markup_error_quark")] public static extern GQuark MarkupErrorQuark();
+	[LinkName("g_markup_error_quark")] public static extern GQuark MarkupErrorQuark();
 }
 
 /** GMarkupParseFlags:
@@ -3257,25 +3257,25 @@ struct GMarkupParseContext;
 
 extension GMarkupParseContext
 {
-	[Import(GLib.so), LinkName("g_markup_parse_context_new")] public static extern GMarkupParseContext* New(GMarkupParser* parser, GMarkupParseFlags flags, gpointer user_data, GDestroyNotify user_data_dnotify);
-	[Import(GLib.so), LinkName("g_markup_parse_context_ref")] public static extern GMarkupParseContext* Ref(GMarkupParseContext* context);
-	[Import(GLib.so), LinkName("g_markup_parse_context_unref")] public static extern void Unref(GMarkupParseContext* context);
-	[Import(GLib.so), LinkName("g_markup_parse_context_free")] public static extern void Free(GMarkupParseContext* context);
-	[Import(GLib.so), LinkName("g_markup_parse_context_parse")] public static extern gboolean Parse(GMarkupParseContext* context, gchar* text, gssize text_len, GError** error);
-	[Import(GLib.so), LinkName("g_markup_parse_context_push")] public static extern void Push(GMarkupParseContext* context, GMarkupParser* parser, gpointer user_data);
-	[Import(GLib.so), LinkName("g_markup_parse_context_pop")] public static extern gpointer Pop(GMarkupParseContext* context);
-	[Import(GLib.so), LinkName("g_markup_parse_context_end_parse")] public static extern gboolean EndParse(GMarkupParseContext* context, GError** error);
-	[Import(GLib.so), LinkName("g_markup_parse_context_get_element")] public static extern gchar* GetElement(GMarkupParseContext* context);
-	[Import(GLib.so), LinkName("g_markup_parse_context_get_element_stack")] public static extern GSList* GetElementStack(GMarkupParseContext* context);
-	[Import(GLib.so), LinkName("g_markup_parse_context_get_position")] public static extern void GetPosition(GMarkupParseContext* context, gint* line_number, gint* char_number);
-	[Import(GLib.so), LinkName("g_markup_parse_context_get_user_data")] public static extern gpointer GetUserData(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_new")] public static extern GMarkupParseContext* New(GMarkupParser* parser, GMarkupParseFlags flags, gpointer user_data, GDestroyNotify user_data_dnotify);
+	[LinkName("g_markup_parse_context_ref")] public static extern GMarkupParseContext* Ref(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_unref")] public static extern void Unref(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_free")] public static extern void Free(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_parse")] public static extern gboolean Parse(GMarkupParseContext* context, gchar* text, gssize text_len, GError** error);
+	[LinkName("g_markup_parse_context_push")] public static extern void Push(GMarkupParseContext* context, GMarkupParser* parser, gpointer user_data);
+	[LinkName("g_markup_parse_context_pop")] public static extern gpointer Pop(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_end_parse")] public static extern gboolean EndParse(GMarkupParseContext* context, GError** error);
+	[LinkName("g_markup_parse_context_get_element")] public static extern gchar* GetElement(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_get_element_stack")] public static extern GSList* GetElementStack(GMarkupParseContext* context);
+	[LinkName("g_markup_parse_context_get_position")] public static extern void GetPosition(GMarkupParseContext* context, gint* line_number, gint* char_number);
+	[LinkName("g_markup_parse_context_get_user_data")] public static extern gpointer GetUserData(GMarkupParseContext* context);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_markup_escape_text")] public static extern gchar* MarkupEscapeText(gchar* text, gssize length);
-	[Import(GLib.so), LinkName("g_markup_printf_escaped")] public static extern gchar* MarkupPrintfEscaped(c_char* format, ...);
-	[Import(GLib.so), LinkName("g_markup_vprintf_escaped")] public static extern gchar* MarkupVprintfEscaped(c_char* format, VarArgs args);
+	[LinkName("g_markup_escape_text")] public static extern gchar* MarkupEscapeText(gchar* text, gssize length);
+	[LinkName("g_markup_printf_escaped")] public static extern gchar* MarkupPrintfEscaped(c_char* format, ...);
+	[LinkName("g_markup_vprintf_escaped")] public static extern gchar* MarkupVprintfEscaped(c_char* format, VarArgs args);
 }
 
 [AllowDuplicates] enum GMarkupCollectType : c_int
@@ -3290,44 +3290,44 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_markup_collect_attributes")] public static extern gboolean MarkupCollectAttributes(gchar* element_name, gchar** attribute_names, gchar** attribute_values, GError** error, GMarkupCollectType first_type, gchar* first_attr, ...);
+	[LinkName("g_markup_collect_attributes")] public static extern gboolean MarkupCollectAttributes(gchar* element_name, gchar** attribute_names, gchar** attribute_values, GError** error, GMarkupCollectType first_type, gchar* first_attr, ...);
 }
 
 struct GVariantType;
 
 extension GVariantType
 {
-	[Import(GLib.so), LinkName("g_variant_type_string_is_valid")] public static extern gboolean StringIsValid(gchar* type_string);
-	[Import(GLib.so), LinkName("g_variant_type_string_scan")] public static extern gboolean StringScan(gchar* string, gchar* limit, gchar** endptr);
-	[Import(GLib.so), LinkName("g_variant_type_free")] public static extern void Free(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_copy")] public static extern GVariantType* Copy(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_new")] public static extern GVariantType* New(gchar* type_string);
-	[Import(GLib.so), LinkName("g_variant_type_get_string_length")] public static extern gsize GetStringLength(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_peek_string")] public static extern gchar* PeekString(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_dup_string")] public static extern gchar* DupString(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_definite")] public static extern gboolean IsDefinite(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_container")] public static extern gboolean IsContainer(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_basic")] public static extern gboolean IsBasic(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_maybe")] public static extern gboolean IsMaybe(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_array")] public static extern gboolean IsArray(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_tuple")] public static extern gboolean IsTuple(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_dict_entry")] public static extern gboolean IsDictEntry(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_is_variant")] public static extern gboolean IsVariant(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_hash")] public static extern guint Hash(gconstpointer type);
-	[Import(GLib.so), LinkName("g_variant_type_equal")] public static extern gboolean Equal(gconstpointer type1, gconstpointer type2);
-	[Import(GLib.so), LinkName("g_variant_type_is_subtype_of")] public static extern gboolean IsSubtypeOf(GVariantType* type, GVariantType* supertype);
-	[Import(GLib.so), LinkName("g_variant_type_element")] public static extern GVariantType* Element(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_first")] public static extern GVariantType* First(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_next")] public static extern GVariantType* Next(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_n_items")] public static extern gsize NItems(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_key")] public static extern GVariantType* Key(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_value")] public static extern GVariantType* Value(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_type_new_array")] public static extern GVariantType* NewArray(GVariantType* element);
-	[Import(GLib.so), LinkName("g_variant_type_new_maybe")] public static extern GVariantType* NewMaybe(GVariantType* element);
-	[Import(GLib.so), LinkName("g_variant_type_new_tuple")] public static extern GVariantType* NewTuple(GVariantType** items, gint length);
-	[Import(GLib.so), LinkName("g_variant_type_new_dict_entry")] public static extern GVariantType* NewDictEntry(GVariantType* key, GVariantType* value);
-	[Import(GLib.so), LinkName("g_variant_type_checked_")] public static extern GVariantType* Checked(gchar* type_string);
-	[Import(GLib.so), LinkName("g_variant_type_string_get_depth_")] public static extern gsize StringGetDepth(gchar* type_string);
+	[LinkName("g_variant_type_string_is_valid")] public static extern gboolean StringIsValid(gchar* type_string);
+	[LinkName("g_variant_type_string_scan")] public static extern gboolean StringScan(gchar* string, gchar* limit, gchar** endptr);
+	[LinkName("g_variant_type_free")] public static extern void Free(GVariantType* type);
+	[LinkName("g_variant_type_copy")] public static extern GVariantType* Copy(GVariantType* type);
+	[LinkName("g_variant_type_new")] public static extern GVariantType* New(gchar* type_string);
+	[LinkName("g_variant_type_get_string_length")] public static extern gsize GetStringLength(GVariantType* type);
+	[LinkName("g_variant_type_peek_string")] public static extern gchar* PeekString(GVariantType* type);
+	[LinkName("g_variant_type_dup_string")] public static extern gchar* DupString(GVariantType* type);
+	[LinkName("g_variant_type_is_definite")] public static extern gboolean IsDefinite(GVariantType* type);
+	[LinkName("g_variant_type_is_container")] public static extern gboolean IsContainer(GVariantType* type);
+	[LinkName("g_variant_type_is_basic")] public static extern gboolean IsBasic(GVariantType* type);
+	[LinkName("g_variant_type_is_maybe")] public static extern gboolean IsMaybe(GVariantType* type);
+	[LinkName("g_variant_type_is_array")] public static extern gboolean IsArray(GVariantType* type);
+	[LinkName("g_variant_type_is_tuple")] public static extern gboolean IsTuple(GVariantType* type);
+	[LinkName("g_variant_type_is_dict_entry")] public static extern gboolean IsDictEntry(GVariantType* type);
+	[LinkName("g_variant_type_is_variant")] public static extern gboolean IsVariant(GVariantType* type);
+	[LinkName("g_variant_type_hash")] public static extern guint Hash(gconstpointer type);
+	[LinkName("g_variant_type_equal")] public static extern gboolean Equal(gconstpointer type1, gconstpointer type2);
+	[LinkName("g_variant_type_is_subtype_of")] public static extern gboolean IsSubtypeOf(GVariantType* type, GVariantType* supertype);
+	[LinkName("g_variant_type_element")] public static extern GVariantType* Element(GVariantType* type);
+	[LinkName("g_variant_type_first")] public static extern GVariantType* First(GVariantType* type);
+	[LinkName("g_variant_type_next")] public static extern GVariantType* Next(GVariantType* type);
+	[LinkName("g_variant_type_n_items")] public static extern gsize NItems(GVariantType* type);
+	[LinkName("g_variant_type_key")] public static extern GVariantType* Key(GVariantType* type);
+	[LinkName("g_variant_type_value")] public static extern GVariantType* Value(GVariantType* type);
+	[LinkName("g_variant_type_new_array")] public static extern GVariantType* NewArray(GVariantType* element);
+	[LinkName("g_variant_type_new_maybe")] public static extern GVariantType* NewMaybe(GVariantType* element);
+	[LinkName("g_variant_type_new_tuple")] public static extern GVariantType* NewTuple(GVariantType** items, gint length);
+	[LinkName("g_variant_type_new_dict_entry")] public static extern GVariantType* NewDictEntry(GVariantType* key, GVariantType* value);
+	[LinkName("g_variant_type_checked_")] public static extern GVariantType* Checked(gchar* type_string);
+	[LinkName("g_variant_type_string_get_depth_")] public static extern gsize StringGetDepth(gchar* type_string);
 }
 
 struct GVariant;
@@ -3356,84 +3356,84 @@ struct GVariant;
 
 extension GVariant
 {
-	[Import(GLib.so), LinkName("g_variant_unref")] public static extern void Unref(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_ref")] public static extern GVariant* Ref(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_ref_sink")] public static extern GVariant* RefSink(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_is_floating")] public static extern gboolean IsFloating(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_take_ref")] public static extern GVariant* TakeRef(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_type")] public static extern GVariantType* GetType(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_type_string")] public static extern gchar* GetTypeString(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_is_of_type")] public static extern gboolean IsOfType(GVariant* value, GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_is_container")] public static extern gboolean IsContainer(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_classify")] public static extern GVariantClass Classify(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_new_boolean")] public static extern GVariant* NewBoolean(gboolean value);
-	[Import(GLib.so), LinkName("g_variant_new_byte")] public static extern GVariant* NewByte(guint8 value);
-	[Import(GLib.so), LinkName("g_variant_new_int16")] public static extern GVariant* NewInt16(gint16 value);
-	[Import(GLib.so), LinkName("g_variant_new_uint16")] public static extern GVariant* NewUint16(guint16 value);
-	[Import(GLib.so), LinkName("g_variant_new_int32")] public static extern GVariant* NewInt32(gint32 value);
-	[Import(GLib.so), LinkName("g_variant_new_uint32")] public static extern GVariant* NewUint32(guint32 value);
-	[Import(GLib.so), LinkName("g_variant_new_int64")] public static extern GVariant* NewInt64(gint64 value);
-	[Import(GLib.so), LinkName("g_variant_new_uint64")] public static extern GVariant* NewUint64(guint64 value);
-	[Import(GLib.so), LinkName("g_variant_new_handle")] public static extern GVariant* NewHandle(gint32 value);
-	[Import(GLib.so), LinkName("g_variant_new_double")] public static extern GVariant* NewDouble(gdouble value);
-	[Import(GLib.so), LinkName("g_variant_new_string")] public static extern GVariant* NewString(gchar* string);
-	[Import(GLib.so), LinkName("g_variant_new_take_string")] public static extern GVariant* NewTakeString(gchar* string);
-	[Import(GLib.so), LinkName("g_variant_new_printf")] public static extern GVariant* NewPrintf(gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_new_object_path")] public static extern GVariant* NewObjectPath(gchar* object_path);
-	[Import(GLib.so), LinkName("g_variant_is_object_path")] public static extern gboolean IsObjectPath(gchar* string);
-	[Import(GLib.so), LinkName("g_variant_new_signature")] public static extern GVariant* NewSignature(gchar* signature);
-	[Import(GLib.so), LinkName("g_variant_is_signature")] public static extern gboolean IsSignature(gchar* string);
-	[Import(GLib.so), LinkName("g_variant_new_variant")] public static extern GVariant* NewVariant(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_new_strv")] public static extern GVariant* NewStrv(gchar** strv, gssize length);
-	[Import(GLib.so), LinkName("g_variant_new_objv")] public static extern GVariant* NewObjv(gchar** strv, gssize length);
-	[Import(GLib.so), LinkName("g_variant_new_bytestring")] public static extern GVariant* NewBytestring(gchar* string);
-	[Import(GLib.so), LinkName("g_variant_new_bytestring_array")] public static extern GVariant* NewBytestringArray(gchar** strv, gssize length);
-	[Import(GLib.so), LinkName("g_variant_new_fixed_array")] public static extern GVariant* NewFixedArray(GVariantType* element_type, gconstpointer elements, gsize n_elements, gsize element_size);
-	[Import(GLib.so), LinkName("g_variant_get_boolean")] public static extern gboolean GetBoolean(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_byte")] public static extern guint8 GetByte(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_int16")] public static extern gint16 GetInt16(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_uint16")] public static extern guint16 GetUint16(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_int32")] public static extern gint32 GetInt32(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_uint32")] public static extern guint32 GetUint32(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_int64")] public static extern gint64 GetInt64(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_uint64")] public static extern guint64 GetUint64(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_handle")] public static extern gint32 GetHandle(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_double")] public static extern gdouble GetDouble(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_variant")] public static extern GVariant* GetVariant(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_string")] public static extern gchar* GetString(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_dup_string")] public static extern gchar* DupString(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_get_strv")] public static extern gchar** GetStrv(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_dup_strv")] public static extern gchar** DupStrv(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_get_objv")] public static extern gchar** GetObjv(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_dup_objv")] public static extern gchar** DupObjv(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_get_bytestring")] public static extern gchar* GetBytestring(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_dup_bytestring")] public static extern gchar* DupBytestring(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_get_bytestring_array")] public static extern gchar** GetBytestringArray(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_dup_bytestring_array")] public static extern gchar** DupBytestringArray(GVariant* value, gsize* length);
-	[Import(GLib.so), LinkName("g_variant_new_maybe")] public static extern GVariant* NewMaybe(GVariantType* child_type, GVariant* child);
-	[Import(GLib.so), LinkName("g_variant_new_array")] public static extern GVariant* NewArray(GVariantType* child_type, GVariant** children, gsize n_children);
-	[Import(GLib.so), LinkName("g_variant_new_tuple")] public static extern GVariant* NewTuple(GVariant** children, gsize n_children);
-	[Import(GLib.so), LinkName("g_variant_new_dict_entry")] public static extern GVariant* NewDictEntry(GVariant* key, GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_maybe")] public static extern GVariant* GetMaybe(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_n_children")] public static extern gsize NChildren(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_child")] public static extern void GetChild(GVariant* value, gsize index, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_get_child_value")] public static extern GVariant* GetChildValue(GVariant* value, gsize index);
-	[Import(GLib.so), LinkName("g_variant_lookup")] public static extern gboolean Lookup(GVariant* dictionary, gchar* key, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_lookup_value")] public static extern GVariant* LookupValue(GVariant* dictionary, gchar* key, GVariantType* expected_type);
-	[Import(GLib.so), LinkName("g_variant_get_fixed_array")] public static extern gconstpointer GetFixedArray(GVariant* value, gsize* n_elements, gsize element_size);
-	[Import(GLib.so), LinkName("g_variant_get_size")] public static extern gsize GetSize(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_data")] public static extern gconstpointer GetData(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_get_data_as_bytes")] public static extern GBytes* GetDataAsBytes(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_store")] public static extern void Store(GVariant* value, gpointer data);
-	[Import(GLib.so), LinkName("g_variant_print")] public static extern gchar* Print(GVariant* value, gboolean type_annotate);
-	[Import(GLib.so), LinkName("g_variant_print_string")] public static extern GString* PrintString(GVariant* value, GString* string, gboolean type_annotate);
-	[Import(GLib.so), LinkName("g_variant_hash")] public static extern guint Hash(gconstpointer value);
-	[Import(GLib.so), LinkName("g_variant_equal")] public static extern gboolean Equal(gconstpointer one, gconstpointer two);
-	[Import(GLib.so), LinkName("g_variant_get_normal_form")] public static extern GVariant* GetNormalForm(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_is_normal_form")] public static extern gboolean IsNormalForm(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_byteswap")] public static extern GVariant* Byteswap(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_new_from_bytes")] public static extern GVariant* NewFromBytes(GVariantType* type, GBytes* bytes, gboolean trusted);
-	[Import(GLib.so), LinkName("g_variant_new_from_data")] public static extern GVariant* NewFromData(GVariantType* type, gconstpointer data, gsize size, gboolean trusted, GDestroyNotify notify, gpointer user_data);
+	[LinkName("g_variant_unref")] public static extern void Unref(GVariant* value);
+	[LinkName("g_variant_ref")] public static extern GVariant* Ref(GVariant* value);
+	[LinkName("g_variant_ref_sink")] public static extern GVariant* RefSink(GVariant* value);
+	[LinkName("g_variant_is_floating")] public static extern gboolean IsFloating(GVariant* value);
+	[LinkName("g_variant_take_ref")] public static extern GVariant* TakeRef(GVariant* value);
+	[LinkName("g_variant_get_type")] public static extern GVariantType* GetType(GVariant* value);
+	[LinkName("g_variant_get_type_string")] public static extern gchar* GetTypeString(GVariant* value);
+	[LinkName("g_variant_is_of_type")] public static extern gboolean IsOfType(GVariant* value, GVariantType* type);
+	[LinkName("g_variant_is_container")] public static extern gboolean IsContainer(GVariant* value);
+	[LinkName("g_variant_classify")] public static extern GVariantClass Classify(GVariant* value);
+	[LinkName("g_variant_new_boolean")] public static extern GVariant* NewBoolean(gboolean value);
+	[LinkName("g_variant_new_byte")] public static extern GVariant* NewByte(guint8 value);
+	[LinkName("g_variant_new_int16")] public static extern GVariant* NewInt16(gint16 value);
+	[LinkName("g_variant_new_uint16")] public static extern GVariant* NewUint16(guint16 value);
+	[LinkName("g_variant_new_int32")] public static extern GVariant* NewInt32(gint32 value);
+	[LinkName("g_variant_new_uint32")] public static extern GVariant* NewUint32(guint32 value);
+	[LinkName("g_variant_new_int64")] public static extern GVariant* NewInt64(gint64 value);
+	[LinkName("g_variant_new_uint64")] public static extern GVariant* NewUint64(guint64 value);
+	[LinkName("g_variant_new_handle")] public static extern GVariant* NewHandle(gint32 value);
+	[LinkName("g_variant_new_double")] public static extern GVariant* NewDouble(gdouble value);
+	[LinkName("g_variant_new_string")] public static extern GVariant* NewString(gchar* string);
+	[LinkName("g_variant_new_take_string")] public static extern GVariant* NewTakeString(gchar* string);
+	[LinkName("g_variant_new_printf")] public static extern GVariant* NewPrintf(gchar* format_string, ...);
+	[LinkName("g_variant_new_object_path")] public static extern GVariant* NewObjectPath(gchar* object_path);
+	[LinkName("g_variant_is_object_path")] public static extern gboolean IsObjectPath(gchar* string);
+	[LinkName("g_variant_new_signature")] public static extern GVariant* NewSignature(gchar* signature);
+	[LinkName("g_variant_is_signature")] public static extern gboolean IsSignature(gchar* string);
+	[LinkName("g_variant_new_variant")] public static extern GVariant* NewVariant(GVariant* value);
+	[LinkName("g_variant_new_strv")] public static extern GVariant* NewStrv(gchar** strv, gssize length);
+	[LinkName("g_variant_new_objv")] public static extern GVariant* NewObjv(gchar** strv, gssize length);
+	[LinkName("g_variant_new_bytestring")] public static extern GVariant* NewBytestring(gchar* string);
+	[LinkName("g_variant_new_bytestring_array")] public static extern GVariant* NewBytestringArray(gchar** strv, gssize length);
+	[LinkName("g_variant_new_fixed_array")] public static extern GVariant* NewFixedArray(GVariantType* element_type, gconstpointer elements, gsize n_elements, gsize element_size);
+	[LinkName("g_variant_get_boolean")] public static extern gboolean GetBoolean(GVariant* value);
+	[LinkName("g_variant_get_byte")] public static extern guint8 GetByte(GVariant* value);
+	[LinkName("g_variant_get_int16")] public static extern gint16 GetInt16(GVariant* value);
+	[LinkName("g_variant_get_uint16")] public static extern guint16 GetUint16(GVariant* value);
+	[LinkName("g_variant_get_int32")] public static extern gint32 GetInt32(GVariant* value);
+	[LinkName("g_variant_get_uint32")] public static extern guint32 GetUint32(GVariant* value);
+	[LinkName("g_variant_get_int64")] public static extern gint64 GetInt64(GVariant* value);
+	[LinkName("g_variant_get_uint64")] public static extern guint64 GetUint64(GVariant* value);
+	[LinkName("g_variant_get_handle")] public static extern gint32 GetHandle(GVariant* value);
+	[LinkName("g_variant_get_double")] public static extern gdouble GetDouble(GVariant* value);
+	[LinkName("g_variant_get_variant")] public static extern GVariant* GetVariant(GVariant* value);
+	[LinkName("g_variant_get_string")] public static extern gchar* GetString(GVariant* value, gsize* length);
+	[LinkName("g_variant_dup_string")] public static extern gchar* DupString(GVariant* value, gsize* length);
+	[LinkName("g_variant_get_strv")] public static extern gchar** GetStrv(GVariant* value, gsize* length);
+	[LinkName("g_variant_dup_strv")] public static extern gchar** DupStrv(GVariant* value, gsize* length);
+	[LinkName("g_variant_get_objv")] public static extern gchar** GetObjv(GVariant* value, gsize* length);
+	[LinkName("g_variant_dup_objv")] public static extern gchar** DupObjv(GVariant* value, gsize* length);
+	[LinkName("g_variant_get_bytestring")] public static extern gchar* GetBytestring(GVariant* value);
+	[LinkName("g_variant_dup_bytestring")] public static extern gchar* DupBytestring(GVariant* value, gsize* length);
+	[LinkName("g_variant_get_bytestring_array")] public static extern gchar** GetBytestringArray(GVariant* value, gsize* length);
+	[LinkName("g_variant_dup_bytestring_array")] public static extern gchar** DupBytestringArray(GVariant* value, gsize* length);
+	[LinkName("g_variant_new_maybe")] public static extern GVariant* NewMaybe(GVariantType* child_type, GVariant* child);
+	[LinkName("g_variant_new_array")] public static extern GVariant* NewArray(GVariantType* child_type, GVariant** children, gsize n_children);
+	[LinkName("g_variant_new_tuple")] public static extern GVariant* NewTuple(GVariant** children, gsize n_children);
+	[LinkName("g_variant_new_dict_entry")] public static extern GVariant* NewDictEntry(GVariant* key, GVariant* value);
+	[LinkName("g_variant_get_maybe")] public static extern GVariant* GetMaybe(GVariant* value);
+	[LinkName("g_variant_n_children")] public static extern gsize NChildren(GVariant* value);
+	[LinkName("g_variant_get_child")] public static extern void GetChild(GVariant* value, gsize index, gchar* format_string, ...);
+	[LinkName("g_variant_get_child_value")] public static extern GVariant* GetChildValue(GVariant* value, gsize index);
+	[LinkName("g_variant_lookup")] public static extern gboolean Lookup(GVariant* dictionary, gchar* key, gchar* format_string, ...);
+	[LinkName("g_variant_lookup_value")] public static extern GVariant* LookupValue(GVariant* dictionary, gchar* key, GVariantType* expected_type);
+	[LinkName("g_variant_get_fixed_array")] public static extern gconstpointer GetFixedArray(GVariant* value, gsize* n_elements, gsize element_size);
+	[LinkName("g_variant_get_size")] public static extern gsize GetSize(GVariant* value);
+	[LinkName("g_variant_get_data")] public static extern gconstpointer GetData(GVariant* value);
+	[LinkName("g_variant_get_data_as_bytes")] public static extern GBytes* GetDataAsBytes(GVariant* value);
+	[LinkName("g_variant_store")] public static extern void Store(GVariant* value, gpointer data);
+	[LinkName("g_variant_print")] public static extern gchar* Print(GVariant* value, gboolean type_annotate);
+	[LinkName("g_variant_print_string")] public static extern GString* PrintString(GVariant* value, GString* string, gboolean type_annotate);
+	[LinkName("g_variant_hash")] public static extern guint Hash(gconstpointer value);
+	[LinkName("g_variant_equal")] public static extern gboolean Equal(gconstpointer one, gconstpointer two);
+	[LinkName("g_variant_get_normal_form")] public static extern GVariant* GetNormalForm(GVariant* value);
+	[LinkName("g_variant_is_normal_form")] public static extern gboolean IsNormalForm(GVariant* value);
+	[LinkName("g_variant_byteswap")] public static extern GVariant* Byteswap(GVariant* value);
+	[LinkName("g_variant_new_from_bytes")] public static extern GVariant* NewFromBytes(GVariantType* type, GBytes* bytes, gboolean trusted);
+	[LinkName("g_variant_new_from_data")] public static extern GVariant* NewFromData(GVariantType* type, gconstpointer data, gsize size, gboolean trusted, GDestroyNotify notify, gpointer user_data);
 }
 
 
@@ -3444,14 +3444,14 @@ extension GVariant
 
 extension GVariant
 {
-	[Import(GLib.so), LinkName("g_variant_iter_new")] public static extern GVariantIter* IterNew(GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_iter_init")] public static extern gsize IterInit(GVariantIter* iter, GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_iter_copy")] public static extern GVariantIter* IterCopy(GVariantIter* iter);
-	[Import(GLib.so), LinkName("g_variant_iter_n_children")] public static extern gsize IterNChildren(GVariantIter* iter);
-	[Import(GLib.so), LinkName("g_variant_iter_free")] public static extern void IterFree(GVariantIter* iter);
-	[Import(GLib.so), LinkName("g_variant_iter_next_value")] public static extern GVariant* IterNextValue(GVariantIter* iter);
-	[Import(GLib.so), LinkName("g_variant_iter_next")] public static extern gboolean IterNext(GVariantIter* iter, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_iter_loop")] public static extern gboolean IterLoop(GVariantIter* iter, gchar* format_string, ...);
+	[LinkName("g_variant_iter_new")] public static extern GVariantIter* IterNew(GVariant* value);
+	[LinkName("g_variant_iter_init")] public static extern gsize IterInit(GVariantIter* iter, GVariant* value);
+	[LinkName("g_variant_iter_copy")] public static extern GVariantIter* IterCopy(GVariantIter* iter);
+	[LinkName("g_variant_iter_n_children")] public static extern gsize IterNChildren(GVariantIter* iter);
+	[LinkName("g_variant_iter_free")] public static extern void IterFree(GVariantIter* iter);
+	[LinkName("g_variant_iter_next_value")] public static extern GVariant* IterNextValue(GVariantIter* iter);
+	[LinkName("g_variant_iter_next")] public static extern gboolean IterNext(GVariantIter* iter, gchar* format_string, ...);
+	[LinkName("g_variant_iter_loop")] public static extern gboolean IterLoop(GVariantIter* iter, gchar* format_string, ...);
 }
 
 
@@ -3494,30 +3494,30 @@ extension GVariant
 
 extension GVariant
 {
-	[Import(GLib.so), LinkName("g_variant_parser_get_error_quark")] public static extern GQuark ParserGetErrorQuark();
-	[Import(GLib.so), LinkName("g_variant_parse_error_quark")] public static extern GQuark ParseErrorQuark();
-	[Import(GLib.so), LinkName("g_variant_builder_new")] public static extern GVariantBuilder* BuilderNew(GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_builder_unref")] public static extern void BuilderUnref(GVariantBuilder* builder);
-	[Import(GLib.so), LinkName("g_variant_builder_ref")] public static extern GVariantBuilder* BuilderRef(GVariantBuilder* builder);
-	[Import(GLib.so), LinkName("g_variant_builder_init")] public static extern void BuilderInit(GVariantBuilder* builder, GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_builder_init_static")] public static extern void BuilderInitStatic(GVariantBuilder* builder, GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_builder_end")] public static extern GVariant* BuilderEnd(GVariantBuilder* builder);
-	[Import(GLib.so), LinkName("g_variant_builder_clear")] public static extern void BuilderClear(GVariantBuilder* builder);
-	[Import(GLib.so), LinkName("g_variant_builder_open")] public static extern void BuilderOpen(GVariantBuilder* builder, GVariantType* type);
-	[Import(GLib.so), LinkName("g_variant_builder_close")] public static extern void BuilderClose(GVariantBuilder* builder);
-	[Import(GLib.so), LinkName("g_variant_builder_add_value")] public static extern void BuilderAddValue(GVariantBuilder* builder, GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_builder_add")] public static extern void BuilderAdd(GVariantBuilder* builder, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_builder_add_parsed")] public static extern void BuilderAddParsed(GVariantBuilder* builder, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_variant_new")] public static extern GVariant* New(gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_get")] public static extern void Get(GVariant* value, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_new_va")] public static extern GVariant* NewVa(gchar* format_string, gchar** endptr, VarArgs* app);
-	[Import(GLib.so), LinkName("g_variant_get_va")] public static extern void GetVa(GVariant* value, gchar* format_string, gchar** endptr, VarArgs* app);
-	[Import(GLib.so), LinkName("g_variant_check_format_string")] public static extern gboolean CheckFormatString(GVariant* value, gchar* format_string, gboolean copy_only);
-	[Import(GLib.so), LinkName("g_variant_parse")] public static extern GVariant* Parse(GVariantType* type, gchar* text, gchar* limit, gchar** endptr, GError** error);
-	[Import(GLib.so), LinkName("g_variant_new_parsed")] public static extern GVariant* NewParsed(gchar* format, ...);
-	[Import(GLib.so), LinkName("g_variant_new_parsed_va")] public static extern GVariant* NewParsedVa(gchar* format, VarArgs* app);
-	[Import(GLib.so), LinkName("g_variant_parse_error_print_context")] public static extern gchar* ParseErrorPrintContext(GError* error, gchar* source_str);
-	[Import(GLib.so), LinkName("g_variant_compare")] public static extern gint Compare(gconstpointer one, gconstpointer two);
+	[LinkName("g_variant_parser_get_error_quark")] public static extern GQuark ParserGetErrorQuark();
+	[LinkName("g_variant_parse_error_quark")] public static extern GQuark ParseErrorQuark();
+	[LinkName("g_variant_builder_new")] public static extern GVariantBuilder* BuilderNew(GVariantType* type);
+	[LinkName("g_variant_builder_unref")] public static extern void BuilderUnref(GVariantBuilder* builder);
+	[LinkName("g_variant_builder_ref")] public static extern GVariantBuilder* BuilderRef(GVariantBuilder* builder);
+	[LinkName("g_variant_builder_init")] public static extern void BuilderInit(GVariantBuilder* builder, GVariantType* type);
+	[LinkName("g_variant_builder_init_static")] public static extern void BuilderInitStatic(GVariantBuilder* builder, GVariantType* type);
+	[LinkName("g_variant_builder_end")] public static extern GVariant* BuilderEnd(GVariantBuilder* builder);
+	[LinkName("g_variant_builder_clear")] public static extern void BuilderClear(GVariantBuilder* builder);
+	[LinkName("g_variant_builder_open")] public static extern void BuilderOpen(GVariantBuilder* builder, GVariantType* type);
+	[LinkName("g_variant_builder_close")] public static extern void BuilderClose(GVariantBuilder* builder);
+	[LinkName("g_variant_builder_add_value")] public static extern void BuilderAddValue(GVariantBuilder* builder, GVariant* value);
+	[LinkName("g_variant_builder_add")] public static extern void BuilderAdd(GVariantBuilder* builder, gchar* format_string, ...);
+	[LinkName("g_variant_builder_add_parsed")] public static extern void BuilderAddParsed(GVariantBuilder* builder, gchar* format, ...);
+	[LinkName("g_variant_new")] public static extern GVariant* New(gchar* format_string, ...);
+	[LinkName("g_variant_get")] public static extern void Get(GVariant* value, gchar* format_string, ...);
+	[LinkName("g_variant_new_va")] public static extern GVariant* NewVa(gchar* format_string, gchar** endptr, VarArgs* app);
+	[LinkName("g_variant_get_va")] public static extern void GetVa(GVariant* value, gchar* format_string, gchar** endptr, VarArgs* app);
+	[LinkName("g_variant_check_format_string")] public static extern gboolean CheckFormatString(GVariant* value, gchar* format_string, gboolean copy_only);
+	[LinkName("g_variant_parse")] public static extern GVariant* Parse(GVariantType* type, gchar* text, gchar* limit, gchar** endptr, GError** error);
+	[LinkName("g_variant_new_parsed")] public static extern GVariant* NewParsed(gchar* format, ...);
+	[LinkName("g_variant_new_parsed_va")] public static extern GVariant* NewParsedVa(gchar* format, VarArgs* app);
+	[LinkName("g_variant_parse_error_print_context")] public static extern gchar* ParseErrorPrintContext(GError* error, gchar* source_str);
+	[LinkName("g_variant_compare")] public static extern gint Compare(gconstpointer one, gconstpointer two);
 }
 
 
@@ -3537,23 +3537,23 @@ extension GVariant
 
 extension GVariant
 {
-	[Import(GLib.so), LinkName("g_variant_dict_new")] public static extern GVariantDict* DictNew(GVariant* from_asv);
-	[Import(GLib.so), LinkName("g_variant_dict_init")] public static extern void DictInit(GVariantDict* dict, GVariant* from_asv);
-	[Import(GLib.so), LinkName("g_variant_dict_lookup")] public static extern gboolean DictLookup(GVariantDict* dict, gchar* key, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_dict_lookup_value")] public static extern GVariant* DictLookupValue(GVariantDict* dict, gchar* key, GVariantType* expected_type);
-	[Import(GLib.so), LinkName("g_variant_dict_contains")] public static extern gboolean DictContains(GVariantDict* dict, gchar* key);
-	[Import(GLib.so), LinkName("g_variant_dict_insert")] public static extern void DictInsert(GVariantDict* dict, gchar* key, gchar* format_string, ...);
-	[Import(GLib.so), LinkName("g_variant_dict_insert_value")] public static extern void DictInsertValue(GVariantDict* dict, gchar* key, GVariant* value);
-	[Import(GLib.so), LinkName("g_variant_dict_remove")] public static extern gboolean DictRemove(GVariantDict* dict, gchar* key);
-	[Import(GLib.so), LinkName("g_variant_dict_clear")] public static extern void DictClear(GVariantDict* dict);
-	[Import(GLib.so), LinkName("g_variant_dict_end")] public static extern GVariant* DictEnd(GVariantDict* dict);
-	[Import(GLib.so), LinkName("g_variant_dict_ref")] public static extern GVariantDict* DictRef(GVariantDict* dict);
-	[Import(GLib.so), LinkName("g_variant_dict_unref")] public static extern void DictUnref(GVariantDict* dict);
+	[LinkName("g_variant_dict_new")] public static extern GVariantDict* DictNew(GVariant* from_asv);
+	[LinkName("g_variant_dict_init")] public static extern void DictInit(GVariantDict* dict, GVariant* from_asv);
+	[LinkName("g_variant_dict_lookup")] public static extern gboolean DictLookup(GVariantDict* dict, gchar* key, gchar* format_string, ...);
+	[LinkName("g_variant_dict_lookup_value")] public static extern GVariant* DictLookupValue(GVariantDict* dict, gchar* key, GVariantType* expected_type);
+	[LinkName("g_variant_dict_contains")] public static extern gboolean DictContains(GVariantDict* dict, gchar* key);
+	[LinkName("g_variant_dict_insert")] public static extern void DictInsert(GVariantDict* dict, gchar* key, gchar* format_string, ...);
+	[LinkName("g_variant_dict_insert_value")] public static extern void DictInsertValue(GVariantDict* dict, gchar* key, GVariant* value);
+	[LinkName("g_variant_dict_remove")] public static extern gboolean DictRemove(GVariantDict* dict, gchar* key);
+	[LinkName("g_variant_dict_clear")] public static extern void DictClear(GVariantDict* dict);
+	[LinkName("g_variant_dict_end")] public static extern GVariant* DictEnd(GVariantDict* dict);
+	[LinkName("g_variant_dict_ref")] public static extern GVariantDict* DictRef(GVariantDict* dict);
+	[LinkName("g_variant_dict_unref")] public static extern void DictUnref(GVariantDict* dict);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_printf_string_upper_bound")] public static extern gsize PrintfStringUpperBound(gchar* format, VarArgs args);
+	[LinkName("g_printf_string_upper_bound")] public static extern gsize PrintfStringUpperBound(gchar* format, VarArgs args);
 }
 
 [AllowDuplicates] enum GLogLevelFlags : c_int
@@ -3573,16 +3573,16 @@ function void GLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* messa
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_log_set_handler")] public static extern guint LogSetHandler(gchar* log_domain, GLogLevelFlags log_levels, GLogFunc log_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_log_set_handler_full")] public static extern guint LogSetHandlerFull(gchar* log_domain, GLogLevelFlags log_levels, GLogFunc log_func, gpointer user_data, GDestroyNotify destroy);
-	[Import(GLib.so), LinkName("g_log_remove_handler")] public static extern void LogRemoveHandler(gchar* log_domain, guint handler_id);
-	[Import(GLib.so), LinkName("g_log_default_handler")] public static extern void LogDefaultHandler(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer unused_data);
-	[Import(GLib.so), LinkName("g_log_set_default_handler")] public static extern GLogFunc LogSetDefaultHandler(GLogFunc log_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_log")] public static extern void Log(gchar* log_domain, GLogLevelFlags log_level, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_logv")] public static extern void Logv(gchar* log_domain, GLogLevelFlags log_level, gchar* format, VarArgs args);
-	[Import(GLib.so), LinkName("g_log_set_fatal_mask")] public static extern GLogLevelFlags LogSetFatalMask(gchar* log_domain, GLogLevelFlags fatal_mask);
-	[Import(GLib.so), LinkName("g_log_set_always_fatal")] public static extern GLogLevelFlags LogSetAlwaysFatal(GLogLevelFlags fatal_mask);
-	[Import(GLib.so), LinkName("g_log_get_always_fatal")] public static extern GLogLevelFlags LogGetAlwaysFatal();
+	[LinkName("g_log_set_handler")] public static extern guint LogSetHandler(gchar* log_domain, GLogLevelFlags log_levels, GLogFunc log_func, gpointer user_data);
+	[LinkName("g_log_set_handler_full")] public static extern guint LogSetHandlerFull(gchar* log_domain, GLogLevelFlags log_levels, GLogFunc log_func, gpointer user_data, GDestroyNotify destroy);
+	[LinkName("g_log_remove_handler")] public static extern void LogRemoveHandler(gchar* log_domain, guint handler_id);
+	[LinkName("g_log_default_handler")] public static extern void LogDefaultHandler(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer unused_data);
+	[LinkName("g_log_set_default_handler")] public static extern GLogFunc LogSetDefaultHandler(GLogFunc log_func, gpointer user_data);
+	[LinkName("g_log")] public static extern void Log(gchar* log_domain, GLogLevelFlags log_level, gchar* format, ...);
+	[LinkName("g_logv")] public static extern void Logv(gchar* log_domain, GLogLevelFlags log_level, gchar* format, VarArgs args);
+	[LinkName("g_log_set_fatal_mask")] public static extern GLogLevelFlags LogSetFatalMask(gchar* log_domain, GLogLevelFlags fatal_mask);
+	[LinkName("g_log_set_always_fatal")] public static extern GLogLevelFlags LogSetAlwaysFatal(GLogLevelFlags fatal_mask);
+	[LinkName("g_log_get_always_fatal")] public static extern GLogLevelFlags LogGetAlwaysFatal();
 }
 
 /** GLogWriterOutput:
@@ -3646,35 +3646,35 @@ function GLogWriterOutput GLogWriterFunc(GLogLevelFlags log_level, GLogField* fi
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_log_structured")] public static extern void LogStructured(gchar* log_domain, GLogLevelFlags log_level, ...);
-	[Import(GLib.so), LinkName("g_log_structured_array")] public static extern void LogStructuredArray(GLogLevelFlags log_level, GLogField* fields, gsize n_fields);
-	[Import(GLib.so), LinkName("g_log_variant")] public static extern void LogVariant(gchar* log_domain, GLogLevelFlags log_level, GVariant* fields);
-	[Import(GLib.so), LinkName("g_log_set_writer_func")] public static extern void LogSetWriterFunc(GLogWriterFunc func, gpointer user_data, GDestroyNotify user_data_free);
-	[Import(GLib.so), LinkName("g_log_writer_supports_color")] public static extern gboolean LogWriterSupportsColor(gint output_fd);
-	[Import(GLib.so), LinkName("g_log_writer_is_journald")] public static extern gboolean LogWriterIsJournald(gint output_fd);
-	[Import(GLib.so), LinkName("g_log_writer_format_fields")] public static extern gchar* LogWriterFormatFields(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gboolean use_color);
-	[Import(GLib.so), LinkName("g_log_writer_syslog")] public static extern GLogWriterOutput LogWriterSyslog(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
-	[Import(GLib.so), LinkName("g_log_writer_journald")] public static extern GLogWriterOutput LogWriterJournald(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
-	[Import(GLib.so), LinkName("g_log_writer_standard_streams")] public static extern GLogWriterOutput LogWriterStandardStreams(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
-	[Import(GLib.so), LinkName("g_log_writer_default")] public static extern GLogWriterOutput LogWriterDefault(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
-	[Import(GLib.so), LinkName("g_log_writer_default_set_use_stderr")] public static extern void LogWriterDefaultSetUseStderr(gboolean use_stderr);
-	[Import(GLib.so), LinkName("g_log_writer_default_would_drop")] public static extern gboolean LogWriterDefaultWouldDrop(GLogLevelFlags log_level, c_char* log_domain);
-	[Import(GLib.so), LinkName("g_log_writer_default_set_debug_domains")] public static extern void LogWriterDefaultSetDebugDomains(gchar** domains);
-	[Import(GLib.so), LinkName("g_log_get_debug_enabled")] public static extern gboolean LogGetDebugEnabled();
-	[Import(GLib.so), LinkName("g_log_set_debug_enabled")] public static extern void LogSetDebugEnabled(gboolean enabled);
+	[LinkName("g_log_structured")] public static extern void LogStructured(gchar* log_domain, GLogLevelFlags log_level, ...);
+	[LinkName("g_log_structured_array")] public static extern void LogStructuredArray(GLogLevelFlags log_level, GLogField* fields, gsize n_fields);
+	[LinkName("g_log_variant")] public static extern void LogVariant(gchar* log_domain, GLogLevelFlags log_level, GVariant* fields);
+	[LinkName("g_log_set_writer_func")] public static extern void LogSetWriterFunc(GLogWriterFunc func, gpointer user_data, GDestroyNotify user_data_free);
+	[LinkName("g_log_writer_supports_color")] public static extern gboolean LogWriterSupportsColor(gint output_fd);
+	[LinkName("g_log_writer_is_journald")] public static extern gboolean LogWriterIsJournald(gint output_fd);
+	[LinkName("g_log_writer_format_fields")] public static extern gchar* LogWriterFormatFields(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gboolean use_color);
+	[LinkName("g_log_writer_syslog")] public static extern GLogWriterOutput LogWriterSyslog(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
+	[LinkName("g_log_writer_journald")] public static extern GLogWriterOutput LogWriterJournald(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
+	[LinkName("g_log_writer_standard_streams")] public static extern GLogWriterOutput LogWriterStandardStreams(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
+	[LinkName("g_log_writer_default")] public static extern GLogWriterOutput LogWriterDefault(GLogLevelFlags log_level, GLogField* fields, gsize n_fields, gpointer user_data);
+	[LinkName("g_log_writer_default_set_use_stderr")] public static extern void LogWriterDefaultSetUseStderr(gboolean use_stderr);
+	[LinkName("g_log_writer_default_would_drop")] public static extern gboolean LogWriterDefaultWouldDrop(GLogLevelFlags log_level, c_char* log_domain);
+	[LinkName("g_log_writer_default_set_debug_domains")] public static extern void LogWriterDefaultSetDebugDomains(gchar** domains);
+	[LinkName("g_log_get_debug_enabled")] public static extern gboolean LogGetDebugEnabled();
+	[LinkName("g_log_set_debug_enabled")] public static extern void LogSetDebugEnabled(gboolean enabled);
 }
 
 static
 {
-	[Import(GLib.so), LinkName("_g_log_fallback_handler")] public static extern void LogFallbackHandler(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer unused_data);
+	[LinkName("_g_log_fallback_handler")] public static extern void LogFallbackHandler(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer unused_data);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_return_if_fail_warning")] public static extern void ReturnIfFailWarning(c_char* log_domain, c_char* pretty_function, c_char* expression);
-	[Import(GLib.so), LinkName("g_warn_message")] public static extern void WarnMessage(c_char* domain, c_char* file, c_int line, c_char* func, c_char* warnexpr);
-	[Import(GLib.so), LinkName("g_assert_warning")] public static extern void AssertWarning(c_char* log_domain, c_char* file, c_int line, c_char* pretty_function, c_char* expression);
-	[Import(GLib.so), LinkName("g_log_structured_standard")] public static extern void LogStructuredStandard(gchar* log_domain, GLogLevelFlags log_level, gchar* file, gchar* line, gchar* func, gchar* message_format, ...);
+	[LinkName("g_return_if_fail_warning")] public static extern void ReturnIfFailWarning(c_char* log_domain, c_char* pretty_function, c_char* expression);
+	[LinkName("g_warn_message")] public static extern void WarnMessage(c_char* domain, c_char* file, c_int line, c_char* func, c_char* warnexpr);
+	[LinkName("g_assert_warning")] public static extern void AssertWarning(c_char* log_domain, c_char* file, c_int line, c_char* pretty_function, c_char* expression);
+	[LinkName("g_log_structured_standard")] public static extern void LogStructuredStandard(gchar* log_domain, GLogLevelFlags log_level, gchar* file, gchar* line, gchar* func, gchar* message_format, ...);
 }
 
 /** GPrintFunc:
@@ -3687,10 +3687,10 @@ function void GPrintFunc(gchar* string);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_print")] public static extern void Print(gchar* format, ...);
-	[Import(GLib.so), LinkName("g_set_print_handler")] public static extern GPrintFunc SetPrintHandler(GPrintFunc func);
-	[Import(GLib.so), LinkName("g_printerr")] public static extern void Printerr(gchar* format, ...);
-	[Import(GLib.so), LinkName("g_set_printerr_handler")] public static extern GPrintFunc SetPrinterrHandler(GPrintFunc func);
+	[LinkName("g_print")] public static extern void Print(gchar* format, ...);
+	[LinkName("g_set_print_handler")] public static extern GPrintFunc SetPrintHandler(GPrintFunc func);
+	[LinkName("g_printerr")] public static extern void Printerr(gchar* format, ...);
+	[LinkName("g_set_printerr_handler")] public static extern GPrintFunc SetPrinterrHandler(GPrintFunc func);
 }
 
 struct GOptionContext;
@@ -3820,7 +3820,7 @@ function void GOptionErrorFunc(GOptionContext* context, GOptionGroup* group, gpo
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_option_error_quark")] public static extern GQuark OptionErrorQuark();
+	[LinkName("g_option_error_quark")] public static extern GQuark OptionErrorQuark();
 }
 
 /** GOptionEntry:
@@ -3879,40 +3879,40 @@ extension GLib
 
 extension GOptionContext
 {
-	[Import(GLib.so), LinkName("g_option_context_new")] public static extern GOptionContext* New(gchar* parameter_string);
-	[Import(GLib.so), LinkName("g_option_context_set_summary")] public static extern void SetSummary(GOptionContext* context, gchar* summary);
-	[Import(GLib.so), LinkName("g_option_context_get_summary")] public static extern gchar* GetSummary(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_set_description")] public static extern void SetDescription(GOptionContext* context, gchar* description);
-	[Import(GLib.so), LinkName("g_option_context_get_description")] public static extern gchar* GetDescription(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_free")] public static extern void Free(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_set_help_enabled")] public static extern void SetHelpEnabled(GOptionContext* context, gboolean help_enabled);
-	[Import(GLib.so), LinkName("g_option_context_get_help_enabled")] public static extern gboolean GetHelpEnabled(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_set_ignore_unknown_options")] public static extern void SetIgnoreUnknownOptions(GOptionContext* context, gboolean ignore_unknown);
-	[Import(GLib.so), LinkName("g_option_context_get_ignore_unknown_options")] public static extern gboolean GetIgnoreUnknownOptions(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_set_strict_posix")] public static extern void SetStrictPosix(GOptionContext* context, gboolean strict_posix);
-	[Import(GLib.so), LinkName("g_option_context_get_strict_posix")] public static extern gboolean GetStrictPosix(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_add_main_entries")] public static extern void AddMainEntries(GOptionContext* context, GOptionEntry* entries, gchar* translation_domain);
-	[Import(GLib.so), LinkName("g_option_context_parse")] public static extern gboolean Parse(GOptionContext* context, gint* argc, gchar*** argv, GError** error);
-	[Import(GLib.so), LinkName("g_option_context_parse_strv")] public static extern gboolean ParseStrv(GOptionContext* context, gchar*** arguments, GError** error);
-	[Import(GLib.so), LinkName("g_option_context_set_translate_func")] public static extern void SetTranslateFunc(GOptionContext* context, GTranslateFunc func, gpointer data, GDestroyNotify destroy_notify);
-	[Import(GLib.so), LinkName("g_option_context_set_translation_domain")] public static extern void SetTranslationDomain(GOptionContext* context, gchar* domain);
-	[Import(GLib.so), LinkName("g_option_context_add_group")] public static extern void AddGroup(GOptionContext* context, GOptionGroup* group);
-	[Import(GLib.so), LinkName("g_option_context_set_main_group")] public static extern void SetMainGroup(GOptionContext* context, GOptionGroup* group);
-	[Import(GLib.so), LinkName("g_option_context_get_main_group")] public static extern GOptionGroup* GetMainGroup(GOptionContext* context);
-	[Import(GLib.so), LinkName("g_option_context_get_help")] public static extern gchar* GetHelp(GOptionContext* context, gboolean main_help, GOptionGroup* group);
+	[LinkName("g_option_context_new")] public static extern GOptionContext* New(gchar* parameter_string);
+	[LinkName("g_option_context_set_summary")] public static extern void SetSummary(GOptionContext* context, gchar* summary);
+	[LinkName("g_option_context_get_summary")] public static extern gchar* GetSummary(GOptionContext* context);
+	[LinkName("g_option_context_set_description")] public static extern void SetDescription(GOptionContext* context, gchar* description);
+	[LinkName("g_option_context_get_description")] public static extern gchar* GetDescription(GOptionContext* context);
+	[LinkName("g_option_context_free")] public static extern void Free(GOptionContext* context);
+	[LinkName("g_option_context_set_help_enabled")] public static extern void SetHelpEnabled(GOptionContext* context, gboolean help_enabled);
+	[LinkName("g_option_context_get_help_enabled")] public static extern gboolean GetHelpEnabled(GOptionContext* context);
+	[LinkName("g_option_context_set_ignore_unknown_options")] public static extern void SetIgnoreUnknownOptions(GOptionContext* context, gboolean ignore_unknown);
+	[LinkName("g_option_context_get_ignore_unknown_options")] public static extern gboolean GetIgnoreUnknownOptions(GOptionContext* context);
+	[LinkName("g_option_context_set_strict_posix")] public static extern void SetStrictPosix(GOptionContext* context, gboolean strict_posix);
+	[LinkName("g_option_context_get_strict_posix")] public static extern gboolean GetStrictPosix(GOptionContext* context);
+	[LinkName("g_option_context_add_main_entries")] public static extern void AddMainEntries(GOptionContext* context, GOptionEntry* entries, gchar* translation_domain);
+	[LinkName("g_option_context_parse")] public static extern gboolean Parse(GOptionContext* context, gint* argc, gchar*** argv, GError** error);
+	[LinkName("g_option_context_parse_strv")] public static extern gboolean ParseStrv(GOptionContext* context, gchar*** arguments, GError** error);
+	[LinkName("g_option_context_set_translate_func")] public static extern void SetTranslateFunc(GOptionContext* context, GTranslateFunc func, gpointer data, GDestroyNotify destroy_notify);
+	[LinkName("g_option_context_set_translation_domain")] public static extern void SetTranslationDomain(GOptionContext* context, gchar* domain);
+	[LinkName("g_option_context_add_group")] public static extern void AddGroup(GOptionContext* context, GOptionGroup* group);
+	[LinkName("g_option_context_set_main_group")] public static extern void SetMainGroup(GOptionContext* context, GOptionGroup* group);
+	[LinkName("g_option_context_get_main_group")] public static extern GOptionGroup* GetMainGroup(GOptionContext* context);
+	[LinkName("g_option_context_get_help")] public static extern gchar* GetHelp(GOptionContext* context, gboolean main_help, GOptionGroup* group);
 }
 
 extension GOptionGroup
 {
-	[Import(GLib.so), LinkName("g_option_group_new")] public static extern GOptionGroup* New(gchar* name, gchar* description, gchar* help_description, gpointer user_data, GDestroyNotify destroy);
-	[Import(GLib.so), LinkName("g_option_group_set_parse_hooks")] public static extern void SetParseHooks(GOptionGroup* group, GOptionParseFunc pre_parse_func, GOptionParseFunc post_parse_func);
-	[Import(GLib.so), LinkName("g_option_group_set_error_hook")] public static extern void SetErrorHook(GOptionGroup* group, GOptionErrorFunc error_func);
-	[Import(GLib.so), LinkName("g_option_group_free")] public static extern void Free(GOptionGroup* group);
-	[Import(GLib.so), LinkName("g_option_group_ref")] public static extern GOptionGroup* Ref(GOptionGroup* group);
-	[Import(GLib.so), LinkName("g_option_group_unref")] public static extern void Unref(GOptionGroup* group);
-	[Import(GLib.so), LinkName("g_option_group_add_entries")] public static extern void AddEntries(GOptionGroup* group, GOptionEntry* entries);
-	[Import(GLib.so), LinkName("g_option_group_set_translate_func")] public static extern void SetTranslateFunc(GOptionGroup* group, GTranslateFunc func, gpointer data, GDestroyNotify destroy_notify);
-	[Import(GLib.so), LinkName("g_option_group_set_translation_domain")] public static extern void SetTranslationDomain(GOptionGroup* group, gchar* domain);
+	[LinkName("g_option_group_new")] public static extern GOptionGroup* New(gchar* name, gchar* description, gchar* help_description, gpointer user_data, GDestroyNotify destroy);
+	[LinkName("g_option_group_set_parse_hooks")] public static extern void SetParseHooks(GOptionGroup* group, GOptionParseFunc pre_parse_func, GOptionParseFunc post_parse_func);
+	[LinkName("g_option_group_set_error_hook")] public static extern void SetErrorHook(GOptionGroup* group, GOptionErrorFunc error_func);
+	[LinkName("g_option_group_free")] public static extern void Free(GOptionGroup* group);
+	[LinkName("g_option_group_ref")] public static extern GOptionGroup* Ref(GOptionGroup* group);
+	[LinkName("g_option_group_unref")] public static extern void Unref(GOptionGroup* group);
+	[LinkName("g_option_group_add_entries")] public static extern void AddEntries(GOptionGroup* group, GOptionEntry* entries);
+	[LinkName("g_option_group_set_translate_func")] public static extern void SetTranslateFunc(GOptionGroup* group, GTranslateFunc func, gpointer data, GDestroyNotify destroy_notify);
+	[LinkName("g_option_group_set_translation_domain")] public static extern void SetTranslationDomain(GOptionGroup* group, gchar* domain);
 }
 
 
@@ -3923,43 +3923,43 @@ extension GOptionGroup
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_path_buf_new")] public static extern GPathBuf* PathBufNew();
-	[Import(GLib.so), LinkName("g_path_buf_new_from_path")] public static extern GPathBuf* PathBufNewFromPath(c_char* path);
-	[Import(GLib.so), LinkName("g_path_buf_init")] public static extern GPathBuf* PathBufInit(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_init_from_path")] public static extern GPathBuf* PathBufInitFromPath(GPathBuf* buf, c_char* path);
-	[Import(GLib.so), LinkName("g_path_buf_clear")] public static extern void PathBufClear(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_clear_to_path")] public static extern c_char* PathBufClearToPath(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_free")] public static extern void PathBufFree(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_free_to_path")] public static extern c_char* PathBufFreeToPath(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_copy")] public static extern GPathBuf* PathBufCopy(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_push")] public static extern GPathBuf* PathBufPush(GPathBuf* buf, c_char* path);
-	[Import(GLib.so), LinkName("g_path_buf_pop")] public static extern gboolean PathBufPop(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_set_filename")] public static extern gboolean PathBufSetFilename(GPathBuf* buf, c_char* file_name);
-	[Import(GLib.so), LinkName("g_path_buf_set_extension")] public static extern gboolean PathBufSetExtension(GPathBuf* buf, c_char* @extension);
-	[Import(GLib.so), LinkName("g_path_buf_to_path")] public static extern c_char* PathBufToPath(GPathBuf* buf);
-	[Import(GLib.so), LinkName("g_path_buf_equal")] public static extern gboolean PathBufEqual(gconstpointer v1, gconstpointer v2);
+	[LinkName("g_path_buf_new")] public static extern GPathBuf* PathBufNew();
+	[LinkName("g_path_buf_new_from_path")] public static extern GPathBuf* PathBufNewFromPath(c_char* path);
+	[LinkName("g_path_buf_init")] public static extern GPathBuf* PathBufInit(GPathBuf* buf);
+	[LinkName("g_path_buf_init_from_path")] public static extern GPathBuf* PathBufInitFromPath(GPathBuf* buf, c_char* path);
+	[LinkName("g_path_buf_clear")] public static extern void PathBufClear(GPathBuf* buf);
+	[LinkName("g_path_buf_clear_to_path")] public static extern c_char* PathBufClearToPath(GPathBuf* buf);
+	[LinkName("g_path_buf_free")] public static extern void PathBufFree(GPathBuf* buf);
+	[LinkName("g_path_buf_free_to_path")] public static extern c_char* PathBufFreeToPath(GPathBuf* buf);
+	[LinkName("g_path_buf_copy")] public static extern GPathBuf* PathBufCopy(GPathBuf* buf);
+	[LinkName("g_path_buf_push")] public static extern GPathBuf* PathBufPush(GPathBuf* buf, c_char* path);
+	[LinkName("g_path_buf_pop")] public static extern gboolean PathBufPop(GPathBuf* buf);
+	[LinkName("g_path_buf_set_filename")] public static extern gboolean PathBufSetFilename(GPathBuf* buf, c_char* file_name);
+	[LinkName("g_path_buf_set_extension")] public static extern gboolean PathBufSetExtension(GPathBuf* buf, c_char* @extension);
+	[LinkName("g_path_buf_to_path")] public static extern c_char* PathBufToPath(GPathBuf* buf);
+	[LinkName("g_path_buf_equal")] public static extern gboolean PathBufEqual(gconstpointer v1, gconstpointer v2);
 }
 
 struct GPatternSpec;
 
 extension GPatternSpec
 {
-	[Import(GLib.so), LinkName("g_pattern_spec_new")] public static extern GPatternSpec* New(gchar* pattern);
-	[Import(GLib.so), LinkName("g_pattern_spec_free")] public static extern void Free(GPatternSpec* pspec);
-	[Import(GLib.so), LinkName("g_pattern_spec_copy")] public static extern GPatternSpec* Copy(GPatternSpec* pspec);
-	[Import(GLib.so), LinkName("g_pattern_spec_equal")] public static extern gboolean Equal(GPatternSpec* pspec1, GPatternSpec* pspec2);
-	[Import(GLib.so), LinkName("g_pattern_spec_match")] public static extern gboolean Match(GPatternSpec* pspec, gsize string_length, gchar* string, gchar* string_reversed);
-	[Import(GLib.so), LinkName("g_pattern_spec_match_string")] public static extern gboolean MatchString(GPatternSpec* pspec, gchar* string);
+	[LinkName("g_pattern_spec_new")] public static extern GPatternSpec* New(gchar* pattern);
+	[LinkName("g_pattern_spec_free")] public static extern void Free(GPatternSpec* pspec);
+	[LinkName("g_pattern_spec_copy")] public static extern GPatternSpec* Copy(GPatternSpec* pspec);
+	[LinkName("g_pattern_spec_equal")] public static extern gboolean Equal(GPatternSpec* pspec1, GPatternSpec* pspec2);
+	[LinkName("g_pattern_spec_match")] public static extern gboolean Match(GPatternSpec* pspec, gsize string_length, gchar* string, gchar* string_reversed);
+	[LinkName("g_pattern_spec_match_string")] public static extern gboolean MatchString(GPatternSpec* pspec, gchar* string);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_pattern_match")] public static extern gboolean PatternMatch(GPatternSpec* pspec, guint string_length, gchar* string, gchar* string_reversed);
-	[Import(GLib.so), LinkName("g_pattern_match_string")] public static extern gboolean PatternMatchString(GPatternSpec* pspec, gchar* string);
-	[Import(GLib.so), LinkName("g_pattern_match_simple")] public static extern gboolean PatternMatchSimple(gchar* pattern, gchar* string);
-	[Import(GLib.so), LinkName("g_spaced_primes_closest")] public static extern guint SpacedPrimesClosest(guint num);
-	[Import(GLib.so), LinkName("g_qsort_with_data")] public static extern void QsortWithData(gconstpointer pbase, gint total_elems, gsize size, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_sort_array")] public static extern void SortArray(void* array, c_size n_elements, c_size element_size, GCompareDataFunc compare_func, void* user_data);
+	[LinkName("g_pattern_match")] public static extern gboolean PatternMatch(GPatternSpec* pspec, guint string_length, gchar* string, gchar* string_reversed);
+	[LinkName("g_pattern_match_string")] public static extern gboolean PatternMatchString(GPatternSpec* pspec, gchar* string);
+	[LinkName("g_pattern_match_simple")] public static extern gboolean PatternMatchSimple(gchar* pattern, gchar* string);
+	[LinkName("g_spaced_primes_closest")] public static extern guint SpacedPrimesClosest(guint num);
+	[LinkName("g_qsort_with_data")] public static extern void QsortWithData(gconstpointer pbase, gint total_elems, gsize size, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_sort_array")] public static extern void SortArray(void* array, c_size n_elements, c_size element_size, GCompareDataFunc compare_func, void* user_data);
 }
 
 
@@ -3980,103 +3980,103 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_queue_new")] public static extern GQueue* QueueNew();
-	[Import(GLib.so), LinkName("g_queue_free")] public static extern void QueueFree(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_free_full")] public static extern void QueueFreeFull(GQueue* queue, GDestroyNotify free_func);
-	[Import(GLib.so), LinkName("g_queue_init")] public static extern void QueueInit(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_clear")] public static extern void QueueClear(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_is_empty")] public static extern gboolean QueueIsEmpty(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_clear_full")] public static extern void QueueClearFull(GQueue* queue, GDestroyNotify free_func);
-	[Import(GLib.so), LinkName("g_queue_get_length")] public static extern guint QueueGetLength(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_reverse")] public static extern void QueueReverse(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_copy")] public static extern GQueue* QueueCopy(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_foreach")] public static extern void QueueForeach(GQueue* queue, GFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_queue_find")] public static extern GList* QueueFind(GQueue* queue, gconstpointer data);
-	[Import(GLib.so), LinkName("g_queue_find_custom")] public static extern GList* QueueFindCustom(GQueue* queue, gconstpointer data, GCompareFunc func);
-	[Import(GLib.so), LinkName("g_queue_sort")] public static extern void QueueSort(GQueue* queue, GCompareDataFunc compare_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_queue_push_head")] public static extern void QueuePushHead(GQueue* queue, gpointer data);
-	[Import(GLib.so), LinkName("g_queue_push_tail")] public static extern void QueuePushTail(GQueue* queue, gpointer data);
-	[Import(GLib.so), LinkName("g_queue_push_nth")] public static extern void QueuePushNth(GQueue* queue, gpointer data, gint n);
-	[Import(GLib.so), LinkName("g_queue_pop_head")] public static extern gpointer QueuePopHead(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_pop_tail")] public static extern gpointer QueuePopTail(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_pop_nth")] public static extern gpointer QueuePopNth(GQueue* queue, guint n);
-	[Import(GLib.so), LinkName("g_queue_peek_head")] public static extern gpointer QueuePeekHead(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_peek_tail")] public static extern gpointer QueuePeekTail(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_peek_nth")] public static extern gpointer QueuePeekNth(GQueue* queue, guint n);
-	[Import(GLib.so), LinkName("g_queue_index")] public static extern gint QueueIndex(GQueue* queue, gconstpointer data);
-	[Import(GLib.so), LinkName("g_queue_remove")] public static extern gboolean QueueRemove(GQueue* queue, gconstpointer data);
-	[Import(GLib.so), LinkName("g_queue_remove_all")] public static extern guint QueueRemoveAll(GQueue* queue, gconstpointer data);
-	[Import(GLib.so), LinkName("g_queue_insert_before")] public static extern void QueueInsertBefore(GQueue* queue, GList* sibling, gpointer data);
-	[Import(GLib.so), LinkName("g_queue_insert_before_link")] public static extern void QueueInsertBeforeLink(GQueue* queue, GList* sibling, GList* link);
-	[Import(GLib.so), LinkName("g_queue_insert_after")] public static extern void QueueInsertAfter(GQueue* queue, GList* sibling, gpointer data);
-	[Import(GLib.so), LinkName("g_queue_insert_after_link")] public static extern void QueueInsertAfterLink(GQueue* queue, GList* sibling, GList* link);
-	[Import(GLib.so), LinkName("g_queue_insert_sorted")] public static extern void QueueInsertSorted(GQueue* queue, gpointer data, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_queue_push_head_link")] public static extern void QueuePushHeadLink(GQueue* queue, GList* link);
-	[Import(GLib.so), LinkName("g_queue_push_tail_link")] public static extern void QueuePushTailLink(GQueue* queue, GList* link);
-	[Import(GLib.so), LinkName("g_queue_push_nth_link")] public static extern void QueuePushNthLink(GQueue* queue, gint n, GList* link);
-	[Import(GLib.so), LinkName("g_queue_pop_head_link")] public static extern GList* QueuePopHeadLink(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_pop_tail_link")] public static extern GList* QueuePopTailLink(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_pop_nth_link")] public static extern GList* QueuePopNthLink(GQueue* queue, guint n);
-	[Import(GLib.so), LinkName("g_queue_peek_head_link")] public static extern GList* QueuePeekHeadLink(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_peek_tail_link")] public static extern GList* QueuePeekTailLink(GQueue* queue);
-	[Import(GLib.so), LinkName("g_queue_peek_nth_link")] public static extern GList* QueuePeekNthLink(GQueue* queue, guint n);
-	[Import(GLib.so), LinkName("g_queue_link_index")] public static extern gint QueueLinkIndex(GQueue* queue, GList* link);
-	[Import(GLib.so), LinkName("g_queue_unlink")] public static extern void QueueUnlink(GQueue* queue, GList* link);
-	[Import(GLib.so), LinkName("g_queue_delete_link")] public static extern void QueueDeleteLink(GQueue* queue, GList* link);
+	[LinkName("g_queue_new")] public static extern GQueue* QueueNew();
+	[LinkName("g_queue_free")] public static extern void QueueFree(GQueue* queue);
+	[LinkName("g_queue_free_full")] public static extern void QueueFreeFull(GQueue* queue, GDestroyNotify free_func);
+	[LinkName("g_queue_init")] public static extern void QueueInit(GQueue* queue);
+	[LinkName("g_queue_clear")] public static extern void QueueClear(GQueue* queue);
+	[LinkName("g_queue_is_empty")] public static extern gboolean QueueIsEmpty(GQueue* queue);
+	[LinkName("g_queue_clear_full")] public static extern void QueueClearFull(GQueue* queue, GDestroyNotify free_func);
+	[LinkName("g_queue_get_length")] public static extern guint QueueGetLength(GQueue* queue);
+	[LinkName("g_queue_reverse")] public static extern void QueueReverse(GQueue* queue);
+	[LinkName("g_queue_copy")] public static extern GQueue* QueueCopy(GQueue* queue);
+	[LinkName("g_queue_foreach")] public static extern void QueueForeach(GQueue* queue, GFunc func, gpointer user_data);
+	[LinkName("g_queue_find")] public static extern GList* QueueFind(GQueue* queue, gconstpointer data);
+	[LinkName("g_queue_find_custom")] public static extern GList* QueueFindCustom(GQueue* queue, gconstpointer data, GCompareFunc func);
+	[LinkName("g_queue_sort")] public static extern void QueueSort(GQueue* queue, GCompareDataFunc compare_func, gpointer user_data);
+	[LinkName("g_queue_push_head")] public static extern void QueuePushHead(GQueue* queue, gpointer data);
+	[LinkName("g_queue_push_tail")] public static extern void QueuePushTail(GQueue* queue, gpointer data);
+	[LinkName("g_queue_push_nth")] public static extern void QueuePushNth(GQueue* queue, gpointer data, gint n);
+	[LinkName("g_queue_pop_head")] public static extern gpointer QueuePopHead(GQueue* queue);
+	[LinkName("g_queue_pop_tail")] public static extern gpointer QueuePopTail(GQueue* queue);
+	[LinkName("g_queue_pop_nth")] public static extern gpointer QueuePopNth(GQueue* queue, guint n);
+	[LinkName("g_queue_peek_head")] public static extern gpointer QueuePeekHead(GQueue* queue);
+	[LinkName("g_queue_peek_tail")] public static extern gpointer QueuePeekTail(GQueue* queue);
+	[LinkName("g_queue_peek_nth")] public static extern gpointer QueuePeekNth(GQueue* queue, guint n);
+	[LinkName("g_queue_index")] public static extern gint QueueIndex(GQueue* queue, gconstpointer data);
+	[LinkName("g_queue_remove")] public static extern gboolean QueueRemove(GQueue* queue, gconstpointer data);
+	[LinkName("g_queue_remove_all")] public static extern guint QueueRemoveAll(GQueue* queue, gconstpointer data);
+	[LinkName("g_queue_insert_before")] public static extern void QueueInsertBefore(GQueue* queue, GList* sibling, gpointer data);
+	[LinkName("g_queue_insert_before_link")] public static extern void QueueInsertBeforeLink(GQueue* queue, GList* sibling, GList* link);
+	[LinkName("g_queue_insert_after")] public static extern void QueueInsertAfter(GQueue* queue, GList* sibling, gpointer data);
+	[LinkName("g_queue_insert_after_link")] public static extern void QueueInsertAfterLink(GQueue* queue, GList* sibling, GList* link);
+	[LinkName("g_queue_insert_sorted")] public static extern void QueueInsertSorted(GQueue* queue, gpointer data, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_queue_push_head_link")] public static extern void QueuePushHeadLink(GQueue* queue, GList* link);
+	[LinkName("g_queue_push_tail_link")] public static extern void QueuePushTailLink(GQueue* queue, GList* link);
+	[LinkName("g_queue_push_nth_link")] public static extern void QueuePushNthLink(GQueue* queue, gint n, GList* link);
+	[LinkName("g_queue_pop_head_link")] public static extern GList* QueuePopHeadLink(GQueue* queue);
+	[LinkName("g_queue_pop_tail_link")] public static extern GList* QueuePopTailLink(GQueue* queue);
+	[LinkName("g_queue_pop_nth_link")] public static extern GList* QueuePopNthLink(GQueue* queue, guint n);
+	[LinkName("g_queue_peek_head_link")] public static extern GList* QueuePeekHeadLink(GQueue* queue);
+	[LinkName("g_queue_peek_tail_link")] public static extern GList* QueuePeekTailLink(GQueue* queue);
+	[LinkName("g_queue_peek_nth_link")] public static extern GList* QueuePeekNthLink(GQueue* queue, guint n);
+	[LinkName("g_queue_link_index")] public static extern gint QueueLinkIndex(GQueue* queue, GList* link);
+	[LinkName("g_queue_unlink")] public static extern void QueueUnlink(GQueue* queue, GList* link);
+	[LinkName("g_queue_delete_link")] public static extern void QueueDeleteLink(GQueue* queue, GList* link);
 }
 
 struct GRand;
 
 extension GRand
 {
-	[Import(GLib.so), LinkName("g_rand_new_with_seed")] public static extern GRand* NewWithSeed(guint32 seed);
-	[Import(GLib.so), LinkName("g_rand_new_with_seed_array")] public static extern GRand* NewWithSeedArray(guint32* seed, guint seed_length);
-	[Import(GLib.so), LinkName("g_rand_new")] public static extern GRand* New();
-	[Import(GLib.so), LinkName("g_rand_free")] public static extern void Free(GRand* rand);
-	[Import(GLib.so), LinkName("g_rand_copy")] public static extern GRand* Copy(GRand* rand);
-	[Import(GLib.so), LinkName("g_rand_set_seed")] public static extern void SetSeed(GRand* rand, guint32 seed);
-	[Import(GLib.so), LinkName("g_rand_set_seed_array")] public static extern void SetSeedArray(GRand* rand, guint32* seed, guint seed_length);
-	[Import(GLib.so), LinkName("g_rand_int")] public static extern guint32 Int(GRand* rand);
-	[Import(GLib.so), LinkName("g_rand_int_range")] public static extern gint32 IntRange(GRand* rand, gint32 begin, gint32 end);
-	[Import(GLib.so), LinkName("g_rand_double")] public static extern gdouble Double(GRand* rand);
-	[Import(GLib.so), LinkName("g_rand_double_range")] public static extern gdouble DoubleRange(GRand* rand, gdouble begin, gdouble end);
-	[Import(GLib.so), LinkName("g_random_set_seed")] public static extern void omSetSeed(guint32 seed);
-	[Import(GLib.so), LinkName("g_random_int")] public static extern guint32 omInt();
-	[Import(GLib.so), LinkName("g_random_int_range")] public static extern gint32 omIntRange(gint32 begin, gint32 end);
-	[Import(GLib.so), LinkName("g_random_double")] public static extern gdouble omDouble();
-	[Import(GLib.so), LinkName("g_random_double_range")] public static extern gdouble omDoubleRange(gdouble begin, gdouble end);
+	[LinkName("g_rand_new_with_seed")] public static extern GRand* NewWithSeed(guint32 seed);
+	[LinkName("g_rand_new_with_seed_array")] public static extern GRand* NewWithSeedArray(guint32* seed, guint seed_length);
+	[LinkName("g_rand_new")] public static extern GRand* New();
+	[LinkName("g_rand_free")] public static extern void Free(GRand* rand);
+	[LinkName("g_rand_copy")] public static extern GRand* Copy(GRand* rand);
+	[LinkName("g_rand_set_seed")] public static extern void SetSeed(GRand* rand, guint32 seed);
+	[LinkName("g_rand_set_seed_array")] public static extern void SetSeedArray(GRand* rand, guint32* seed, guint seed_length);
+	[LinkName("g_rand_int")] public static extern guint32 Int(GRand* rand);
+	[LinkName("g_rand_int_range")] public static extern gint32 IntRange(GRand* rand, gint32 begin, gint32 end);
+	[LinkName("g_rand_double")] public static extern gdouble Double(GRand* rand);
+	[LinkName("g_rand_double_range")] public static extern gdouble DoubleRange(GRand* rand, gdouble begin, gdouble end);
+	[LinkName("g_random_set_seed")] public static extern void omSetSeed(guint32 seed);
+	[LinkName("g_random_int")] public static extern guint32 omInt();
+	[LinkName("g_random_int_range")] public static extern gint32 omIntRange(gint32 begin, gint32 end);
+	[LinkName("g_random_double")] public static extern gdouble omDouble();
+	[LinkName("g_random_double_range")] public static extern gdouble omDoubleRange(gdouble begin, gdouble end);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_rc_box_alloc")] public static extern gpointer RcBoxAlloc(gsize block_size);
-	[Import(GLib.so), LinkName("g_rc_box_alloc0")] public static extern gpointer RcBoxAlloc0(gsize block_size);
-	[Import(GLib.so), LinkName("g_rc_box_dup")] public static extern gpointer RcBoxDup(gsize block_size, gconstpointer mem_block);
-	[Import(GLib.so), LinkName("g_rc_box_acquire")] public static extern gpointer RcBoxAcquire(gpointer mem_block);
-	[Import(GLib.so), LinkName("g_rc_box_release")] public static extern void RcBoxRelease(gpointer mem_block);
-	[Import(GLib.so), LinkName("g_rc_box_release_full")] public static extern void RcBoxReleaseFull(gpointer mem_block, GDestroyNotify clear_func);
-	[Import(GLib.so), LinkName("g_rc_box_get_size")] public static extern gsize RcBoxGetSize(gpointer mem_block);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_alloc")] public static extern gpointer AtomicRcBoxAlloc(gsize block_size);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_alloc0")] public static extern gpointer AtomicRcBoxAlloc0(gsize block_size);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_dup")] public static extern gpointer AtomicRcBoxDup(gsize block_size, gconstpointer mem_block);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_acquire")] public static extern gpointer AtomicRcBoxAcquire(gpointer mem_block);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_release")] public static extern void AtomicRcBoxRelease(gpointer mem_block);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_release_full")] public static extern void AtomicRcBoxReleaseFull(gpointer mem_block, GDestroyNotify clear_func);
-	[Import(GLib.so), LinkName("g_atomic_rc_box_get_size")] public static extern gsize AtomicRcBoxGetSize(gpointer mem_block);
-	[Import(GLib.so), LinkName("g_ref_count_init")] public static extern void RefCountInit(grefcount* rc);
-	[Import(GLib.so), LinkName("g_ref_count_inc")] public static extern void RefCountInc(grefcount* rc);
-	[Import(GLib.so), LinkName("g_ref_count_dec")] public static extern gboolean RefCountDec(grefcount* rc);
-	[Import(GLib.so), LinkName("g_ref_count_compare")] public static extern gboolean RefCountCompare(grefcount* rc, gint val);
-	[Import(GLib.so), LinkName("g_atomic_ref_count_init")] public static extern void AtomicRefCountInit(gatomicrefcount* arc);
-	[Import(GLib.so), LinkName("g_atomic_ref_count_inc")] public static extern void AtomicRefCountInc(gatomicrefcount* arc);
-	[Import(GLib.so), LinkName("g_atomic_ref_count_dec")] public static extern gboolean AtomicRefCountDec(gatomicrefcount* arc);
-	[Import(GLib.so), LinkName("g_atomic_ref_count_compare")] public static extern gboolean AtomicRefCountCompare(gatomicrefcount* arc, gint val);
-	[Import(GLib.so), LinkName("g_ref_string_new")] public static extern c_char* RefStringNew(c_char* str);
-	[Import(GLib.so), LinkName("g_ref_string_new_len")] public static extern c_char* RefStringNewLen(c_char* str, gssize len);
-	[Import(GLib.so), LinkName("g_ref_string_new_intern")] public static extern c_char* RefStringNewIntern(c_char* str);
-	[Import(GLib.so), LinkName("g_ref_string_acquire")] public static extern c_char* RefStringAcquire(c_char* str);
-	[Import(GLib.so), LinkName("g_ref_string_release")] public static extern void RefStringRelease(c_char* str);
-	[Import(GLib.so), LinkName("g_ref_string_length")] public static extern gsize RefStringLength(c_char* str);
+	[LinkName("g_rc_box_alloc")] public static extern gpointer RcBoxAlloc(gsize block_size);
+	[LinkName("g_rc_box_alloc0")] public static extern gpointer RcBoxAlloc0(gsize block_size);
+	[LinkName("g_rc_box_dup")] public static extern gpointer RcBoxDup(gsize block_size, gconstpointer mem_block);
+	[LinkName("g_rc_box_acquire")] public static extern gpointer RcBoxAcquire(gpointer mem_block);
+	[LinkName("g_rc_box_release")] public static extern void RcBoxRelease(gpointer mem_block);
+	[LinkName("g_rc_box_release_full")] public static extern void RcBoxReleaseFull(gpointer mem_block, GDestroyNotify clear_func);
+	[LinkName("g_rc_box_get_size")] public static extern gsize RcBoxGetSize(gpointer mem_block);
+	[LinkName("g_atomic_rc_box_alloc")] public static extern gpointer AtomicRcBoxAlloc(gsize block_size);
+	[LinkName("g_atomic_rc_box_alloc0")] public static extern gpointer AtomicRcBoxAlloc0(gsize block_size);
+	[LinkName("g_atomic_rc_box_dup")] public static extern gpointer AtomicRcBoxDup(gsize block_size, gconstpointer mem_block);
+	[LinkName("g_atomic_rc_box_acquire")] public static extern gpointer AtomicRcBoxAcquire(gpointer mem_block);
+	[LinkName("g_atomic_rc_box_release")] public static extern void AtomicRcBoxRelease(gpointer mem_block);
+	[LinkName("g_atomic_rc_box_release_full")] public static extern void AtomicRcBoxReleaseFull(gpointer mem_block, GDestroyNotify clear_func);
+	[LinkName("g_atomic_rc_box_get_size")] public static extern gsize AtomicRcBoxGetSize(gpointer mem_block);
+	[LinkName("g_ref_count_init")] public static extern void RefCountInit(grefcount* rc);
+	[LinkName("g_ref_count_inc")] public static extern void RefCountInc(grefcount* rc);
+	[LinkName("g_ref_count_dec")] public static extern gboolean RefCountDec(grefcount* rc);
+	[LinkName("g_ref_count_compare")] public static extern gboolean RefCountCompare(grefcount* rc, gint val);
+	[LinkName("g_atomic_ref_count_init")] public static extern void AtomicRefCountInit(gatomicrefcount* arc);
+	[LinkName("g_atomic_ref_count_inc")] public static extern void AtomicRefCountInc(gatomicrefcount* arc);
+	[LinkName("g_atomic_ref_count_dec")] public static extern gboolean AtomicRefCountDec(gatomicrefcount* arc);
+	[LinkName("g_atomic_ref_count_compare")] public static extern gboolean AtomicRefCountCompare(gatomicrefcount* arc, gint val);
+	[LinkName("g_ref_string_new")] public static extern c_char* RefStringNew(c_char* str);
+	[LinkName("g_ref_string_new_len")] public static extern c_char* RefStringNewLen(c_char* str, gssize len);
+	[LinkName("g_ref_string_new_intern")] public static extern c_char* RefStringNewIntern(c_char* str);
+	[LinkName("g_ref_string_acquire")] public static extern c_char* RefStringAcquire(c_char* str);
+	[LinkName("g_ref_string_release")] public static extern void RefStringRelease(c_char* str);
+	[LinkName("g_ref_string_length")] public static extern gsize RefStringLength(c_char* str);
 }
 
 /** GRefString:
@@ -4095,7 +4095,7 @@ typealias GRefString = c_char;
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_ref_string_equal")] public static extern gboolean RefStringEqual(c_char* str1, c_char* str2);
+	[LinkName("g_ref_string_equal")] public static extern gboolean RefStringEqual(c_char* str1, c_char* str2);
 }
 
 /** GRegexError:
@@ -4267,7 +4267,7 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_regex_error_quark")] public static extern GQuark RegexErrorQuark();
+	[LinkName("g_regex_error_quark")] public static extern GQuark RegexErrorQuark();
 }
 
 /** GRegexCompileFlags:
@@ -4484,50 +4484,50 @@ function gboolean GRegexEvalCallback(GMatchInfo* match_info, GString* result, gp
 
 extension GRegex
 {
-	[Import(GLib.so), LinkName("g_regex_new")] public static extern GRegex* New(gchar* pattern, GRegexCompileFlags compile_options, GRegexMatchFlags match_options, GError** error);
-	[Import(GLib.so), LinkName("g_regex_ref")] public static extern GRegex* Ref(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_unref")] public static extern void Unref(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_pattern")] public static extern gchar* GetPattern(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_max_backref")] public static extern gint GetMaxBackref(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_capture_count")] public static extern gint GetCaptureCount(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_has_cr_or_lf")] public static extern gboolean GetHasCrOrLf(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_max_lookbehind")] public static extern gint GetMaxLookbehind(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_string_number")] public static extern gint GetStringNumber(GRegex* regex, gchar* name);
-	[Import(GLib.so), LinkName("g_regex_escape_string")] public static extern gchar* EscapeString(gchar* string, gint length);
-	[Import(GLib.so), LinkName("g_regex_escape_nul")] public static extern gchar* EscapeNul(gchar* string, gint length);
-	[Import(GLib.so), LinkName("g_regex_get_compile_flags")] public static extern GRegexCompileFlags GetCompileFlags(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_get_match_flags")] public static extern GRegexMatchFlags GetMatchFlags(GRegex* regex);
-	[Import(GLib.so), LinkName("g_regex_match_simple")] public static extern gboolean MatchSimple(gchar* pattern, gchar* string, GRegexCompileFlags compile_options, GRegexMatchFlags match_options);
-	[Import(GLib.so), LinkName("g_regex_match")] public static extern gboolean Match(GRegex* regex, gchar* string, GRegexMatchFlags match_options, GMatchInfo** match_info);
-	[Import(GLib.so), LinkName("g_regex_match_full")] public static extern gboolean MatchFull(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, GMatchInfo** match_info, GError** error);
-	[Import(GLib.so), LinkName("g_regex_match_all")] public static extern gboolean MatchAll(GRegex* regex, gchar* string, GRegexMatchFlags match_options, GMatchInfo** match_info);
-	[Import(GLib.so), LinkName("g_regex_match_all_full")] public static extern gboolean MatchAllFull(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, GMatchInfo** match_info, GError** error);
-	[Import(GLib.so), LinkName("g_regex_split_simple")] public static extern gchar** SplitSimple(gchar* pattern, gchar* string, GRegexCompileFlags compile_options, GRegexMatchFlags match_options);
-	[Import(GLib.so), LinkName("g_regex_split")] public static extern gchar** Split(GRegex* regex, gchar* string, GRegexMatchFlags match_options);
-	[Import(GLib.so), LinkName("g_regex_split_full")] public static extern gchar** SplitFull(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, gint max_tokens, GError** error);
-	[Import(GLib.so), LinkName("g_regex_replace")] public static extern gchar* Replace(GRegex* regex, gchar* string, gssize string_len, gint start_position, gchar* replacement, GRegexMatchFlags match_options, GError** error);
-	[Import(GLib.so), LinkName("g_regex_replace_literal")] public static extern gchar* ReplaceLiteral(GRegex* regex, gchar* string, gssize string_len, gint start_position, gchar* replacement, GRegexMatchFlags match_options, GError** error);
-	[Import(GLib.so), LinkName("g_regex_replace_eval")] public static extern gchar* ReplaceEval(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, GRegexEvalCallback eval, gpointer user_data, GError** error);
-	[Import(GLib.so), LinkName("g_regex_check_replacement")] public static extern gboolean CheckReplacement(gchar* replacement, gboolean* has_references, GError** error);
+	[LinkName("g_regex_new")] public static extern GRegex* New(gchar* pattern, GRegexCompileFlags compile_options, GRegexMatchFlags match_options, GError** error);
+	[LinkName("g_regex_ref")] public static extern GRegex* Ref(GRegex* regex);
+	[LinkName("g_regex_unref")] public static extern void Unref(GRegex* regex);
+	[LinkName("g_regex_get_pattern")] public static extern gchar* GetPattern(GRegex* regex);
+	[LinkName("g_regex_get_max_backref")] public static extern gint GetMaxBackref(GRegex* regex);
+	[LinkName("g_regex_get_capture_count")] public static extern gint GetCaptureCount(GRegex* regex);
+	[LinkName("g_regex_get_has_cr_or_lf")] public static extern gboolean GetHasCrOrLf(GRegex* regex);
+	[LinkName("g_regex_get_max_lookbehind")] public static extern gint GetMaxLookbehind(GRegex* regex);
+	[LinkName("g_regex_get_string_number")] public static extern gint GetStringNumber(GRegex* regex, gchar* name);
+	[LinkName("g_regex_escape_string")] public static extern gchar* EscapeString(gchar* string, gint length);
+	[LinkName("g_regex_escape_nul")] public static extern gchar* EscapeNul(gchar* string, gint length);
+	[LinkName("g_regex_get_compile_flags")] public static extern GRegexCompileFlags GetCompileFlags(GRegex* regex);
+	[LinkName("g_regex_get_match_flags")] public static extern GRegexMatchFlags GetMatchFlags(GRegex* regex);
+	[LinkName("g_regex_match_simple")] public static extern gboolean MatchSimple(gchar* pattern, gchar* string, GRegexCompileFlags compile_options, GRegexMatchFlags match_options);
+	[LinkName("g_regex_match")] public static extern gboolean Match(GRegex* regex, gchar* string, GRegexMatchFlags match_options, GMatchInfo** match_info);
+	[LinkName("g_regex_match_full")] public static extern gboolean MatchFull(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, GMatchInfo** match_info, GError** error);
+	[LinkName("g_regex_match_all")] public static extern gboolean MatchAll(GRegex* regex, gchar* string, GRegexMatchFlags match_options, GMatchInfo** match_info);
+	[LinkName("g_regex_match_all_full")] public static extern gboolean MatchAllFull(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, GMatchInfo** match_info, GError** error);
+	[LinkName("g_regex_split_simple")] public static extern gchar** SplitSimple(gchar* pattern, gchar* string, GRegexCompileFlags compile_options, GRegexMatchFlags match_options);
+	[LinkName("g_regex_split")] public static extern gchar** Split(GRegex* regex, gchar* string, GRegexMatchFlags match_options);
+	[LinkName("g_regex_split_full")] public static extern gchar** SplitFull(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, gint max_tokens, GError** error);
+	[LinkName("g_regex_replace")] public static extern gchar* Replace(GRegex* regex, gchar* string, gssize string_len, gint start_position, gchar* replacement, GRegexMatchFlags match_options, GError** error);
+	[LinkName("g_regex_replace_literal")] public static extern gchar* ReplaceLiteral(GRegex* regex, gchar* string, gssize string_len, gint start_position, gchar* replacement, GRegexMatchFlags match_options, GError** error);
+	[LinkName("g_regex_replace_eval")] public static extern gchar* ReplaceEval(GRegex* regex, gchar* string, gssize string_len, gint start_position, GRegexMatchFlags match_options, GRegexEvalCallback eval, gpointer user_data, GError** error);
+	[LinkName("g_regex_check_replacement")] public static extern gboolean CheckReplacement(gchar* replacement, gboolean* has_references, GError** error);
 }
 
 extension GMatchInfo
 {
-	[Import(GLib.so), LinkName("g_match_info_get_regex")] public static extern GRegex* GetRegex(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_get_string")] public static extern gchar* GetString(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_ref")] public static extern GMatchInfo* Ref(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_unref")] public static extern void Unref(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_free")] public static extern void Free(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_next")] public static extern gboolean Next(GMatchInfo* match_info, GError** error);
-	[Import(GLib.so), LinkName("g_match_info_matches")] public static extern gboolean Matches(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_get_match_count")] public static extern gint GetMatchCount(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_is_partial_match")] public static extern gboolean IsPartialMatch(GMatchInfo* match_info);
-	[Import(GLib.so), LinkName("g_match_info_expand_references")] public static extern gchar* ExpandReferences(GMatchInfo* match_info, gchar* string_to_expand, GError** error);
-	[Import(GLib.so), LinkName("g_match_info_fetch")] public static extern gchar* Fetch(GMatchInfo* match_info, gint match_num);
-	[Import(GLib.so), LinkName("g_match_info_fetch_pos")] public static extern gboolean FetchPos(GMatchInfo* match_info, gint match_num, gint* start_pos, gint* end_pos);
-	[Import(GLib.so), LinkName("g_match_info_fetch_named")] public static extern gchar* FetchNamed(GMatchInfo* match_info, gchar* name);
-	[Import(GLib.so), LinkName("g_match_info_fetch_named_pos")] public static extern gboolean FetchNamedPos(GMatchInfo* match_info, gchar* name, gint* start_pos, gint* end_pos);
-	[Import(GLib.so), LinkName("g_match_info_fetch_all")] public static extern gchar** FetchAll(GMatchInfo* match_info);
+	[LinkName("g_match_info_get_regex")] public static extern GRegex* GetRegex(GMatchInfo* match_info);
+	[LinkName("g_match_info_get_string")] public static extern gchar* GetString(GMatchInfo* match_info);
+	[LinkName("g_match_info_ref")] public static extern GMatchInfo* Ref(GMatchInfo* match_info);
+	[LinkName("g_match_info_unref")] public static extern void Unref(GMatchInfo* match_info);
+	[LinkName("g_match_info_free")] public static extern void Free(GMatchInfo* match_info);
+	[LinkName("g_match_info_next")] public static extern gboolean Next(GMatchInfo* match_info, GError** error);
+	[LinkName("g_match_info_matches")] public static extern gboolean Matches(GMatchInfo* match_info);
+	[LinkName("g_match_info_get_match_count")] public static extern gint GetMatchCount(GMatchInfo* match_info);
+	[LinkName("g_match_info_is_partial_match")] public static extern gboolean IsPartialMatch(GMatchInfo* match_info);
+	[LinkName("g_match_info_expand_references")] public static extern gchar* ExpandReferences(GMatchInfo* match_info, gchar* string_to_expand, GError** error);
+	[LinkName("g_match_info_fetch")] public static extern gchar* Fetch(GMatchInfo* match_info, gint match_num);
+	[LinkName("g_match_info_fetch_pos")] public static extern gboolean FetchPos(GMatchInfo* match_info, gint match_num, gint* start_pos, gint* end_pos);
+	[LinkName("g_match_info_fetch_named")] public static extern gchar* FetchNamed(GMatchInfo* match_info, gchar* name);
+	[LinkName("g_match_info_fetch_named_pos")] public static extern gboolean FetchNamedPos(GMatchInfo* match_info, gchar* name, gint* start_pos, gint* end_pos);
+	[LinkName("g_match_info_fetch_all")] public static extern gchar** FetchAll(GMatchInfo* match_info);
 }
 
 
@@ -4650,27 +4650,27 @@ function void GScannerMsgFunc(GScanner* scanner, gchar* message, gboolean error)
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_scanner_new")] public static extern GScanner* ScannerNew(GScannerConfig* config_templ);
-	[Import(GLib.so), LinkName("g_scanner_destroy")] public static extern void ScannerDestroy(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_input_file")] public static extern void ScannerInputFile(GScanner* scanner, gint input_fd);
-	[Import(GLib.so), LinkName("g_scanner_sync_file_offset")] public static extern void ScannerSyncFileOffset(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_input_text")] public static extern void ScannerInputText(GScanner* scanner, gchar* text, guint text_len);
-	[Import(GLib.so), LinkName("g_scanner_get_next_token")] public static extern GTokenType ScannerGetNextToken(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_peek_next_token")] public static extern GTokenType ScannerPeekNextToken(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_cur_token")] public static extern GTokenType ScannerCurToken(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_cur_value")] public static extern GTokenValue ScannerCurValue(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_cur_line")] public static extern guint ScannerCurLine(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_cur_position")] public static extern guint ScannerCurPosition(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_eof")] public static extern gboolean ScannerEof(GScanner* scanner);
-	[Import(GLib.so), LinkName("g_scanner_set_scope")] public static extern guint ScannerSetScope(GScanner* scanner, guint scope_id);
-	[Import(GLib.so), LinkName("g_scanner_scope_add_symbol")] public static extern void ScannerScopeAddSymbol(GScanner* scanner, guint scope_id, gchar* symbol, gpointer value);
-	[Import(GLib.so), LinkName("g_scanner_scope_remove_symbol")] public static extern void ScannerScopeRemoveSymbol(GScanner* scanner, guint scope_id, gchar* symbol);
-	[Import(GLib.so), LinkName("g_scanner_scope_lookup_symbol")] public static extern gpointer ScannerScopeLookupSymbol(GScanner* scanner, guint scope_id, gchar* symbol);
-	[Import(GLib.so), LinkName("g_scanner_scope_foreach_symbol")] public static extern void ScannerScopeForeachSymbol(GScanner* scanner, guint scope_id, GHFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_scanner_lookup_symbol")] public static extern gpointer ScannerLookupSymbol(GScanner* scanner, gchar* symbol);
-	[Import(GLib.so), LinkName("g_scanner_unexp_token")] public static extern void ScannerUnexpToken(GScanner* scanner, GTokenType expected_token, gchar* identifier_spec, gchar* symbol_spec, gchar* symbol_name, gchar* message, gint is_error);
-	[Import(GLib.so), LinkName("g_scanner_error")] public static extern void ScannerError(GScanner* scanner, gchar* format, ...);
-	[Import(GLib.so), LinkName("g_scanner_warn")] public static extern void ScannerWarn(GScanner* scanner, gchar* format, ...);
+	[LinkName("g_scanner_new")] public static extern GScanner* ScannerNew(GScannerConfig* config_templ);
+	[LinkName("g_scanner_destroy")] public static extern void ScannerDestroy(GScanner* scanner);
+	[LinkName("g_scanner_input_file")] public static extern void ScannerInputFile(GScanner* scanner, gint input_fd);
+	[LinkName("g_scanner_sync_file_offset")] public static extern void ScannerSyncFileOffset(GScanner* scanner);
+	[LinkName("g_scanner_input_text")] public static extern void ScannerInputText(GScanner* scanner, gchar* text, guint text_len);
+	[LinkName("g_scanner_get_next_token")] public static extern GTokenType ScannerGetNextToken(GScanner* scanner);
+	[LinkName("g_scanner_peek_next_token")] public static extern GTokenType ScannerPeekNextToken(GScanner* scanner);
+	[LinkName("g_scanner_cur_token")] public static extern GTokenType ScannerCurToken(GScanner* scanner);
+	[LinkName("g_scanner_cur_value")] public static extern GTokenValue ScannerCurValue(GScanner* scanner);
+	[LinkName("g_scanner_cur_line")] public static extern guint ScannerCurLine(GScanner* scanner);
+	[LinkName("g_scanner_cur_position")] public static extern guint ScannerCurPosition(GScanner* scanner);
+	[LinkName("g_scanner_eof")] public static extern gboolean ScannerEof(GScanner* scanner);
+	[LinkName("g_scanner_set_scope")] public static extern guint ScannerSetScope(GScanner* scanner, guint scope_id);
+	[LinkName("g_scanner_scope_add_symbol")] public static extern void ScannerScopeAddSymbol(GScanner* scanner, guint scope_id, gchar* symbol, gpointer value);
+	[LinkName("g_scanner_scope_remove_symbol")] public static extern void ScannerScopeRemoveSymbol(GScanner* scanner, guint scope_id, gchar* symbol);
+	[LinkName("g_scanner_scope_lookup_symbol")] public static extern gpointer ScannerScopeLookupSymbol(GScanner* scanner, guint scope_id, gchar* symbol);
+	[LinkName("g_scanner_scope_foreach_symbol")] public static extern void ScannerScopeForeachSymbol(GScanner* scanner, guint scope_id, GHFunc func, gpointer user_data);
+	[LinkName("g_scanner_lookup_symbol")] public static extern gpointer ScannerLookupSymbol(GScanner* scanner, gchar* symbol);
+	[LinkName("g_scanner_unexp_token")] public static extern void ScannerUnexpToken(GScanner* scanner, GTokenType expected_token, gchar* identifier_spec, gchar* symbol_spec, gchar* symbol_name, gchar* message, gint is_error);
+	[LinkName("g_scanner_error")] public static extern void ScannerError(GScanner* scanner, gchar* format, ...);
+	[LinkName("g_scanner_warn")] public static extern void ScannerWarn(GScanner* scanner, gchar* format, ...);
 }
 
 struct GSequence;
@@ -4682,44 +4682,44 @@ function gint GSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, gpoin
 
 extension GSequence
 {
-	[Import(GLib.so), LinkName("g_sequence_new")] public static extern GSequence* New(GDestroyNotify data_destroy);
-	[Import(GLib.so), LinkName("g_sequence_free")] public static extern void Free(GSequence* seq);
-	[Import(GLib.so), LinkName("g_sequence_get_length")] public static extern gint GetLength(GSequence* seq);
-	[Import(GLib.so), LinkName("g_sequence_foreach")] public static extern void Foreach(GSequence* seq, GFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_sequence_foreach_range")] public static extern void ForeachRange(GSequenceIter* begin, GSequenceIter* end, GFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_sequence_sort")] public static extern void Sort(GSequence* seq, GCompareDataFunc cmp_func, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_sort_iter")] public static extern void SortIter(GSequence* seq, GSequenceIterCompareFunc cmp_func, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_is_empty")] public static extern gboolean IsEmpty(GSequence* seq);
-	[Import(GLib.so), LinkName("g_sequence_get_begin_iter")] public static extern GSequenceIter* GetBeginIter(GSequence* seq);
-	[Import(GLib.so), LinkName("g_sequence_get_end_iter")] public static extern GSequenceIter* GetEndIter(GSequence* seq);
-	[Import(GLib.so), LinkName("g_sequence_get_iter_at_pos")] public static extern GSequenceIter* GetIterAtPos(GSequence* seq, gint pos);
-	[Import(GLib.so), LinkName("g_sequence_append")] public static extern GSequenceIter* Append(GSequence* seq, gpointer data);
-	[Import(GLib.so), LinkName("g_sequence_prepend")] public static extern GSequenceIter* Prepend(GSequence* seq, gpointer data);
-	[Import(GLib.so), LinkName("g_sequence_insert_before")] public static extern GSequenceIter* InsertBefore(GSequenceIter* iter, gpointer data);
-	[Import(GLib.so), LinkName("g_sequence_move")] public static extern void Move(GSequenceIter* src, GSequenceIter* dest);
-	[Import(GLib.so), LinkName("g_sequence_swap")] public static extern void Swap(GSequenceIter* a, GSequenceIter* b);
-	[Import(GLib.so), LinkName("g_sequence_insert_sorted")] public static extern GSequenceIter* InsertSorted(GSequence* seq, gpointer data, GCompareDataFunc cmp_func, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_insert_sorted_iter")] public static extern GSequenceIter* InsertSortedIter(GSequence* seq, gpointer data, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_sort_changed")] public static extern void SortChanged(GSequenceIter* iter, GCompareDataFunc cmp_func, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_sort_changed_iter")] public static extern void SortChangedIter(GSequenceIter* iter, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_remove")] public static extern void Remove(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_remove_range")] public static extern void RemoveRange(GSequenceIter* begin, GSequenceIter* end);
-	[Import(GLib.so), LinkName("g_sequence_move_range")] public static extern void MoveRange(GSequenceIter* dest, GSequenceIter* begin, GSequenceIter* end);
-	[Import(GLib.so), LinkName("g_sequence_search")] public static extern GSequenceIter* Search(GSequence* seq, gpointer data, GCompareDataFunc cmp_func, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_search_iter")] public static extern GSequenceIter* SearchIter(GSequence* seq, gpointer data, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_lookup")] public static extern GSequenceIter* Lookup(GSequence* seq, gpointer data, GCompareDataFunc cmp_func, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_lookup_iter")] public static extern GSequenceIter* LookupIter(GSequence* seq, gpointer data, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
-	[Import(GLib.so), LinkName("g_sequence_get")] public static extern gpointer Get(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_set")] public static extern void Set(GSequenceIter* iter, gpointer data);
-	[Import(GLib.so), LinkName("g_sequence_iter_is_begin")] public static extern gboolean IterIsBegin(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_iter_is_end")] public static extern gboolean IterIsEnd(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_iter_next")] public static extern GSequenceIter* IterNext(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_iter_prev")] public static extern GSequenceIter* IterPrev(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_iter_get_position")] public static extern gint IterGetPosition(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_iter_move")] public static extern GSequenceIter* IterMove(GSequenceIter* iter, gint delta);
-	[Import(GLib.so), LinkName("g_sequence_iter_get_sequence")] public static extern GSequence* IterGetSequence(GSequenceIter* iter);
-	[Import(GLib.so), LinkName("g_sequence_iter_compare")] public static extern gint IterCompare(GSequenceIter* a, GSequenceIter* b);
-	[Import(GLib.so), LinkName("g_sequence_range_get_midpoint")] public static extern GSequenceIter* RangeGetMidpoint(GSequenceIter* begin, GSequenceIter* end);
+	[LinkName("g_sequence_new")] public static extern GSequence* New(GDestroyNotify data_destroy);
+	[LinkName("g_sequence_free")] public static extern void Free(GSequence* seq);
+	[LinkName("g_sequence_get_length")] public static extern gint GetLength(GSequence* seq);
+	[LinkName("g_sequence_foreach")] public static extern void Foreach(GSequence* seq, GFunc func, gpointer user_data);
+	[LinkName("g_sequence_foreach_range")] public static extern void ForeachRange(GSequenceIter* begin, GSequenceIter* end, GFunc func, gpointer user_data);
+	[LinkName("g_sequence_sort")] public static extern void Sort(GSequence* seq, GCompareDataFunc cmp_func, gpointer cmp_data);
+	[LinkName("g_sequence_sort_iter")] public static extern void SortIter(GSequence* seq, GSequenceIterCompareFunc cmp_func, gpointer cmp_data);
+	[LinkName("g_sequence_is_empty")] public static extern gboolean IsEmpty(GSequence* seq);
+	[LinkName("g_sequence_get_begin_iter")] public static extern GSequenceIter* GetBeginIter(GSequence* seq);
+	[LinkName("g_sequence_get_end_iter")] public static extern GSequenceIter* GetEndIter(GSequence* seq);
+	[LinkName("g_sequence_get_iter_at_pos")] public static extern GSequenceIter* GetIterAtPos(GSequence* seq, gint pos);
+	[LinkName("g_sequence_append")] public static extern GSequenceIter* Append(GSequence* seq, gpointer data);
+	[LinkName("g_sequence_prepend")] public static extern GSequenceIter* Prepend(GSequence* seq, gpointer data);
+	[LinkName("g_sequence_insert_before")] public static extern GSequenceIter* InsertBefore(GSequenceIter* iter, gpointer data);
+	[LinkName("g_sequence_move")] public static extern void Move(GSequenceIter* src, GSequenceIter* dest);
+	[LinkName("g_sequence_swap")] public static extern void Swap(GSequenceIter* a, GSequenceIter* b);
+	[LinkName("g_sequence_insert_sorted")] public static extern GSequenceIter* InsertSorted(GSequence* seq, gpointer data, GCompareDataFunc cmp_func, gpointer cmp_data);
+	[LinkName("g_sequence_insert_sorted_iter")] public static extern GSequenceIter* InsertSortedIter(GSequence* seq, gpointer data, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
+	[LinkName("g_sequence_sort_changed")] public static extern void SortChanged(GSequenceIter* iter, GCompareDataFunc cmp_func, gpointer cmp_data);
+	[LinkName("g_sequence_sort_changed_iter")] public static extern void SortChangedIter(GSequenceIter* iter, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
+	[LinkName("g_sequence_remove")] public static extern void Remove(GSequenceIter* iter);
+	[LinkName("g_sequence_remove_range")] public static extern void RemoveRange(GSequenceIter* begin, GSequenceIter* end);
+	[LinkName("g_sequence_move_range")] public static extern void MoveRange(GSequenceIter* dest, GSequenceIter* begin, GSequenceIter* end);
+	[LinkName("g_sequence_search")] public static extern GSequenceIter* Search(GSequence* seq, gpointer data, GCompareDataFunc cmp_func, gpointer cmp_data);
+	[LinkName("g_sequence_search_iter")] public static extern GSequenceIter* SearchIter(GSequence* seq, gpointer data, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
+	[LinkName("g_sequence_lookup")] public static extern GSequenceIter* Lookup(GSequence* seq, gpointer data, GCompareDataFunc cmp_func, gpointer cmp_data);
+	[LinkName("g_sequence_lookup_iter")] public static extern GSequenceIter* LookupIter(GSequence* seq, gpointer data, GSequenceIterCompareFunc iter_cmp, gpointer cmp_data);
+	[LinkName("g_sequence_get")] public static extern gpointer Get(GSequenceIter* iter);
+	[LinkName("g_sequence_set")] public static extern void Set(GSequenceIter* iter, gpointer data);
+	[LinkName("g_sequence_iter_is_begin")] public static extern gboolean IterIsBegin(GSequenceIter* iter);
+	[LinkName("g_sequence_iter_is_end")] public static extern gboolean IterIsEnd(GSequenceIter* iter);
+	[LinkName("g_sequence_iter_next")] public static extern GSequenceIter* IterNext(GSequenceIter* iter);
+	[LinkName("g_sequence_iter_prev")] public static extern GSequenceIter* IterPrev(GSequenceIter* iter);
+	[LinkName("g_sequence_iter_get_position")] public static extern gint IterGetPosition(GSequenceIter* iter);
+	[LinkName("g_sequence_iter_move")] public static extern GSequenceIter* IterMove(GSequenceIter* iter, gint delta);
+	[LinkName("g_sequence_iter_get_sequence")] public static extern GSequence* IterGetSequence(GSequenceIter* iter);
+	[LinkName("g_sequence_iter_compare")] public static extern gint IterCompare(GSequenceIter* a, GSequenceIter* b);
+	[LinkName("g_sequence_range_get_midpoint")] public static extern GSequenceIter* RangeGetMidpoint(GSequenceIter* begin, GSequenceIter* end);
 }
 
 [AllowDuplicates] enum GShellError : c_int
@@ -4731,15 +4731,15 @@ extension GSequence
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_shell_error_quark")] public static extern GQuark ShellErrorQuark();
-	[Import(GLib.so), LinkName("g_shell_quote")] public static extern gchar* ShellQuote(gchar* unquoted_string);
-	[Import(GLib.so), LinkName("g_shell_unquote")] public static extern gchar* ShellUnquote(gchar* quoted_string, GError** error);
-	[Import(GLib.so), LinkName("g_shell_parse_argv")] public static extern gboolean ShellParseArgv(gchar* command_line, gint* argcp, gchar*** argvp, GError** error);
-	[Import(GLib.so), LinkName("g_slice_alloc")] public static extern gpointer SliceAlloc(gsize block_size);
-	[Import(GLib.so), LinkName("g_slice_alloc0")] public static extern gpointer SliceAlloc0(gsize block_size);
-	[Import(GLib.so), LinkName("g_slice_copy")] public static extern gpointer SliceCopy(gsize block_size, gconstpointer mem_block);
-	[Import(GLib.so), LinkName("g_slice_free1")] public static extern void SliceFree1(gsize block_size, gpointer mem_block);
-	[Import(GLib.so), LinkName("g_slice_free_chain_with_offset")] public static extern void SliceFreeChainWithOffset(gsize block_size, gpointer mem_chain, gsize next_offset);
+	[LinkName("g_shell_error_quark")] public static extern GQuark ShellErrorQuark();
+	[LinkName("g_shell_quote")] public static extern gchar* ShellQuote(gchar* unquoted_string);
+	[LinkName("g_shell_unquote")] public static extern gchar* ShellUnquote(gchar* quoted_string, GError** error);
+	[LinkName("g_shell_parse_argv")] public static extern gboolean ShellParseArgv(gchar* command_line, gint* argcp, gchar*** argvp, GError** error);
+	[LinkName("g_slice_alloc")] public static extern gpointer SliceAlloc(gsize block_size);
+	[LinkName("g_slice_alloc0")] public static extern gpointer SliceAlloc0(gsize block_size);
+	[LinkName("g_slice_copy")] public static extern gpointer SliceCopy(gsize block_size, gconstpointer mem_block);
+	[LinkName("g_slice_free1")] public static extern void SliceFree1(gsize block_size, gpointer mem_block);
+	[LinkName("g_slice_free_chain_with_offset")] public static extern void SliceFreeChainWithOffset(gsize block_size, gpointer mem_chain, gsize next_offset);
 }
 
 [AllowDuplicates] enum GSliceConfig : c_int
@@ -4754,9 +4754,9 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_slice_set_config")] public static extern void SliceSetConfig(GSliceConfig ckey, gint64 value);
-	[Import(GLib.so), LinkName("g_slice_get_config")] public static extern gint64 SliceGetConfig(GSliceConfig ckey);
-	[Import(GLib.so), LinkName("g_slice_get_config_state")] public static extern gint64* SliceGetConfigState(GSliceConfig ckey, gint64 address, guint* n_values);
+	[LinkName("g_slice_set_config")] public static extern void SliceSetConfig(GSliceConfig ckey, gint64 value);
+	[LinkName("g_slice_get_config")] public static extern gint64 SliceGetConfig(GSliceConfig ckey);
+	[LinkName("g_slice_get_config_state")] public static extern gint64* SliceGetConfigState(GSliceConfig ckey, gint64 address, guint* n_values);
 }
 
 /** GSpawnError:
@@ -4919,45 +4919,45 @@ function void GSpawnChildSetupFunc(gpointer data);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_spawn_error_quark")] public static extern GQuark SpawnErrorQuark();
-	[Import(GLib.so), LinkName("g_spawn_exit_error_quark")] public static extern GQuark SpawnExitErrorQuark();
-	[Import(GLib.so), LinkName("g_spawn_async")] public static extern gboolean SpawnAsync(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, GPid* child_pid, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_async_with_pipes")] public static extern gboolean SpawnAsyncWithPipes(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, GPid* child_pid, gint* standard_input, gint* standard_output, gint* standard_error, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_async_with_pipes_and_fds")] public static extern gboolean SpawnAsyncWithPipesAndFds(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, gint stdin_fd, gint stdout_fd, gint stderr_fd, gint* source_fds, gint* target_fds, gsize n_fds, GPid* child_pid_out, gint* stdin_pipe_out, gint* stdout_pipe_out, gint* stderr_pipe_out, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_async_with_fds")] public static extern gboolean SpawnAsyncWithFds(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, GPid* child_pid, gint stdin_fd, gint stdout_fd, gint stderr_fd, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_sync")] public static extern gboolean SpawnSync(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, gchar** standard_output, gchar** standard_error, gint* wait_status, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_command_line_sync")] public static extern gboolean SpawnCommandLineSync(gchar* command_line, gchar** standard_output, gchar** standard_error, gint* wait_status, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_command_line_async")] public static extern gboolean SpawnCommandLineAsync(gchar* command_line, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_check_wait_status")] public static extern gboolean SpawnCheckWaitStatus(gint wait_status, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_check_exit_status")] public static extern gboolean SpawnCheckExitStatus(gint wait_status, GError** error);
-	[Import(GLib.so), LinkName("g_spawn_close_pid")] public static extern void SpawnClosePid(GPid pid);
+	[LinkName("g_spawn_error_quark")] public static extern GQuark SpawnErrorQuark();
+	[LinkName("g_spawn_exit_error_quark")] public static extern GQuark SpawnExitErrorQuark();
+	[LinkName("g_spawn_async")] public static extern gboolean SpawnAsync(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, GPid* child_pid, GError** error);
+	[LinkName("g_spawn_async_with_pipes")] public static extern gboolean SpawnAsyncWithPipes(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, GPid* child_pid, gint* standard_input, gint* standard_output, gint* standard_error, GError** error);
+	[LinkName("g_spawn_async_with_pipes_and_fds")] public static extern gboolean SpawnAsyncWithPipesAndFds(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, gint stdin_fd, gint stdout_fd, gint stderr_fd, gint* source_fds, gint* target_fds, gsize n_fds, GPid* child_pid_out, gint* stdin_pipe_out, gint* stdout_pipe_out, gint* stderr_pipe_out, GError** error);
+	[LinkName("g_spawn_async_with_fds")] public static extern gboolean SpawnAsyncWithFds(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, GPid* child_pid, gint stdin_fd, gint stdout_fd, gint stderr_fd, GError** error);
+	[LinkName("g_spawn_sync")] public static extern gboolean SpawnSync(gchar* working_directory, gchar** argv, gchar** envp, GSpawnFlags flags, GSpawnChildSetupFunc child_setup, gpointer user_data, gchar** standard_output, gchar** standard_error, gint* wait_status, GError** error);
+	[LinkName("g_spawn_command_line_sync")] public static extern gboolean SpawnCommandLineSync(gchar* command_line, gchar** standard_output, gchar** standard_error, gint* wait_status, GError** error);
+	[LinkName("g_spawn_command_line_async")] public static extern gboolean SpawnCommandLineAsync(gchar* command_line, GError** error);
+	[LinkName("g_spawn_check_wait_status")] public static extern gboolean SpawnCheckWaitStatus(gint wait_status, GError** error);
+	[LinkName("g_spawn_check_exit_status")] public static extern gboolean SpawnCheckExitStatus(gint wait_status, GError** error);
+	[LinkName("g_spawn_close_pid")] public static extern void SpawnClosePid(GPid pid);
 }
 
 struct GStringChunk;
 
 extension GStringChunk
 {
-	[Import(GLib.so), LinkName("g_string_chunk_new")] public static extern GStringChunk* New(gsize size);
-	[Import(GLib.so), LinkName("g_string_chunk_free")] public static extern void Free(GStringChunk* chunk);
-	[Import(GLib.so), LinkName("g_string_chunk_clear")] public static extern void Clear(GStringChunk* chunk);
-	[Import(GLib.so), LinkName("g_string_chunk_insert")] public static extern gchar* Insert(GStringChunk* chunk, gchar* string);
-	[Import(GLib.so), LinkName("g_string_chunk_insert_len")] public static extern gchar* InsertLen(GStringChunk* chunk, gchar* string, gssize len);
-	[Import(GLib.so), LinkName("g_string_chunk_insert_const")] public static extern gchar* InsertConst(GStringChunk* chunk, gchar* string);
+	[LinkName("g_string_chunk_new")] public static extern GStringChunk* New(gsize size);
+	[LinkName("g_string_chunk_free")] public static extern void Free(GStringChunk* chunk);
+	[LinkName("g_string_chunk_clear")] public static extern void Clear(GStringChunk* chunk);
+	[LinkName("g_string_chunk_insert")] public static extern gchar* Insert(GStringChunk* chunk, gchar* string);
+	[LinkName("g_string_chunk_insert_len")] public static extern gchar* InsertLen(GStringChunk* chunk, gchar* string, gssize len);
+	[LinkName("g_string_chunk_insert_const")] public static extern gchar* InsertConst(GStringChunk* chunk, gchar* string);
 }
 
 struct GStrvBuilder;
 
 extension GStrvBuilder
 {
-	[Import(GLib.so), LinkName("g_strv_builder_new")] public static extern GStrvBuilder* New();
-	[Import(GLib.so), LinkName("g_strv_builder_unref")] public static extern void Unref(GStrvBuilder* builder);
-	[Import(GLib.so), LinkName("g_strv_builder_unref_to_strv")] public static extern GStrv UnrefToStrv(GStrvBuilder* builder);
-	[Import(GLib.so), LinkName("g_strv_builder_ref")] public static extern GStrvBuilder* Ref(GStrvBuilder* builder);
-	[Import(GLib.so), LinkName("g_strv_builder_add")] public static extern void Add(GStrvBuilder* builder, c_char* value);
-	[Import(GLib.so), LinkName("g_strv_builder_addv")] public static extern void Addv(GStrvBuilder* builder, c_char** value);
-	[Import(GLib.so), LinkName("g_strv_builder_add_many")] public static extern void AddMany(GStrvBuilder* builder, ...);
-	[Import(GLib.so), LinkName("g_strv_builder_take")] public static extern void Take(GStrvBuilder* builder, c_char* value);
-	[Import(GLib.so), LinkName("g_strv_builder_end")] public static extern GStrv End(GStrvBuilder* builder);
+	[LinkName("g_strv_builder_new")] public static extern GStrvBuilder* New();
+	[LinkName("g_strv_builder_unref")] public static extern void Unref(GStrvBuilder* builder);
+	[LinkName("g_strv_builder_unref_to_strv")] public static extern GStrv UnrefToStrv(GStrvBuilder* builder);
+	[LinkName("g_strv_builder_ref")] public static extern GStrvBuilder* Ref(GStrvBuilder* builder);
+	[LinkName("g_strv_builder_add")] public static extern void Add(GStrvBuilder* builder, c_char* value);
+	[LinkName("g_strv_builder_addv")] public static extern void Addv(GStrvBuilder* builder, c_char** value);
+	[LinkName("g_strv_builder_add_many")] public static extern void AddMany(GStrvBuilder* builder, ...);
+	[LinkName("g_strv_builder_take")] public static extern void Take(GStrvBuilder* builder, c_char* value);
+	[LinkName("g_strv_builder_end")] public static extern GStrv End(GStrvBuilder* builder);
 }
 
 struct GTestCase;
@@ -4972,34 +4972,34 @@ function void GTestFixtureFunc(gpointer fixture, gconstpointer user_data);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_strcmp0")] public static extern c_int Strcmp0(c_char* str1, c_char* str2);
-	[Import(GLib.so), LinkName("g_test_minimized_result")] public static extern void TestMinimizedResult(double minimized_quantity, c_char* format, ...);
-	[Import(GLib.so), LinkName("g_test_maximized_result")] public static extern void TestMaximizedResult(double maximized_quantity, c_char* format, ...);
-	[Import(GLib.so), LinkName("g_test_init")] public static extern void TestInit(c_int* argc, c_char*** argv, ...);
-	[Import(GLib.so), LinkName("g_test_subprocess")] public static extern gboolean TestSubprocess();
-	[Import(GLib.so), LinkName("g_test_run")] public static extern c_int TestRun();
-	[Import(GLib.so), LinkName("g_test_add_func")] public static extern void TestAddFunc(c_char* testpath, GTestFunc test_func);
-	[Import(GLib.so), LinkName("g_test_add_data_func")] public static extern void TestAddDataFunc(c_char* testpath, gconstpointer test_data, GTestDataFunc test_func);
-	[Import(GLib.so), LinkName("g_test_add_data_func_full")] public static extern void TestAddDataFuncFull(c_char* testpath, gpointer test_data, GTestDataFunc test_func, GDestroyNotify data_free_func);
-	[Import(GLib.so), LinkName("g_test_get_path")] public static extern c_char* TestGetPath();
-	[Import(GLib.so), LinkName("g_test_fail")] public static extern void TestFail();
-	[Import(GLib.so), LinkName("g_test_fail_printf")] public static extern void TestFailPrintf(c_char* format, ...);
-	[Import(GLib.so), LinkName("g_test_incomplete")] public static extern void TestIncomplete(gchar* msg);
-	[Import(GLib.so), LinkName("g_test_incomplete_printf")] public static extern void TestIncompletePrintf(c_char* format, ...);
-	[Import(GLib.so), LinkName("g_test_skip")] public static extern void TestSkip(gchar* msg);
-	[Import(GLib.so), LinkName("g_test_skip_printf")] public static extern void TestSkipPrintf(c_char* format, ...);
-	[Import(GLib.so), LinkName("g_test_failed")] public static extern gboolean TestFailed();
-	[Import(GLib.so), LinkName("g_test_set_nonfatal_assertions")] public static extern void TestSetNonfatalAssertions();
-	[Import(GLib.so), LinkName("g_test_disable_crash_reporting")] public static extern void TestDisableCrashReporting();
-	[Import(GLib.so), LinkName("g_test_message")] public static extern void TestMessage(c_char* format, ...);
-	[Import(GLib.so), LinkName("g_test_bug_base")] public static extern void TestBugBase(c_char* uri_pattern);
-	[Import(GLib.so), LinkName("g_test_bug")] public static extern void TestBug(c_char* bug_uri_snippet);
-	[Import(GLib.so), LinkName("g_test_summary")] public static extern void TestSummary(c_char* summary);
-	[Import(GLib.so), LinkName("g_test_timer_start")] public static extern void TestTimerStart();
-	[Import(GLib.so), LinkName("g_test_timer_elapsed")] public static extern double TestTimerElapsed();
-	[Import(GLib.so), LinkName("g_test_timer_last")] public static extern double TestTimerLast();
-	[Import(GLib.so), LinkName("g_test_queue_free")] public static extern void TestQueueFree(gpointer gfree_pointer);
-	[Import(GLib.so), LinkName("g_test_queue_destroy")] public static extern void TestQueueDestroy(GDestroyNotify destroy_func, gpointer destroy_data);
+	[LinkName("g_strcmp0")] public static extern c_int Strcmp0(c_char* str1, c_char* str2);
+	[LinkName("g_test_minimized_result")] public static extern void TestMinimizedResult(double minimized_quantity, c_char* format, ...);
+	[LinkName("g_test_maximized_result")] public static extern void TestMaximizedResult(double maximized_quantity, c_char* format, ...);
+	[LinkName("g_test_init")] public static extern void TestInit(c_int* argc, c_char*** argv, ...);
+	[LinkName("g_test_subprocess")] public static extern gboolean TestSubprocess();
+	[LinkName("g_test_run")] public static extern c_int TestRun();
+	[LinkName("g_test_add_func")] public static extern void TestAddFunc(c_char* testpath, GTestFunc test_func);
+	[LinkName("g_test_add_data_func")] public static extern void TestAddDataFunc(c_char* testpath, gconstpointer test_data, GTestDataFunc test_func);
+	[LinkName("g_test_add_data_func_full")] public static extern void TestAddDataFuncFull(c_char* testpath, gpointer test_data, GTestDataFunc test_func, GDestroyNotify data_free_func);
+	[LinkName("g_test_get_path")] public static extern c_char* TestGetPath();
+	[LinkName("g_test_fail")] public static extern void TestFail();
+	[LinkName("g_test_fail_printf")] public static extern void TestFailPrintf(c_char* format, ...);
+	[LinkName("g_test_incomplete")] public static extern void TestIncomplete(gchar* msg);
+	[LinkName("g_test_incomplete_printf")] public static extern void TestIncompletePrintf(c_char* format, ...);
+	[LinkName("g_test_skip")] public static extern void TestSkip(gchar* msg);
+	[LinkName("g_test_skip_printf")] public static extern void TestSkipPrintf(c_char* format, ...);
+	[LinkName("g_test_failed")] public static extern gboolean TestFailed();
+	[LinkName("g_test_set_nonfatal_assertions")] public static extern void TestSetNonfatalAssertions();
+	[LinkName("g_test_disable_crash_reporting")] public static extern void TestDisableCrashReporting();
+	[LinkName("g_test_message")] public static extern void TestMessage(c_char* format, ...);
+	[LinkName("g_test_bug_base")] public static extern void TestBugBase(c_char* uri_pattern);
+	[LinkName("g_test_bug")] public static extern void TestBug(c_char* bug_uri_snippet);
+	[LinkName("g_test_summary")] public static extern void TestSummary(c_char* summary);
+	[LinkName("g_test_timer_start")] public static extern void TestTimerStart();
+	[LinkName("g_test_timer_elapsed")] public static extern double TestTimerElapsed();
+	[LinkName("g_test_timer_last")] public static extern double TestTimerLast();
+	[LinkName("g_test_queue_free")] public static extern void TestQueueFree(gpointer gfree_pointer);
+	[LinkName("g_test_queue_destroy")] public static extern void TestQueueDestroy(GDestroyNotify destroy_func, gpointer destroy_data);
 }
 
 /** GTestTrapFlags:
@@ -5034,7 +5034,7 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_trap_fork")] public static extern gboolean TestTrapFork(guint64 usec_timeout, GTestTrapFlags test_trap_flags);
+	[LinkName("g_test_trap_fork")] public static extern gboolean TestTrapFork(guint64 usec_timeout, GTestTrapFlags test_trap_flags);
 }
 
 [AllowDuplicates] enum GTestSubprocessFlags : c_int
@@ -5047,51 +5047,51 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_trap_subprocess")] public static extern void TestTrapSubprocess(c_char* test_path, guint64 usec_timeout, GTestSubprocessFlags test_flags);
-	[Import(GLib.so), LinkName("g_test_trap_subprocess_with_envp")] public static extern void TestTrapSubprocessWithEnvp(c_char* test_path, c_char** envp, guint64 usec_timeout, GTestSubprocessFlags test_flags);
-	[Import(GLib.so), LinkName("g_test_trap_has_passed")] public static extern gboolean TestTrapHasPassed();
-	[Import(GLib.so), LinkName("g_test_trap_reached_timeout")] public static extern gboolean TestTrapReachedTimeout();
-	[Import(GLib.so), LinkName("g_test_rand_int")] public static extern gint32 TestRandInt();
-	[Import(GLib.so), LinkName("g_test_rand_int_range")] public static extern gint32 TestRandIntRange(gint32 begin, gint32 end);
-	[Import(GLib.so), LinkName("g_test_rand_double")] public static extern double TestRandDouble();
-	[Import(GLib.so), LinkName("g_test_rand_double_range")] public static extern double TestRandDoubleRange(double range_start, double range_end);
-	[Import(GLib.so), LinkName("g_test_create_case")] public static extern GTestCase* TestCreateCase(c_char* test_name, gsize data_size, gconstpointer test_data, GTestFixtureFunc data_setup, GTestFixtureFunc data_test, GTestFixtureFunc data_teardown);
-	[Import(GLib.so), LinkName("g_test_create_suite")] public static extern GTestSuite* TestCreateSuite(c_char* suite_name);
-	[Import(GLib.so), LinkName("g_test_get_root")] public static extern GTestSuite* TestGetRoot();
+	[LinkName("g_test_trap_subprocess")] public static extern void TestTrapSubprocess(c_char* test_path, guint64 usec_timeout, GTestSubprocessFlags test_flags);
+	[LinkName("g_test_trap_subprocess_with_envp")] public static extern void TestTrapSubprocessWithEnvp(c_char* test_path, c_char** envp, guint64 usec_timeout, GTestSubprocessFlags test_flags);
+	[LinkName("g_test_trap_has_passed")] public static extern gboolean TestTrapHasPassed();
+	[LinkName("g_test_trap_reached_timeout")] public static extern gboolean TestTrapReachedTimeout();
+	[LinkName("g_test_rand_int")] public static extern gint32 TestRandInt();
+	[LinkName("g_test_rand_int_range")] public static extern gint32 TestRandIntRange(gint32 begin, gint32 end);
+	[LinkName("g_test_rand_double")] public static extern double TestRandDouble();
+	[LinkName("g_test_rand_double_range")] public static extern double TestRandDoubleRange(double range_start, double range_end);
+	[LinkName("g_test_create_case")] public static extern GTestCase* TestCreateCase(c_char* test_name, gsize data_size, gconstpointer test_data, GTestFixtureFunc data_setup, GTestFixtureFunc data_test, GTestFixtureFunc data_teardown);
+	[LinkName("g_test_create_suite")] public static extern GTestSuite* TestCreateSuite(c_char* suite_name);
+	[LinkName("g_test_get_root")] public static extern GTestSuite* TestGetRoot();
 }
 
 extension GTestSuite
 {
-	[Import(GLib.so), LinkName("g_test_suite_add")] public static extern void Add(GTestSuite* suite, GTestCase* test_case);
-	[Import(GLib.so), LinkName("g_test_suite_add_suite")] public static extern void AddSuite(GTestSuite* suite, GTestSuite* nestedsuite);
+	[LinkName("g_test_suite_add")] public static extern void Add(GTestSuite* suite, GTestCase* test_case);
+	[LinkName("g_test_suite_add_suite")] public static extern void AddSuite(GTestSuite* suite, GTestSuite* nestedsuite);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_run_suite")] public static extern c_int TestRunSuite(GTestSuite* suite);
+	[LinkName("g_test_run_suite")] public static extern c_int TestRunSuite(GTestSuite* suite);
 }
 
 extension GTestCase
 {
-	[Import(GLib.so), LinkName("g_test_case_free")] public static extern void Free(GTestCase* test_case);
+	[LinkName("g_test_case_free")] public static extern void Free(GTestCase* test_case);
 }
 
 extension GTestSuite
 {
-	[Import(GLib.so), LinkName("g_test_suite_free")] public static extern void Free(GTestSuite* suite);
+	[LinkName("g_test_suite_free")] public static extern void Free(GTestSuite* suite);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_trap_assertions")] public static extern void TestTrapAssertions(c_char* domain, c_char* file, c_int line, c_char* func, guint64 assertion_flags, c_char* pattern);
-	[Import(GLib.so), LinkName("g_assertion_message")] public static extern void AssertionMessage(c_char* domain, c_char* file, c_int line, c_char* func, c_char* message);
-	[Import(GLib.so), LinkName("g_assertion_message_expr")] public static extern void AssertionMessageExpr(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr);
-	[Import(GLib.so), LinkName("g_assertion_message_cmpstr")] public static extern void AssertionMessageCmpstr(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, c_char* arg1, c_char* cmp, c_char* arg2);
-	[Import(GLib.so), LinkName("g_assertion_message_cmpstrv")] public static extern void AssertionMessageCmpstrv(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, c_char** arg1, c_char** arg2, gsize first_wrong_idx);
-	[Import(GLib.so), LinkName("g_assertion_message_cmpint")] public static extern void AssertionMessageCmpint(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, guint64 arg1, c_char* cmp, guint64 arg2, c_char numtype);
-	[Import(GLib.so), LinkName("g_assertion_message_cmpnum")] public static extern void AssertionMessageCmpnum(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, /*long double*/ System.Numerics.v128 arg1, c_char* cmp, /*long double*/ System.Numerics.v128 arg2, c_char numtype);
-	[Import(GLib.so), LinkName("g_assertion_message_error")] public static extern void AssertionMessageError(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, GError* error, GQuark error_domain, c_int error_code);
-	[Import(GLib.so), LinkName("g_test_add_vtable")] public static extern void TestAddVtable(c_char* testpath, gsize data_size, gconstpointer test_data, GTestFixtureFunc data_setup, GTestFixtureFunc data_test, GTestFixtureFunc data_teardown);
+	[LinkName("g_test_trap_assertions")] public static extern void TestTrapAssertions(c_char* domain, c_char* file, c_int line, c_char* func, guint64 assertion_flags, c_char* pattern);
+	[LinkName("g_assertion_message")] public static extern void AssertionMessage(c_char* domain, c_char* file, c_int line, c_char* func, c_char* message);
+	[LinkName("g_assertion_message_expr")] public static extern void AssertionMessageExpr(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr);
+	[LinkName("g_assertion_message_cmpstr")] public static extern void AssertionMessageCmpstr(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, c_char* arg1, c_char* cmp, c_char* arg2);
+	[LinkName("g_assertion_message_cmpstrv")] public static extern void AssertionMessageCmpstrv(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, c_char** arg1, c_char** arg2, gsize first_wrong_idx);
+	[LinkName("g_assertion_message_cmpint")] public static extern void AssertionMessageCmpint(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, guint64 arg1, c_char* cmp, guint64 arg2, c_char numtype);
+	[LinkName("g_assertion_message_cmpnum")] public static extern void AssertionMessageCmpnum(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, /*long double*/ System.Numerics.v128 arg1, c_char* cmp, /*long double*/ System.Numerics.v128 arg2, c_char numtype);
+	[LinkName("g_assertion_message_error")] public static extern void AssertionMessageError(c_char* domain, c_char* file, c_int line, c_char* func, c_char* expr, GError* error, GQuark error_domain, c_int error_code);
+	[LinkName("g_test_add_vtable")] public static extern void TestAddVtable(c_char* testpath, gsize data_size, gconstpointer test_data, GTestFixtureFunc data_setup, GTestFixtureFunc data_test, GTestFixtureFunc data_teardown);
 }
 
 [CRepr] struct GTestConfig
@@ -5150,20 +5150,20 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_log_type_name")] public static extern c_char* TestLogTypeName(GTestLogType log_type);
+	[LinkName("g_test_log_type_name")] public static extern c_char* TestLogTypeName(GTestLogType log_type);
 }
 
 extension GTestLogBuffer
 {
-	[Import(GLib.so), LinkName("g_test_log_buffer_new")] public static extern GTestLogBuffer* New();
-	[Import(GLib.so), LinkName("g_test_log_buffer_free")] public static extern void Free(GTestLogBuffer* tbuffer);
-	[Import(GLib.so), LinkName("g_test_log_buffer_push")] public static extern void Push(GTestLogBuffer* tbuffer, guint n_bytes, guint8* bytes);
-	[Import(GLib.so), LinkName("g_test_log_buffer_pop")] public static extern GTestLogMsg* Pop(GTestLogBuffer* tbuffer);
+	[LinkName("g_test_log_buffer_new")] public static extern GTestLogBuffer* New();
+	[LinkName("g_test_log_buffer_free")] public static extern void Free(GTestLogBuffer* tbuffer);
+	[LinkName("g_test_log_buffer_push")] public static extern void Push(GTestLogBuffer* tbuffer, guint n_bytes, guint8* bytes);
+	[LinkName("g_test_log_buffer_pop")] public static extern GTestLogMsg* Pop(GTestLogBuffer* tbuffer);
 }
 
 extension GTestLogMsg
 {
-	[Import(GLib.so), LinkName("g_test_log_msg_free")] public static extern void Free(GTestLogMsg* tmsg);
+	[LinkName("g_test_log_msg_free")] public static extern void Free(GTestLogMsg* tmsg);
 }
 
 /** GTestLogFatalFunc:
@@ -5182,9 +5182,9 @@ function gboolean GTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level,
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_log_set_fatal_handler")] public static extern void TestLogSetFatalHandler(GTestLogFatalFunc log_func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_test_expect_message")] public static extern void TestExpectMessage(gchar* log_domain, GLogLevelFlags log_level, gchar* pattern);
-	[Import(GLib.so), LinkName("g_test_assert_expected_messages_internal")] public static extern void TestAssertExpectedMessagesInternal(c_char* domain, c_char* file, c_int line, c_char* func);
+	[LinkName("g_test_log_set_fatal_handler")] public static extern void TestLogSetFatalHandler(GTestLogFatalFunc log_func, gpointer user_data);
+	[LinkName("g_test_expect_message")] public static extern void TestExpectMessage(gchar* log_domain, GLogLevelFlags log_level, gchar* pattern);
+	[LinkName("g_test_assert_expected_messages_internal")] public static extern void TestAssertExpectedMessagesInternal(c_char* domain, c_char* file, c_int line, c_char* func);
 }
 
 [AllowDuplicates] enum GTestFileType : c_int
@@ -5195,9 +5195,9 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_test_build_filename")] public static extern gchar* TestBuildFilename(GTestFileType file_type, gchar* first_path, ...);
-	[Import(GLib.so), LinkName("g_test_get_dir")] public static extern gchar* TestGetDir(GTestFileType file_type);
-	[Import(GLib.so), LinkName("g_test_get_filename")] public static extern gchar* TestGetFilename(GTestFileType file_type, gchar* first_path, ...);
+	[LinkName("g_test_build_filename")] public static extern gchar* TestBuildFilename(GTestFileType file_type, gchar* first_path, ...);
+	[LinkName("g_test_get_dir")] public static extern gchar* TestGetDir(GTestFileType file_type);
+	[LinkName("g_test_get_filename")] public static extern gchar* TestGetFilename(GTestFileType file_type, gchar* first_path, ...);
 }
 
 
@@ -5210,44 +5210,44 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_thread_pool_new")] public static extern GThreadPool* ThreadPoolNew(GFunc func, gpointer user_data, gint max_threads, gboolean exclusive, GError** error);
-	[Import(GLib.so), LinkName("g_thread_pool_new_full")] public static extern GThreadPool* ThreadPoolNewFull(GFunc func, gpointer user_data, GDestroyNotify item_free_func, gint max_threads, gboolean exclusive, GError** error);
-	[Import(GLib.so), LinkName("g_thread_pool_free")] public static extern void ThreadPoolFree(GThreadPool* pool, gboolean immediate, gboolean wait);
-	[Import(GLib.so), LinkName("g_thread_pool_push")] public static extern gboolean ThreadPoolPush(GThreadPool* pool, gpointer data, GError** error);
-	[Import(GLib.so), LinkName("g_thread_pool_unprocessed")] public static extern guint ThreadPoolUnprocessed(GThreadPool* pool);
-	[Import(GLib.so), LinkName("g_thread_pool_set_sort_function")] public static extern void ThreadPoolSetSortFunction(GThreadPool* pool, GCompareDataFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_thread_pool_move_to_front")] public static extern gboolean ThreadPoolMoveToFront(GThreadPool* pool, gpointer data);
-	[Import(GLib.so), LinkName("g_thread_pool_set_max_threads")] public static extern gboolean ThreadPoolSetMaxThreads(GThreadPool* pool, gint max_threads, GError** error);
-	[Import(GLib.so), LinkName("g_thread_pool_get_max_threads")] public static extern gint ThreadPoolGetMaxThreads(GThreadPool* pool);
-	[Import(GLib.so), LinkName("g_thread_pool_get_num_threads")] public static extern guint ThreadPoolGetNumThreads(GThreadPool* pool);
-	[Import(GLib.so), LinkName("g_thread_pool_set_max_unused_threads")] public static extern void ThreadPoolSetMaxUnusedThreads(gint max_threads);
-	[Import(GLib.so), LinkName("g_thread_pool_get_max_unused_threads")] public static extern gint ThreadPoolGetMaxUnusedThreads();
-	[Import(GLib.so), LinkName("g_thread_pool_get_num_unused_threads")] public static extern guint ThreadPoolGetNumUnusedThreads();
-	[Import(GLib.so), LinkName("g_thread_pool_stop_unused_threads")] public static extern void ThreadPoolStopUnusedThreads();
-	[Import(GLib.so), LinkName("g_thread_pool_set_max_idle_time")] public static extern void ThreadPoolSetMaxIdleTime(guint interval);
-	[Import(GLib.so), LinkName("g_thread_pool_get_max_idle_time")] public static extern guint ThreadPoolGetMaxIdleTime();
+	[LinkName("g_thread_pool_new")] public static extern GThreadPool* ThreadPoolNew(GFunc func, gpointer user_data, gint max_threads, gboolean exclusive, GError** error);
+	[LinkName("g_thread_pool_new_full")] public static extern GThreadPool* ThreadPoolNewFull(GFunc func, gpointer user_data, GDestroyNotify item_free_func, gint max_threads, gboolean exclusive, GError** error);
+	[LinkName("g_thread_pool_free")] public static extern void ThreadPoolFree(GThreadPool* pool, gboolean immediate, gboolean wait);
+	[LinkName("g_thread_pool_push")] public static extern gboolean ThreadPoolPush(GThreadPool* pool, gpointer data, GError** error);
+	[LinkName("g_thread_pool_unprocessed")] public static extern guint ThreadPoolUnprocessed(GThreadPool* pool);
+	[LinkName("g_thread_pool_set_sort_function")] public static extern void ThreadPoolSetSortFunction(GThreadPool* pool, GCompareDataFunc func, gpointer user_data);
+	[LinkName("g_thread_pool_move_to_front")] public static extern gboolean ThreadPoolMoveToFront(GThreadPool* pool, gpointer data);
+	[LinkName("g_thread_pool_set_max_threads")] public static extern gboolean ThreadPoolSetMaxThreads(GThreadPool* pool, gint max_threads, GError** error);
+	[LinkName("g_thread_pool_get_max_threads")] public static extern gint ThreadPoolGetMaxThreads(GThreadPool* pool);
+	[LinkName("g_thread_pool_get_num_threads")] public static extern guint ThreadPoolGetNumThreads(GThreadPool* pool);
+	[LinkName("g_thread_pool_set_max_unused_threads")] public static extern void ThreadPoolSetMaxUnusedThreads(gint max_threads);
+	[LinkName("g_thread_pool_get_max_unused_threads")] public static extern gint ThreadPoolGetMaxUnusedThreads();
+	[LinkName("g_thread_pool_get_num_unused_threads")] public static extern guint ThreadPoolGetNumUnusedThreads();
+	[LinkName("g_thread_pool_stop_unused_threads")] public static extern void ThreadPoolStopUnusedThreads();
+	[LinkName("g_thread_pool_set_max_idle_time")] public static extern void ThreadPoolSetMaxIdleTime(guint interval);
+	[LinkName("g_thread_pool_get_max_idle_time")] public static extern guint ThreadPoolGetMaxIdleTime();
 }
 
 struct GTimer;
 
 extension GTimer
 {
-	[Import(GLib.so), LinkName("g_timer_new")] public static extern GTimer* New();
-	[Import(GLib.so), LinkName("g_timer_destroy")] public static extern void Destroy(GTimer* timer);
-	[Import(GLib.so), LinkName("g_timer_start")] public static extern void Start(GTimer* timer);
-	[Import(GLib.so), LinkName("g_timer_stop")] public static extern void Stop(GTimer* timer);
-	[Import(GLib.so), LinkName("g_timer_reset")] public static extern void Reset(GTimer* timer);
-	[Import(GLib.so), LinkName("g_timer_continue")] public static extern void Continue(GTimer* timer);
-	[Import(GLib.so), LinkName("g_timer_elapsed")] public static extern gdouble Elapsed(GTimer* timer, gulong* microseconds);
-	[Import(GLib.so), LinkName("g_timer_is_active")] public static extern gboolean IsActive(GTimer* timer);
+	[LinkName("g_timer_new")] public static extern GTimer* New();
+	[LinkName("g_timer_destroy")] public static extern void Destroy(GTimer* timer);
+	[LinkName("g_timer_start")] public static extern void Start(GTimer* timer);
+	[LinkName("g_timer_stop")] public static extern void Stop(GTimer* timer);
+	[LinkName("g_timer_reset")] public static extern void Reset(GTimer* timer);
+	[LinkName("g_timer_continue")] public static extern void Continue(GTimer* timer);
+	[LinkName("g_timer_elapsed")] public static extern gdouble Elapsed(GTimer* timer, gulong* microseconds);
+	[LinkName("g_timer_is_active")] public static extern gboolean IsActive(GTimer* timer);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_usleep")] public static extern void Usleep(gulong microseconds);
-	[Import(GLib.so), LinkName("g_time_val_add")] public static extern void TimeValAdd(GTimeVal* time, glong microseconds);
-	[Import(GLib.so), LinkName("g_time_val_from_iso8601")] public static extern gboolean TimeValFromIso8601(gchar* iso_date, GTimeVal* time);
-	[Import(GLib.so), LinkName("g_time_val_to_iso8601")] public static extern gchar* TimeValToIso8601(GTimeVal* time);
+	[LinkName("g_usleep")] public static extern void Usleep(gulong microseconds);
+	[LinkName("g_time_val_add")] public static extern void TimeValAdd(GTimeVal* time, glong microseconds);
+	[LinkName("g_time_val_from_iso8601")] public static extern gboolean TimeValFromIso8601(gchar* iso_date, GTimeVal* time);
+	[LinkName("g_time_val_to_iso8601")] public static extern gchar* TimeValToIso8601(GTimeVal* time);
 }
 
 
@@ -5258,10 +5258,10 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_trash_stack_push")] public static extern void TrashStackPush(GTrashStack** stack_p, gpointer data_p);
-	[Import(GLib.so), LinkName("g_trash_stack_pop")] public static extern gpointer TrashStackPop(GTrashStack** stack_p);
-	[Import(GLib.so), LinkName("g_trash_stack_peek")] public static extern gpointer TrashStackPeek(GTrashStack** stack_p);
-	[Import(GLib.so), LinkName("g_trash_stack_height")] public static extern guint TrashStackHeight(GTrashStack** stack_p);
+	[LinkName("g_trash_stack_push")] public static extern void TrashStackPush(GTrashStack** stack_p, gpointer data_p);
+	[LinkName("g_trash_stack_pop")] public static extern gpointer TrashStackPop(GTrashStack** stack_p);
+	[LinkName("g_trash_stack_peek")] public static extern gpointer TrashStackPeek(GTrashStack** stack_p);
+	[LinkName("g_trash_stack_height")] public static extern guint TrashStackHeight(GTrashStack** stack_p);
 }
 
 struct GTree;
@@ -5286,61 +5286,61 @@ function gboolean GTraverseNodeFunc(GTreeNode* node, gpointer data);
 
 extension GTree
 {
-	[Import(GLib.so), LinkName("g_tree_new")] public static extern GTree* New(GCompareFunc key_compare_func);
-	[Import(GLib.so), LinkName("g_tree_new_with_data")] public static extern GTree* NewWithData(GCompareDataFunc key_compare_func, gpointer key_compare_data);
-	[Import(GLib.so), LinkName("g_tree_new_full")] public static extern GTree* NewFull(GCompareDataFunc key_compare_func, gpointer key_compare_data, GDestroyNotify key_destroy_func, GDestroyNotify value_destroy_func);
+	[LinkName("g_tree_new")] public static extern GTree* New(GCompareFunc key_compare_func);
+	[LinkName("g_tree_new_with_data")] public static extern GTree* NewWithData(GCompareDataFunc key_compare_func, gpointer key_compare_data);
+	[LinkName("g_tree_new_full")] public static extern GTree* NewFull(GCompareDataFunc key_compare_func, gpointer key_compare_data, GDestroyNotify key_destroy_func, GDestroyNotify value_destroy_func);
 }
 
 extension GTreeNode
 {
-	[Import(GLib.so), LinkName("g_tree_node_first")] public static extern GTreeNode* First(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_node_last")] public static extern GTreeNode* Last(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_node_previous")] public static extern GTreeNode* Previous(GTreeNode* node);
-	[Import(GLib.so), LinkName("g_tree_node_next")] public static extern GTreeNode* Next(GTreeNode* node);
+	[LinkName("g_tree_node_first")] public static extern GTreeNode* First(GTree* tree);
+	[LinkName("g_tree_node_last")] public static extern GTreeNode* Last(GTree* tree);
+	[LinkName("g_tree_node_previous")] public static extern GTreeNode* Previous(GTreeNode* node);
+	[LinkName("g_tree_node_next")] public static extern GTreeNode* Next(GTreeNode* node);
 }
 
 extension GTree
 {
-	[Import(GLib.so), LinkName("g_tree_ref")] public static extern GTree* Ref(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_unref")] public static extern void Unref(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_destroy")] public static extern void Destroy(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_insert_node")] public static extern GTreeNode* InsertNode(GTree* tree, gpointer key, gpointer value);
-	[Import(GLib.so), LinkName("g_tree_insert")] public static extern void Insert(GTree* tree, gpointer key, gpointer value);
-	[Import(GLib.so), LinkName("g_tree_replace_node")] public static extern GTreeNode* ReplaceNode(GTree* tree, gpointer key, gpointer value);
-	[Import(GLib.so), LinkName("g_tree_replace")] public static extern void Replace(GTree* tree, gpointer key, gpointer value);
-	[Import(GLib.so), LinkName("g_tree_remove")] public static extern gboolean Remove(GTree* tree, gconstpointer key);
-	[Import(GLib.so), LinkName("g_tree_remove_all")] public static extern void RemoveAll(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_steal")] public static extern gboolean Steal(GTree* tree, gconstpointer key);
+	[LinkName("g_tree_ref")] public static extern GTree* Ref(GTree* tree);
+	[LinkName("g_tree_unref")] public static extern void Unref(GTree* tree);
+	[LinkName("g_tree_destroy")] public static extern void Destroy(GTree* tree);
+	[LinkName("g_tree_insert_node")] public static extern GTreeNode* InsertNode(GTree* tree, gpointer key, gpointer value);
+	[LinkName("g_tree_insert")] public static extern void Insert(GTree* tree, gpointer key, gpointer value);
+	[LinkName("g_tree_replace_node")] public static extern GTreeNode* ReplaceNode(GTree* tree, gpointer key, gpointer value);
+	[LinkName("g_tree_replace")] public static extern void Replace(GTree* tree, gpointer key, gpointer value);
+	[LinkName("g_tree_remove")] public static extern gboolean Remove(GTree* tree, gconstpointer key);
+	[LinkName("g_tree_remove_all")] public static extern void RemoveAll(GTree* tree);
+	[LinkName("g_tree_steal")] public static extern gboolean Steal(GTree* tree, gconstpointer key);
 }
 
 extension GTreeNode
 {
-	[Import(GLib.so), LinkName("g_tree_node_key")] public static extern gpointer Key(GTreeNode* node);
-	[Import(GLib.so), LinkName("g_tree_node_value")] public static extern gpointer Value(GTreeNode* node);
+	[LinkName("g_tree_node_key")] public static extern gpointer Key(GTreeNode* node);
+	[LinkName("g_tree_node_value")] public static extern gpointer Value(GTreeNode* node);
 }
 
 extension GTree
 {
-	[Import(GLib.so), LinkName("g_tree_lookup_node")] public static extern GTreeNode* LookupNode(GTree* tree, gconstpointer key);
-	[Import(GLib.so), LinkName("g_tree_lookup")] public static extern gpointer Lookup(GTree* tree, gconstpointer key);
-	[Import(GLib.so), LinkName("g_tree_lookup_extended")] public static extern gboolean LookupExtended(GTree* tree, gconstpointer lookup_key, gpointer* orig_key, gpointer* value);
-	[Import(GLib.so), LinkName("g_tree_foreach")] public static extern void Foreach(GTree* tree, GTraverseFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_tree_foreach_node")] public static extern void ForeachNode(GTree* tree, GTraverseNodeFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_tree_traverse")] public static extern void Traverse(GTree* tree, GTraverseFunc traverse_func, GTraverseType traverse_type, gpointer user_data);
-	[Import(GLib.so), LinkName("g_tree_search_node")] public static extern GTreeNode* SearchNode(GTree* tree, GCompareFunc search_func, gconstpointer user_data);
-	[Import(GLib.so), LinkName("g_tree_search")] public static extern gpointer Search(GTree* tree, GCompareFunc search_func, gconstpointer user_data);
-	[Import(GLib.so), LinkName("g_tree_lower_bound")] public static extern GTreeNode* LowerBound(GTree* tree, gconstpointer key);
-	[Import(GLib.so), LinkName("g_tree_upper_bound")] public static extern GTreeNode* UpperBound(GTree* tree, gconstpointer key);
-	[Import(GLib.so), LinkName("g_tree_height")] public static extern gint Height(GTree* tree);
-	[Import(GLib.so), LinkName("g_tree_nnodes")] public static extern gint Nnodes(GTree* tree);
+	[LinkName("g_tree_lookup_node")] public static extern GTreeNode* LookupNode(GTree* tree, gconstpointer key);
+	[LinkName("g_tree_lookup")] public static extern gpointer Lookup(GTree* tree, gconstpointer key);
+	[LinkName("g_tree_lookup_extended")] public static extern gboolean LookupExtended(GTree* tree, gconstpointer lookup_key, gpointer* orig_key, gpointer* value);
+	[LinkName("g_tree_foreach")] public static extern void Foreach(GTree* tree, GTraverseFunc func, gpointer user_data);
+	[LinkName("g_tree_foreach_node")] public static extern void ForeachNode(GTree* tree, GTraverseNodeFunc func, gpointer user_data);
+	[LinkName("g_tree_traverse")] public static extern void Traverse(GTree* tree, GTraverseFunc traverse_func, GTraverseType traverse_type, gpointer user_data);
+	[LinkName("g_tree_search_node")] public static extern GTreeNode* SearchNode(GTree* tree, GCompareFunc search_func, gconstpointer user_data);
+	[LinkName("g_tree_search")] public static extern gpointer Search(GTree* tree, GCompareFunc search_func, gconstpointer user_data);
+	[LinkName("g_tree_lower_bound")] public static extern GTreeNode* LowerBound(GTree* tree, gconstpointer key);
+	[LinkName("g_tree_upper_bound")] public static extern GTreeNode* UpperBound(GTree* tree, gconstpointer key);
+	[LinkName("g_tree_height")] public static extern gint Height(GTree* tree);
+	[LinkName("g_tree_nnodes")] public static extern gint Nnodes(GTree* tree);
 }
 
 struct GUri;
 
 extension GUri
 {
-	[Import(GLib.so), LinkName("g_uri_ref")] public static extern GUri* Ref(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_unref")] public static extern void Unref(GUri* uri);
+	[LinkName("g_uri_ref")] public static extern GUri* Ref(GUri* uri);
+	[LinkName("g_uri_unref")] public static extern void Unref(GUri* uri);
 }
 
 /** GUriFlags:
@@ -5399,17 +5399,17 @@ extension GUri
 
 extension GUri
 {
-	[Import(GLib.so), LinkName("g_uri_split")] public static extern gboolean Split(gchar* uri_ref, GUriFlags flags, gchar** scheme, gchar** userinfo, gchar** host, gint* port, gchar** path, gchar** query, gchar** fragment, GError** error);
-	[Import(GLib.so), LinkName("g_uri_split_with_user")] public static extern gboolean SplitWithUser(gchar* uri_ref, GUriFlags flags, gchar** scheme, gchar** user, gchar** password, gchar** auth_params, gchar** host, gint* port, gchar** path, gchar** query, gchar** fragment, GError** error);
-	[Import(GLib.so), LinkName("g_uri_split_network")] public static extern gboolean SplitNetwork(gchar* uri_string, GUriFlags flags, gchar** scheme, gchar** host, gint* port, GError** error);
-	[Import(GLib.so), LinkName("g_uri_is_valid")] public static extern gboolean IsValid(gchar* uri_string, GUriFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_uri_join")] public static extern gchar* Join(GUriFlags flags, gchar* scheme, gchar* userinfo, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
-	[Import(GLib.so), LinkName("g_uri_join_with_user")] public static extern gchar* JoinWithUser(GUriFlags flags, gchar* scheme, gchar* user, gchar* password, gchar* auth_params, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
-	[Import(GLib.so), LinkName("g_uri_parse")] public static extern GUri* Parse(gchar* uri_string, GUriFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_uri_parse_relative")] public static extern GUri* ParseRelative(GUri* base_uri, gchar* uri_ref, GUriFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_uri_resolve_relative")] public static extern gchar* ResolveRelative(gchar* base_uri_string, gchar* uri_ref, GUriFlags flags, GError** error);
-	[Import(GLib.so), LinkName("g_uri_build")] public static extern GUri* Build(GUriFlags flags, gchar* scheme, gchar* userinfo, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
-	[Import(GLib.so), LinkName("g_uri_build_with_user")] public static extern GUri* BuildWithUser(GUriFlags flags, gchar* scheme, gchar* user, gchar* password, gchar* auth_params, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
+	[LinkName("g_uri_split")] public static extern gboolean Split(gchar* uri_ref, GUriFlags flags, gchar** scheme, gchar** userinfo, gchar** host, gint* port, gchar** path, gchar** query, gchar** fragment, GError** error);
+	[LinkName("g_uri_split_with_user")] public static extern gboolean SplitWithUser(gchar* uri_ref, GUriFlags flags, gchar** scheme, gchar** user, gchar** password, gchar** auth_params, gchar** host, gint* port, gchar** path, gchar** query, gchar** fragment, GError** error);
+	[LinkName("g_uri_split_network")] public static extern gboolean SplitNetwork(gchar* uri_string, GUriFlags flags, gchar** scheme, gchar** host, gint* port, GError** error);
+	[LinkName("g_uri_is_valid")] public static extern gboolean IsValid(gchar* uri_string, GUriFlags flags, GError** error);
+	[LinkName("g_uri_join")] public static extern gchar* Join(GUriFlags flags, gchar* scheme, gchar* userinfo, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
+	[LinkName("g_uri_join_with_user")] public static extern gchar* JoinWithUser(GUriFlags flags, gchar* scheme, gchar* user, gchar* password, gchar* auth_params, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
+	[LinkName("g_uri_parse")] public static extern GUri* Parse(gchar* uri_string, GUriFlags flags, GError** error);
+	[LinkName("g_uri_parse_relative")] public static extern GUri* ParseRelative(GUri* base_uri, gchar* uri_ref, GUriFlags flags, GError** error);
+	[LinkName("g_uri_resolve_relative")] public static extern gchar* ResolveRelative(gchar* base_uri_string, gchar* uri_ref, GUriFlags flags, GError** error);
+	[LinkName("g_uri_build")] public static extern GUri* Build(GUriFlags flags, gchar* scheme, gchar* userinfo, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
+	[LinkName("g_uri_build_with_user")] public static extern GUri* BuildWithUser(GUriFlags flags, gchar* scheme, gchar* user, gchar* password, gchar* auth_params, gchar* host, gint port, gchar* path, gchar* query, gchar* fragment);
 }
 
 /** GUriHideFlags:
@@ -5439,19 +5439,19 @@ extension GUri
 
 extension GUri
 {
-	[Import(GLib.so), LinkName("g_uri_to_string")] public static extern c_char* ToString(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_to_string_partial")] public static extern c_char* ToStringPartial(GUri* uri, GUriHideFlags flags);
-	[Import(GLib.so), LinkName("g_uri_get_scheme")] public static extern gchar* GetScheme(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_userinfo")] public static extern gchar* GetUserinfo(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_user")] public static extern gchar* GetUser(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_password")] public static extern gchar* GetPassword(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_auth_params")] public static extern gchar* GetAuthParams(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_host")] public static extern gchar* GetHost(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_port")] public static extern gint GetPort(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_path")] public static extern gchar* GetPath(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_query")] public static extern gchar* GetQuery(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_fragment")] public static extern gchar* GetFragment(GUri* uri);
-	[Import(GLib.so), LinkName("g_uri_get_flags")] public static extern GUriFlags GetFlags(GUri* uri);
+	[LinkName("g_uri_to_string")] public static extern c_char* ToString(GUri* uri);
+	[LinkName("g_uri_to_string_partial")] public static extern c_char* ToStringPartial(GUri* uri, GUriHideFlags flags);
+	[LinkName("g_uri_get_scheme")] public static extern gchar* GetScheme(GUri* uri);
+	[LinkName("g_uri_get_userinfo")] public static extern gchar* GetUserinfo(GUri* uri);
+	[LinkName("g_uri_get_user")] public static extern gchar* GetUser(GUri* uri);
+	[LinkName("g_uri_get_password")] public static extern gchar* GetPassword(GUri* uri);
+	[LinkName("g_uri_get_auth_params")] public static extern gchar* GetAuthParams(GUri* uri);
+	[LinkName("g_uri_get_host")] public static extern gchar* GetHost(GUri* uri);
+	[LinkName("g_uri_get_port")] public static extern gint GetPort(GUri* uri);
+	[LinkName("g_uri_get_path")] public static extern gchar* GetPath(GUri* uri);
+	[LinkName("g_uri_get_query")] public static extern gchar* GetQuery(GUri* uri);
+	[LinkName("g_uri_get_fragment")] public static extern gchar* GetFragment(GUri* uri);
+	[LinkName("g_uri_get_flags")] public static extern GUriFlags GetFlags(GUri* uri);
 }
 
 /** GUriParamsFlags:
@@ -5476,7 +5476,7 @@ extension GUri
 
 extension GUri
 {
-	[Import(GLib.so), LinkName("g_uri_parse_params")] public static extern GHashTable* ParseParams(gchar* @params, gssize length, gchar* separators, GUriParamsFlags flags, GError** error);
+	[LinkName("g_uri_parse_params")] public static extern GHashTable* ParseParams(gchar* @params, gssize length, gchar* separators, GUriParamsFlags flags, GError** error);
 }
 
 
@@ -5490,9 +5490,9 @@ extension GUri
 
 extension GUri
 {
-	[Import(GLib.so), LinkName("g_uri_params_iter_init")] public static extern void ParamsIterInit(GUriParamsIter* iter, gchar* @params, gssize length, gchar* separators, GUriParamsFlags flags);
-	[Import(GLib.so), LinkName("g_uri_params_iter_next")] public static extern gboolean ParamsIterNext(GUriParamsIter* iter, gchar** attribute, gchar** value, GError** error);
-	[Import(GLib.so), LinkName("g_uri_error_quark")] public static extern GQuark ErrorQuark();
+	[LinkName("g_uri_params_iter_init")] public static extern void ParamsIterInit(GUriParamsIter* iter, gchar* @params, gssize length, gchar* separators, GUriParamsFlags flags);
+	[LinkName("g_uri_params_iter_next")] public static extern gboolean ParamsIterNext(GUriParamsIter* iter, gchar** attribute, gchar** value, GError** error);
+	[LinkName("g_uri_error_quark")] public static extern GQuark ErrorQuark();
 }
 
 /** GUriError:
@@ -5528,19 +5528,19 @@ extension GUri
 
 extension GUri
 {
-	[Import(GLib.so), LinkName("g_uri_unescape_string")] public static extern c_char* UnescapeString(c_char* escaped_string, c_char* illegal_characters);
-	[Import(GLib.so), LinkName("g_uri_unescape_segment")] public static extern c_char* UnescapeSegment(c_char* escaped_string, c_char* escaped_string_end, c_char* illegal_characters);
-	[Import(GLib.so), LinkName("g_uri_parse_scheme")] public static extern c_char* ParseScheme(c_char* uri);
-	[Import(GLib.so), LinkName("g_uri_peek_scheme")] public static extern c_char* PeekScheme(c_char* uri);
-	[Import(GLib.so), LinkName("g_uri_escape_string")] public static extern c_char* EscapeString(c_char* unescaped, c_char* reserved_chars_allowed, gboolean allow_utf8);
-	[Import(GLib.so), LinkName("g_uri_unescape_bytes")] public static extern GBytes* UnescapeBytes(c_char* escaped_string, gssize length, c_char* illegal_characters, GError** error);
-	[Import(GLib.so), LinkName("g_uri_escape_bytes")] public static extern c_char* EscapeBytes(guint8* unescaped, gsize length, c_char* reserved_chars_allowed);
+	[LinkName("g_uri_unescape_string")] public static extern c_char* UnescapeString(c_char* escaped_string, c_char* illegal_characters);
+	[LinkName("g_uri_unescape_segment")] public static extern c_char* UnescapeSegment(c_char* escaped_string, c_char* escaped_string_end, c_char* illegal_characters);
+	[LinkName("g_uri_parse_scheme")] public static extern c_char* ParseScheme(c_char* uri);
+	[LinkName("g_uri_peek_scheme")] public static extern c_char* PeekScheme(c_char* uri);
+	[LinkName("g_uri_escape_string")] public static extern c_char* EscapeString(c_char* unescaped, c_char* reserved_chars_allowed, gboolean allow_utf8);
+	[LinkName("g_uri_unescape_bytes")] public static extern GBytes* UnescapeBytes(c_char* escaped_string, gssize length, c_char* illegal_characters, GError** error);
+	[LinkName("g_uri_escape_bytes")] public static extern c_char* EscapeBytes(guint8* unescaped, gsize length, c_char* reserved_chars_allowed);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_uuid_string_is_valid")] public static extern gboolean UuidStringIsValid(gchar* str);
-	[Import(GLib.so), LinkName("g_uuid_string_random")] public static extern gchar* UuidStringRandom();
+	[LinkName("g_uuid_string_is_valid")] public static extern gboolean UuidStringIsValid(gchar* str);
+	[LinkName("g_uuid_string_random")] public static extern gchar* UuidStringRandom();
 }
 
 static
@@ -5554,16 +5554,16 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("glib_check_version")] public static extern gchar* libCheckVersion(guint required_major, guint required_minor, guint required_micro);
-	[Import(GLib.so), LinkName("g_win32_ftruncate")] public static extern gint Win32Ftruncate(gint f, guint size);
-	[Import(GLib.so), LinkName("g_win32_getlocale")] public static extern gchar* Win32Getlocale();
-	[Import(GLib.so), LinkName("g_win32_error_message")] public static extern gchar* Win32ErrorMessage(gint error);
-	[Import(GLib.so), LinkName("g_win32_get_package_installation_directory")] public static extern gchar* Win32GetPackageInstallationDirectory(gchar* package, gchar* dll_name);
-	[Import(GLib.so), LinkName("g_win32_get_package_installation_subdirectory")] public static extern gchar* Win32GetPackageInstallationSubdirectory(gchar* package, gchar* dll_name, gchar* subdir);
-	[Import(GLib.so), LinkName("g_win32_get_package_installation_directory_of_module")] public static extern gchar* Win32GetPackageInstallationDirectoryOfModule(gpointer hmodule);
-	[Import(GLib.so), LinkName("g_win32_get_windows_version")] public static extern guint Win32GetWindowsVersion();
-	[Import(GLib.so), LinkName("g_win32_locale_filename_from_utf8")] public static extern gchar* Win32LocaleFilenameFromUtf8(gchar* utf8filename);
-	[Import(GLib.so), LinkName("g_win32_get_command_line")] public static extern gchar** Win32GetCommandLine();
+	[LinkName("glib_check_version")] public static extern gchar* libCheckVersion(guint required_major, guint required_minor, guint required_micro);
+	[LinkName("g_win32_ftruncate")] public static extern gint Win32Ftruncate(gint f, guint size);
+	[LinkName("g_win32_getlocale")] public static extern gchar* Win32Getlocale();
+	[LinkName("g_win32_error_message")] public static extern gchar* Win32ErrorMessage(gint error);
+	[LinkName("g_win32_get_package_installation_directory")] public static extern gchar* Win32GetPackageInstallationDirectory(gchar* package, gchar* dll_name);
+	[LinkName("g_win32_get_package_installation_subdirectory")] public static extern gchar* Win32GetPackageInstallationSubdirectory(gchar* package, gchar* dll_name, gchar* subdir);
+	[LinkName("g_win32_get_package_installation_directory_of_module")] public static extern gchar* Win32GetPackageInstallationDirectoryOfModule(gpointer hmodule);
+	[LinkName("g_win32_get_windows_version")] public static extern guint Win32GetWindowsVersion();
+	[LinkName("g_win32_locale_filename_from_utf8")] public static extern gchar* Win32LocaleFilenameFromUtf8(gchar* utf8filename);
+	[LinkName("g_win32_get_command_line")] public static extern gchar** Win32GetCommandLine();
 }
 
 /** GWin32OSType:
@@ -5585,7 +5585,7 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_win32_check_windows_version")] public static extern gboolean Win32CheckWindowsVersion(gint major, gint minor, gint spver, GWin32OSType os_type);
+	[LinkName("g_win32_check_windows_version")] public static extern gboolean Win32CheckWindowsVersion(gint major, gint minor, gint spver, GWin32OSType os_type);
 }
 
 struct GAllocator;
@@ -5594,36 +5594,36 @@ struct GMemChunk;
 
 extension GMemChunk
 {
-	[Import(GLib.so), LinkName("g_mem_chunk_new")] public static extern GMemChunk* New(gchar* name, gint atom_size, gsize area_size, gint type);
-	[Import(GLib.so), LinkName("g_mem_chunk_destroy")] public static extern void Destroy(GMemChunk* mem_chunk);
-	[Import(GLib.so), LinkName("g_mem_chunk_alloc")] public static extern gpointer Alloc(GMemChunk* mem_chunk);
-	[Import(GLib.so), LinkName("g_mem_chunk_alloc0")] public static extern gpointer Alloc0(GMemChunk* mem_chunk);
-	[Import(GLib.so), LinkName("g_mem_chunk_free")] public static extern void Free(GMemChunk* mem_chunk, gpointer mem);
-	[Import(GLib.so), LinkName("g_mem_chunk_clean")] public static extern void Clean(GMemChunk* mem_chunk);
-	[Import(GLib.so), LinkName("g_mem_chunk_reset")] public static extern void Reset(GMemChunk* mem_chunk);
-	[Import(GLib.so), LinkName("g_mem_chunk_print")] public static extern void Print(GMemChunk* mem_chunk);
-	[Import(GLib.so), LinkName("g_mem_chunk_info")] public static extern void Info();
+	[LinkName("g_mem_chunk_new")] public static extern GMemChunk* New(gchar* name, gint atom_size, gsize area_size, gint type);
+	[LinkName("g_mem_chunk_destroy")] public static extern void Destroy(GMemChunk* mem_chunk);
+	[LinkName("g_mem_chunk_alloc")] public static extern gpointer Alloc(GMemChunk* mem_chunk);
+	[LinkName("g_mem_chunk_alloc0")] public static extern gpointer Alloc0(GMemChunk* mem_chunk);
+	[LinkName("g_mem_chunk_free")] public static extern void Free(GMemChunk* mem_chunk, gpointer mem);
+	[LinkName("g_mem_chunk_clean")] public static extern void Clean(GMemChunk* mem_chunk);
+	[LinkName("g_mem_chunk_reset")] public static extern void Reset(GMemChunk* mem_chunk);
+	[LinkName("g_mem_chunk_print")] public static extern void Print(GMemChunk* mem_chunk);
+	[LinkName("g_mem_chunk_info")] public static extern void Info();
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_blow_chunks")] public static extern void BlowChunks();
+	[LinkName("g_blow_chunks")] public static extern void BlowChunks();
 }
 
 extension GAllocator
 {
-	[Import(GLib.so), LinkName("g_allocator_new")] public static extern GAllocator* New(gchar* name, guint n_preallocs);
-	[Import(GLib.so), LinkName("g_allocator_free")] public static extern void Free(GAllocator* allocator);
+	[LinkName("g_allocator_new")] public static extern GAllocator* New(gchar* name, guint n_preallocs);
+	[LinkName("g_allocator_free")] public static extern void Free(GAllocator* allocator);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_list_push_allocator")] public static extern void ListPushAllocator(GAllocator* allocator);
-	[Import(GLib.so), LinkName("g_list_pop_allocator")] public static extern void ListPopAllocator();
-	[Import(GLib.so), LinkName("g_slist_push_allocator")] public static extern void SlistPushAllocator(GAllocator* allocator);
-	[Import(GLib.so), LinkName("g_slist_pop_allocator")] public static extern void SlistPopAllocator();
-	[Import(GLib.so), LinkName("g_node_push_allocator")] public static extern void NodePushAllocator(GAllocator* allocator);
-	[Import(GLib.so), LinkName("g_node_pop_allocator")] public static extern void NodePopAllocator();
+	[LinkName("g_list_push_allocator")] public static extern void ListPushAllocator(GAllocator* allocator);
+	[LinkName("g_list_pop_allocator")] public static extern void ListPopAllocator();
+	[LinkName("g_slist_push_allocator")] public static extern void SlistPushAllocator(GAllocator* allocator);
+	[LinkName("g_slist_pop_allocator")] public static extern void SlistPopAllocator();
+	[LinkName("g_node_push_allocator")] public static extern void NodePushAllocator(GAllocator* allocator);
+	[LinkName("g_node_pop_allocator")] public static extern void NodePopAllocator();
 }
 
 struct GCache;
@@ -5636,12 +5636,12 @@ function void GCacheDestroyFunc(gpointer value);
 
 extension GCache
 {
-	[Import(GLib.so), LinkName("g_cache_new")] public static extern GCache* New(GCacheNewFunc value_new_func, GCacheDestroyFunc value_destroy_func, GCacheDupFunc key_dup_func, GCacheDestroyFunc key_destroy_func, GHashFunc hash_key_func, GHashFunc hash_value_func, GEqualFunc key_equal_func);
-	[Import(GLib.so), LinkName("g_cache_destroy")] public static extern void Destroy(GCache* cache);
-	[Import(GLib.so), LinkName("g_cache_insert")] public static extern gpointer Insert(GCache* cache, gpointer key);
-	[Import(GLib.so), LinkName("g_cache_remove")] public static extern void Remove(GCache* cache, gconstpointer value);
-	[Import(GLib.so), LinkName("g_cache_key_foreach")] public static extern void KeyForeach(GCache* cache, GHFunc func, gpointer user_data);
-	[Import(GLib.so), LinkName("g_cache_value_foreach")] public static extern void ValueForeach(GCache* cache, GHFunc func, gpointer user_data);
+	[LinkName("g_cache_new")] public static extern GCache* New(GCacheNewFunc value_new_func, GCacheDestroyFunc value_destroy_func, GCacheDupFunc key_dup_func, GCacheDestroyFunc key_destroy_func, GHashFunc hash_key_func, GHashFunc hash_value_func, GEqualFunc key_equal_func);
+	[LinkName("g_cache_destroy")] public static extern void Destroy(GCache* cache);
+	[LinkName("g_cache_insert")] public static extern gpointer Insert(GCache* cache, gpointer key);
+	[LinkName("g_cache_remove")] public static extern void Remove(GCache* cache, gconstpointer value);
+	[LinkName("g_cache_key_foreach")] public static extern void KeyForeach(GCache* cache, GHFunc func, gpointer user_data);
+	[LinkName("g_cache_value_foreach")] public static extern void ValueForeach(GCache* cache, GHFunc func, gpointer user_data);
 }
 
 
@@ -5660,14 +5660,14 @@ function gint GCompletionStrncmpFunc(gchar* s1, gchar* s2, gsize n);
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_completion_new")] public static extern GCompletion* CompletionNew(GCompletionFunc func);
-	[Import(GLib.so), LinkName("g_completion_add_items")] public static extern void CompletionAddItems(GCompletion* cmp, GList* items);
-	[Import(GLib.so), LinkName("g_completion_remove_items")] public static extern void CompletionRemoveItems(GCompletion* cmp, GList* items);
-	[Import(GLib.so), LinkName("g_completion_clear_items")] public static extern void CompletionClearItems(GCompletion* cmp);
-	[Import(GLib.so), LinkName("g_completion_complete")] public static extern GList* CompletionComplete(GCompletion* cmp, gchar* prefix, gchar** new_prefix);
-	[Import(GLib.so), LinkName("g_completion_complete_utf8")] public static extern GList* CompletionCompleteUtf8(GCompletion* cmp, gchar* prefix, gchar** new_prefix);
-	[Import(GLib.so), LinkName("g_completion_set_compare")] public static extern void CompletionSetCompare(GCompletion* cmp, GCompletionStrncmpFunc strncmp_func);
-	[Import(GLib.so), LinkName("g_completion_free")] public static extern void CompletionFree(GCompletion* cmp);
+	[LinkName("g_completion_new")] public static extern GCompletion* CompletionNew(GCompletionFunc func);
+	[LinkName("g_completion_add_items")] public static extern void CompletionAddItems(GCompletion* cmp, GList* items);
+	[LinkName("g_completion_remove_items")] public static extern void CompletionRemoveItems(GCompletion* cmp, GList* items);
+	[LinkName("g_completion_clear_items")] public static extern void CompletionClearItems(GCompletion* cmp);
+	[LinkName("g_completion_complete")] public static extern GList* CompletionComplete(GCompletion* cmp, gchar* prefix, gchar** new_prefix);
+	[LinkName("g_completion_complete_utf8")] public static extern GList* CompletionCompleteUtf8(GCompletion* cmp, gchar* prefix, gchar** new_prefix);
+	[LinkName("g_completion_set_compare")] public static extern void CompletionSetCompare(GCompletion* cmp, GCompletionStrncmpFunc strncmp_func);
+	[LinkName("g_completion_free")] public static extern void CompletionFree(GCompletion* cmp);
 }
 
 struct GRelation;
@@ -5680,21 +5680,21 @@ struct GRelation;
 
 extension GRelation
 {
-	[Import(GLib.so), LinkName("g_relation_new")] public static extern GRelation* New(gint fields);
-	[Import(GLib.so), LinkName("g_relation_destroy")] public static extern void Destroy(GRelation* relation);
-	[Import(GLib.so), LinkName("g_relation_index")] public static extern void Index(GRelation* relation, gint field, GHashFunc hash_func, GEqualFunc key_equal_func);
-	[Import(GLib.so), LinkName("g_relation_insert")] public static extern void Insert(GRelation* relation, ...);
-	[Import(GLib.so), LinkName("g_relation_delete")] public static extern gint Delete(GRelation* relation, gconstpointer key, gint field);
-	[Import(GLib.so), LinkName("g_relation_select")] public static extern GTuples* Select(GRelation* relation, gconstpointer key, gint field);
-	[Import(GLib.so), LinkName("g_relation_count")] public static extern gint Count(GRelation* relation, gconstpointer key, gint field);
-	[Import(GLib.so), LinkName("g_relation_exists")] public static extern gboolean Exists(GRelation* relation, ...);
-	[Import(GLib.so), LinkName("g_relation_print")] public static extern void Print(GRelation* relation);
+	[LinkName("g_relation_new")] public static extern GRelation* New(gint fields);
+	[LinkName("g_relation_destroy")] public static extern void Destroy(GRelation* relation);
+	[LinkName("g_relation_index")] public static extern void Index(GRelation* relation, gint field, GHashFunc hash_func, GEqualFunc key_equal_func);
+	[LinkName("g_relation_insert")] public static extern void Insert(GRelation* relation, ...);
+	[LinkName("g_relation_delete")] public static extern gint Delete(GRelation* relation, gconstpointer key, gint field);
+	[LinkName("g_relation_select")] public static extern GTuples* Select(GRelation* relation, gconstpointer key, gint field);
+	[LinkName("g_relation_count")] public static extern gint Count(GRelation* relation, gconstpointer key, gint field);
+	[LinkName("g_relation_exists")] public static extern gboolean Exists(GRelation* relation, ...);
+	[LinkName("g_relation_print")] public static extern void Print(GRelation* relation);
 }
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_tuples_destroy")] public static extern void TuplesDestroy(GTuples* tuples);
-	[Import(GLib.so), LinkName("g_tuples_index")] public static extern gpointer TuplesIndex(GTuples* tuples, gint index, gint field);
+	[LinkName("g_tuples_destroy")] public static extern void TuplesDestroy(GTuples* tuples);
+	[LinkName("g_tuples_index")] public static extern gpointer TuplesIndex(GTuples* tuples, gint index, gint field);
 }
 
 [AllowDuplicates] enum GThreadPriority : c_int
@@ -5748,10 +5748,10 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_thread_create")] public static extern GThread* ThreadCreate(GThreadFunc func, gpointer data, gboolean joinable, GError** error);
-	[Import(GLib.so), LinkName("g_thread_create_full")] public static extern GThread* ThreadCreateFull(GThreadFunc func, gpointer data, gulong stack_size, gboolean joinable, gboolean bound, GThreadPriority priority, GError** error);
-	[Import(GLib.so), LinkName("g_thread_set_priority")] public static extern void ThreadSetPriority(GThread* thread, GThreadPriority priority);
-	[Import(GLib.so), LinkName("g_thread_foreach")] public static extern void ThreadForeach(GFunc thread_func, gpointer user_data);
+	[LinkName("g_thread_create")] public static extern GThread* ThreadCreate(GThreadFunc func, gpointer data, gboolean joinable, GError** error);
+	[LinkName("g_thread_create_full")] public static extern GThread* ThreadCreateFull(GThreadFunc func, gpointer data, gulong stack_size, gboolean joinable, gboolean bound, GThreadPriority priority, GError** error);
+	[LinkName("g_thread_set_priority")] public static extern void ThreadSetPriority(GThread* thread, GThreadPriority priority);
+	[LinkName("g_thread_foreach")] public static extern void ThreadForeach(GFunc thread_func, gpointer user_data);
 }
 
 [CRepr] struct GStaticMutex
@@ -5761,9 +5761,9 @@ extension GLib
 
 extension GStaticMutex
 {
-	[Import(GLib.so), LinkName("g_static_mutex_init")] public static extern void Init(GStaticMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_mutex_free")] public static extern void Free(GStaticMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_mutex_get_mutex_impl")] public static extern GMutex* GetMutexImpl(GStaticMutex* mutex);
+	[LinkName("g_static_mutex_init")] public static extern void Init(GStaticMutex* mutex);
+	[LinkName("g_static_mutex_free")] public static extern void Free(GStaticMutex* mutex);
+	[LinkName("g_static_mutex_get_mutex_impl")] public static extern GMutex* GetMutexImpl(GStaticMutex* mutex);
 }
 
 
@@ -5780,13 +5780,13 @@ extension GStaticMutex
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_static_rec_mutex_init")] public static extern void StaticRecMutexInit(GStaticRecMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_rec_mutex_lock")] public static extern void StaticRecMutexLock(GStaticRecMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_rec_mutex_trylock")] public static extern gboolean StaticRecMutexTrylock(GStaticRecMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_rec_mutex_unlock")] public static extern void StaticRecMutexUnlock(GStaticRecMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_rec_mutex_lock_full")] public static extern void StaticRecMutexLockFull(GStaticRecMutex* mutex, guint depth);
-	[Import(GLib.so), LinkName("g_static_rec_mutex_unlock_full")] public static extern guint StaticRecMutexUnlockFull(GStaticRecMutex* mutex);
-	[Import(GLib.so), LinkName("g_static_rec_mutex_free")] public static extern void StaticRecMutexFree(GStaticRecMutex* mutex);
+	[LinkName("g_static_rec_mutex_init")] public static extern void StaticRecMutexInit(GStaticRecMutex* mutex);
+	[LinkName("g_static_rec_mutex_lock")] public static extern void StaticRecMutexLock(GStaticRecMutex* mutex);
+	[LinkName("g_static_rec_mutex_trylock")] public static extern gboolean StaticRecMutexTrylock(GStaticRecMutex* mutex);
+	[LinkName("g_static_rec_mutex_unlock")] public static extern void StaticRecMutexUnlock(GStaticRecMutex* mutex);
+	[LinkName("g_static_rec_mutex_lock_full")] public static extern void StaticRecMutexLockFull(GStaticRecMutex* mutex, guint depth);
+	[LinkName("g_static_rec_mutex_unlock_full")] public static extern guint StaticRecMutexUnlockFull(GStaticRecMutex* mutex);
+	[LinkName("g_static_rec_mutex_free")] public static extern void StaticRecMutexFree(GStaticRecMutex* mutex);
 }
 
 
@@ -5803,15 +5803,15 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_static_rw_lock_init")] public static extern void StaticRwLockInit(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_reader_lock")] public static extern void StaticRwLockReaderLock(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_reader_trylock")] public static extern gboolean StaticRwLockReaderTrylock(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_reader_unlock")] public static extern void StaticRwLockReaderUnlock(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_writer_lock")] public static extern void StaticRwLockWriterLock(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_writer_trylock")] public static extern gboolean StaticRwLockWriterTrylock(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_writer_unlock")] public static extern void StaticRwLockWriterUnlock(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_static_rw_lock_free")] public static extern void StaticRwLockFree(GStaticRWLock* lock);
-	[Import(GLib.so), LinkName("g_private_new")] public static extern GPrivate* PrivateNew(GDestroyNotify notify);
+	[LinkName("g_static_rw_lock_init")] public static extern void StaticRwLockInit(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_reader_lock")] public static extern void StaticRwLockReaderLock(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_reader_trylock")] public static extern gboolean StaticRwLockReaderTrylock(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_reader_unlock")] public static extern void StaticRwLockReaderUnlock(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_writer_lock")] public static extern void StaticRwLockWriterLock(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_writer_trylock")] public static extern gboolean StaticRwLockWriterTrylock(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_writer_unlock")] public static extern void StaticRwLockWriterUnlock(GStaticRWLock* lock);
+	[LinkName("g_static_rw_lock_free")] public static extern void StaticRwLockFree(GStaticRWLock* lock);
+	[LinkName("g_private_new")] public static extern GPrivate* PrivateNew(GDestroyNotify notify);
 }
 
 
@@ -5822,14 +5822,14 @@ extension GLib
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_static_private_init")] public static extern void StaticPrivateInit(GStaticPrivate* private_key);
-	[Import(GLib.so), LinkName("g_static_private_get")] public static extern gpointer StaticPrivateGet(GStaticPrivate* private_key);
-	[Import(GLib.so), LinkName("g_static_private_set")] public static extern void StaticPrivateSet(GStaticPrivate* private_key, gpointer data, GDestroyNotify notify);
-	[Import(GLib.so), LinkName("g_static_private_free")] public static extern void StaticPrivateFree(GStaticPrivate* private_key);
-	[Import(GLib.so), LinkName("g_once_init_enter_impl")] public static extern gboolean OnceInitEnterImpl(gsize* location);
-	[Import(GLib.so), LinkName("g_thread_init")] public static extern void ThreadInit(gpointer vtable);
-	[Import(GLib.so), LinkName("g_thread_init_with_errorcheck_mutexes")] public static extern void ThreadInitWithErrorcheckMutexes(gpointer vtable);
-	[Import(GLib.so), LinkName("g_thread_get_initialized")] public static extern gboolean ThreadGetInitialized();
+	[LinkName("g_static_private_init")] public static extern void StaticPrivateInit(GStaticPrivate* private_key);
+	[LinkName("g_static_private_get")] public static extern gpointer StaticPrivateGet(GStaticPrivate* private_key);
+	[LinkName("g_static_private_set")] public static extern void StaticPrivateSet(GStaticPrivate* private_key, gpointer data, GDestroyNotify notify);
+	[LinkName("g_static_private_free")] public static extern void StaticPrivateFree(GStaticPrivate* private_key);
+	[LinkName("g_once_init_enter_impl")] public static extern gboolean OnceInitEnterImpl(gsize* location);
+	[LinkName("g_thread_init")] public static extern void ThreadInit(gpointer vtable);
+	[LinkName("g_thread_init_with_errorcheck_mutexes")] public static extern void ThreadInitWithErrorcheckMutexes(gpointer vtable);
+	[LinkName("g_thread_get_initialized")] public static extern gboolean ThreadGetInitialized();
 }
 
 static
@@ -5839,11 +5839,11 @@ static
 
 extension GLib
 {
-	[Import(GLib.so), LinkName("g_mutex_new")] public static extern GMutex* MutexNew();
-	[Import(GLib.so), LinkName("g_mutex_free")] public static extern void MutexFree(GMutex* mutex);
-	[Import(GLib.so), LinkName("g_cond_new")] public static extern GCond* CondNew();
-	[Import(GLib.so), LinkName("g_cond_free")] public static extern void CondFree(GCond* cond);
-	[Import(GLib.so), LinkName("g_cond_timed_wait")] public static extern gboolean CondTimedWait(GCond* cond, GMutex* mutex, GTimeVal* abs_time);
+	[LinkName("g_mutex_new")] public static extern GMutex* MutexNew();
+	[LinkName("g_mutex_free")] public static extern void MutexFree(GMutex* mutex);
+	[LinkName("g_cond_new")] public static extern GCond* CondNew();
+	[LinkName("g_cond_free")] public static extern void CondFree(GCond* cond);
+	[LinkName("g_cond_timed_wait")] public static extern gboolean CondTimedWait(GCond* cond, GMutex* mutex, GTimeVal* abs_time);
 }
 
 typealias GAsyncQueue_autoptr = GAsyncQueue*;

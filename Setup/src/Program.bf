@@ -34,7 +34,7 @@ class Program
 		const String pkgConfig 
 #if BF_PLATFORM_WINDOWS
 			= @".\WinGTK4\bin\pkg-config.exe";
-		/*{
+		{
 			File.Delete("WinGTK4.json");
 			var command = "wget -O WinGTK4.json https://api.github.com/repos/wingtk/gvsbuild/releases/latest";
 			Assert!(system(command) == 0, "Failed to retrieve release data");
@@ -63,7 +63,7 @@ class Program
 				Console.WriteLine("Extracting using tar, this may take a while...");
 				Assert!(system("tar -xf WinGTK4.zip -C WinGTK4 -P") == 0, "Failed to extract WinGTK4.zip");
 			}
-		}*/
+		}
 #else
 			= "pkg-config";
 
@@ -84,7 +84,7 @@ class Program
 		Assert!(system(pkgConfig + " --libs gobject-introspection-1.0 > libs.txt") == 0, "Failed to get gobject-introspection libs");
 		Assert!(system(pkgConfig + " --cflags gobject-introspection-1.0 > cflags.txt") == 0, "Failed to get gobject-introspection cflags");
 
-		String cflagsStr = File.ReadAllText("cflags.txt", ..scope .(512))..Trim();
+		String cflagsStr = File.ReadAllText("cflags.txt", ..scope .(2048))..Trim();
 		cflagsStr.Append('\0');
 		List<char8*> cflags = scope .(16);
 		for (let flag in cflagsStr.Split(' '))
@@ -306,7 +306,6 @@ class Program
 				}
 				Runtime.FatalError(scope $"Failed to find header: {header}");
 			}
-			library.customLinkage = scope $"Import({block}.so)";
 			CBindings.Generate(headerPath, outputFile, "GObject.Introspection", library);
 		}
 
