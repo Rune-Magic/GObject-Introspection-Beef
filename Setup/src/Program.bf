@@ -134,6 +134,16 @@ class Program
 #endif
 		}
 
+		int DoesFunctionNameStartWith(StringView func, StringView clas)
+		{
+			if (func.StartsWith(clas, .OrdinalIgnoreCase))
+				return clas.Length;
+			if (clas.StartsWith("GI"))
+				if (func[1...].StartsWith(clas[2...], .OrdinalIgnoreCase))
+					return clas.Length - 1;
+			return -1;
+		}
+
 		CBindings.LibraryInfo library = scope .()
 		{
 			args = cflags,
@@ -150,7 +160,7 @@ class Program
 					if (c != '_')
 						withoutUnderscores.Append(c);
 				for (let clas in classes.Reversed)
-					if (withoutUnderscores.StartsWith(clas, .OrdinalIgnoreCase))
+					if (DoesFunctionNameStartWith(withoutUnderscores, clas) > 0)
 						return clas;
 				return staticClass;
 			},
@@ -175,11 +185,12 @@ class Program
 				}
 				spelling = strBuffer;
 				for (let clas in classes.Reversed)
-					if (spelling.StartsWith(clas, .OrdinalIgnoreCase))
-					{
-						spelling.RemoveFromStart(clas.Length);
-						return;
-					}
+				{
+					int classLength = DoesFunctionNameStartWith(spelling, clas);
+					if (classLength < 0) continue;
+					spelling.RemoveFromStart(classLength);
+					return;
+				}
 				if (spelling.StartsWith(staticClass))
 					spelling.RemoveFromStart(staticClass.Length);
 				else if (spelling.StartsWith('G'))
