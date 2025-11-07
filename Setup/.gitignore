@@ -2,3 +2,9 @@ recovery
 build
 BeefSpace_User.toml
 BeefSpace_Lock.toml
+
+cflags.txt
+libs.txt
+WinGTK4
+WinGTK4.json
+WinGTK4.zip

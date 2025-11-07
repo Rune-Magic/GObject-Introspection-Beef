@@ -18,36 +18,116 @@ class Program
 	static Dictionary<String, String> prettyPaths = new .(64) ~ DeleteDictionaryAndKeysAndValues!(_);
 	static List<String> classes = new .(64) ~ DeleteContainerAndItems!(_);
 
+	[CLink] static extern int32 system(char8*);
+
 	public static int Main(String[] args)
 	{
+		const String pkgConfig 
 #if BF_PLATFORM_WINDOWS
-		usrInclude.Set("C:/msys64/ucrt64/include");
-#else
-		usrInclude.Set("/usr/include");
-#endif
-		while (!Directory.Exists(usrInclude))
+			= @".\WinGTK4\bin\pkg-config.exe";
 		{
-			Console.WriteLine("Unix include dir not found, have you install msys?");
-			Console.Write("Enter path to unix include dir: ");
-			Console.ReadLine(usrInclude..Clear());
+			File.Delete("WinGTK4.json");
+			var command = "wget -O WinGTK4.json https://api.github.com/repos/wingtk/gvsbuild/releases/latest";
+			Runtime.Assert(system(command) == 0);
+
+			/*var tagOutput = File.ReadAllText("WinGTK4.json", ..scope .());
+			var startIndex = tagOutput.IndexOf("\"tag_name\":");
+			StringView tag = tagOutput[startIndex...]
+				..RemoveFromStart("\"tag_name\":".Length)
+				..TrimStart()
+				..TrimStart('"');
+			tag = tag[..<tag.IndexOf('"')];
+			var url = scope $"https://github.com/wingtk/gvsbuild/releases/download/{tag}/GTK4_Gvsbuild_{tag}_x64.zip";
+			Console.WriteLine($"Downloading GTK4_Gvsbuild_{tag}_x64.zip, this may take a while");
+			var downloadCommand = scope $"wget -O WinGTK4.zip {url}";
+			File.Delete("WinGTK4.zip");
+			Runtime.Assert(system(downloadCommand) == 0);*/
+
+			Directory.CreateDirectory("WinGTK4");
+			if (system("7z -version") == 0)
+			{
+				Runtime.Assert (system("7z x WinGTK4.zip -oWinGTK4 -y") == 0);
+			}
+			else
+			{
+				Console.WriteLine("7z not found, install it for faster extracting speeds");
+				Console.WriteLine("Extracting using tar, this may take a while...");
+				//Runtime.Assert(system("tar -xf WinGTK4.zip -C WinGTK4 -P") == 0);
+			}
+		}
+#else
+			= "pkg-config";
+
+		mixin RequirePackage(String package)
+		{
+			while (system(scope $"{pkgConfig} {package}") != 0)
+			{
+				Console.Write($"Please install {package}...");
+				Console.Read();
+			}
 		}
 
-		while (!File.Exists(scope $"{usrInclude}/gobject-introspection-1.0/girepository.h"))
+		RequirePackage!("pkg-config");
+		RequirePackage!("gtk4");
+		RequirePackage!("gobject-introspection-1.0");
+#endif
+
+		Runtime.Assert(system(pkgConfig + " --libs gobject-introspection-1.0 > libs.txt") == 0);
+		Runtime.Assert(system(pkgConfig + " --cflags gobject-introspection-1.0 > cflags.txt") == 0);
+
+		String cflagsStr = File.ReadAllText("cflags.txt", ..scope .(512));
+		cflagsStr.Append('\0');
+		List<char8*> cflags = scope .(16);
+		for (let flag in cflagsStr.Split(' '))
 		{
-			Console.WriteLine("Please install gobject-introspection package");
-			Console.Write("Proceed when ready...");
-			Console.Read();
+			flag.Ptr[flag.Length] = '\0';
+			cflags.Add(flag.Ptr);
+		}
+
+		{
+			String libs = File.ReadAllText("libs.txt", ..scope .(512));
+			String libNamesWindows = scope .(256), libNamesUnix = scope .(256);
+#if BF_PLATFORM_WINDOWS
+			List<StringView> libDirs = scope .(8);
+			for (var flag in libs.Split(' '))
+			{
+				if (!flag.StartsWith("-L")) continue;
+				flag.RemoveFromStart(2);
+				if (flag.EndsWith("../lib") || flag.EndsWith("..\\lib"))
+					flag.RemoveFromEnd("/../lib".Length);
+				libDirs.Add(flag);
+			}
+			String copyPaths = scope .(256);
+#endif
+			for (var flag in libs.Split(' '))
+			{
+				if (!flag.StartsWith("-l")) continue;
+				flag.RemoveFromStart(2);
+				if (!libNamesWindows.IsEmpty) libNamesWindows.Append(';');
+				libNamesWindows.Append(flag, ".lib");
+				if (!libNamesUnix.IsEmpty) libNamesUnix.Append(';');
+				libNamesUnix.Append("lib", flag, ".a");
+#if BF_PLATFORM_WINDOWS
+				for (let dir in libDirs)
+					for (let file in Directory.EnumerateFiles(dir))
+					{
+						String fileName = file.GetFileName(..scope .(64));
+						if (!fileName.Contains(flag)) continue;
+						copyPaths.Append("CopyToDependents(");
+						let filePath = file.GetFilePath(..scope .(256));
+						filePath.Quote(copyPaths);
+						copyPaths.Append(")\n");
+					}
+#endif
+			}
+#if BF_PLATFORM_WINDOWS
+			File.WriteAllText("../copy.script", copyPaths);
+#endif
 		}
 
 		CBindings.LibraryInfo library = scope .()
 		{
-			args = char8*[?](
-				scope $"-I{usrInclude}",
-				scope $"-I{usrInclude}/glib-2.0",
-				scope $"-I{usrInclude}/gobject-introspection-1.0",
-				scope $"-I{usrInclude}/../lib/glib-2.0/include",
-				"-D__GLIB_H_INSIDE__"
-			),
+			args = cflags,
 			getBlock = scope (cursor, spelling) =>
 			{
 				if (cursor.kind == .StructDecl && spelling[0] == 'G')
@@ -93,6 +173,8 @@ class Program
 					}
 				if (spelling.StartsWith(staticClass))
 					spelling.RemoveFromStart(staticClass.Length);
+				else if (spelling.StartsWith('G'))
+					spelling.RemoveFromStart(1);
 			},
 			modifyEnumCaseSpelling = scope (spelling, parentSpelling, strBuffer) =>
 			{
@@ -169,31 +251,39 @@ class Program
 			isHandleUnderlyingOpaque = scope (type, spelling, typedefSpelling) =>
 				typedefSpelling == "GIConv"
 		};
-		StringView outputNamespace = "GObject.Introspection";
-		staticClass = "GIR";
-		Path.GetActualPathName(scope $"{usrInclude}/gobject-introspection-1.0", dir..Clear());
-		CBindings.Generate(
-			scope $"{usrInclude}/gobject-introspection-1.0/girepository.h",
-			"../src/GIRepositiory.bf",
-			outputNamespace, library);
-		staticClass = "GIRFFI";
-		dir.Set(.Empty);
-		CBindings.Generate(
-			scope $"{usrInclude}/gobject-introspection-1.0/girffi.h",
-			"../src/GIRFFI.bf",
-			outputNamespace, library, "GIRepository", "GLib");
-		staticClass = "GLib";
-		Path.GetActualPathName(scope $"{usrInclude}/glib-2.0/glib", dir..Clear());
-		CBindings.Generate(
-			scope $"{usrInclude}/glib-2.0/glib.h",
-			"../src/GLib.bf",
-			outputNamespace, library);
-		staticClass = "GObject";
-		Path.GetActualPathName(scope $"{usrInclude}/glib-2.0/gobject", dir..Clear());
-		CBindings.Generate(
-			scope $"{usrInclude}/glib-2.0/glib-object.h",
-			"../src/GObject.bf",
-			outputNamespace, library);
+
+		void Package(StringView header, StringView outputFile, StringView block, StringView directory = "")
+		{
+			staticClass = block;
+			String headerPath = scope .(64);
+			dir.Clear();
+			String fileNameBuffer = scope .(64);
+			findFile: do
+			{
+				for (var flag in cflagsStr.Split('\0'))
+				{
+					if (!flag.StartsWith("-I")) continue;
+					flag.RemoveFromStart(2);
+					for (let file in Directory.EnumerateFiles(flag))
+					{
+						file.GetFileName(fileNameBuffer..Clear());
+						if (header != fileNameBuffer) continue;
+						file.GetFilePath(headerPath);
+						if (directory != "<none>")
+							Path.GetActualPathName(scope $"{flag}/{directory}", dir);
+						break findFile;
+					}
+				}
+				Runtime.FatalError(scope $"Failed to find header: {header}");
+			}
+			library.customLinkage = scope $"Import({block}.so)";
+			CBindings.Generate(headerPath, outputFile, "GObject.Introspection", library);
+		}
+
+		Package("girepository.h", "../src/GIRepository.bf", "GIR");
+		Package("girffi.h", "../src/GIRFFI.bf", "GIRFFI", "<none>");
+		Package("glib.h", "../src/GLib.bf", "GLib", "glib");
+		Package("glib-object.h", "../src/GObject.bf", "GObject", "gobject");
 		return 0;
 	}
 }

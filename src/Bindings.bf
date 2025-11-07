@@ -5,6 +5,12 @@ namespace GObject.Introspection;
 
 static class GIR
 {
+	public const String so =
+#if BF_PLATFORM_WINDOWS
+		"girepository-1.0.dll";
+#else
+		"libgirepository-1.0.so";
+#endif
 }
 
 [CRepr] struct GValue
@@ -32,6 +38,7 @@ typealias ffi_closure = void*;
 
 static class GIRFFI
 {
+	public const String so = GIR.so;
 }
 
 typealias gint8  = int8;
@@ -55,6 +62,12 @@ typealias time_t = TimeSpan;
 
 static class GLib
 {
+	public const String so =
+#if BF_PLATFORM_WINDOWS
+	"glib-2.0.dll";
+#else
+	"libglib-2.0.so";
+#endif
 }
 
 static
@@ -64,4 +77,14 @@ static
 
 	[NoShow, Comptime(ConstEval=true)]
 	public static guint64 G_GUINT64_CONSTANT(guint64 g) => g;
+}
+
+extension GObject
+{
+	public const String so =
+#if BF_PLATFORM_WINDOWS
+	"gobject-2.0.dll";
+#else
+	"libgobject-2.0.so";
+#endif
 }
