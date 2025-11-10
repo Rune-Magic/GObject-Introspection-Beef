@@ -34,7 +34,7 @@ class Program
 		const String pkgConfig 
 #if BF_PLATFORM_WINDOWS
 			= @".\WinGTK4\bin\pkg-config.exe";
-		{
+		/*{
 			File.Delete("WinGTK4.json");
 			var command = "wget -O WinGTK4.json https://api.github.com/repos/wingtk/gvsbuild/releases/latest";
 			Assert!(system(command) == 0, "Failed to retrieve release data");
@@ -63,7 +63,7 @@ class Program
 				Console.WriteLine("Extracting using tar, this may take a while...");
 				Assert!(system("tar -xf WinGTK4.zip -C WinGTK4 -P") == 0, "Failed to extract WinGTK4.zip");
 			}
-		}
+		}*/
 #else
 			= "pkg-config";
 
@@ -93,9 +93,10 @@ class Program
 			cflags.Add(flag.Ptr);
 		}
 
+		Dictionary<String, String> soList = new .(8);
+		defer { DeleteDictionaryAndKeysAndValues!(soList); }
 		{
 			String libs = File.ReadAllText("libs.txt", ..scope .(512))..Trim();
-			String libNamesWindows = scope .(256), libNamesUnix = scope .(256);
 #if BF_PLATFORM_WINDOWS
 			List<StringView> libDirs = scope .(8);
 			for (var flag in libs.Split(' '))
@@ -115,10 +116,6 @@ class Program
 			{
 				if (!flag.StartsWith("-l")) continue;
 				flag.RemoveFromStart(2);
-				if (!libNamesWindows.IsEmpty) libNamesWindows.Append(';');
-				libNamesWindows.Append(libDirs[0], "/", flag, ".lib");
-				if (!libNamesUnix.IsEmpty) libNamesUnix.Append(';');
-				libNamesUnix.Append("lib", flag, ".a");
 #if BF_PLATFORM_WINDOWS
 				for (let dir in libDirs)
 					for (let file in Directory.EnumerateFiles(dir))
@@ -129,14 +126,19 @@ class Program
 						let filePath = file.GetFilePath(..scope .(256));
 						filePath.Quote(copyPaths);
 						copyPaths.Append(")\n");
+						if (fileName.EndsWith(".dll"))
+							soList.Add(new .(flag), new .(fileName[...^5]));
 					}
+#else
+				for (let dir in libDirs)
+					for (let file in Directory.EnumerateFiles(dir))
+						if (fileName.Contains(flag) && fileName.StartsWith("lib") && fileName.EndsWith(".so"))
+							soList.Add(new .(flag), new .(fileName[4...^5]));
 #endif
 			}
 #if BF_PLATFORM_WINDOWS
 			File.WriteAllText("../copy.script", copyPaths);
 #endif
-			File.WriteAllText("../libs_windows.txt", libNamesWindows);
-			File.WriteAllText("../libs_unix.txt", libNamesUnix);
 		}
 
 		int DoesFunctionNameStartWith(StringView func, StringView clas)
@@ -282,7 +284,12 @@ class Program
 				typedefSpelling == "GIConv"
 		};
 
-		void Package(StringView header, StringView outputFile, StringView block, StringView directory = "")
+		String soFile = scope .("""
+			namespace GObject.Introspection;
+
+
+			""");
+		void Package(StringView header, String aName, StringView outputFile, StringView block, StringView directory = "")
 		{
 			staticClass = block;
 			String headerPath = scope .(64);
@@ -306,13 +313,17 @@ class Program
 				}
 				Runtime.FatalError(scope $"Failed to find header: {header}");
 			}
+			soFile.AppendF($"extension {block} {{ protected const let soBaseName = ""{soList[aName]}""; }}\n");
+			library.customLinkage = scope $"Import({block}.so)";
 			CBindings.Generate(headerPath, outputFile, "GObject.Introspection", library);
 		}
 
-		Package("girepository.h", "../src/GIRepository.bf", "GIR");
-		Package("girffi.h", "../src/GIRFFI.bf", "GIRFFI", "<none>");
-		Package("glib.h", "../src/GLib.bf", "GLib", "glib");
-		Package("glib-object.h", "../src/GObject.bf", "GObject", "gobject");
+		Package("girepository.h", "girepository-1.0", "../src/GIRepository.bf", "GIR");
+		Package("girffi.h", "girepository-1.0", "../src/GIRFFI.bf", "GIRFFI", "<none>");
+		Package("glib.h", "glib-2.0", "../src/GLib.bf", "GLib", "glib");
+		Package("glib-object.h", "gobject-2.0", "../src/GObject.bf", "GObject", "gobject");
+
+		File.WriteAllText("../src/SoBaseNames.bf", soFile);
 		return 0;
 	}
 }

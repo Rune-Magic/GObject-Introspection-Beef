@@ -33,37 +33,37 @@ typealias GIFFIReturnValue = GIArgument;
 
 extension GIRFFI
 {
-	[LinkName("gi_type_tag_get_ffi_type")] public static extern ffi_type* iTypeTagGetFfiType(GITypeTag type_tag, gboolean is_pointer);
+	[Import(GIRFFI.so), LinkName("gi_type_tag_get_ffi_type")] public static extern ffi_type* iTypeTagGetFfiType(GITypeTag type_tag, gboolean is_pointer);
 }
 
 extension GITypeInfo
 {
-	[LinkName("g_type_info_get_ffi_type")] public static extern ffi_type* GetFfiType(GITypeInfo* info);
-	[LinkName("gi_type_info_extract_ffi_return_value")] public static extern void ExtractFfiReturnValue(GITypeInfo* return_info, GIFFIReturnValue* ffi_value, GIArgument* arg);
+	[Import(GIRFFI.so), LinkName("g_type_info_get_ffi_type")] public static extern ffi_type* GetFfiType(GITypeInfo* info);
+	[Import(GIRFFI.so), LinkName("gi_type_info_extract_ffi_return_value")] public static extern void ExtractFfiReturnValue(GITypeInfo* return_info, GIFFIReturnValue* ffi_value, GIArgument* arg);
 }
 
 extension GIRFFI
 {
-	[LinkName("gi_type_tag_extract_ffi_return_value")] public static extern void iTypeTagExtractFfiReturnValue(GITypeTag return_tag, GIInfoType interface_type, GIFFIReturnValue* ffi_value, GIArgument* arg);
+	[Import(GIRFFI.so), LinkName("gi_type_tag_extract_ffi_return_value")] public static extern void iTypeTagExtractFfiReturnValue(GITypeTag return_tag, GIInfoType interface_type, GIFFIReturnValue* ffi_value, GIArgument* arg);
 }
 
 extension GIFunctionInfo
 {
-	[LinkName("g_function_info_prep_invoker")] public static extern gboolean PrepInvoker(GIFunctionInfo* info, GIFunctionInvoker* invoker, GError** error);
+	[Import(GIRFFI.so), LinkName("g_function_info_prep_invoker")] public static extern gboolean PrepInvoker(GIFunctionInfo* info, GIFunctionInvoker* invoker, GError** error);
 }
 
 extension GIRFFI
 {
-	[LinkName("g_function_invoker_new_for_address")] public static extern gboolean FunctionInvokerNewForAddress(gpointer addr, GICallableInfo* info, GIFunctionInvoker* invoker, GError** error);
-	[LinkName("g_function_invoker_destroy")] public static extern void FunctionInvokerDestroy(GIFunctionInvoker* invoker);
+	[Import(GIRFFI.so), LinkName("g_function_invoker_new_for_address")] public static extern gboolean FunctionInvokerNewForAddress(gpointer addr, GICallableInfo* info, GIFunctionInvoker* invoker, GError** error);
+	[Import(GIRFFI.so), LinkName("g_function_invoker_destroy")] public static extern void FunctionInvokerDestroy(GIFunctionInvoker* invoker);
 }
 
 extension GICallableInfo
 {
-	[LinkName("g_callable_info_prepare_closure")] public static extern ffi_closure* PrepareClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
-	[LinkName("g_callable_info_free_closure")] public static extern void FreeClosure(GICallableInfo* callable_info, ffi_closure* closure);
-	[LinkName("g_callable_info_create_closure")] public static extern ffi_closure* CreateClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
-	[LinkName("g_callable_info_get_closure_native_address")] public static extern gpointer* GetClosureNativeAddress(GICallableInfo* callable_info, ffi_closure* closure);
-	[LinkName("g_callable_info_destroy_closure")] public static extern void DestroyClosure(GICallableInfo* callable_info, ffi_closure* closure);
+	[Import(GIRFFI.so), LinkName("g_callable_info_prepare_closure")] public static extern ffi_closure* PrepareClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
+	[Import(GIRFFI.so), LinkName("g_callable_info_free_closure")] public static extern void FreeClosure(GICallableInfo* callable_info, ffi_closure* closure);
+	[Import(GIRFFI.so), LinkName("g_callable_info_create_closure")] public static extern ffi_closure* CreateClosure(GICallableInfo* callable_info, ffi_cif* cif, GIFFIClosureCallback callback, gpointer user_data);
+	[Import(GIRFFI.so), LinkName("g_callable_info_get_closure_native_address")] public static extern gpointer* GetClosureNativeAddress(GICallableInfo* callable_info, ffi_closure* closure);
+	[Import(GIRFFI.so), LinkName("g_callable_info_destroy_closure")] public static extern void DestroyClosure(GICallableInfo* callable_info, ffi_closure* closure);
 }
 

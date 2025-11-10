@@ -95,33 +95,33 @@ struct GTypePlugin;
 
 extension GObject
 {
-	[LinkName("g_type_init")] public static extern void TypeInit();
-	[LinkName("g_type_init_with_debug_flags")] public static extern void TypeInitWithDebugFlags(GTypeDebugFlags debug_flags);
-	[LinkName("g_type_name")] public static extern gchar* TypeName(GType type);
-	[LinkName("g_type_qname")] public static extern GQuark TypeQname(GType type);
-	[LinkName("g_type_from_name")] public static extern GType TypeFromName(gchar* name);
-	[LinkName("g_type_parent")] public static extern GType TypeParent(GType type);
-	[LinkName("g_type_depth")] public static extern guint TypeDepth(GType type);
-	[LinkName("g_type_next_base")] public static extern GType TypeNextBase(GType leaf_type, GType root_type);
-	[LinkName("g_type_is_a")] public static extern gboolean TypeIsA(GType type, GType is_a_type);
-	[LinkName("g_type_class_get")] public static extern gpointer TypeClassGet(GType type);
-	[LinkName("g_type_class_ref")] public static extern gpointer TypeClassRef(GType type);
-	[LinkName("g_type_class_peek")] public static extern gpointer TypeClassPeek(GType type);
-	[LinkName("g_type_class_peek_static")] public static extern gpointer TypeClassPeekStatic(GType type);
-	[LinkName("g_type_class_unref")] public static extern void TypeClassUnref(gpointer g_class);
-	[LinkName("g_type_class_peek_parent")] public static extern gpointer TypeClassPeekParent(gpointer g_class);
-	[LinkName("g_type_interface_peek")] public static extern gpointer TypeInterfacePeek(gpointer instance_class, GType iface_type);
-	[LinkName("g_type_interface_peek_parent")] public static extern gpointer TypeInterfacePeekParent(gpointer g_iface);
-	[LinkName("g_type_default_interface_get")] public static extern gpointer TypeDefaultInterfaceGet(GType g_type);
-	[LinkName("g_type_default_interface_ref")] public static extern gpointer TypeDefaultInterfaceRef(GType g_type);
-	[LinkName("g_type_default_interface_peek")] public static extern gpointer TypeDefaultInterfacePeek(GType g_type);
-	[LinkName("g_type_default_interface_unref")] public static extern void TypeDefaultInterfaceUnref(gpointer g_iface);
-	[LinkName("g_type_children")] public static extern GType* TypeChildren(GType type, guint* n_children);
-	[LinkName("g_type_interfaces")] public static extern GType* TypeInterfaces(GType type, guint* n_interfaces);
-	[LinkName("g_type_set_qdata")] public static extern void TypeSetQdata(GType type, GQuark quark, gpointer data);
-	[LinkName("g_type_get_qdata")] public static extern gpointer TypeGetQdata(GType type, GQuark quark);
-	[LinkName("g_type_query")] public static extern void TypeQuery(GType type, GTypeQuery* query);
-	[LinkName("g_type_get_instance_count")] public static extern c_int TypeGetInstanceCount(GType type);
+	[Import(GObject.so), LinkName("g_type_init")] public static extern void TypeInit();
+	[Import(GObject.so), LinkName("g_type_init_with_debug_flags")] public static extern void TypeInitWithDebugFlags(GTypeDebugFlags debug_flags);
+	[Import(GObject.so), LinkName("g_type_name")] public static extern gchar* TypeName(GType type);
+	[Import(GObject.so), LinkName("g_type_qname")] public static extern GQuark TypeQname(GType type);
+	[Import(GObject.so), LinkName("g_type_from_name")] public static extern GType TypeFromName(gchar* name);
+	[Import(GObject.so), LinkName("g_type_parent")] public static extern GType TypeParent(GType type);
+	[Import(GObject.so), LinkName("g_type_depth")] public static extern guint TypeDepth(GType type);
+	[Import(GObject.so), LinkName("g_type_next_base")] public static extern GType TypeNextBase(GType leaf_type, GType root_type);
+	[Import(GObject.so), LinkName("g_type_is_a")] public static extern gboolean TypeIsA(GType type, GType is_a_type);
+	[Import(GObject.so), LinkName("g_type_class_get")] public static extern gpointer TypeClassGet(GType type);
+	[Import(GObject.so), LinkName("g_type_class_ref")] public static extern gpointer TypeClassRef(GType type);
+	[Import(GObject.so), LinkName("g_type_class_peek")] public static extern gpointer TypeClassPeek(GType type);
+	[Import(GObject.so), LinkName("g_type_class_peek_static")] public static extern gpointer TypeClassPeekStatic(GType type);
+	[Import(GObject.so), LinkName("g_type_class_unref")] public static extern void TypeClassUnref(gpointer g_class);
+	[Import(GObject.so), LinkName("g_type_class_peek_parent")] public static extern gpointer TypeClassPeekParent(gpointer g_class);
+	[Import(GObject.so), LinkName("g_type_interface_peek")] public static extern gpointer TypeInterfacePeek(gpointer instance_class, GType iface_type);
+	[Import(GObject.so), LinkName("g_type_interface_peek_parent")] public static extern gpointer TypeInterfacePeekParent(gpointer g_iface);
+	[Import(GObject.so), LinkName("g_type_default_interface_get")] public static extern gpointer TypeDefaultInterfaceGet(GType g_type);
+	[Import(GObject.so), LinkName("g_type_default_interface_ref")] public static extern gpointer TypeDefaultInterfaceRef(GType g_type);
+	[Import(GObject.so), LinkName("g_type_default_interface_peek")] public static extern gpointer TypeDefaultInterfacePeek(GType g_type);
+	[Import(GObject.so), LinkName("g_type_default_interface_unref")] public static extern void TypeDefaultInterfaceUnref(gpointer g_iface);
+	[Import(GObject.so), LinkName("g_type_children")] public static extern GType* TypeChildren(GType type, guint* n_children);
+	[Import(GObject.so), LinkName("g_type_interfaces")] public static extern GType* TypeInterfaces(GType type, guint* n_interfaces);
+	[Import(GObject.so), LinkName("g_type_set_qdata")] public static extern void TypeSetQdata(GType type, GQuark quark, gpointer data);
+	[Import(GObject.so), LinkName("g_type_get_qdata")] public static extern gpointer TypeGetQdata(GType type, GQuark quark);
+	[Import(GObject.so), LinkName("g_type_query")] public static extern void TypeQuery(GType type, GTypeQuery* query);
+	[Import(GObject.so), LinkName("g_type_get_instance_count")] public static extern c_int TypeGetInstanceCount(GType type);
 }
 
 /** GBaseInitFunc:
@@ -753,48 +753,48 @@ function gchar* GTypeValueLCopyFunc(GValue* value, guint n_collect_values, GType
 
 extension GObject
 {
-	[LinkName("g_type_register_static")] public static extern GType TypeRegisterStatic(GType parent_type, gchar* type_name, GTypeInfo* info, GTypeFlags flags);
-	[LinkName("g_type_register_static_simple")] public static extern GType TypeRegisterStaticSimple(GType parent_type, gchar* type_name, guint class_size, GClassInitFunc class_init, guint instance_size, GInstanceInitFunc instance_init, GTypeFlags flags);
-	[LinkName("g_type_register_dynamic")] public static extern GType TypeRegisterDynamic(GType parent_type, gchar* type_name, GTypePlugin* plugin, GTypeFlags flags);
-	[LinkName("g_type_register_fundamental")] public static extern GType TypeRegisterFundamental(GType type_id, gchar* type_name, GTypeInfo* info, GTypeFundamentalInfo* finfo, GTypeFlags flags);
-	[LinkName("g_type_add_interface_static")] public static extern void TypeAddInterfaceStatic(GType instance_type, GType interface_type, GInterfaceInfo* info);
-	[LinkName("g_type_add_interface_dynamic")] public static extern void TypeAddInterfaceDynamic(GType instance_type, GType interface_type, GTypePlugin* plugin);
-	[LinkName("g_type_interface_add_prerequisite")] public static extern void TypeInterfaceAddPrerequisite(GType interface_type, GType prerequisite_type);
-	[LinkName("g_type_interface_prerequisites")] public static extern GType* TypeInterfacePrerequisites(GType interface_type, guint* n_prerequisites);
-	[LinkName("g_type_interface_instantiatable_prerequisite")] public static extern GType TypeInterfaceInstantiatablePrerequisite(GType interface_type);
-	[LinkName("g_type_class_add_private")] public static extern void TypeClassAddPrivate(gpointer g_class, gsize private_size);
-	[LinkName("g_type_add_instance_private")] public static extern gint TypeAddInstancePrivate(GType class_type, gsize private_size);
-	[LinkName("g_type_instance_get_private")] public static extern gpointer TypeInstanceGetPrivate(GTypeInstance* instance, GType private_type);
-	[LinkName("g_type_class_adjust_private_offset")] public static extern void TypeClassAdjustPrivateOffset(gpointer g_class, gint* private_size_or_offset);
-	[LinkName("g_type_add_class_private")] public static extern void TypeAddClassPrivate(GType class_type, gsize private_size);
-	[LinkName("g_type_class_get_private")] public static extern gpointer TypeClassGetPrivate(GTypeClass* klass, GType private_type);
-	[LinkName("g_type_class_get_instance_private_offset")] public static extern gint TypeClassGetInstancePrivateOffset(gpointer g_class);
-	[LinkName("g_type_ensure")] public static extern void TypeEnsure(GType type);
-	[LinkName("g_type_get_type_registration_serial")] public static extern guint TypeGetTypeRegistrationSerial();
-	[LinkName("g_type_get_plugin")] public static extern GTypePlugin* TypeGetPlugin(GType type);
-	[LinkName("g_type_interface_get_plugin")] public static extern GTypePlugin* TypeInterfaceGetPlugin(GType instance_type, GType interface_type);
-	[LinkName("g_type_fundamental_next")] public static extern GType TypeFundamentalNext();
-	[LinkName("g_type_fundamental")] public static extern GType TypeFundamental(GType type_id);
-	[LinkName("g_type_create_instance")] public static extern GTypeInstance* TypeCreateInstance(GType type);
-	[LinkName("g_type_free_instance")] public static extern void TypeFreeInstance(GTypeInstance* instance);
-	[LinkName("g_type_add_class_cache_func")] public static extern void TypeAddClassCacheFunc(gpointer cache_data, GTypeClassCacheFunc cache_func);
-	[LinkName("g_type_remove_class_cache_func")] public static extern void TypeRemoveClassCacheFunc(gpointer cache_data, GTypeClassCacheFunc cache_func);
-	[LinkName("g_type_class_unref_uncached")] public static extern void TypeClassUnrefUncached(gpointer g_class);
-	[LinkName("g_type_add_interface_check")] public static extern void TypeAddInterfaceCheck(gpointer check_data, GTypeInterfaceCheckFunc check_func);
-	[LinkName("g_type_remove_interface_check")] public static extern void TypeRemoveInterfaceCheck(gpointer check_data, GTypeInterfaceCheckFunc check_func);
-	[LinkName("g_type_value_table_peek")] public static extern GTypeValueTable* TypeValueTablePeek(GType type);
-	[LinkName("g_type_check_instance")] public static extern gboolean TypeCheckInstance(GTypeInstance* instance);
-	[LinkName("g_type_check_instance_cast")] public static extern GTypeInstance* TypeCheckInstanceCast(GTypeInstance* instance, GType iface_type);
-	[LinkName("g_type_check_instance_is_a")] public static extern gboolean TypeCheckInstanceIsA(GTypeInstance* instance, GType iface_type);
-	[LinkName("g_type_check_instance_is_fundamentally_a")] public static extern gboolean TypeCheckInstanceIsFundamentallyA(GTypeInstance* instance, GType fundamental_type);
-	[LinkName("g_type_check_class_cast")] public static extern GTypeClass* TypeCheckClassCast(GTypeClass* g_class, GType is_a_type);
-	[LinkName("g_type_check_class_is_a")] public static extern gboolean TypeCheckClassIsA(GTypeClass* g_class, GType is_a_type);
-	[LinkName("g_type_check_is_value_type")] public static extern gboolean TypeCheckIsValueType(GType type);
-	[LinkName("g_type_check_value")] public static extern gboolean TypeCheckValue(GValue* value);
-	[LinkName("g_type_check_value_holds")] public static extern gboolean TypeCheckValueHolds(GValue* value, GType type);
-	[LinkName("g_type_test_flags")] public static extern gboolean TypeTestFlags(GType type, guint flags);
-	[LinkName("g_type_name_from_instance")] public static extern gchar* TypeNameFromInstance(GTypeInstance* instance);
-	[LinkName("g_type_name_from_class")] public static extern gchar* TypeNameFromClass(GTypeClass* g_class);
+	[Import(GObject.so), LinkName("g_type_register_static")] public static extern GType TypeRegisterStatic(GType parent_type, gchar* type_name, GTypeInfo* info, GTypeFlags flags);
+	[Import(GObject.so), LinkName("g_type_register_static_simple")] public static extern GType TypeRegisterStaticSimple(GType parent_type, gchar* type_name, guint class_size, GClassInitFunc class_init, guint instance_size, GInstanceInitFunc instance_init, GTypeFlags flags);
+	[Import(GObject.so), LinkName("g_type_register_dynamic")] public static extern GType TypeRegisterDynamic(GType parent_type, gchar* type_name, GTypePlugin* plugin, GTypeFlags flags);
+	[Import(GObject.so), LinkName("g_type_register_fundamental")] public static extern GType TypeRegisterFundamental(GType type_id, gchar* type_name, GTypeInfo* info, GTypeFundamentalInfo* finfo, GTypeFlags flags);
+	[Import(GObject.so), LinkName("g_type_add_interface_static")] public static extern void TypeAddInterfaceStatic(GType instance_type, GType interface_type, GInterfaceInfo* info);
+	[Import(GObject.so), LinkName("g_type_add_interface_dynamic")] public static extern void TypeAddInterfaceDynamic(GType instance_type, GType interface_type, GTypePlugin* plugin);
+	[Import(GObject.so), LinkName("g_type_interface_add_prerequisite")] public static extern void TypeInterfaceAddPrerequisite(GType interface_type, GType prerequisite_type);
+	[Import(GObject.so), LinkName("g_type_interface_prerequisites")] public static extern GType* TypeInterfacePrerequisites(GType interface_type, guint* n_prerequisites);
+	[Import(GObject.so), LinkName("g_type_interface_instantiatable_prerequisite")] public static extern GType TypeInterfaceInstantiatablePrerequisite(GType interface_type);
+	[Import(GObject.so), LinkName("g_type_class_add_private")] public static extern void TypeClassAddPrivate(gpointer g_class, gsize private_size);
+	[Import(GObject.so), LinkName("g_type_add_instance_private")] public static extern gint TypeAddInstancePrivate(GType class_type, gsize private_size);
+	[Import(GObject.so), LinkName("g_type_instance_get_private")] public static extern gpointer TypeInstanceGetPrivate(GTypeInstance* instance, GType private_type);
+	[Import(GObject.so), LinkName("g_type_class_adjust_private_offset")] public static extern void TypeClassAdjustPrivateOffset(gpointer g_class, gint* private_size_or_offset);
+	[Import(GObject.so), LinkName("g_type_add_class_private")] public static extern void TypeAddClassPrivate(GType class_type, gsize private_size);
+	[Import(GObject.so), LinkName("g_type_class_get_private")] public static extern gpointer TypeClassGetPrivate(GTypeClass* klass, GType private_type);
+	[Import(GObject.so), LinkName("g_type_class_get_instance_private_offset")] public static extern gint TypeClassGetInstancePrivateOffset(gpointer g_class);
+	[Import(GObject.so), LinkName("g_type_ensure")] public static extern void TypeEnsure(GType type);
+	[Import(GObject.so), LinkName("g_type_get_type_registration_serial")] public static extern guint TypeGetTypeRegistrationSerial();
+	[Import(GObject.so), LinkName("g_type_get_plugin")] public static extern GTypePlugin* TypeGetPlugin(GType type);
+	[Import(GObject.so), LinkName("g_type_interface_get_plugin")] public static extern GTypePlugin* TypeInterfaceGetPlugin(GType instance_type, GType interface_type);
+	[Import(GObject.so), LinkName("g_type_fundamental_next")] public static extern GType TypeFundamentalNext();
+	[Import(GObject.so), LinkName("g_type_fundamental")] public static extern GType TypeFundamental(GType type_id);
+	[Import(GObject.so), LinkName("g_type_create_instance")] public static extern GTypeInstance* TypeCreateInstance(GType type);
+	[Import(GObject.so), LinkName("g_type_free_instance")] public static extern void TypeFreeInstance(GTypeInstance* instance);
+	[Import(GObject.so), LinkName("g_type_add_class_cache_func")] public static extern void TypeAddClassCacheFunc(gpointer cache_data, GTypeClassCacheFunc cache_func);
+	[Import(GObject.so), LinkName("g_type_remove_class_cache_func")] public static extern void TypeRemoveClassCacheFunc(gpointer cache_data, GTypeClassCacheFunc cache_func);
+	[Import(GObject.so), LinkName("g_type_class_unref_uncached")] public static extern void TypeClassUnrefUncached(gpointer g_class);
+	[Import(GObject.so), LinkName("g_type_add_interface_check")] public static extern void TypeAddInterfaceCheck(gpointer check_data, GTypeInterfaceCheckFunc check_func);
+	[Import(GObject.so), LinkName("g_type_remove_interface_check")] public static extern void TypeRemoveInterfaceCheck(gpointer check_data, GTypeInterfaceCheckFunc check_func);
+	[Import(GObject.so), LinkName("g_type_value_table_peek")] public static extern GTypeValueTable* TypeValueTablePeek(GType type);
+	[Import(GObject.so), LinkName("g_type_check_instance")] public static extern gboolean TypeCheckInstance(GTypeInstance* instance);
+	[Import(GObject.so), LinkName("g_type_check_instance_cast")] public static extern GTypeInstance* TypeCheckInstanceCast(GTypeInstance* instance, GType iface_type);
+	[Import(GObject.so), LinkName("g_type_check_instance_is_a")] public static extern gboolean TypeCheckInstanceIsA(GTypeInstance* instance, GType iface_type);
+	[Import(GObject.so), LinkName("g_type_check_instance_is_fundamentally_a")] public static extern gboolean TypeCheckInstanceIsFundamentallyA(GTypeInstance* instance, GType fundamental_type);
+	[Import(GObject.so), LinkName("g_type_check_class_cast")] public static extern GTypeClass* TypeCheckClassCast(GTypeClass* g_class, GType is_a_type);
+	[Import(GObject.so), LinkName("g_type_check_class_is_a")] public static extern gboolean TypeCheckClassIsA(GTypeClass* g_class, GType is_a_type);
+	[Import(GObject.so), LinkName("g_type_check_is_value_type")] public static extern gboolean TypeCheckIsValueType(GType type);
+	[Import(GObject.so), LinkName("g_type_check_value")] public static extern gboolean TypeCheckValue(GValue* value);
+	[Import(GObject.so), LinkName("g_type_check_value_holds")] public static extern gboolean TypeCheckValueHolds(GValue* value, GType type);
+	[Import(GObject.so), LinkName("g_type_test_flags")] public static extern gboolean TypeTestFlags(GType type, guint flags);
+	[Import(GObject.so), LinkName("g_type_name_from_instance")] public static extern gchar* TypeNameFromInstance(GTypeInstance* instance);
+	[Import(GObject.so), LinkName("g_type_name_from_class")] public static extern gchar* TypeNameFromClass(GTypeClass* g_class);
 }
 
 /** GValueTransform:
@@ -810,18 +810,18 @@ function void GValueTransform(GValue* src_value, GValue* dest_value);
 
 extension GObject
 {
-	[LinkName("g_value_init")] public static extern GValue* ValueInit(GValue* value, GType g_type);
-	[LinkName("g_value_copy")] public static extern void ValueCopy(GValue* src_value, GValue* dest_value);
-	[LinkName("g_value_reset")] public static extern GValue* ValueReset(GValue* value);
-	[LinkName("g_value_unset")] public static extern void ValueUnset(GValue* value);
-	[LinkName("g_value_set_instance")] public static extern void ValueSetInstance(GValue* value, gpointer instance);
-	[LinkName("g_value_init_from_instance")] public static extern void ValueInitFromInstance(GValue* value, gpointer instance);
-	[LinkName("g_value_fits_pointer")] public static extern gboolean ValueFitsPointer(GValue* value);
-	[LinkName("g_value_peek_pointer")] public static extern gpointer ValuePeekPointer(GValue* value);
-	[LinkName("g_value_type_compatible")] public static extern gboolean ValueTypeCompatible(GType src_type, GType dest_type);
-	[LinkName("g_value_type_transformable")] public static extern gboolean ValueTypeTransformable(GType src_type, GType dest_type);
-	[LinkName("g_value_transform")] public static extern gboolean ValueTransform(GValue* src_value, GValue* dest_value);
-	[LinkName("g_value_register_transform_func")] public static extern void ValueRegisterTransformFunc(GType src_type, GType dest_type, GValueTransform transform_func);
+	[Import(GObject.so), LinkName("g_value_init")] public static extern GValue* ValueInit(GValue* value, GType g_type);
+	[Import(GObject.so), LinkName("g_value_copy")] public static extern void ValueCopy(GValue* src_value, GValue* dest_value);
+	[Import(GObject.so), LinkName("g_value_reset")] public static extern GValue* ValueReset(GValue* value);
+	[Import(GObject.so), LinkName("g_value_unset")] public static extern void ValueUnset(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_instance")] public static extern void ValueSetInstance(GValue* value, gpointer instance);
+	[Import(GObject.so), LinkName("g_value_init_from_instance")] public static extern void ValueInitFromInstance(GValue* value, gpointer instance);
+	[Import(GObject.so), LinkName("g_value_fits_pointer")] public static extern gboolean ValueFitsPointer(GValue* value);
+	[Import(GObject.so), LinkName("g_value_peek_pointer")] public static extern gpointer ValuePeekPointer(GValue* value);
+	[Import(GObject.so), LinkName("g_value_type_compatible")] public static extern gboolean ValueTypeCompatible(GType src_type, GType dest_type);
+	[Import(GObject.so), LinkName("g_value_type_transformable")] public static extern gboolean ValueTypeTransformable(GType src_type, GType dest_type);
+	[Import(GObject.so), LinkName("g_value_transform")] public static extern gboolean ValueTransform(GValue* src_value, GValue* dest_value);
+	[Import(GObject.so), LinkName("g_value_register_transform_func")] public static extern void ValueRegisterTransformFunc(GType src_type, GType dest_type, GValueTransform transform_func);
 }
 
 /** GParamFlags:
@@ -948,31 +948,31 @@ struct GParamSpecPool;
 
 extension GObject
 {
-	[LinkName("g_param_spec_ref")] public static extern GParamSpec* ParamSpecRef(GParamSpec* pspec);
-	[LinkName("g_param_spec_unref")] public static extern void ParamSpecUnref(GParamSpec* pspec);
-	[LinkName("g_param_spec_sink")] public static extern void ParamSpecSink(GParamSpec* pspec);
-	[LinkName("g_param_spec_ref_sink")] public static extern GParamSpec* ParamSpecRefSink(GParamSpec* pspec);
-	[LinkName("g_param_spec_get_qdata")] public static extern gpointer ParamSpecGetQdata(GParamSpec* pspec, GQuark quark);
-	[LinkName("g_param_spec_set_qdata")] public static extern void ParamSpecSetQdata(GParamSpec* pspec, GQuark quark, gpointer data);
-	[LinkName("g_param_spec_set_qdata_full")] public static extern void ParamSpecSetQdataFull(GParamSpec* pspec, GQuark quark, gpointer data, GDestroyNotify destroy);
-	[LinkName("g_param_spec_steal_qdata")] public static extern gpointer ParamSpecStealQdata(GParamSpec* pspec, GQuark quark);
-	[LinkName("g_param_spec_get_redirect_target")] public static extern GParamSpec* ParamSpecGetRedirectTarget(GParamSpec* pspec);
-	[LinkName("g_param_value_set_default")] public static extern void ParamValueSetDefault(GParamSpec* pspec, GValue* value);
-	[LinkName("g_param_value_defaults")] public static extern gboolean ParamValueDefaults(GParamSpec* pspec, GValue* value);
-	[LinkName("g_param_value_validate")] public static extern gboolean ParamValueValidate(GParamSpec* pspec, GValue* value);
-	[LinkName("g_param_value_is_valid")] public static extern gboolean ParamValueIsValid(GParamSpec* pspec, GValue* value);
-	[LinkName("g_param_value_convert")] public static extern gboolean ParamValueConvert(GParamSpec* pspec, GValue* src_value, GValue* dest_value, gboolean strict_validation);
-	[LinkName("g_param_values_cmp")] public static extern gint ParamValuesCmp(GParamSpec* pspec, GValue* value1, GValue* value2);
-	[LinkName("g_param_spec_get_name")] public static extern gchar* ParamSpecGetName(GParamSpec* pspec);
-	[LinkName("g_param_spec_get_nick")] public static extern gchar* ParamSpecGetNick(GParamSpec* pspec);
-	[LinkName("g_param_spec_get_blurb")] public static extern gchar* ParamSpecGetBlurb(GParamSpec* pspec);
-	[LinkName("g_value_set_param")] public static extern void ValueSetParam(GValue* value, GParamSpec* param);
-	[LinkName("g_value_get_param")] public static extern GParamSpec* ValueGetParam(GValue* value);
-	[LinkName("g_value_dup_param")] public static extern GParamSpec* ValueDupParam(GValue* value);
-	[LinkName("g_value_take_param")] public static extern void ValueTakeParam(GValue* value, GParamSpec* param);
-	[LinkName("g_value_set_param_take_ownership")] public static extern void ValueSetParamTakeOwnership(GValue* value, GParamSpec* param);
-	[LinkName("g_param_spec_get_default_value")] public static extern GValue* ParamSpecGetDefaultValue(GParamSpec* pspec);
-	[LinkName("g_param_spec_get_name_quark")] public static extern GQuark ParamSpecGetNameQuark(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_ref")] public static extern GParamSpec* ParamSpecRef(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_unref")] public static extern void ParamSpecUnref(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_sink")] public static extern void ParamSpecSink(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_ref_sink")] public static extern GParamSpec* ParamSpecRefSink(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_get_qdata")] public static extern gpointer ParamSpecGetQdata(GParamSpec* pspec, GQuark quark);
+	[Import(GObject.so), LinkName("g_param_spec_set_qdata")] public static extern void ParamSpecSetQdata(GParamSpec* pspec, GQuark quark, gpointer data);
+	[Import(GObject.so), LinkName("g_param_spec_set_qdata_full")] public static extern void ParamSpecSetQdataFull(GParamSpec* pspec, GQuark quark, gpointer data, GDestroyNotify destroy);
+	[Import(GObject.so), LinkName("g_param_spec_steal_qdata")] public static extern gpointer ParamSpecStealQdata(GParamSpec* pspec, GQuark quark);
+	[Import(GObject.so), LinkName("g_param_spec_get_redirect_target")] public static extern GParamSpec* ParamSpecGetRedirectTarget(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_value_set_default")] public static extern void ParamValueSetDefault(GParamSpec* pspec, GValue* value);
+	[Import(GObject.so), LinkName("g_param_value_defaults")] public static extern gboolean ParamValueDefaults(GParamSpec* pspec, GValue* value);
+	[Import(GObject.so), LinkName("g_param_value_validate")] public static extern gboolean ParamValueValidate(GParamSpec* pspec, GValue* value);
+	[Import(GObject.so), LinkName("g_param_value_is_valid")] public static extern gboolean ParamValueIsValid(GParamSpec* pspec, GValue* value);
+	[Import(GObject.so), LinkName("g_param_value_convert")] public static extern gboolean ParamValueConvert(GParamSpec* pspec, GValue* src_value, GValue* dest_value, gboolean strict_validation);
+	[Import(GObject.so), LinkName("g_param_values_cmp")] public static extern gint ParamValuesCmp(GParamSpec* pspec, GValue* value1, GValue* value2);
+	[Import(GObject.so), LinkName("g_param_spec_get_name")] public static extern gchar* ParamSpecGetName(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_get_nick")] public static extern gchar* ParamSpecGetNick(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_get_blurb")] public static extern gchar* ParamSpecGetBlurb(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_value_set_param")] public static extern void ValueSetParam(GValue* value, GParamSpec* param);
+	[Import(GObject.so), LinkName("g_value_get_param")] public static extern GParamSpec* ValueGetParam(GValue* value);
+	[Import(GObject.so), LinkName("g_value_dup_param")] public static extern GParamSpec* ValueDupParam(GValue* value);
+	[Import(GObject.so), LinkName("g_value_take_param")] public static extern void ValueTakeParam(GValue* value, GParamSpec* param);
+	[Import(GObject.so), LinkName("g_value_set_param_take_ownership")] public static extern void ValueSetParamTakeOwnership(GValue* value, GParamSpec* param);
+	[Import(GObject.so), LinkName("g_param_spec_get_default_value")] public static extern GValue* ParamSpecGetDefaultValue(GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_get_name_quark")] public static extern GQuark ParamSpecGetNameQuark(GParamSpec* pspec);
 }
 
 
@@ -1014,29 +1014,29 @@ extension GObject
 
 extension GObject
 {
-	[LinkName("g_param_type_register_static")] public static extern GType ParamTypeRegisterStatic(gchar* name, GParamSpecTypeInfo* pspec_info);
-	[LinkName("g_param_spec_is_valid_name")] public static extern gboolean ParamSpecIsValidName(gchar* name);
+	[Import(GObject.so), LinkName("g_param_type_register_static")] public static extern GType ParamTypeRegisterStatic(gchar* name, GParamSpecTypeInfo* pspec_info);
+	[Import(GObject.so), LinkName("g_param_spec_is_valid_name")] public static extern gboolean ParamSpecIsValidName(gchar* name);
 }
 
 static
 {
-	[LinkName("_g_param_type_register_static_constant")] public static extern GType ParamTypeRegisterStaticConstant(gchar* name, GParamSpecTypeInfo* pspec_info, GType opt_type);
+	[Import(GObject.so), LinkName("_g_param_type_register_static_constant")] public static extern GType ParamTypeRegisterStaticConstant(gchar* name, GParamSpecTypeInfo* pspec_info, GType opt_type);
 }
 
 extension GObject
 {
-	[LinkName("g_param_spec_internal")] public static extern gpointer ParamSpecInternal(GType param_type, gchar* name, gchar* nick, gchar* blurb, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_internal")] public static extern gpointer ParamSpecInternal(GType param_type, gchar* name, gchar* nick, gchar* blurb, GParamFlags flags);
 }
 
 extension GParamSpecPool
 {
-	[LinkName("g_param_spec_pool_new")] public static extern GParamSpecPool* New(gboolean type_prefixing);
-	[LinkName("g_param_spec_pool_insert")] public static extern void Insert(GParamSpecPool* pool, GParamSpec* pspec, GType owner_type);
-	[LinkName("g_param_spec_pool_remove")] public static extern void Remove(GParamSpecPool* pool, GParamSpec* pspec);
-	[LinkName("g_param_spec_pool_lookup")] public static extern GParamSpec* Lookup(GParamSpecPool* pool, gchar* param_name, GType owner_type, gboolean walk_ancestors);
-	[LinkName("g_param_spec_pool_list_owned")] public static extern GList* ListOwned(GParamSpecPool* pool, GType owner_type);
-	[LinkName("g_param_spec_pool_list")] public static extern GParamSpec** List(GParamSpecPool* pool, GType owner_type, guint* n_pspecs_p);
-	[LinkName("g_param_spec_pool_free")] public static extern void Free(GParamSpecPool* pool);
+	[Import(GObject.so), LinkName("g_param_spec_pool_new")] public static extern GParamSpecPool* New(gboolean type_prefixing);
+	[Import(GObject.so), LinkName("g_param_spec_pool_insert")] public static extern void Insert(GParamSpecPool* pool, GParamSpec* pspec, GType owner_type);
+	[Import(GObject.so), LinkName("g_param_spec_pool_remove")] public static extern void Remove(GParamSpecPool* pool, GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_param_spec_pool_lookup")] public static extern GParamSpec* Lookup(GParamSpecPool* pool, gchar* param_name, GType owner_type, gboolean walk_ancestors);
+	[Import(GObject.so), LinkName("g_param_spec_pool_list_owned")] public static extern GList* ListOwned(GParamSpecPool* pool, GType owner_type);
+	[Import(GObject.so), LinkName("g_param_spec_pool_list")] public static extern GParamSpec** List(GParamSpecPool* pool, GType owner_type, guint* n_pspecs_p);
+	[Import(GObject.so), LinkName("g_param_spec_pool_free")] public static extern void Free(GParamSpecPool* pool);
 }
 
 
@@ -1136,68 +1136,68 @@ function void GVaClosureMarshal(GClosure* closure, GValue* return_value, gpointe
 
 extension GObject
 {
-	[LinkName("g_cclosure_new")] public static extern GClosure* CclosureNew(GCallback callback_func, gpointer user_data, GClosureNotify destroy_data);
-	[LinkName("g_cclosure_new_swap")] public static extern GClosure* CclosureNewSwap(GCallback callback_func, gpointer user_data, GClosureNotify destroy_data);
-	[LinkName("g_signal_type_cclosure_new")] public static extern GClosure* SignalTypeCclosureNew(GType itype, guint struct_offset);
-	[LinkName("g_closure_ref")] public static extern GClosure* ClosureRef(GClosure* closure);
-	[LinkName("g_closure_sink")] public static extern void ClosureSink(GClosure* closure);
-	[LinkName("g_closure_unref")] public static extern void ClosureUnref(GClosure* closure);
-	[LinkName("g_closure_new_simple")] public static extern GClosure* ClosureNewSimple(guint sizeof_closure, gpointer data);
-	[LinkName("g_closure_add_finalize_notifier")] public static extern void ClosureAddFinalizeNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
-	[LinkName("g_closure_remove_finalize_notifier")] public static extern void ClosureRemoveFinalizeNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
-	[LinkName("g_closure_add_invalidate_notifier")] public static extern void ClosureAddInvalidateNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
-	[LinkName("g_closure_remove_invalidate_notifier")] public static extern void ClosureRemoveInvalidateNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
-	[LinkName("g_closure_add_marshal_guards")] public static extern void ClosureAddMarshalGuards(GClosure* closure, gpointer pre_marshal_data, GClosureNotify pre_marshal_notify, gpointer post_marshal_data, GClosureNotify post_marshal_notify);
-	[LinkName("g_closure_set_marshal")] public static extern void ClosureSetMarshal(GClosure* closure, GClosureMarshal marshal);
-	[LinkName("g_closure_set_meta_marshal")] public static extern void ClosureSetMetaMarshal(GClosure* closure, gpointer marshal_data, GClosureMarshal meta_marshal);
-	[LinkName("g_closure_invalidate")] public static extern void ClosureInvalidate(GClosure* closure);
-	[LinkName("g_closure_invoke")] public static extern void ClosureInvoke(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint);
-	[LinkName("g_cclosure_marshal_generic")] public static extern void CclosureMarshalGeneric(GClosure* closure, GValue* return_gvalue, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_generic_va")] public static extern void CclosureMarshalGenericVa(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args_list, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__VOID")] public static extern void CclosureMarshalVOIDVOID(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__VOIDv")] public static extern void CclosureMarshalVOIDVOIDv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__BOOLEAN")] public static extern void CclosureMarshalVOIDBOOLEAN(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__BOOLEANv")] public static extern void CclosureMarshalVOIDBOOLEANv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__CHAR")] public static extern void CclosureMarshalVOIDCHAR(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__CHARv")] public static extern void CclosureMarshalVOIDCHARv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__UCHAR")] public static extern void CclosureMarshalVOIDUCHAR(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__UCHARv")] public static extern void CclosureMarshalVOIDUCHARv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__INT")] public static extern void CclosureMarshalVOIDINT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__INTv")] public static extern void CclosureMarshalVOIDINTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__UINT")] public static extern void CclosureMarshalVOIDUINT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__UINTv")] public static extern void CclosureMarshalVOIDUINTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__LONG")] public static extern void CclosureMarshalVOIDLONG(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__LONGv")] public static extern void CclosureMarshalVOIDLONGv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__ULONG")] public static extern void CclosureMarshalVOIDULONG(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__ULONGv")] public static extern void CclosureMarshalVOIDULONGv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__ENUM")] public static extern void CclosureMarshalVOIDENUM(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__ENUMv")] public static extern void CclosureMarshalVOIDENUMv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__FLAGS")] public static extern void CclosureMarshalVOIDFLAGS(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__FLAGSv")] public static extern void CclosureMarshalVOIDFLAGSv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__FLOAT")] public static extern void CclosureMarshalVOIDFLOAT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__FLOATv")] public static extern void CclosureMarshalVOIDFLOATv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__DOUBLE")] public static extern void CclosureMarshalVOIDDOUBLE(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__DOUBLEv")] public static extern void CclosureMarshalVOIDDOUBLEv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__STRING")] public static extern void CclosureMarshalVOIDSTRING(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__STRINGv")] public static extern void CclosureMarshalVOIDSTRINGv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__PARAM")] public static extern void CclosureMarshalVOIDPARAM(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__PARAMv")] public static extern void CclosureMarshalVOIDPARAMv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__BOXED")] public static extern void CclosureMarshalVOIDBOXED(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__BOXEDv")] public static extern void CclosureMarshalVOIDBOXEDv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__POINTER")] public static extern void CclosureMarshalVOIDPOINTER(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__POINTERv")] public static extern void CclosureMarshalVOIDPOINTERv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__OBJECT")] public static extern void CclosureMarshalVOIDOBJECT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__OBJECTv")] public static extern void CclosureMarshalVOIDOBJECTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__VARIANT")] public static extern void CclosureMarshalVOIDVARIANT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__VARIANTv")] public static extern void CclosureMarshalVOIDVARIANTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_VOID__UINT_POINTER")] public static extern void CclosureMarshalVOIDUINTPOINTER(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_VOID__UINT_POINTERv")] public static extern void CclosureMarshalVOIDUINTPOINTERv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_BOOLEAN__FLAGS")] public static extern void CclosureMarshalBOOLEANFLAGS(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_BOOLEAN__FLAGSv")] public static extern void CclosureMarshalBOOLEANFLAGSv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_STRING__OBJECT_POINTER")] public static extern void CclosureMarshalSTRINGOBJECTPOINTER(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_STRING__OBJECT_POINTERv")] public static extern void CclosureMarshalSTRINGOBJECTPOINTERv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
-	[LinkName("g_cclosure_marshal_BOOLEAN__BOXED_BOXED")] public static extern void CclosureMarshalBOOLEANBOXEDBOXED(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
-	[LinkName("g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv")] public static extern void CclosureMarshalBOOLEANBOXEDBOXEDv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_new")] public static extern GClosure* CclosureNew(GCallback callback_func, gpointer user_data, GClosureNotify destroy_data);
+	[Import(GObject.so), LinkName("g_cclosure_new_swap")] public static extern GClosure* CclosureNewSwap(GCallback callback_func, gpointer user_data, GClosureNotify destroy_data);
+	[Import(GObject.so), LinkName("g_signal_type_cclosure_new")] public static extern GClosure* SignalTypeCclosureNew(GType itype, guint struct_offset);
+	[Import(GObject.so), LinkName("g_closure_ref")] public static extern GClosure* ClosureRef(GClosure* closure);
+	[Import(GObject.so), LinkName("g_closure_sink")] public static extern void ClosureSink(GClosure* closure);
+	[Import(GObject.so), LinkName("g_closure_unref")] public static extern void ClosureUnref(GClosure* closure);
+	[Import(GObject.so), LinkName("g_closure_new_simple")] public static extern GClosure* ClosureNewSimple(guint sizeof_closure, gpointer data);
+	[Import(GObject.so), LinkName("g_closure_add_finalize_notifier")] public static extern void ClosureAddFinalizeNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
+	[Import(GObject.so), LinkName("g_closure_remove_finalize_notifier")] public static extern void ClosureRemoveFinalizeNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
+	[Import(GObject.so), LinkName("g_closure_add_invalidate_notifier")] public static extern void ClosureAddInvalidateNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
+	[Import(GObject.so), LinkName("g_closure_remove_invalidate_notifier")] public static extern void ClosureRemoveInvalidateNotifier(GClosure* closure, gpointer notify_data, GClosureNotify notify_func);
+	[Import(GObject.so), LinkName("g_closure_add_marshal_guards")] public static extern void ClosureAddMarshalGuards(GClosure* closure, gpointer pre_marshal_data, GClosureNotify pre_marshal_notify, gpointer post_marshal_data, GClosureNotify post_marshal_notify);
+	[Import(GObject.so), LinkName("g_closure_set_marshal")] public static extern void ClosureSetMarshal(GClosure* closure, GClosureMarshal marshal);
+	[Import(GObject.so), LinkName("g_closure_set_meta_marshal")] public static extern void ClosureSetMetaMarshal(GClosure* closure, gpointer marshal_data, GClosureMarshal meta_marshal);
+	[Import(GObject.so), LinkName("g_closure_invalidate")] public static extern void ClosureInvalidate(GClosure* closure);
+	[Import(GObject.so), LinkName("g_closure_invoke")] public static extern void ClosureInvoke(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_generic")] public static extern void CclosureMarshalGeneric(GClosure* closure, GValue* return_gvalue, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_generic_va")] public static extern void CclosureMarshalGenericVa(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args_list, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__VOID")] public static extern void CclosureMarshalVOIDVOID(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__VOIDv")] public static extern void CclosureMarshalVOIDVOIDv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__BOOLEAN")] public static extern void CclosureMarshalVOIDBOOLEAN(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__BOOLEANv")] public static extern void CclosureMarshalVOIDBOOLEANv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__CHAR")] public static extern void CclosureMarshalVOIDCHAR(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__CHARv")] public static extern void CclosureMarshalVOIDCHARv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__UCHAR")] public static extern void CclosureMarshalVOIDUCHAR(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__UCHARv")] public static extern void CclosureMarshalVOIDUCHARv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__INT")] public static extern void CclosureMarshalVOIDINT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__INTv")] public static extern void CclosureMarshalVOIDINTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__UINT")] public static extern void CclosureMarshalVOIDUINT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__UINTv")] public static extern void CclosureMarshalVOIDUINTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__LONG")] public static extern void CclosureMarshalVOIDLONG(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__LONGv")] public static extern void CclosureMarshalVOIDLONGv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__ULONG")] public static extern void CclosureMarshalVOIDULONG(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__ULONGv")] public static extern void CclosureMarshalVOIDULONGv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__ENUM")] public static extern void CclosureMarshalVOIDENUM(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__ENUMv")] public static extern void CclosureMarshalVOIDENUMv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__FLAGS")] public static extern void CclosureMarshalVOIDFLAGS(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__FLAGSv")] public static extern void CclosureMarshalVOIDFLAGSv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__FLOAT")] public static extern void CclosureMarshalVOIDFLOAT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__FLOATv")] public static extern void CclosureMarshalVOIDFLOATv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__DOUBLE")] public static extern void CclosureMarshalVOIDDOUBLE(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__DOUBLEv")] public static extern void CclosureMarshalVOIDDOUBLEv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__STRING")] public static extern void CclosureMarshalVOIDSTRING(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__STRINGv")] public static extern void CclosureMarshalVOIDSTRINGv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__PARAM")] public static extern void CclosureMarshalVOIDPARAM(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__PARAMv")] public static extern void CclosureMarshalVOIDPARAMv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__BOXED")] public static extern void CclosureMarshalVOIDBOXED(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__BOXEDv")] public static extern void CclosureMarshalVOIDBOXEDv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__POINTER")] public static extern void CclosureMarshalVOIDPOINTER(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__POINTERv")] public static extern void CclosureMarshalVOIDPOINTERv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__OBJECT")] public static extern void CclosureMarshalVOIDOBJECT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__OBJECTv")] public static extern void CclosureMarshalVOIDOBJECTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__VARIANT")] public static extern void CclosureMarshalVOIDVARIANT(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__VARIANTv")] public static extern void CclosureMarshalVOIDVARIANTv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__UINT_POINTER")] public static extern void CclosureMarshalVOIDUINTPOINTER(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_VOID__UINT_POINTERv")] public static extern void CclosureMarshalVOIDUINTPOINTERv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_BOOLEAN__FLAGS")] public static extern void CclosureMarshalBOOLEANFLAGS(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_BOOLEAN__FLAGSv")] public static extern void CclosureMarshalBOOLEANFLAGSv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_STRING__OBJECT_POINTER")] public static extern void CclosureMarshalSTRINGOBJECTPOINTER(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_STRING__OBJECT_POINTERv")] public static extern void CclosureMarshalSTRINGOBJECTPOINTERv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_BOOLEAN__BOXED_BOXED")] public static extern void CclosureMarshalBOOLEANBOXEDBOXED(GClosure* closure, GValue* return_value, guint n_param_values, GValue* param_values, gpointer invocation_hint, gpointer marshal_data);
+	[Import(GObject.so), LinkName("g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv")] public static extern void CclosureMarshalBOOLEANBOXEDBOXEDv(GClosure* closure, GValue* return_value, gpointer instance, VarArgs args, gpointer marshal_data, c_int n_params, GType* param_types);
 }
 
 
@@ -1392,204 +1392,204 @@ function gboolean GSignalAccumulator(GSignalInvocationHint* ihint, GValue* retur
 
 extension GObject
 {
-	[LinkName("g_signal_newv")] public static extern guint SignalNewv(gchar* signal_name, GType itype, GSignalFlags signal_flags, GClosure* class_closure, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, GType* param_types);
-	[LinkName("g_signal_new_valist")] public static extern guint SignalNewValist(gchar* signal_name, GType itype, GSignalFlags signal_flags, GClosure* class_closure, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, VarArgs args);
-	[LinkName("g_signal_new")] public static extern guint SignalNew(gchar* signal_name, GType itype, GSignalFlags signal_flags, guint class_offset, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, ...);
-	[LinkName("g_signal_new_class_handler")] public static extern guint SignalNewClassHandler(gchar* signal_name, GType itype, GSignalFlags signal_flags, GCallback class_handler, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, ...);
-	[LinkName("g_signal_set_va_marshaller")] public static extern void SignalSetVaMarshaller(guint signal_id, GType instance_type, GSignalCVaMarshaller va_marshaller);
-	[LinkName("g_signal_emitv")] public static extern void SignalEmitv(GValue* instance_and_params, guint signal_id, GQuark detail, GValue* return_value);
-	[LinkName("g_signal_emit_valist")] public static extern void SignalEmitValist(gpointer instance, guint signal_id, GQuark detail, VarArgs var_args);
-	[LinkName("g_signal_emit")] public static extern void SignalEmit(gpointer instance, guint signal_id, GQuark detail, ...);
-	[LinkName("g_signal_emit_by_name")] public static extern void SignalEmitByName(gpointer instance, gchar* detailed_signal, ...);
-	[LinkName("g_signal_lookup")] public static extern guint SignalLookup(gchar* name, GType itype);
-	[LinkName("g_signal_name")] public static extern gchar* SignalName(guint signal_id);
-	[LinkName("g_signal_query")] public static extern void SignalQuery(guint signal_id, GSignalQuery* query);
-	[LinkName("g_signal_list_ids")] public static extern guint* SignalListIds(GType itype, guint* n_ids);
-	[LinkName("g_signal_is_valid_name")] public static extern gboolean SignalIsValidName(gchar* name);
-	[LinkName("g_signal_parse_name")] public static extern gboolean SignalParseName(gchar* detailed_signal, GType itype, guint* signal_id_p, GQuark* detail_p, gboolean force_detail_quark);
-	[LinkName("g_signal_get_invocation_hint")] public static extern GSignalInvocationHint* SignalGetInvocationHint(gpointer instance);
-	[LinkName("g_signal_stop_emission")] public static extern void SignalStopEmission(gpointer instance, guint signal_id, GQuark detail);
-	[LinkName("g_signal_stop_emission_by_name")] public static extern void SignalStopEmissionByName(gpointer instance, gchar* detailed_signal);
-	[LinkName("g_signal_add_emission_hook")] public static extern gulong SignalAddEmissionHook(guint signal_id, GQuark detail, GSignalEmissionHook hook_func, gpointer hook_data, GDestroyNotify data_destroy);
-	[LinkName("g_signal_remove_emission_hook")] public static extern void SignalRemoveEmissionHook(guint signal_id, gulong hook_id);
-	[LinkName("g_signal_has_handler_pending")] public static extern gboolean SignalHasHandlerPending(gpointer instance, guint signal_id, GQuark detail, gboolean may_be_blocked);
-	[LinkName("g_signal_connect_closure_by_id")] public static extern gulong SignalConnectClosureById(gpointer instance, guint signal_id, GQuark detail, GClosure* closure, gboolean after);
-	[LinkName("g_signal_connect_closure")] public static extern gulong SignalConnectClosure(gpointer instance, gchar* detailed_signal, GClosure* closure, gboolean after);
-	[LinkName("g_signal_connect_data")] public static extern gulong SignalConnectData(gpointer instance, gchar* detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags);
-	[LinkName("g_signal_handler_block")] public static extern void SignalHandlerBlock(gpointer instance, gulong handler_id);
-	[LinkName("g_signal_handler_unblock")] public static extern void SignalHandlerUnblock(gpointer instance, gulong handler_id);
-	[LinkName("g_signal_handler_disconnect")] public static extern void SignalHandlerDisconnect(gpointer instance, gulong handler_id);
-	[LinkName("g_signal_handler_is_connected")] public static extern gboolean SignalHandlerIsConnected(gpointer instance, gulong handler_id);
-	[LinkName("g_signal_handler_find")] public static extern gulong SignalHandlerFind(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
-	[LinkName("g_signal_handlers_block_matched")] public static extern guint SignalHandlersBlockMatched(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
-	[LinkName("g_signal_handlers_unblock_matched")] public static extern guint SignalHandlersUnblockMatched(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
-	[LinkName("g_signal_handlers_disconnect_matched")] public static extern guint SignalHandlersDisconnectMatched(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
-	[LinkName("g_clear_signal_handler")] public static extern void ClearSignalHandler(gulong* handler_id_ptr, gpointer instance);
-	[LinkName("g_signal_override_class_closure")] public static extern void SignalOverrideClassClosure(guint signal_id, GType instance_type, GClosure* class_closure);
-	[LinkName("g_signal_override_class_handler")] public static extern void SignalOverrideClassHandler(gchar* signal_name, GType instance_type, GCallback class_handler);
-	[LinkName("g_signal_chain_from_overridden")] public static extern void SignalChainFromOverridden(GValue* instance_and_params, GValue* return_value);
-	[LinkName("g_signal_chain_from_overridden_handler")] public static extern void SignalChainFromOverriddenHandler(gpointer instance, ...);
-	[LinkName("g_signal_accumulator_true_handled")] public static extern gboolean SignalAccumulatorTrueHandled(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer dummy);
-	[LinkName("g_signal_accumulator_first_wins")] public static extern gboolean SignalAccumulatorFirstWins(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer dummy);
-	[LinkName("g_signal_handlers_destroy")] public static extern void SignalHandlersDestroy(gpointer instance);
+	[Import(GObject.so), LinkName("g_signal_newv")] public static extern guint SignalNewv(gchar* signal_name, GType itype, GSignalFlags signal_flags, GClosure* class_closure, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, GType* param_types);
+	[Import(GObject.so), LinkName("g_signal_new_valist")] public static extern guint SignalNewValist(gchar* signal_name, GType itype, GSignalFlags signal_flags, GClosure* class_closure, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, VarArgs args);
+	[Import(GObject.so), LinkName("g_signal_new")] public static extern guint SignalNew(gchar* signal_name, GType itype, GSignalFlags signal_flags, guint class_offset, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, ...);
+	[Import(GObject.so), LinkName("g_signal_new_class_handler")] public static extern guint SignalNewClassHandler(gchar* signal_name, GType itype, GSignalFlags signal_flags, GCallback class_handler, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params, ...);
+	[Import(GObject.so), LinkName("g_signal_set_va_marshaller")] public static extern void SignalSetVaMarshaller(guint signal_id, GType instance_type, GSignalCVaMarshaller va_marshaller);
+	[Import(GObject.so), LinkName("g_signal_emitv")] public static extern void SignalEmitv(GValue* instance_and_params, guint signal_id, GQuark detail, GValue* return_value);
+	[Import(GObject.so), LinkName("g_signal_emit_valist")] public static extern void SignalEmitValist(gpointer instance, guint signal_id, GQuark detail, VarArgs var_args);
+	[Import(GObject.so), LinkName("g_signal_emit")] public static extern void SignalEmit(gpointer instance, guint signal_id, GQuark detail, ...);
+	[Import(GObject.so), LinkName("g_signal_emit_by_name")] public static extern void SignalEmitByName(gpointer instance, gchar* detailed_signal, ...);
+	[Import(GObject.so), LinkName("g_signal_lookup")] public static extern guint SignalLookup(gchar* name, GType itype);
+	[Import(GObject.so), LinkName("g_signal_name")] public static extern gchar* SignalName(guint signal_id);
+	[Import(GObject.so), LinkName("g_signal_query")] public static extern void SignalQuery(guint signal_id, GSignalQuery* query);
+	[Import(GObject.so), LinkName("g_signal_list_ids")] public static extern guint* SignalListIds(GType itype, guint* n_ids);
+	[Import(GObject.so), LinkName("g_signal_is_valid_name")] public static extern gboolean SignalIsValidName(gchar* name);
+	[Import(GObject.so), LinkName("g_signal_parse_name")] public static extern gboolean SignalParseName(gchar* detailed_signal, GType itype, guint* signal_id_p, GQuark* detail_p, gboolean force_detail_quark);
+	[Import(GObject.so), LinkName("g_signal_get_invocation_hint")] public static extern GSignalInvocationHint* SignalGetInvocationHint(gpointer instance);
+	[Import(GObject.so), LinkName("g_signal_stop_emission")] public static extern void SignalStopEmission(gpointer instance, guint signal_id, GQuark detail);
+	[Import(GObject.so), LinkName("g_signal_stop_emission_by_name")] public static extern void SignalStopEmissionByName(gpointer instance, gchar* detailed_signal);
+	[Import(GObject.so), LinkName("g_signal_add_emission_hook")] public static extern gulong SignalAddEmissionHook(guint signal_id, GQuark detail, GSignalEmissionHook hook_func, gpointer hook_data, GDestroyNotify data_destroy);
+	[Import(GObject.so), LinkName("g_signal_remove_emission_hook")] public static extern void SignalRemoveEmissionHook(guint signal_id, gulong hook_id);
+	[Import(GObject.so), LinkName("g_signal_has_handler_pending")] public static extern gboolean SignalHasHandlerPending(gpointer instance, guint signal_id, GQuark detail, gboolean may_be_blocked);
+	[Import(GObject.so), LinkName("g_signal_connect_closure_by_id")] public static extern gulong SignalConnectClosureById(gpointer instance, guint signal_id, GQuark detail, GClosure* closure, gboolean after);
+	[Import(GObject.so), LinkName("g_signal_connect_closure")] public static extern gulong SignalConnectClosure(gpointer instance, gchar* detailed_signal, GClosure* closure, gboolean after);
+	[Import(GObject.so), LinkName("g_signal_connect_data")] public static extern gulong SignalConnectData(gpointer instance, gchar* detailed_signal, GCallback c_handler, gpointer data, GClosureNotify destroy_data, GConnectFlags connect_flags);
+	[Import(GObject.so), LinkName("g_signal_handler_block")] public static extern void SignalHandlerBlock(gpointer instance, gulong handler_id);
+	[Import(GObject.so), LinkName("g_signal_handler_unblock")] public static extern void SignalHandlerUnblock(gpointer instance, gulong handler_id);
+	[Import(GObject.so), LinkName("g_signal_handler_disconnect")] public static extern void SignalHandlerDisconnect(gpointer instance, gulong handler_id);
+	[Import(GObject.so), LinkName("g_signal_handler_is_connected")] public static extern gboolean SignalHandlerIsConnected(gpointer instance, gulong handler_id);
+	[Import(GObject.so), LinkName("g_signal_handler_find")] public static extern gulong SignalHandlerFind(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
+	[Import(GObject.so), LinkName("g_signal_handlers_block_matched")] public static extern guint SignalHandlersBlockMatched(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
+	[Import(GObject.so), LinkName("g_signal_handlers_unblock_matched")] public static extern guint SignalHandlersUnblockMatched(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
+	[Import(GObject.so), LinkName("g_signal_handlers_disconnect_matched")] public static extern guint SignalHandlersDisconnectMatched(gpointer instance, GSignalMatchType mask, guint signal_id, GQuark detail, GClosure* closure, gpointer func, gpointer data);
+	[Import(GObject.so), LinkName("g_clear_signal_handler")] public static extern void ClearSignalHandler(gulong* handler_id_ptr, gpointer instance);
+	[Import(GObject.so), LinkName("g_signal_override_class_closure")] public static extern void SignalOverrideClassClosure(guint signal_id, GType instance_type, GClosure* class_closure);
+	[Import(GObject.so), LinkName("g_signal_override_class_handler")] public static extern void SignalOverrideClassHandler(gchar* signal_name, GType instance_type, GCallback class_handler);
+	[Import(GObject.so), LinkName("g_signal_chain_from_overridden")] public static extern void SignalChainFromOverridden(GValue* instance_and_params, GValue* return_value);
+	[Import(GObject.so), LinkName("g_signal_chain_from_overridden_handler")] public static extern void SignalChainFromOverriddenHandler(gpointer instance, ...);
+	[Import(GObject.so), LinkName("g_signal_accumulator_true_handled")] public static extern gboolean SignalAccumulatorTrueHandled(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer dummy);
+	[Import(GObject.so), LinkName("g_signal_accumulator_first_wins")] public static extern gboolean SignalAccumulatorFirstWins(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer dummy);
+	[Import(GObject.so), LinkName("g_signal_handlers_destroy")] public static extern void SignalHandlersDestroy(gpointer instance);
 }
 
 static
 {
-	[LinkName("_g_signals_destroy")] public static extern void SignalsDestroy(GType itype);
+	[Import(GObject.so), LinkName("_g_signals_destroy")] public static extern void SignalsDestroy(GType itype);
 }
 
 extension GObject
 {
-	[LinkName("g_date_get_type")] public static extern GType DateGetType();
-	[LinkName("g_strv_get_type")] public static extern GType StrvGetType();
-	[LinkName("g_gstring_get_type")] public static extern GType GstringGetType();
+	[Import(GObject.so), LinkName("g_date_get_type")] public static extern GType DateGetType();
+	[Import(GObject.so), LinkName("g_strv_get_type")] public static extern GType StrvGetType();
+	[Import(GObject.so), LinkName("g_gstring_get_type")] public static extern GType GstringGetType();
 }
 
 extension GHashTable
 {
-	[LinkName("g_hash_table_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_hash_table_get_type")] public static extern GType GetType();
 }
 
 extension GObject
 {
-	[LinkName("g_array_get_type")] public static extern GType ArrayGetType();
-	[LinkName("g_byte_array_get_type")] public static extern GType ByteArrayGetType();
-	[LinkName("g_ptr_array_get_type")] public static extern GType PtrArrayGetType();
+	[Import(GObject.so), LinkName("g_array_get_type")] public static extern GType ArrayGetType();
+	[Import(GObject.so), LinkName("g_byte_array_get_type")] public static extern GType ByteArrayGetType();
+	[Import(GObject.so), LinkName("g_ptr_array_get_type")] public static extern GType PtrArrayGetType();
 }
 
 extension GBytes
 {
-	[LinkName("g_bytes_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_bytes_get_type")] public static extern GType GetType();
 }
 
 extension GVariant
 {
-	[LinkName("g_variant_type_get_gtype")] public static extern GType TypeGetGtype();
+	[Import(GObject.so), LinkName("g_variant_type_get_gtype")] public static extern GType TypeGetGtype();
 }
 
 extension GRegex
 {
-	[LinkName("g_regex_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_regex_get_type")] public static extern GType GetType();
 }
 
 extension GMatchInfo
 {
-	[LinkName("g_match_info_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_match_info_get_type")] public static extern GType GetType();
 }
 
 extension GObject
 {
-	[LinkName("g_error_get_type")] public static extern GType ErrorGetType();
+	[Import(GObject.so), LinkName("g_error_get_type")] public static extern GType ErrorGetType();
 }
 
 extension GDateTime
 {
-	[LinkName("g_date_time_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_date_time_get_type")] public static extern GType GetType();
 }
 
 extension GTimeZone
 {
-	[LinkName("g_time_zone_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_time_zone_get_type")] public static extern GType GetType();
 }
 
 extension GObject
 {
-	[LinkName("g_io_channel_get_type")] public static extern GType IoChannelGetType();
-	[LinkName("g_io_condition_get_type")] public static extern GType IoConditionGetType();
+	[Import(GObject.so), LinkName("g_io_channel_get_type")] public static extern GType IoChannelGetType();
+	[Import(GObject.so), LinkName("g_io_condition_get_type")] public static extern GType IoConditionGetType();
 }
 
 extension GVariant
 {
-	[LinkName("g_variant_builder_get_type")] public static extern GType BuilderGetType();
-	[LinkName("g_variant_dict_get_type")] public static extern GType DictGetType();
+	[Import(GObject.so), LinkName("g_variant_builder_get_type")] public static extern GType BuilderGetType();
+	[Import(GObject.so), LinkName("g_variant_dict_get_type")] public static extern GType DictGetType();
 }
 
 extension GKeyFile
 {
-	[LinkName("g_key_file_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_key_file_get_type")] public static extern GType GetType();
 }
 
 extension GMainLoop
 {
-	[LinkName("g_main_loop_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_main_loop_get_type")] public static extern GType GetType();
 }
 
 extension GMainContext
 {
-	[LinkName("g_main_context_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_main_context_get_type")] public static extern GType GetType();
 }
 
 extension GObject
 {
-	[LinkName("g_source_get_type")] public static extern GType SourceGetType();
-	[LinkName("g_pollfd_get_type")] public static extern GType PollfdGetType();
-	[LinkName("g_thread_get_type")] public static extern GType ThreadGetType();
+	[Import(GObject.so), LinkName("g_source_get_type")] public static extern GType SourceGetType();
+	[Import(GObject.so), LinkName("g_pollfd_get_type")] public static extern GType PollfdGetType();
+	[Import(GObject.so), LinkName("g_thread_get_type")] public static extern GType ThreadGetType();
 }
 
 extension GChecksum
 {
-	[LinkName("g_checksum_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_checksum_get_type")] public static extern GType GetType();
 }
 
 extension GMarkupParseContext
 {
-	[LinkName("g_markup_parse_context_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_markup_parse_context_get_type")] public static extern GType GetType();
 }
 
 extension GMappedFile
 {
-	[LinkName("g_mapped_file_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_mapped_file_get_type")] public static extern GType GetType();
 }
 
 extension GOptionGroup
 {
-	[LinkName("g_option_group_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_option_group_get_type")] public static extern GType GetType();
 }
 
 extension GUri
 {
-	[LinkName("g_uri_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_uri_get_type")] public static extern GType GetType();
 }
 
 extension GTree
 {
-	[LinkName("g_tree_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_tree_get_type")] public static extern GType GetType();
 }
 
 extension GPatternSpec
 {
-	[LinkName("g_pattern_spec_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_pattern_spec_get_type")] public static extern GType GetType();
 }
 
 extension GBookmarkFile
 {
-	[LinkName("g_bookmark_file_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_bookmark_file_get_type")] public static extern GType GetType();
 }
 
 extension GHmac
 {
-	[LinkName("g_hmac_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_hmac_get_type")] public static extern GType GetType();
 }
 
 extension GDir
 {
-	[LinkName("g_dir_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_dir_get_type")] public static extern GType GetType();
 }
 
 extension GRand
 {
-	[LinkName("g_rand_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_rand_get_type")] public static extern GType GetType();
 }
 
 extension GStrvBuilder
 {
-	[LinkName("g_strv_builder_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_strv_builder_get_type")] public static extern GType GetType();
 }
 
 extension GVariant
 {
-	[LinkName("g_variant_get_gtype")] public static extern GType GetGtype();
+	[Import(GObject.so), LinkName("g_variant_get_gtype")] public static extern GType GetGtype();
 }
 
 /** GBoxedCopyFunc:
@@ -1612,17 +1612,17 @@ function void GBoxedFreeFunc(gpointer boxed);
 
 extension GObject
 {
-	[LinkName("g_boxed_copy")] public static extern gpointer BoxedCopy(GType boxed_type, gconstpointer src_boxed);
-	[LinkName("g_boxed_free")] public static extern void BoxedFree(GType boxed_type, gpointer boxed);
-	[LinkName("g_value_set_boxed")] public static extern void ValueSetBoxed(GValue* value, gconstpointer v_boxed);
-	[LinkName("g_value_set_static_boxed")] public static extern void ValueSetStaticBoxed(GValue* value, gconstpointer v_boxed);
-	[LinkName("g_value_take_boxed")] public static extern void ValueTakeBoxed(GValue* value, gconstpointer v_boxed);
-	[LinkName("g_value_set_boxed_take_ownership")] public static extern void ValueSetBoxedTakeOwnership(GValue* value, gconstpointer v_boxed);
-	[LinkName("g_value_get_boxed")] public static extern gpointer ValueGetBoxed(GValue* value);
-	[LinkName("g_value_dup_boxed")] public static extern gpointer ValueDupBoxed(GValue* value);
-	[LinkName("g_boxed_type_register_static")] public static extern GType BoxedTypeRegisterStatic(gchar* name, GBoxedCopyFunc boxed_copy, GBoxedFreeFunc boxed_free);
-	[LinkName("g_closure_get_type")] public static extern GType ClosureGetType();
-	[LinkName("g_value_get_type")] public static extern GType ValueGetType();
+	[Import(GObject.so), LinkName("g_boxed_copy")] public static extern gpointer BoxedCopy(GType boxed_type, gconstpointer src_boxed);
+	[Import(GObject.so), LinkName("g_boxed_free")] public static extern void BoxedFree(GType boxed_type, gpointer boxed);
+	[Import(GObject.so), LinkName("g_value_set_boxed")] public static extern void ValueSetBoxed(GValue* value, gconstpointer v_boxed);
+	[Import(GObject.so), LinkName("g_value_set_static_boxed")] public static extern void ValueSetStaticBoxed(GValue* value, gconstpointer v_boxed);
+	[Import(GObject.so), LinkName("g_value_take_boxed")] public static extern void ValueTakeBoxed(GValue* value, gconstpointer v_boxed);
+	[Import(GObject.so), LinkName("g_value_set_boxed_take_ownership")] public static extern void ValueSetBoxedTakeOwnership(GValue* value, gconstpointer v_boxed);
+	[Import(GObject.so), LinkName("g_value_get_boxed")] public static extern gpointer ValueGetBoxed(GValue* value);
+	[Import(GObject.so), LinkName("g_value_dup_boxed")] public static extern gpointer ValueDupBoxed(GValue* value);
+	[Import(GObject.so), LinkName("g_boxed_type_register_static")] public static extern GType BoxedTypeRegisterStatic(gchar* name, GBoxedCopyFunc boxed_copy, GBoxedFreeFunc boxed_free);
+	[Import(GObject.so), LinkName("g_closure_get_type")] public static extern GType ClosureGetType();
+	[Import(GObject.so), LinkName("g_value_get_type")] public static extern GType ValueGetType();
 }
 
 
@@ -1857,44 +1857,44 @@ extension GObject
 	 *  
 	 *  The class structure for the GInitiallyUnowned type.
 	 */
-	[LinkName("g_initially_unowned_get_type")] public static extern GType InitiallyUnownedGetType();
+	[Import(GObject.so), LinkName("g_initially_unowned_get_type")] public static extern GType InitiallyUnownedGetType();
 
-	[LinkName("g_object_class_install_property")] public static extern void ClassInstallProperty(GObjectClass* oclass, guint property_id, GParamSpec* pspec);
-	[LinkName("g_object_class_find_property")] public static extern GParamSpec* ClassFindProperty(GObjectClass* oclass, gchar* property_name);
-	[LinkName("g_object_class_list_properties")] public static extern GParamSpec** ClassListProperties(GObjectClass* oclass, guint* n_properties);
-	[LinkName("g_object_class_override_property")] public static extern void ClassOverrideProperty(GObjectClass* oclass, guint property_id, gchar* name);
-	[LinkName("g_object_class_install_properties")] public static extern void ClassInstallProperties(GObjectClass* oclass, guint n_pspecs, GParamSpec** pspecs);
-	[LinkName("g_object_interface_install_property")] public static extern void InterfaceInstallProperty(gpointer g_iface, GParamSpec* pspec);
-	[LinkName("g_object_interface_find_property")] public static extern GParamSpec* InterfaceFindProperty(gpointer g_iface, gchar* property_name);
-	[LinkName("g_object_interface_list_properties")] public static extern GParamSpec** InterfaceListProperties(gpointer g_iface, guint* n_properties_p);
-	[LinkName("g_object_get_type")] public static extern GType GetType();
-	[LinkName("g_object_new")] public static extern gpointer New(GType object_type, gchar* first_property_name, ...);
-	[LinkName("g_object_new_with_properties")] public static extern GObject* NewWithProperties(GType object_type, guint n_properties, c_char** names, GValue* values);
-	[LinkName("g_object_newv")] public static extern gpointer Newv(GType object_type, guint n_parameters, GParameter* parameters);
-	[LinkName("g_object_new_valist")] public static extern GObject* NewValist(GType object_type, gchar* first_property_name, VarArgs var_args);
-	[LinkName("g_object_set")] public static extern void Set(gpointer object, gchar* first_property_name, ...);
-	[LinkName("g_object_get")] public static extern void Get(gpointer object, gchar* first_property_name, ...);
-	[LinkName("g_object_connect")] public static extern gpointer Connect(gpointer object, gchar* signal_spec, ...);
-	[LinkName("g_object_disconnect")] public static extern void Disconnect(gpointer object, gchar* signal_spec, ...);
-	[LinkName("g_object_setv")] public static extern void Setv(GObject* object, guint n_properties, gchar** names, GValue* values);
-	[LinkName("g_object_set_valist")] public static extern void SetValist(GObject* object, gchar* first_property_name, VarArgs var_args);
-	[LinkName("g_object_getv")] public static extern void Getv(GObject* object, guint n_properties, gchar** names, GValue* values);
-	[LinkName("g_object_get_valist")] public static extern void GetValist(GObject* object, gchar* first_property_name, VarArgs var_args);
-	[LinkName("g_object_set_property")] public static extern void SetProperty(GObject* object, gchar* property_name, GValue* value);
-	[LinkName("g_object_get_property")] public static extern void GetProperty(GObject* object, gchar* property_name, GValue* value);
-	[LinkName("g_object_freeze_notify")] public static extern void FreezeNotify(GObject* object);
-	[LinkName("g_object_notify")] public static extern void Notify(GObject* object, gchar* property_name);
-	[LinkName("g_object_notify_by_pspec")] public static extern void NotifyByPspec(GObject* object, GParamSpec* pspec);
-	[LinkName("g_object_thaw_notify")] public static extern void ThawNotify(GObject* object);
-	[LinkName("g_object_is_floating")] public static extern gboolean IsFloating(gpointer object);
-	[LinkName("g_object_ref_sink")] public static extern gpointer RefSink(gpointer object);
-	[LinkName("g_object_take_ref")] public static extern gpointer TakeRef(gpointer object);
-	[LinkName("g_object_ref")] public static extern gpointer Ref(gpointer object);
-	[LinkName("g_object_unref")] public static extern void Unref(gpointer object);
-	[LinkName("g_object_weak_ref")] public static extern void WeakRef(GObject* object, GWeakNotify notify, gpointer data);
-	[LinkName("g_object_weak_unref")] public static extern void WeakUnref(GObject* object, GWeakNotify notify, gpointer data);
-	[LinkName("g_object_add_weak_pointer")] public static extern void AddWeakPointer(GObject* object, gpointer* weak_pointer_location);
-	[LinkName("g_object_remove_weak_pointer")] public static extern void RemoveWeakPointer(GObject* object, gpointer* weak_pointer_location);
+	[Import(GObject.so), LinkName("g_object_class_install_property")] public static extern void ClassInstallProperty(GObjectClass* oclass, guint property_id, GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_object_class_find_property")] public static extern GParamSpec* ClassFindProperty(GObjectClass* oclass, gchar* property_name);
+	[Import(GObject.so), LinkName("g_object_class_list_properties")] public static extern GParamSpec** ClassListProperties(GObjectClass* oclass, guint* n_properties);
+	[Import(GObject.so), LinkName("g_object_class_override_property")] public static extern void ClassOverrideProperty(GObjectClass* oclass, guint property_id, gchar* name);
+	[Import(GObject.so), LinkName("g_object_class_install_properties")] public static extern void ClassInstallProperties(GObjectClass* oclass, guint n_pspecs, GParamSpec** pspecs);
+	[Import(GObject.so), LinkName("g_object_interface_install_property")] public static extern void InterfaceInstallProperty(gpointer g_iface, GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_object_interface_find_property")] public static extern GParamSpec* InterfaceFindProperty(gpointer g_iface, gchar* property_name);
+	[Import(GObject.so), LinkName("g_object_interface_list_properties")] public static extern GParamSpec** InterfaceListProperties(gpointer g_iface, guint* n_properties_p);
+	[Import(GObject.so), LinkName("g_object_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_object_new")] public static extern gpointer New(GType object_type, gchar* first_property_name, ...);
+	[Import(GObject.so), LinkName("g_object_new_with_properties")] public static extern GObject* NewWithProperties(GType object_type, guint n_properties, c_char** names, GValue* values);
+	[Import(GObject.so), LinkName("g_object_newv")] public static extern gpointer Newv(GType object_type, guint n_parameters, GParameter* parameters);
+	[Import(GObject.so), LinkName("g_object_new_valist")] public static extern GObject* NewValist(GType object_type, gchar* first_property_name, VarArgs var_args);
+	[Import(GObject.so), LinkName("g_object_set")] public static extern void Set(gpointer object, gchar* first_property_name, ...);
+	[Import(GObject.so), LinkName("g_object_get")] public static extern void Get(gpointer object, gchar* first_property_name, ...);
+	[Import(GObject.so), LinkName("g_object_connect")] public static extern gpointer Connect(gpointer object, gchar* signal_spec, ...);
+	[Import(GObject.so), LinkName("g_object_disconnect")] public static extern void Disconnect(gpointer object, gchar* signal_spec, ...);
+	[Import(GObject.so), LinkName("g_object_setv")] public static extern void Setv(GObject* object, guint n_properties, gchar** names, GValue* values);
+	[Import(GObject.so), LinkName("g_object_set_valist")] public static extern void SetValist(GObject* object, gchar* first_property_name, VarArgs var_args);
+	[Import(GObject.so), LinkName("g_object_getv")] public static extern void Getv(GObject* object, guint n_properties, gchar** names, GValue* values);
+	[Import(GObject.so), LinkName("g_object_get_valist")] public static extern void GetValist(GObject* object, gchar* first_property_name, VarArgs var_args);
+	[Import(GObject.so), LinkName("g_object_set_property")] public static extern void SetProperty(GObject* object, gchar* property_name, GValue* value);
+	[Import(GObject.so), LinkName("g_object_get_property")] public static extern void GetProperty(GObject* object, gchar* property_name, GValue* value);
+	[Import(GObject.so), LinkName("g_object_freeze_notify")] public static extern void FreezeNotify(GObject* object);
+	[Import(GObject.so), LinkName("g_object_notify")] public static extern void Notify(GObject* object, gchar* property_name);
+	[Import(GObject.so), LinkName("g_object_notify_by_pspec")] public static extern void NotifyByPspec(GObject* object, GParamSpec* pspec);
+	[Import(GObject.so), LinkName("g_object_thaw_notify")] public static extern void ThawNotify(GObject* object);
+	[Import(GObject.so), LinkName("g_object_is_floating")] public static extern gboolean IsFloating(gpointer object);
+	[Import(GObject.so), LinkName("g_object_ref_sink")] public static extern gpointer RefSink(gpointer object);
+	[Import(GObject.so), LinkName("g_object_take_ref")] public static extern gpointer TakeRef(gpointer object);
+	[Import(GObject.so), LinkName("g_object_ref")] public static extern gpointer Ref(gpointer object);
+	[Import(GObject.so), LinkName("g_object_unref")] public static extern void Unref(gpointer object);
+	[Import(GObject.so), LinkName("g_object_weak_ref")] public static extern void WeakRef(GObject* object, GWeakNotify notify, gpointer data);
+	[Import(GObject.so), LinkName("g_object_weak_unref")] public static extern void WeakUnref(GObject* object, GWeakNotify notify, gpointer data);
+	[Import(GObject.so), LinkName("g_object_add_weak_pointer")] public static extern void AddWeakPointer(GObject* object, gpointer* weak_pointer_location);
+	[Import(GObject.so), LinkName("g_object_remove_weak_pointer")] public static extern void RemoveWeakPointer(GObject* object, gpointer* weak_pointer_location);
 }
 
 /** GToggleNotify:
@@ -1916,34 +1916,34 @@ function void GToggleNotify(gpointer data, GObject* object, gboolean is_last_ref
 
 extension GObject
 {
-	[LinkName("g_object_add_toggle_ref")] public static extern void AddToggleRef(GObject* object, GToggleNotify notify, gpointer data);
-	[LinkName("g_object_remove_toggle_ref")] public static extern void RemoveToggleRef(GObject* object, GToggleNotify notify, gpointer data);
-	[LinkName("g_object_get_qdata")] public static extern gpointer GetQdata(GObject* object, GQuark quark);
-	[LinkName("g_object_set_qdata")] public static extern void SetQdata(GObject* object, GQuark quark, gpointer data);
-	[LinkName("g_object_set_qdata_full")] public static extern void SetQdataFull(GObject* object, GQuark quark, gpointer data, GDestroyNotify destroy);
-	[LinkName("g_object_steal_qdata")] public static extern gpointer StealQdata(GObject* object, GQuark quark);
-	[LinkName("g_object_dup_qdata")] public static extern gpointer DupQdata(GObject* object, GQuark quark, GDuplicateFunc dup_func, gpointer user_data);
-	[LinkName("g_object_replace_qdata")] public static extern gboolean ReplaceQdata(GObject* object, GQuark quark, gpointer oldval, gpointer newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
-	[LinkName("g_object_get_data")] public static extern gpointer GetData(GObject* object, gchar* key);
-	[LinkName("g_object_set_data")] public static extern void SetData(GObject* object, gchar* key, gpointer data);
-	[LinkName("g_object_set_data_full")] public static extern void SetDataFull(GObject* object, gchar* key, gpointer data, GDestroyNotify destroy);
-	[LinkName("g_object_steal_data")] public static extern gpointer StealData(GObject* object, gchar* key);
-	[LinkName("g_object_dup_data")] public static extern gpointer DupData(GObject* object, gchar* key, GDuplicateFunc dup_func, gpointer user_data);
-	[LinkName("g_object_replace_data")] public static extern gboolean ReplaceData(GObject* object, gchar* key, gpointer oldval, gpointer newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
-	[LinkName("g_object_watch_closure")] public static extern void WatchClosure(GObject* object, GClosure* closure);
-	[LinkName("g_cclosure_new_object")] public static extern GClosure* CclosureNewObject(GCallback callback_func, GObject* object);
-	[LinkName("g_cclosure_new_object_swap")] public static extern GClosure* CclosureNewObjectSwap(GCallback callback_func, GObject* object);
-	[LinkName("g_closure_new_object")] public static extern GClosure* ClosureNewObject(guint sizeof_closure, GObject* object);
-	[LinkName("g_value_set_object")] public static extern void ValueSetObject(GValue* value, gpointer v_object);
-	[LinkName("g_value_get_object")] public static extern gpointer ValueGetObject(GValue* value);
-	[LinkName("g_value_dup_object")] public static extern gpointer ValueDupObject(GValue* value);
-	[LinkName("g_signal_connect_object")] public static extern gulong SignalConnectObject(gpointer instance, gchar* detailed_signal, GCallback c_handler, gpointer gobject, GConnectFlags connect_flags);
-	[LinkName("g_object_force_floating")] public static extern void ForceFloating(GObject* object);
-	[LinkName("g_object_run_dispose")] public static extern void RunDispose(GObject* object);
-	[LinkName("g_value_take_object")] public static extern void ValueTakeObject(GValue* value, gpointer v_object);
-	[LinkName("g_value_set_object_take_ownership")] public static extern void ValueSetObjectTakeOwnership(GValue* value, gpointer v_object);
-	[LinkName("g_object_compat_control")] public static extern gsize CompatControl(gsize what, gpointer data);
-	[LinkName("g_clear_object")] public static extern void ClearObject(GObject** object_ptr);
+	[Import(GObject.so), LinkName("g_object_add_toggle_ref")] public static extern void AddToggleRef(GObject* object, GToggleNotify notify, gpointer data);
+	[Import(GObject.so), LinkName("g_object_remove_toggle_ref")] public static extern void RemoveToggleRef(GObject* object, GToggleNotify notify, gpointer data);
+	[Import(GObject.so), LinkName("g_object_get_qdata")] public static extern gpointer GetQdata(GObject* object, GQuark quark);
+	[Import(GObject.so), LinkName("g_object_set_qdata")] public static extern void SetQdata(GObject* object, GQuark quark, gpointer data);
+	[Import(GObject.so), LinkName("g_object_set_qdata_full")] public static extern void SetQdataFull(GObject* object, GQuark quark, gpointer data, GDestroyNotify destroy);
+	[Import(GObject.so), LinkName("g_object_steal_qdata")] public static extern gpointer StealQdata(GObject* object, GQuark quark);
+	[Import(GObject.so), LinkName("g_object_dup_qdata")] public static extern gpointer DupQdata(GObject* object, GQuark quark, GDuplicateFunc dup_func, gpointer user_data);
+	[Import(GObject.so), LinkName("g_object_replace_qdata")] public static extern gboolean ReplaceQdata(GObject* object, GQuark quark, gpointer oldval, gpointer newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
+	[Import(GObject.so), LinkName("g_object_get_data")] public static extern gpointer GetData(GObject* object, gchar* key);
+	[Import(GObject.so), LinkName("g_object_set_data")] public static extern void SetData(GObject* object, gchar* key, gpointer data);
+	[Import(GObject.so), LinkName("g_object_set_data_full")] public static extern void SetDataFull(GObject* object, gchar* key, gpointer data, GDestroyNotify destroy);
+	[Import(GObject.so), LinkName("g_object_steal_data")] public static extern gpointer StealData(GObject* object, gchar* key);
+	[Import(GObject.so), LinkName("g_object_dup_data")] public static extern gpointer DupData(GObject* object, gchar* key, GDuplicateFunc dup_func, gpointer user_data);
+	[Import(GObject.so), LinkName("g_object_replace_data")] public static extern gboolean ReplaceData(GObject* object, gchar* key, gpointer oldval, gpointer newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
+	[Import(GObject.so), LinkName("g_object_watch_closure")] public static extern void WatchClosure(GObject* object, GClosure* closure);
+	[Import(GObject.so), LinkName("g_cclosure_new_object")] public static extern GClosure* CclosureNewObject(GCallback callback_func, GObject* object);
+	[Import(GObject.so), LinkName("g_cclosure_new_object_swap")] public static extern GClosure* CclosureNewObjectSwap(GCallback callback_func, GObject* object);
+	[Import(GObject.so), LinkName("g_closure_new_object")] public static extern GClosure* ClosureNewObject(guint sizeof_closure, GObject* object);
+	[Import(GObject.so), LinkName("g_value_set_object")] public static extern void ValueSetObject(GValue* value, gpointer v_object);
+	[Import(GObject.so), LinkName("g_value_get_object")] public static extern gpointer ValueGetObject(GValue* value);
+	[Import(GObject.so), LinkName("g_value_dup_object")] public static extern gpointer ValueDupObject(GValue* value);
+	[Import(GObject.so), LinkName("g_signal_connect_object")] public static extern gulong SignalConnectObject(gpointer instance, gchar* detailed_signal, GCallback c_handler, gpointer gobject, GConnectFlags connect_flags);
+	[Import(GObject.so), LinkName("g_object_force_floating")] public static extern void ForceFloating(GObject* object);
+	[Import(GObject.so), LinkName("g_object_run_dispose")] public static extern void RunDispose(GObject* object);
+	[Import(GObject.so), LinkName("g_value_take_object")] public static extern void ValueTakeObject(GValue* value, gpointer v_object);
+	[Import(GObject.so), LinkName("g_value_set_object_take_ownership")] public static extern void ValueSetObjectTakeOwnership(GValue* value, gpointer v_object);
+	[Import(GObject.so), LinkName("g_object_compat_control")] public static extern gsize CompatControl(gsize what, gpointer data);
+	[Import(GObject.so), LinkName("g_clear_object")] public static extern void ClearObject(GObject** object_ptr);
 }
 
 [CRepr] struct GWeakRef
@@ -1956,10 +1956,10 @@ extension GObject
 
 extension GWeakRef
 {
-	[LinkName("g_weak_ref_init")] public static extern void Init(GWeakRef* weak_ref, gpointer object);
-	[LinkName("g_weak_ref_clear")] public static extern void Clear(GWeakRef* weak_ref);
-	[LinkName("g_weak_ref_get")] public static extern gpointer Get(GWeakRef* weak_ref);
-	[LinkName("g_weak_ref_set")] public static extern void Set(GWeakRef* weak_ref, gpointer object);
+	[Import(GObject.so), LinkName("g_weak_ref_init")] public static extern void Init(GWeakRef* weak_ref, gpointer object);
+	[Import(GObject.so), LinkName("g_weak_ref_clear")] public static extern void Clear(GWeakRef* weak_ref);
+	[Import(GObject.so), LinkName("g_weak_ref_get")] public static extern gpointer Get(GWeakRef* weak_ref);
+	[Import(GObject.so), LinkName("g_weak_ref_set")] public static extern void Set(GWeakRef* weak_ref, gpointer object);
 }
 
 struct GBinding;
@@ -2017,36 +2017,36 @@ function gboolean GBindingTransformFunc(GBinding* binding, GValue* from_value, G
 
 extension GBinding
 {
-	[LinkName("g_binding_flags_get_type")] public static extern GType FlagsGetType();
-	[LinkName("g_binding_get_type")] public static extern GType GetType();
-	[LinkName("g_binding_get_flags")] public static extern GBindingFlags GetFlags(GBinding* binding);
-	[LinkName("g_binding_get_source")] public static extern GObject* GetSource(GBinding* binding);
-	[LinkName("g_binding_dup_source")] public static extern GObject* DupSource(GBinding* binding);
-	[LinkName("g_binding_get_target")] public static extern GObject* GetTarget(GBinding* binding);
-	[LinkName("g_binding_dup_target")] public static extern GObject* DupTarget(GBinding* binding);
-	[LinkName("g_binding_get_source_property")] public static extern gchar* GetSourceProperty(GBinding* binding);
-	[LinkName("g_binding_get_target_property")] public static extern gchar* GetTargetProperty(GBinding* binding);
-	[LinkName("g_binding_unbind")] public static extern void Unbind(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_flags_get_type")] public static extern GType FlagsGetType();
+	[Import(GObject.so), LinkName("g_binding_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_binding_get_flags")] public static extern GBindingFlags GetFlags(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_get_source")] public static extern GObject* GetSource(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_dup_source")] public static extern GObject* DupSource(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_get_target")] public static extern GObject* GetTarget(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_dup_target")] public static extern GObject* DupTarget(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_get_source_property")] public static extern gchar* GetSourceProperty(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_get_target_property")] public static extern gchar* GetTargetProperty(GBinding* binding);
+	[Import(GObject.so), LinkName("g_binding_unbind")] public static extern void Unbind(GBinding* binding);
 }
 
 extension GObject
 {
-	[LinkName("g_object_bind_property")] public static extern GBinding* BindProperty(gpointer source, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags);
-	[LinkName("g_object_bind_property_full")] public static extern GBinding* BindPropertyFull(gpointer source, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GBindingTransformFunc transform_to, GBindingTransformFunc transform_from, gpointer user_data, GDestroyNotify notify);
-	[LinkName("g_object_bind_property_with_closures")] public static extern GBinding* BindPropertyWithClosures(gpointer source, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GClosure* transform_to, GClosure* transform_from);
+	[Import(GObject.so), LinkName("g_object_bind_property")] public static extern GBinding* BindProperty(gpointer source, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags);
+	[Import(GObject.so), LinkName("g_object_bind_property_full")] public static extern GBinding* BindPropertyFull(gpointer source, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GBindingTransformFunc transform_to, GBindingTransformFunc transform_from, gpointer user_data, GDestroyNotify notify);
+	[Import(GObject.so), LinkName("g_object_bind_property_with_closures")] public static extern GBinding* BindPropertyWithClosures(gpointer source, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GClosure* transform_to, GClosure* transform_from);
 }
 
 struct GBindingGroup;
 
 extension GBindingGroup
 {
-	[LinkName("g_binding_group_get_type")] public static extern GType GetType();
-	[LinkName("g_binding_group_new")] public static extern GBindingGroup* New();
-	[LinkName("g_binding_group_dup_source")] public static extern gpointer DupSource(GBindingGroup* self);
-	[LinkName("g_binding_group_set_source")] public static extern void SetSource(GBindingGroup* self, gpointer source);
-	[LinkName("g_binding_group_bind")] public static extern void Bind(GBindingGroup* self, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags);
-	[LinkName("g_binding_group_bind_full")] public static extern void BindFull(GBindingGroup* self, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GBindingTransformFunc transform_to, GBindingTransformFunc transform_from, gpointer user_data, GDestroyNotify user_data_destroy);
-	[LinkName("g_binding_group_bind_with_closures")] public static extern void BindWithClosures(GBindingGroup* self, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GClosure* transform_to, GClosure* transform_from);
+	[Import(GObject.so), LinkName("g_binding_group_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_binding_group_new")] public static extern GBindingGroup* New();
+	[Import(GObject.so), LinkName("g_binding_group_dup_source")] public static extern gpointer DupSource(GBindingGroup* self);
+	[Import(GObject.so), LinkName("g_binding_group_set_source")] public static extern void SetSource(GBindingGroup* self, gpointer source);
+	[Import(GObject.so), LinkName("g_binding_group_bind")] public static extern void Bind(GBindingGroup* self, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags);
+	[Import(GObject.so), LinkName("g_binding_group_bind_full")] public static extern void BindFull(GBindingGroup* self, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GBindingTransformFunc transform_to, GBindingTransformFunc transform_from, gpointer user_data, GDestroyNotify user_data_destroy);
+	[Import(GObject.so), LinkName("g_binding_group_bind_with_closures")] public static extern void BindWithClosures(GBindingGroup* self, gchar* source_property, gpointer target, gchar* target_property, GBindingFlags flags, GClosure* transform_to, GClosure* transform_from);
 }
 
 
@@ -2123,26 +2123,26 @@ extension GBindingGroup
 
 extension GObject
 {
-	[LinkName("g_enum_get_value")] public static extern GEnumValue* EnumGetValue(GEnumClass* enum_class, gint value);
-	[LinkName("g_enum_get_value_by_name")] public static extern GEnumValue* EnumGetValueByName(GEnumClass* enum_class, gchar* name);
-	[LinkName("g_enum_get_value_by_nick")] public static extern GEnumValue* EnumGetValueByNick(GEnumClass* enum_class, gchar* nick);
-	[LinkName("g_flags_get_first_value")] public static extern GFlagsValue* FlagsGetFirstValue(GFlagsClass* flags_class, guint value);
-	[LinkName("g_flags_get_value_by_name")] public static extern GFlagsValue* FlagsGetValueByName(GFlagsClass* flags_class, gchar* name);
-	[LinkName("g_flags_get_value_by_nick")] public static extern GFlagsValue* FlagsGetValueByNick(GFlagsClass* flags_class, gchar* nick);
-	[LinkName("g_enum_to_string")] public static extern gchar* EnumToString(GType g_enum_type, gint value);
-	[LinkName("g_flags_to_string")] public static extern gchar* FlagsToString(GType flags_type, guint value);
-	[LinkName("g_value_set_enum")] public static extern void ValueSetEnum(GValue* value, gint v_enum);
-	[LinkName("g_value_get_enum")] public static extern gint ValueGetEnum(GValue* value);
-	[LinkName("g_value_set_flags")] public static extern void ValueSetFlags(GValue* value, guint v_flags);
-	[LinkName("g_value_get_flags")] public static extern guint ValueGetFlags(GValue* value);
-	[LinkName("g_enum_register_static")] public static extern GType EnumRegisterStatic(gchar* name, GEnumValue* const_static_values);
-	[LinkName("g_flags_register_static")] public static extern GType FlagsRegisterStatic(gchar* name, GFlagsValue* const_static_values);
-	[LinkName("g_enum_complete_type_info")] public static extern void EnumCompleteTypeInfo(GType g_enum_type, GTypeInfo* info, GEnumValue* const_values);
-	[LinkName("g_flags_complete_type_info")] public static extern void FlagsCompleteTypeInfo(GType g_flags_type, GTypeInfo* info, GFlagsValue* const_values);
-	[LinkName("g_unicode_type_get_type")] public static extern GType UnicodeTypeGetType();
-	[LinkName("g_unicode_break_type_get_type")] public static extern GType UnicodeBreakTypeGetType();
-	[LinkName("g_unicode_script_get_type")] public static extern GType UnicodeScriptGetType();
-	[LinkName("g_normalize_mode_get_type")] public static extern GType NormalizeModeGetType();
+	[Import(GObject.so), LinkName("g_enum_get_value")] public static extern GEnumValue* EnumGetValue(GEnumClass* enum_class, gint value);
+	[Import(GObject.so), LinkName("g_enum_get_value_by_name")] public static extern GEnumValue* EnumGetValueByName(GEnumClass* enum_class, gchar* name);
+	[Import(GObject.so), LinkName("g_enum_get_value_by_nick")] public static extern GEnumValue* EnumGetValueByNick(GEnumClass* enum_class, gchar* nick);
+	[Import(GObject.so), LinkName("g_flags_get_first_value")] public static extern GFlagsValue* FlagsGetFirstValue(GFlagsClass* flags_class, guint value);
+	[Import(GObject.so), LinkName("g_flags_get_value_by_name")] public static extern GFlagsValue* FlagsGetValueByName(GFlagsClass* flags_class, gchar* name);
+	[Import(GObject.so), LinkName("g_flags_get_value_by_nick")] public static extern GFlagsValue* FlagsGetValueByNick(GFlagsClass* flags_class, gchar* nick);
+	[Import(GObject.so), LinkName("g_enum_to_string")] public static extern gchar* EnumToString(GType g_enum_type, gint value);
+	[Import(GObject.so), LinkName("g_flags_to_string")] public static extern gchar* FlagsToString(GType flags_type, guint value);
+	[Import(GObject.so), LinkName("g_value_set_enum")] public static extern void ValueSetEnum(GValue* value, gint v_enum);
+	[Import(GObject.so), LinkName("g_value_get_enum")] public static extern gint ValueGetEnum(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_flags")] public static extern void ValueSetFlags(GValue* value, guint v_flags);
+	[Import(GObject.so), LinkName("g_value_get_flags")] public static extern guint ValueGetFlags(GValue* value);
+	[Import(GObject.so), LinkName("g_enum_register_static")] public static extern GType EnumRegisterStatic(gchar* name, GEnumValue* const_static_values);
+	[Import(GObject.so), LinkName("g_flags_register_static")] public static extern GType FlagsRegisterStatic(gchar* name, GFlagsValue* const_static_values);
+	[Import(GObject.so), LinkName("g_enum_complete_type_info")] public static extern void EnumCompleteTypeInfo(GType g_enum_type, GTypeInfo* info, GEnumValue* const_values);
+	[Import(GObject.so), LinkName("g_flags_complete_type_info")] public static extern void FlagsCompleteTypeInfo(GType g_flags_type, GTypeInfo* info, GFlagsValue* const_values);
+	[Import(GObject.so), LinkName("g_unicode_type_get_type")] public static extern GType UnicodeTypeGetType();
+	[Import(GObject.so), LinkName("g_unicode_break_type_get_type")] public static extern GType UnicodeBreakTypeGetType();
+	[Import(GObject.so), LinkName("g_unicode_script_get_type")] public static extern GType UnicodeScriptGetType();
+	[Import(GObject.so), LinkName("g_normalize_mode_get_type")] public static extern GType NormalizeModeGetType();
 }
 
 
@@ -2532,29 +2532,29 @@ extension GObject
 
 extension GObject
 {
-	[LinkName("g_param_spec_char")] public static extern GParamSpec* ParamSpecChar(gchar* name, gchar* nick, gchar* blurb, gint8 minimum, gint8 maximum, gint8 default_value, GParamFlags flags);
-	[LinkName("g_param_spec_uchar")] public static extern GParamSpec* ParamSpecUchar(gchar* name, gchar* nick, gchar* blurb, guint8 minimum, guint8 maximum, guint8 default_value, GParamFlags flags);
-	[LinkName("g_param_spec_boolean")] public static extern GParamSpec* ParamSpecBoolean(gchar* name, gchar* nick, gchar* blurb, gboolean default_value, GParamFlags flags);
-	[LinkName("g_param_spec_int")] public static extern GParamSpec* ParamSpecInt(gchar* name, gchar* nick, gchar* blurb, gint minimum, gint maximum, gint default_value, GParamFlags flags);
-	[LinkName("g_param_spec_uint")] public static extern GParamSpec* ParamSpecUint(gchar* name, gchar* nick, gchar* blurb, guint minimum, guint maximum, guint default_value, GParamFlags flags);
-	[LinkName("g_param_spec_long")] public static extern GParamSpec* ParamSpecLong(gchar* name, gchar* nick, gchar* blurb, glong minimum, glong maximum, glong default_value, GParamFlags flags);
-	[LinkName("g_param_spec_ulong")] public static extern GParamSpec* ParamSpecUlong(gchar* name, gchar* nick, gchar* blurb, gulong minimum, gulong maximum, gulong default_value, GParamFlags flags);
-	[LinkName("g_param_spec_int64")] public static extern GParamSpec* ParamSpecInt64(gchar* name, gchar* nick, gchar* blurb, gint64 minimum, gint64 maximum, gint64 default_value, GParamFlags flags);
-	[LinkName("g_param_spec_uint64")] public static extern GParamSpec* ParamSpecUint64(gchar* name, gchar* nick, gchar* blurb, guint64 minimum, guint64 maximum, guint64 default_value, GParamFlags flags);
-	[LinkName("g_param_spec_unichar")] public static extern GParamSpec* ParamSpecUnichar(gchar* name, gchar* nick, gchar* blurb, gunichar default_value, GParamFlags flags);
-	[LinkName("g_param_spec_enum")] public static extern GParamSpec* ParamSpecEnum(gchar* name, gchar* nick, gchar* blurb, GType enum_type, gint default_value, GParamFlags flags);
-	[LinkName("g_param_spec_flags")] public static extern GParamSpec* ParamSpecFlags(gchar* name, gchar* nick, gchar* blurb, GType flags_type, guint default_value, GParamFlags flags);
-	[LinkName("g_param_spec_float")] public static extern GParamSpec* ParamSpecFloat(gchar* name, gchar* nick, gchar* blurb, gfloat minimum, gfloat maximum, gfloat default_value, GParamFlags flags);
-	[LinkName("g_param_spec_double")] public static extern GParamSpec* ParamSpecDouble(gchar* name, gchar* nick, gchar* blurb, gdouble minimum, gdouble maximum, gdouble default_value, GParamFlags flags);
-	[LinkName("g_param_spec_string")] public static extern GParamSpec* ParamSpecString(gchar* name, gchar* nick, gchar* blurb, gchar* default_value, GParamFlags flags);
-	[LinkName("g_param_spec_param")] public static extern GParamSpec* ParamSpecParam(gchar* name, gchar* nick, gchar* blurb, GType param_type, GParamFlags flags);
-	[LinkName("g_param_spec_boxed")] public static extern GParamSpec* ParamSpecBoxed(gchar* name, gchar* nick, gchar* blurb, GType boxed_type, GParamFlags flags);
-	[LinkName("g_param_spec_pointer")] public static extern GParamSpec* ParamSpecPointer(gchar* name, gchar* nick, gchar* blurb, GParamFlags flags);
-	[LinkName("g_param_spec_value_array")] public static extern GParamSpec* ParamSpecValueArray(gchar* name, gchar* nick, gchar* blurb, GParamSpec* element_spec, GParamFlags flags);
-	[LinkName("g_param_spec_object")] public static extern GParamSpec* ParamSpecObject(gchar* name, gchar* nick, gchar* blurb, GType object_type, GParamFlags flags);
-	[LinkName("g_param_spec_override")] public static extern GParamSpec* ParamSpecOverride(gchar* name, GParamSpec* overridden);
-	[LinkName("g_param_spec_gtype")] public static extern GParamSpec* ParamSpecGtype(gchar* name, gchar* nick, gchar* blurb, GType is_a_type, GParamFlags flags);
-	[LinkName("g_param_spec_variant")] public static extern GParamSpec* ParamSpecVariant(gchar* name, gchar* nick, gchar* blurb, GVariantType* type, GVariant* default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_char")] public static extern GParamSpec* ParamSpecChar(gchar* name, gchar* nick, gchar* blurb, gint8 minimum, gint8 maximum, gint8 default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_uchar")] public static extern GParamSpec* ParamSpecUchar(gchar* name, gchar* nick, gchar* blurb, guint8 minimum, guint8 maximum, guint8 default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_boolean")] public static extern GParamSpec* ParamSpecBoolean(gchar* name, gchar* nick, gchar* blurb, gboolean default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_int")] public static extern GParamSpec* ParamSpecInt(gchar* name, gchar* nick, gchar* blurb, gint minimum, gint maximum, gint default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_uint")] public static extern GParamSpec* ParamSpecUint(gchar* name, gchar* nick, gchar* blurb, guint minimum, guint maximum, guint default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_long")] public static extern GParamSpec* ParamSpecLong(gchar* name, gchar* nick, gchar* blurb, glong minimum, glong maximum, glong default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_ulong")] public static extern GParamSpec* ParamSpecUlong(gchar* name, gchar* nick, gchar* blurb, gulong minimum, gulong maximum, gulong default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_int64")] public static extern GParamSpec* ParamSpecInt64(gchar* name, gchar* nick, gchar* blurb, gint64 minimum, gint64 maximum, gint64 default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_uint64")] public static extern GParamSpec* ParamSpecUint64(gchar* name, gchar* nick, gchar* blurb, guint64 minimum, guint64 maximum, guint64 default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_unichar")] public static extern GParamSpec* ParamSpecUnichar(gchar* name, gchar* nick, gchar* blurb, gunichar default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_enum")] public static extern GParamSpec* ParamSpecEnum(gchar* name, gchar* nick, gchar* blurb, GType enum_type, gint default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_flags")] public static extern GParamSpec* ParamSpecFlags(gchar* name, gchar* nick, gchar* blurb, GType flags_type, guint default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_float")] public static extern GParamSpec* ParamSpecFloat(gchar* name, gchar* nick, gchar* blurb, gfloat minimum, gfloat maximum, gfloat default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_double")] public static extern GParamSpec* ParamSpecDouble(gchar* name, gchar* nick, gchar* blurb, gdouble minimum, gdouble maximum, gdouble default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_string")] public static extern GParamSpec* ParamSpecString(gchar* name, gchar* nick, gchar* blurb, gchar* default_value, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_param")] public static extern GParamSpec* ParamSpecParam(gchar* name, gchar* nick, gchar* blurb, GType param_type, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_boxed")] public static extern GParamSpec* ParamSpecBoxed(gchar* name, gchar* nick, gchar* blurb, GType boxed_type, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_pointer")] public static extern GParamSpec* ParamSpecPointer(gchar* name, gchar* nick, gchar* blurb, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_value_array")] public static extern GParamSpec* ParamSpecValueArray(gchar* name, gchar* nick, gchar* blurb, GParamSpec* element_spec, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_object")] public static extern GParamSpec* ParamSpecObject(gchar* name, gchar* nick, gchar* blurb, GType object_type, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_override")] public static extern GParamSpec* ParamSpecOverride(gchar* name, GParamSpec* overridden);
+	[Import(GObject.so), LinkName("g_param_spec_gtype")] public static extern GParamSpec* ParamSpecGtype(gchar* name, gchar* nick, gchar* blurb, GType is_a_type, GParamFlags flags);
+	[Import(GObject.so), LinkName("g_param_spec_variant")] public static extern GParamSpec* ParamSpecVariant(gchar* name, gchar* nick, gchar* blurb, GVariantType* type, GVariant* default_value, GParamFlags flags);
 }
 
 static
@@ -2566,24 +2566,24 @@ struct GSignalGroup;
 
 extension GSignalGroup
 {
-	[LinkName("g_signal_group_get_type")] public static extern GType GetType();
-	[LinkName("g_signal_group_new")] public static extern GSignalGroup* New(GType target_type);
-	[LinkName("g_signal_group_set_target")] public static extern void SetTarget(GSignalGroup* self, gpointer target);
-	[LinkName("g_signal_group_dup_target")] public static extern gpointer DupTarget(GSignalGroup* self);
-	[LinkName("g_signal_group_block")] public static extern void Block(GSignalGroup* self);
-	[LinkName("g_signal_group_unblock")] public static extern void Unblock(GSignalGroup* self);
-	[LinkName("g_signal_group_connect_closure")] public static extern void ConnectClosure(GSignalGroup* self, gchar* detailed_signal, GClosure* closure, gboolean after);
-	[LinkName("g_signal_group_connect_object")] public static extern void ConnectObject(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer object, GConnectFlags flags);
-	[LinkName("g_signal_group_connect_data")] public static extern void ConnectData(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data, GClosureNotify notify, GConnectFlags flags);
-	[LinkName("g_signal_group_connect")] public static extern void Connect(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data);
-	[LinkName("g_signal_group_connect_after")] public static extern void ConnectAfter(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data);
-	[LinkName("g_signal_group_connect_swapped")] public static extern void ConnectSwapped(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data);
+	[Import(GObject.so), LinkName("g_signal_group_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_signal_group_new")] public static extern GSignalGroup* New(GType target_type);
+	[Import(GObject.so), LinkName("g_signal_group_set_target")] public static extern void SetTarget(GSignalGroup* self, gpointer target);
+	[Import(GObject.so), LinkName("g_signal_group_dup_target")] public static extern gpointer DupTarget(GSignalGroup* self);
+	[Import(GObject.so), LinkName("g_signal_group_block")] public static extern void Block(GSignalGroup* self);
+	[Import(GObject.so), LinkName("g_signal_group_unblock")] public static extern void Unblock(GSignalGroup* self);
+	[Import(GObject.so), LinkName("g_signal_group_connect_closure")] public static extern void ConnectClosure(GSignalGroup* self, gchar* detailed_signal, GClosure* closure, gboolean after);
+	[Import(GObject.so), LinkName("g_signal_group_connect_object")] public static extern void ConnectObject(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer object, GConnectFlags flags);
+	[Import(GObject.so), LinkName("g_signal_group_connect_data")] public static extern void ConnectData(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data, GClosureNotify notify, GConnectFlags flags);
+	[Import(GObject.so), LinkName("g_signal_group_connect")] public static extern void Connect(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data);
+	[Import(GObject.so), LinkName("g_signal_group_connect_after")] public static extern void ConnectAfter(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data);
+	[Import(GObject.so), LinkName("g_signal_group_connect_swapped")] public static extern void ConnectSwapped(GSignalGroup* self, gchar* detailed_signal, GCallback c_handler, gpointer data);
 }
 
 extension GObject
 {
-	[LinkName("g_source_set_closure")] public static extern void SourceSetClosure(GSource* source, GClosure* closure);
-	[LinkName("g_source_set_dummy_callback")] public static extern void SourceSetDummyCallback(GSource* source);
+	[Import(GObject.so), LinkName("g_source_set_closure")] public static extern void SourceSetClosure(GSource* source, GClosure* closure);
+	[Import(GObject.so), LinkName("g_source_set_dummy_callback")] public static extern void SourceSetDummyCallback(GSource* source);
 }
 
 
@@ -2627,14 +2627,14 @@ typealias GTypeModule_queueautoptr = GQueue*;
 
 extension GObject
 {
-	[LinkName("g_type_module_get_type")] public static extern GType TypeModuleGetType();
-	[LinkName("g_type_module_use")] public static extern gboolean TypeModuleUse(GTypeModule* module);
-	[LinkName("g_type_module_unuse")] public static extern void TypeModuleUnuse(GTypeModule* module);
-	[LinkName("g_type_module_set_name")] public static extern void TypeModuleSetName(GTypeModule* module, gchar* name);
-	[LinkName("g_type_module_register_type")] public static extern GType TypeModuleRegisterType(GTypeModule* module, GType parent_type, gchar* type_name, GTypeInfo* type_info, GTypeFlags flags);
-	[LinkName("g_type_module_add_interface")] public static extern void TypeModuleAddInterface(GTypeModule* module, GType instance_type, GType interface_type, GInterfaceInfo* interface_info);
-	[LinkName("g_type_module_register_enum")] public static extern GType TypeModuleRegisterEnum(GTypeModule* module, gchar* name, GEnumValue* const_static_values);
-	[LinkName("g_type_module_register_flags")] public static extern GType TypeModuleRegisterFlags(GTypeModule* module, gchar* name, GFlagsValue* const_static_values);
+	[Import(GObject.so), LinkName("g_type_module_get_type")] public static extern GType TypeModuleGetType();
+	[Import(GObject.so), LinkName("g_type_module_use")] public static extern gboolean TypeModuleUse(GTypeModule* module);
+	[Import(GObject.so), LinkName("g_type_module_unuse")] public static extern void TypeModuleUnuse(GTypeModule* module);
+	[Import(GObject.so), LinkName("g_type_module_set_name")] public static extern void TypeModuleSetName(GTypeModule* module, gchar* name);
+	[Import(GObject.so), LinkName("g_type_module_register_type")] public static extern GType TypeModuleRegisterType(GTypeModule* module, GType parent_type, gchar* type_name, GTypeInfo* type_info, GTypeFlags flags);
+	[Import(GObject.so), LinkName("g_type_module_add_interface")] public static extern void TypeModuleAddInterface(GTypeModule* module, GType instance_type, GType interface_type, GInterfaceInfo* interface_info);
+	[Import(GObject.so), LinkName("g_type_module_register_enum")] public static extern GType TypeModuleRegisterEnum(GTypeModule* module, gchar* name, GEnumValue* const_static_values);
+	[Import(GObject.so), LinkName("g_type_module_register_flags")] public static extern GType TypeModuleRegisterFlags(GTypeModule* module, gchar* name, GFlagsValue* const_static_values);
 }
 
 
@@ -2700,11 +2700,11 @@ function void GTypePluginCompleteInterfaceInfo(GTypePlugin* plugin, GType instan
 
 extension GTypePlugin
 {
-	[LinkName("g_type_plugin_get_type")] public static extern GType GetType();
-	[LinkName("g_type_plugin_use")] public static extern void Use(GTypePlugin* plugin);
-	[LinkName("g_type_plugin_unuse")] public static extern void Unuse(GTypePlugin* plugin);
-	[LinkName("g_type_plugin_complete_type_info")] public static extern void CompleteTypeInfo(GTypePlugin* plugin, GType g_type, GTypeInfo* info, GTypeValueTable* value_table);
-	[LinkName("g_type_plugin_complete_interface_info")] public static extern void CompleteInterfaceInfo(GTypePlugin* plugin, GType instance_type, GType interface_type, GInterfaceInfo* info);
+	[Import(GObject.so), LinkName("g_type_plugin_get_type")] public static extern GType GetType();
+	[Import(GObject.so), LinkName("g_type_plugin_use")] public static extern void Use(GTypePlugin* plugin);
+	[Import(GObject.so), LinkName("g_type_plugin_unuse")] public static extern void Unuse(GTypePlugin* plugin);
+	[Import(GObject.so), LinkName("g_type_plugin_complete_type_info")] public static extern void CompleteTypeInfo(GTypePlugin* plugin, GType g_type, GTypeInfo* info, GTypeValueTable* value_table);
+	[Import(GObject.so), LinkName("g_type_plugin_complete_interface_info")] public static extern void CompleteInterfaceInfo(GTypePlugin* plugin, GType instance_type, GType interface_type, GInterfaceInfo* info);
 }
 
 
@@ -2717,60 +2717,60 @@ extension GTypePlugin
 
 extension GObject
 {
-	[LinkName("g_value_array_get_type")] public static extern GType ValueArrayGetType();
-	[LinkName("g_value_array_get_nth")] public static extern GValue* ValueArrayGetNth(GValueArray* value_array, guint index);
-	[LinkName("g_value_array_new")] public static extern GValueArray* ValueArrayNew(guint n_prealloced);
-	[LinkName("g_value_array_free")] public static extern void ValueArrayFree(GValueArray* value_array);
-	[LinkName("g_value_array_copy")] public static extern GValueArray* ValueArrayCopy(GValueArray* value_array);
-	[LinkName("g_value_array_prepend")] public static extern GValueArray* ValueArrayPrepend(GValueArray* value_array, GValue* value);
-	[LinkName("g_value_array_append")] public static extern GValueArray* ValueArrayAppend(GValueArray* value_array, GValue* value);
-	[LinkName("g_value_array_insert")] public static extern GValueArray* ValueArrayInsert(GValueArray* value_array, guint index, GValue* value);
-	[LinkName("g_value_array_remove")] public static extern GValueArray* ValueArrayRemove(GValueArray* value_array, guint index);
-	[LinkName("g_value_array_sort")] public static extern GValueArray* ValueArraySort(GValueArray* value_array, GCompareFunc compare_func);
-	[LinkName("g_value_array_sort_with_data")] public static extern GValueArray* ValueArraySortWithData(GValueArray* value_array, GCompareDataFunc compare_func, gpointer user_data);
-	[LinkName("g_value_set_char")] public static extern void ValueSetChar(GValue* value, gchar v_char);
-	[LinkName("g_value_get_char")] public static extern gchar ValueGetChar(GValue* value);
-	[LinkName("g_value_set_schar")] public static extern void ValueSetSchar(GValue* value, gint8 v_char);
-	[LinkName("g_value_get_schar")] public static extern gint8 ValueGetSchar(GValue* value);
-	[LinkName("g_value_set_uchar")] public static extern void ValueSetUchar(GValue* value, guchar v_uchar);
-	[LinkName("g_value_get_uchar")] public static extern guchar ValueGetUchar(GValue* value);
-	[LinkName("g_value_set_boolean")] public static extern void ValueSetBoolean(GValue* value, gboolean v_boolean);
-	[LinkName("g_value_get_boolean")] public static extern gboolean ValueGetBoolean(GValue* value);
-	[LinkName("g_value_set_int")] public static extern void ValueSetInt(GValue* value, gint v_int);
-	[LinkName("g_value_get_int")] public static extern gint ValueGetInt(GValue* value);
-	[LinkName("g_value_set_uint")] public static extern void ValueSetUint(GValue* value, guint v_uint);
-	[LinkName("g_value_get_uint")] public static extern guint ValueGetUint(GValue* value);
-	[LinkName("g_value_set_long")] public static extern void ValueSetLong(GValue* value, glong v_long);
-	[LinkName("g_value_get_long")] public static extern glong ValueGetLong(GValue* value);
-	[LinkName("g_value_set_ulong")] public static extern void ValueSetUlong(GValue* value, gulong v_ulong);
-	[LinkName("g_value_get_ulong")] public static extern gulong ValueGetUlong(GValue* value);
-	[LinkName("g_value_set_int64")] public static extern void ValueSetInt64(GValue* value, gint64 v_int64);
-	[LinkName("g_value_get_int64")] public static extern gint64 ValueGetInt64(GValue* value);
-	[LinkName("g_value_set_uint64")] public static extern void ValueSetUint64(GValue* value, guint64 v_uint64);
-	[LinkName("g_value_get_uint64")] public static extern guint64 ValueGetUint64(GValue* value);
-	[LinkName("g_value_set_float")] public static extern void ValueSetFloat(GValue* value, gfloat v_float);
-	[LinkName("g_value_get_float")] public static extern gfloat ValueGetFloat(GValue* value);
-	[LinkName("g_value_set_double")] public static extern void ValueSetDouble(GValue* value, gdouble v_double);
-	[LinkName("g_value_get_double")] public static extern gdouble ValueGetDouble(GValue* value);
-	[LinkName("g_value_set_string")] public static extern void ValueSetString(GValue* value, gchar* v_string);
-	[LinkName("g_value_set_static_string")] public static extern void ValueSetStaticString(GValue* value, gchar* v_string);
-	[LinkName("g_value_set_interned_string")] public static extern void ValueSetInternedString(GValue* value, gchar* v_string);
-	[LinkName("g_value_get_string")] public static extern gchar* ValueGetString(GValue* value);
-	[LinkName("g_value_dup_string")] public static extern gchar* ValueDupString(GValue* value);
-	[LinkName("g_value_steal_string")] public static extern gchar* ValueStealString(GValue* value);
-	[LinkName("g_value_set_pointer")] public static extern void ValueSetPointer(GValue* value, gpointer v_pointer);
-	[LinkName("g_value_get_pointer")] public static extern gpointer ValueGetPointer(GValue* value);
-	[LinkName("g_gtype_get_type")] public static extern GType GtypeGetType();
-	[LinkName("g_value_set_gtype")] public static extern void ValueSetGtype(GValue* value, GType v_gtype);
-	[LinkName("g_value_get_gtype")] public static extern GType ValueGetGtype(GValue* value);
-	[LinkName("g_value_set_variant")] public static extern void ValueSetVariant(GValue* value, GVariant* variant);
-	[LinkName("g_value_take_variant")] public static extern void ValueTakeVariant(GValue* value, GVariant* variant);
-	[LinkName("g_value_get_variant")] public static extern GVariant* ValueGetVariant(GValue* value);
-	[LinkName("g_value_dup_variant")] public static extern GVariant* ValueDupVariant(GValue* value);
-	[LinkName("g_pointer_type_register_static")] public static extern GType PointerTypeRegisterStatic(gchar* name);
-	[LinkName("g_strdup_value_contents")] public static extern gchar* StrdupValueContents(GValue* value);
-	[LinkName("g_value_take_string")] public static extern void ValueTakeString(GValue* value, gchar* v_string);
-	[LinkName("g_value_set_string_take_ownership")] public static extern void ValueSetStringTakeOwnership(GValue* value, gchar* v_string);
+	[Import(GObject.so), LinkName("g_value_array_get_type")] public static extern GType ValueArrayGetType();
+	[Import(GObject.so), LinkName("g_value_array_get_nth")] public static extern GValue* ValueArrayGetNth(GValueArray* value_array, guint index);
+	[Import(GObject.so), LinkName("g_value_array_new")] public static extern GValueArray* ValueArrayNew(guint n_prealloced);
+	[Import(GObject.so), LinkName("g_value_array_free")] public static extern void ValueArrayFree(GValueArray* value_array);
+	[Import(GObject.so), LinkName("g_value_array_copy")] public static extern GValueArray* ValueArrayCopy(GValueArray* value_array);
+	[Import(GObject.so), LinkName("g_value_array_prepend")] public static extern GValueArray* ValueArrayPrepend(GValueArray* value_array, GValue* value);
+	[Import(GObject.so), LinkName("g_value_array_append")] public static extern GValueArray* ValueArrayAppend(GValueArray* value_array, GValue* value);
+	[Import(GObject.so), LinkName("g_value_array_insert")] public static extern GValueArray* ValueArrayInsert(GValueArray* value_array, guint index, GValue* value);
+	[Import(GObject.so), LinkName("g_value_array_remove")] public static extern GValueArray* ValueArrayRemove(GValueArray* value_array, guint index);
+	[Import(GObject.so), LinkName("g_value_array_sort")] public static extern GValueArray* ValueArraySort(GValueArray* value_array, GCompareFunc compare_func);
+	[Import(GObject.so), LinkName("g_value_array_sort_with_data")] public static extern GValueArray* ValueArraySortWithData(GValueArray* value_array, GCompareDataFunc compare_func, gpointer user_data);
+	[Import(GObject.so), LinkName("g_value_set_char")] public static extern void ValueSetChar(GValue* value, gchar v_char);
+	[Import(GObject.so), LinkName("g_value_get_char")] public static extern gchar ValueGetChar(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_schar")] public static extern void ValueSetSchar(GValue* value, gint8 v_char);
+	[Import(GObject.so), LinkName("g_value_get_schar")] public static extern gint8 ValueGetSchar(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_uchar")] public static extern void ValueSetUchar(GValue* value, guchar v_uchar);
+	[Import(GObject.so), LinkName("g_value_get_uchar")] public static extern guchar ValueGetUchar(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_boolean")] public static extern void ValueSetBoolean(GValue* value, gboolean v_boolean);
+	[Import(GObject.so), LinkName("g_value_get_boolean")] public static extern gboolean ValueGetBoolean(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_int")] public static extern void ValueSetInt(GValue* value, gint v_int);
+	[Import(GObject.so), LinkName("g_value_get_int")] public static extern gint ValueGetInt(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_uint")] public static extern void ValueSetUint(GValue* value, guint v_uint);
+	[Import(GObject.so), LinkName("g_value_get_uint")] public static extern guint ValueGetUint(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_long")] public static extern void ValueSetLong(GValue* value, glong v_long);
+	[Import(GObject.so), LinkName("g_value_get_long")] public static extern glong ValueGetLong(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_ulong")] public static extern void ValueSetUlong(GValue* value, gulong v_ulong);
+	[Import(GObject.so), LinkName("g_value_get_ulong")] public static extern gulong ValueGetUlong(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_int64")] public static extern void ValueSetInt64(GValue* value, gint64 v_int64);
+	[Import(GObject.so), LinkName("g_value_get_int64")] public static extern gint64 ValueGetInt64(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_uint64")] public static extern void ValueSetUint64(GValue* value, guint64 v_uint64);
+	[Import(GObject.so), LinkName("g_value_get_uint64")] public static extern guint64 ValueGetUint64(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_float")] public static extern void ValueSetFloat(GValue* value, gfloat v_float);
+	[Import(GObject.so), LinkName("g_value_get_float")] public static extern gfloat ValueGetFloat(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_double")] public static extern void ValueSetDouble(GValue* value, gdouble v_double);
+	[Import(GObject.so), LinkName("g_value_get_double")] public static extern gdouble ValueGetDouble(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_string")] public static extern void ValueSetString(GValue* value, gchar* v_string);
+	[Import(GObject.so), LinkName("g_value_set_static_string")] public static extern void ValueSetStaticString(GValue* value, gchar* v_string);
+	[Import(GObject.so), LinkName("g_value_set_interned_string")] public static extern void ValueSetInternedString(GValue* value, gchar* v_string);
+	[Import(GObject.so), LinkName("g_value_get_string")] public static extern gchar* ValueGetString(GValue* value);
+	[Import(GObject.so), LinkName("g_value_dup_string")] public static extern gchar* ValueDupString(GValue* value);
+	[Import(GObject.so), LinkName("g_value_steal_string")] public static extern gchar* ValueStealString(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_pointer")] public static extern void ValueSetPointer(GValue* value, gpointer v_pointer);
+	[Import(GObject.so), LinkName("g_value_get_pointer")] public static extern gpointer ValueGetPointer(GValue* value);
+	[Import(GObject.so), LinkName("g_gtype_get_type")] public static extern GType GtypeGetType();
+	[Import(GObject.so), LinkName("g_value_set_gtype")] public static extern void ValueSetGtype(GValue* value, GType v_gtype);
+	[Import(GObject.so), LinkName("g_value_get_gtype")] public static extern GType ValueGetGtype(GValue* value);
+	[Import(GObject.so), LinkName("g_value_set_variant")] public static extern void ValueSetVariant(GValue* value, GVariant* variant);
+	[Import(GObject.so), LinkName("g_value_take_variant")] public static extern void ValueTakeVariant(GValue* value, GVariant* variant);
+	[Import(GObject.so), LinkName("g_value_get_variant")] public static extern GVariant* ValueGetVariant(GValue* value);
+	[Import(GObject.so), LinkName("g_value_dup_variant")] public static extern GVariant* ValueDupVariant(GValue* value);
+	[Import(GObject.so), LinkName("g_pointer_type_register_static")] public static extern GType PointerTypeRegisterStatic(gchar* name);
+	[Import(GObject.so), LinkName("g_strdup_value_contents")] public static extern gchar* StrdupValueContents(GValue* value);
+	[Import(GObject.so), LinkName("g_value_take_string")] public static extern void ValueTakeString(GValue* value, gchar* v_string);
+	[Import(GObject.so), LinkName("g_value_set_string_take_ownership")] public static extern void ValueSetStringTakeOwnership(GValue* value, gchar* v_string);
 }
 
 /** gchararray:

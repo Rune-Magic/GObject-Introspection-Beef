@@ -5,6 +5,14 @@ namespace GObject.Introspection;
 
 static class GIR
 {
+	private const String soFormat =
+#if BF_PLATFORM_WINDOWS
+		"{}.dll";
+#else
+		"lib{}.so";
+#endif
+
+	public const String so = .ConstF(soFormat, soBaseName);
 }
 
 [CRepr] struct GValue
@@ -32,6 +40,12 @@ typealias ffi_closure = void*;
 
 static class GIRFFI
 {
+	public const String so = .ConstF(GIR.[Friend]soFormat, soBaseName);
+}
+
+extension GObject
+{
+	public const String so = .ConstF(GIR.[Friend]soFormat, soBaseName);
 }
 
 typealias gint8  = int8;
@@ -55,6 +69,7 @@ typealias time_t = TimeSpan;
 
 static class GLib
 {
+	public const String so = .ConstF(GIR.[Friend]soFormat, soBaseName);
 }
 
 static
